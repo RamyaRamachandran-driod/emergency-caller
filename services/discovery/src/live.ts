@@ -63,7 +63,7 @@ export function shortlist(found: Found, input: TaskInput, searchAt: string) {
     if (seen.has(phone) || seen.has(name)) continue;
     seen.add(phone).add(name);
     candidates.push({
-      id: `biz-${phone.slice(1)}`,
+      id: "",
       name: b.name,
       phone,
       sourceUrl: b.sourceUrl,
@@ -76,7 +76,9 @@ export function shortlist(found: Found, input: TaskInput, searchAt: string) {
   const businesses = candidates
     .filter((b) => b.openingStatus !== "closed")
     .sort((a, b) => Number(b.openingStatus === "open") - Number(a.openingStatus === "open"))
-    .slice(0, 3);
+    .slice(0, 3)
+    // Same <prefix>-<n> shape as the demo ids; the simulated voice agent derives quotes from n.
+    .map((b, i) => ({ ...b, id: `live-${i + 1}` }));
   for (const b of businesses)
     if (b.openingStatus === "unknown") warnings.push(`${b.name}: opening hours not found.`);
   return DiscoveryResult.parse({ businesses, warnings });

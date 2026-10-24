@@ -42,6 +42,7 @@ test("shortlist dedupes, drops unsourced and closed, prefers open, caps at 3", (
     monday1pmLA,
   );
   assert.deepEqual(result.businesses.map((b) => b.name), ["Open A", "Open B", "Open C"]);
+  assert.deepEqual(result.businesses.map((b) => b.id), ["live-1", "live-2", "live-3"]);
   assert.ok(result.warnings.some((w) => w.includes("Using location timezone America/Los_Angeles")));
   assert.ok(result.warnings.some((w) => w.includes("No Source")));
   assert.ok(result.warnings.some((w) => w.includes("1 business(es) closed")));
