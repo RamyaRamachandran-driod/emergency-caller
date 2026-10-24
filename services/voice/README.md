@@ -1,6 +1,6 @@
 # Local voice agent
 
-Owner: Tanay. Node.js 22+. Supports outbound quote calls through **Vonage or Twilio**, with OpenAI Realtime for the conversation. The services stay on your computer; a temporary tunnel forwards provider events and audio. Live booking is blocked until dispatch contacts and durable booking coordination exist.
+Owner: Tanay. Node.js 22+. Supports outbound quote and approved confirmation calls through **Vonage or Twilio**, with OpenAI Realtime for the conversation. The services stay on your computer; a temporary tunnel forwards provider events and audio. Live confirmation callbacks are available through dashboard quote approval: customer contact and an immutable approved quote are required, and the orchestrator claims one callback before dialing. Standalone CLI calls remain quote inquiries.
 
 ## Vonage: first real call
 

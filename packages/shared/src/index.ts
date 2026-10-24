@@ -74,6 +74,33 @@ export function quoteCallBrief(input: TaskInput, business?: Pick<Business, "name
   };
 }
 
+export const BookingContact = z.object({
+  name: z.string().trim().min(1).max(100),
+  phone: z.string().regex(/^\+[1-9]\d{7,14}$/, "Use a phone number with country code, e.g. +14155550101"),
+});
+export type BookingContact = z.infer<typeof BookingContact>;
+export const BookingApproval = z.object({
+  callId: z.string().uuid(), approvedAt: z.string().datetime(),
+  offer: Offer, contact: BookingContact,
+});
+export type BookingApproval = z.infer<typeof BookingApproval>;
+export function bookingCallBrief(input: TaskInput, business: Business, approval: BookingApproval): CallBrief {
+  return {
+    task: input.request,
+    objective: `Call ${business.name} again: the customer has approved the selected quote and requests attendance at ${input.location} within the original ${approval.offer.etaMinutes} minutes from confirmation. Obtain explicit dispatch acceptance.`,
+    neededInformation: [
+      "Confirm the business identity, then explain that the customer accepted their earlier quote.",
+      "Briefly mention the supplied street address and city once, then ask whether they can attend within the original ETA. The previous quote is already established; do not ask them to repeat its price, scope or conditions. Never ask the merchant to supply or read back the customer address.",
+      "Use the approved customer name naturally; provide the callback number only if requested or needed for dispatch, without an obligatory contact recital.",
+    ],
+    completionCriteria: [
+      "Use your judgment and short conversational turns; do not read a checklist or repeat information already established.",
+      "Only the approved quote and its stated scope are authorized. An estimate is not a fixed total, and a visit fee does not authorize additional repairs or charges.",
+      "If any price, scope, condition or arrival term changes, tell the business to hold dispatch pending fresh customer approval; report terms_changed. Do not negotiate or accept new terms.",
+      "A clear yes to your dispatch/arrival request is acceptance; do not ask the ETA again or seek separate confirmation of each quoted term. Save it with report_booking, say a brief thanks, and end without a recap. A completed call alone is not acceptance.",
+    ],
+  };
+}
 export const CallRequest = z.object({
   taskId: z.string().uuid(),
   callId: z.string().uuid(),
@@ -82,6 +109,7 @@ export const CallRequest = z.object({
   purpose: z.enum(["quote", "booking"]),
   selectedOffer: Offer.nullable(),
   brief: CallBrief.optional(),
+  approval: BookingApproval.optional(),
 });
 export const CallAccepted = z.object({ callId: z.string().uuid() });
 const base = {
@@ -109,6 +137,7 @@ export const CallEvent = z.discriminatedUnion("type", [
     ...base,
     type: z.literal("booking_result"),
     accepted: z.boolean(),
+    outcome: z.enum(["accepted", "declined", "terms_changed"]).optional(),
     summary: z.string(),
   }),
 ]);
@@ -139,5 +168,7 @@ export interface Task {
   error?: string;
   selectedOfferId?: string;
   bookingAccepted?: boolean;
+  approval?: BookingApproval;
   simulated: boolean;
+  testCallNumber?: string;
 }

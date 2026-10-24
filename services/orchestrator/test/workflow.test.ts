@@ -19,7 +19,7 @@ async function until<T>(fn: () => Promise<T | null | false>, timeout = 10000): P
 function origin(server: Server) { return `http://127.0.0.1:${(server.address() as { port: number }).port}`; }
 async function listen(server: Server) { server.listen(0, "127.0.0.1"); await once(server, "listening"); }
 
-for (const personal of [false, true]) test(`live task API: ${personal ? "personal phone only" : "sourced calls"}, callbacks, deduplication and booking block`, async t => {
+for (const outcome of ["accepted", "declined", "terms_changed"] as const) for (const personal of [false, true]) test(`live task API: ${personal ? "personal phone only" : "sourced calls"}, callbacks, durable approval and ${outcome} callbacks`, async t => {
   const dir = mkdtempSync(join(tmpdir(), "savior-workflow-"));
   process.env.INTERNAL_SERVICE_TOKEN = "workflow-test-token";
   process.env.APP_MODE = "live";
@@ -110,6 +110,34 @@ for (const personal of [false, true]) test(`live task API: ${personal ? "persona
   });
   assert.equal(task.offers.length, 1); assert.equal(task.offers[0].amountMinor, 20000);
   assert.ok(task.calls[0].events.some(e => e.type === "transcript" && e.speaker === "business"));
-  assert.equal((await fetch(`${base}/api/tasks/${task.id}/book`, { method: "POST", headers: { "content-type": "application/json", "Idempotency-Key": "book-key" }, body: JSON.stringify({ offerId: task.offers[0].id }) })).status, 409);
+  const approve = (key: string, withContact = true) => fetch(`${base}/api/tasks/${task.id}/book`, { method: "POST", headers: { "content-type": "application/json", "Idempotency-Key": key }, body: JSON.stringify({ offerId: task.offers[0].id, ...(withContact ? { contact: { name: "Test customer", phone: "+14155550101" } } : {}) }) });
+  assert.equal((await approve("missing-contact", false)).status, 400);
   assert.equal(dialCount, 1);
+  const approvals = await Promise.all([approve("book-key"), approve("book-key")]);
+  assert.deepEqual(approvals.map(r => r.status), [202, 202]);
+  await until(async () => dialCount === 2);
+  assert.equal((await approve("different-key")).status, 409);
+  assert.equal(dialCount, 2);
+  const booking = [...voice.store.records.values()].find(r => r.request.purpose === "booking")!;
+  assert.equal(booking.request.business.phone, personal ? "+14155550101" : "+14155550199");
+  assert.deepEqual(booking.request.selectedOffer, task.offers[0]);
+  assert.deepEqual(booking.request.approval?.offer, task.offers[0]);
+  assert.equal(booking.request.approval?.callId, booking.request.callId);
+  assert.equal(booking.request.approval?.contact.name, "Test customer");
+  assert.match(booking.request.brief!.objective, /20 minutes/);
+  assert.match(booking.request.brief!.completionCriteria.join(" "), /hold dispatch/);
+  voice.store.emit(booking, { type: "status", status: "connected" });
+  voice.store.emit(booking, { type: "booking_result", accepted: outcome === "accepted", outcome, summary: outcome === "accepted" ? "Business confirmed the approved $200 estimate and attendance in 20 minutes at Test location." : "Business could not accept the original terms; no dispatch authorized." });
+  voice.store.emit(booking, { type: "status", status: "completed" });
+  await voice.drain();
+  const confirmed = await until(async () => {
+    const view: Task = await (await fetch(`${base}/api/tasks/${task.id}`)).json();
+    return view.calls.some(c => c.purpose === "booking" && c.events.some(e => e.type === "booking_result")) ? view : null;
+  });
+  assert.equal(confirmed.bookingAccepted, outcome === "accepted");
+  assert.equal(confirmed.stage, outcome === "accepted" ? "confirmed" : "offers_ready");
+  assert.equal(confirmed.calls.filter(c => c.purpose === "booking").length, 1);
+  assert.deepEqual(confirmed.approval, booking.request.approval);
+  assert.equal((await approve("book-key")).status, 202);
+  assert.equal(dialCount, 2);
 });

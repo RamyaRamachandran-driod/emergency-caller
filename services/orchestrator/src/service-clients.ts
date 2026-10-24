@@ -67,5 +67,5 @@ export async function workflowReadiness() {
       else if (name === "voice" && expected === "live" && !testCallNumber && health.destinationPolicy !== "sourced") issues.push("Set VOICE_DESTINATION_POLICY=sourced to call discovered business numbers.");
     } catch { issues.push(`${name} is unreachable.`); }
   }));
-  return { mode: expected, ready: issues.length === 0, issues, liveBookingEnabled: false, testCallNumber };
+  return { mode: expected, ready: issues.length === 0, issues, liveBookingEnabled: true, testCallNumber };
 }
