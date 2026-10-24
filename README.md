@@ -1,6 +1,6 @@
 # Emergency Caller
 
-Four-person hackathon monorepo for consumer voice assistance. This is **your own scaffold**; no Tavi code is used.
+Four-person hackathon monorepo for consumer roadside assistance. This is **your own scaffold**; no Tavi code is used.
 
 The scaffold provides a simulated end-to-end workflow with a React dashboard and separate orchestrator, discovery, and voice services.
 
@@ -31,10 +31,13 @@ Open http://localhost:5173. Orchestrator: 4100; discovery: 4101; voice: 4102. Su
 ## What works in the scaffold
 - Three independent backend processes communicating through validated HTTP contracts.
 - Authenticated internal endpoints and simulated concurrent call callbacks.
-- Task API, polling UI, speaker transcripts, offer eligibility and simulated confirmation.
+- Typed complaint intake, polling UI, speaker transcripts, offer eligibility and simulated confirmation.
+- SQLite task snapshots and durable callback de-duplication in the orchestrator.
 - Workspace commands, lockfile, environment template, requirements and CI build.
 
+The orchestrator uses one canonical set of shared Zod contracts. Its discovery and voice clients validate messages at the service boundary; bump the shared contract version and update the matching adapter when a team payload changes. Discovery requests time out after three minutes by default. Kane CLI is the planned generated-journey validation path.
+
 ## Not implemented yet
-Real OpenAI or Twilio calls, live search, speech recording/transcription, clarification turns, durable SQLite storage, dispatch-contact collection, offer expiry, production authentication, generated Kane tests, and deployment. Data is memory only; restarting services clears it. Live mode fails explicitly. Do not expose the scaffold to the public internet or use it for actual dispatch.
+Real OpenAI or Twilio calls, live search, clarification turns, dispatch-contact collection, offer expiry, production authentication, generated Kane tests, and deployment. Customer requests are typed; caller voice conversations are simulated until the voice adapter is implemented. Live mode fails explicitly. Do not expose the scaffold to the public internet or use it for actual dispatch.
 
 Use root .env for server credentials; never put OpenAI/Twilio keys into frontend variables. Keep databases, real contacts, recordings, and credentials out of Git.

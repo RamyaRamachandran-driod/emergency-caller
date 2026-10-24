@@ -5,7 +5,14 @@ dist/
 !.env.example
 *.db
 *.db-*
+*.sqlite
+*.sqlite-*
+data/
 artifacts/
 .context/
 .DS_Store
 .vite/
+# Kane: keep designed tests, recordings and variables in git; local evidence and caches stay out.
+.testmuai/*
+!.testmuai/tests/
+!.testmuai/variables/
