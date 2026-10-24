@@ -1,0 +1,3 @@
+# Demo requirements
+
+The user describes a car breakdown and provides its location. The system finds up to three relevant mobile mechanics using location and local time, calls them concurrently, and displays each call status and transcript. It presents availability, arrival estimates, quotes and conditions without inventing unknown values. The user selects an eligible offer and authorizes confirmation. The business must explicitly accept before a booking is shown as confirmed. Duplicate clicks must not dispatch twice. One failed call must not discard other results. Simulation must be visibly labeled and must never dial real numbers.

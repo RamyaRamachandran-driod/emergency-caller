@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  background: #f4f7f6;
+  color: #142c29;
+  font: 16px system-ui;
+}
+main {
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+h1 {
+  font-size: clamp(32px, 5vw, 54px);
+}
+.badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: #755000;
+}
+form,
+article {
+  background: white;
+  border: 1px solid #d6e1dd;
+  border-radius: 14px;
+  padding: 22px;
+}
+form {
+  max-width: 650px;
+}
+label {
+  display: block;
+  margin-bottom: 18px;
+}
+input,
+textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #94aaa2;
+  border-radius: 8px;
+  font: inherit;
+}
+textarea {
+  min-height: 90px;
+}
+button {
+  background: #17644f;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font: inherit;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+footer {
+  margin: 40px 0;
+  color: #596b65;
+}
+[role="alert"] {
+  color: #a22828;
+}

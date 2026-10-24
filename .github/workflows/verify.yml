@@ -1,0 +1,16 @@
+name: Verify scaffold
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+# Khushi: add an authenticated Kane runner job, start all services in test mode,
+# configure generated suite variables, run npm run test:kane, and upload artifacts.
+# Branch protection and deployment must require that job before release.

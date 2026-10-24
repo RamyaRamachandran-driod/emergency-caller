@@ -3,6 +3,8 @@ dist/
 .env
 .env.*
 !.env.example
-.testmuai/
+*.db
+*.db-*
+artifacts/
 .context/
-*.tsbuildinfo
+.DS_Store
