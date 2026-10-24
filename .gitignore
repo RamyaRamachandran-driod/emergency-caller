@@ -8,3 +8,9 @@ dist/
 artifacts/
 .context/
 .DS_Store
+
+data/
+
+.secrets/
+*.key
+*.pem

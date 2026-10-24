@@ -11,6 +11,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npm run test:voice
 # Khushi: add an authenticated Kane runner job, start all services in test mode,
 # configure generated suite variables, run npm run test:kane, and upload artifacts.
 # Branch protection and deployment must require that job before release.

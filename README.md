@@ -26,7 +26,11 @@ npm run dev
 
 Open http://localhost:5173. Orchestrator: 4100; discovery: 4101; voice: 4102. Submit a request and location to watch three simulated calls, quotes and a simulated booking confirmation. No real businesses are called. Stop the root process to stop all four components.
 
-`npm run build` typechecks every workspace and builds the dashboard. `npm run test:kane` runs generated Kane tests and fails when none exist. The CI workflow currently verifies build only; Kane release enforcement is a remaining Khushi task.
+`npm run build` typechecks every workspace and builds the dashboard. `npm run test:kane` runs generated Kane tests and fails when none exist. The CI workflow verifies build and voice integration tests; Kane release enforcement is a remaining Khushi task.
+
+## Local voice agent
+
+The voice worker now supports live outbound quote calls through Vonage or Twilio and OpenAI Realtime, with a local CLI, transcripts, structured offers, and a temporary provider-only tunnel. See [voice setup and first call](services/voice/README.md). Live booking remains blocked. No server deployment is required.
 
 ## What works in the scaffold
 - Three independent backend processes communicating through validated HTTP contracts.
@@ -35,6 +39,6 @@ Open http://localhost:5173. Orchestrator: 4100; discovery: 4101; voice: 4102. Su
 - Workspace commands, lockfile, environment template, requirements and CI build.
 
 ## Not implemented yet
-Real OpenAI or Twilio calls, live search, speech recording/transcription, clarification turns, durable SQLite storage, dispatch-contact collection, offer expiry, production authentication, generated Kane tests, and deployment. Data is memory only; restarting services clears it. Live mode fails explicitly. Do not expose the scaffold to the public internet or use it for actual dispatch.
+Live search, browser speech recording/transcription, clarification turns, durable orchestrator SQLite storage, dispatch-contact collection, live booking, offer expiry, production authentication, generated Kane tests, and deployment. Orchestrator data is memory only; restarting it clears tasks. Voice call results persist locally. APP_MODE=live still rejects unfinished orchestration/discovery; VOICE_MODE independently enables live quote calls. Do not expose the scaffold to the public internet or use it for actual dispatch.
 
 Use root .env for server credentials; never put OpenAI/Twilio keys into frontend variables. Keep databases, real contacts, recordings, and credentials out of Git.
