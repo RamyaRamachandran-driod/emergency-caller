@@ -147,3 +147,10 @@ Set `VOICE_TEST_NUMBER` and `VOICE_ALLOWED_NUMBERS` to your own number, with `VO
 Set `OPENAI_TEXT_MODEL` to enable transcript-based recovery when the audio model's quote evidence does not match finalized ASR wording. The text extractor receives finalized speaker-labelled transcripts, uses a strict quote schema, and passes the same business-evidence validation before an offer is saved. Missing data stays unknown; call-out fees must not become repair totals. An authenticated `POST /calls/:id/recover-quote` can review an ended live quote call without redialing. It returns an existing offer on repeat and blocks concurrent review requests. Failed reviews return 422, leaving the transcript intact. This endpoint is available only on the internal listener.
 
 Vonage completion without a verified connection counts as failure. Detailed failure callbacks correct generic polling results, and status events carry the provider reason to the dashboard.
+
+
+### Conversational turns and audio checks
+
+Voice detection interrupts output, but does not automatically generate replies. The bridge waits until the person stops speaking and their transcript is finalized, then starts one response with the current conversation phase and original orchestrator brief. Tool follow-ups share that same turn controller. The opening is brief; later turns address the latest caller intent with one relevant question rather than listing the brief. A completed closing ends playback without another spoken follow-up.
+
+`npm run voice:smoke` exercises a genuine Realtime audio interruption using synthesized speech and a fake local telephone socket. `npm run voice:smoke -- --ack` tests a short acknowledgement. These manual checks use paid OpenAI TTS and Realtime APIs and never call the phone provider or dial any number. They print transcripts and assert a brief contextual reply without a repeated introduction or combined timing/price checklist.

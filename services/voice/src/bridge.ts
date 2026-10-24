@@ -15,8 +15,10 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
   let queue: string[] = [], queuedBytes = 0, lastItem = "", outputMs = 0, playedMs = 0;
   let endRequested = false, responseActive = false, pendingTools = 0, followupRequested = false, remoteEnded = false;
   let outputResponse = "", quoteValidationFailures = 0, openingFinished = false;
+  let userSpeaking = false, userTurnPending = false;
   const canceled = new Set<string>();
   const seen = new Set<string>();
+  const awaitingTranscripts = new Set<string>();
   const marks = new Map<string, { item: string; end: number }>();
   const timers = new Set<ReturnType<typeof setTimeout>>();
   const later = (fn: () => void, ms: number) => { const timer = setTimeout(() => { timers.delete(timer); fn(); }, ms); timers.add(timer); return timer; };
@@ -39,10 +41,16 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
     media.close();
   }
   function fail(reason: string) { if (!closed) { cleanup(); void finish(reason, true); } }
+  function startResponse() {
+    responseActive = true;
+    // Reinforce the conversation phase on the response itself; truncation can erase prior spoken context.
+    send(ai, { type: "response.create", response: { instructions: instructions(r.request, openingFinished) } });
+    openingFinished = true;
+  }
   function maybeRespond() {
-    if (followupRequested && !responseActive && pendingTools === 0 && !endRequested && !remoteEnded && !closed) {
-      followupRequested = false; responseActive = true;
-      send(ai, { type: "response.create" });
+    if ((followupRequested || userTurnPending) && !userSpeaking && awaitingTranscripts.size === 0 && !responseActive && pendingTools === 0 && !endRequested && !remoteEnded && !closed) {
+      followupRequested = false; userTurnPending = false;
+      startResponse();
     }
   }
   function remoteStop(reason: string) {
@@ -62,6 +70,13 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
       // Allow the last output frame to finish before terminating the telephone leg.
       later(() => { if (!closed) { cleanup(); void finish("Agent ended conversation", false); } }, 500);
     }
+  }
+  const isClosing = (text: string) => /^thanks[,!. ]+i[’']ll get back to you[.! ]*$/i.test(text.trim());
+  function requestEnd() {
+    if (endRequested) return;
+    endRequested = true;
+    later(() => { if (!closed) { cleanup(); void finish("Agent ended conversation", false); } }, 12000);
+    endWhenPlayed();
   }
   async function tool(message: Message) {
     const id = message.call_id;
@@ -84,11 +99,11 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
         }
         if (closed || !quote) return;
         saveQuote(r, store, quote);
-        result = { saved: true, instruction: "Do not summarize or repeat the quote. Say only: Thanks, I’ll get back to you. Then use end_call after the closing has played. No dispatch has been authorized." };
+        if (r.events.some(e => e.type === "transcript" && e.speaker === "agent" && isClosing(e.text))) requestEnd();
+        result = { saved: true, instruction: "Do not summarize or repeat the quote. If you have not already said the closing, say only: Thanks, I’ll get back to you. If it has already been said, do not speak it again. Use end_call to finish. No dispatch has been authorized." };
       } else if (message.name === "end_call") {
-        endRequested = true;
+        requestEnd();
         result = { ending: true };
-        later(() => { if (!closed) { cleanup(); void finish("Agent ended conversation", false); } }, 12000);
       } else throw Error("Unknown tool");
     } catch (error) {
       const businessTranscriptSegments = r.events.filter(e => e.type === "transcript" && e.speaker === "business")
@@ -111,8 +126,7 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
         ready = true; clearTimeout(startTimer); timers.delete(startTimer);
         for (const audio of queue) send(ai, { type: "input_audio_buffer.append", audio });
         queue = []; queuedBytes = 0;
-        responseActive = true;
-        send(ai, { type: "response.create" });
+        if (!userSpeaking) startResponse();
         idle(); break;
       case "response.created": responseActive = true; outputResponse = message.response?.id ?? ""; break;
       case "response.output_audio.delta": {
@@ -125,17 +139,15 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
         break;
       }
       case "response.output_audio.done": {
+        if (canceled.has(message.response_id)) break;
         const tail = media.flush();
         if (tail) marks.set(tail, { item: lastItem, end: outputMs });
         break;
       }
       case "input_audio_buffer.speech_started":
         idle();
-        if (ready && !openingFinished) {
-          openingFinished = true;
-          // Audio truncation may remove the opening's text. Retain its completed phase explicitly.
-          send(ai, { type: "session.update", session: { type: "realtime", instructions: instructions(r.request, true) } });
-        }
+        userSpeaking = true;
+        if (typeof message.item_id === "string") awaitingTranscripts.add(message.item_id);
         if (marks.size) {
           canceled.add(outputResponse);
           media.clear();
@@ -143,12 +155,24 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
           marks.clear(); lastItem = "";
         }
         break;
+      case "input_audio_buffer.speech_stopped":
+        userSpeaking = false;
+        maybeRespond();
+        break;
       case "conversation.item.input_audio_transcription.completed":
       case "response.output_audio_transcript.done": {
+        if (message.type.startsWith("conversation")) awaitingTranscripts.delete(message.item_id);
         const key = `${message.type}:${message.item_id}:${message.content_index ?? 0}`;
         if (seen.has(key) || typeof message.transcript !== "string" || !message.transcript.trim()) return;
         seen.add(key);
         store.emit(r, { type: "transcript", sequence: r.sequence++, speaker: message.type.startsWith("conversation") ? "business" : "agent", text: message.transcript });
+        if (message.type.startsWith("conversation")) {
+          userTurnPending = true;
+          maybeRespond();
+        } else if (r.events.some(e => e.type === "offer") && isClosing(message.transcript)) {
+          // One closing is enough. End after its playback instead of starting another tool follow-up.
+          requestEnd();
+        }
         idle(); break;
       }
       case "response.function_call_arguments.done": void tool(message).catch(() => fail("Tool processing failed")); break;
@@ -168,7 +192,7 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
         ai.on("close", () => { if (!closed) fail("Realtime connection closed"); });
         ai.on("open", () => {
           send(ai, { type: "session.update", session: { type: "realtime", output_modalities: ["audio"], instructions: instructions(r.request),
-            audio: { input: { format: media.format, transcription: { model: config.transcriptionModel }, turn_detection: { type: "server_vad", threshold: 0.5, prefix_padding_ms: 300, silence_duration_ms: 650, create_response: true, interrupt_response: true } },
+            audio: { input: { format: media.format, transcription: { model: config.transcriptionModel }, turn_detection: { type: "server_vad", threshold: 0.5, prefix_padding_ms: 300, silence_duration_ms: 650, create_response: false, interrupt_response: true } },
               output: { format: media.format, voice: config.voice } }, tools: tools(), tool_choice: "auto" } });
         });
         ai.on("message", raw => { try { onAI(JSON.parse(raw.toString())); } catch { fail("Malformed Realtime event"); } });

@@ -150,23 +150,24 @@ test("audio bridge configures PCMU, relays audio, handles interruption, and save
   sendAI({ type: "session.updated" });
   sendPhone({ event: "media", streamSid: "MZtest", media: { payload: "////" } });
   await until(() => aiMessages.some(m => m.type === "input_audio_buffer.append"));
-  assert.deepEqual(aiMessages.find(m => m.type === "response.create"), { type: "response.create" });
+  assert.equal(aiMessages[0].session.audio.input.turn_detection.create_response, false);
+  assert.match(aiMessages.find(m => m.type === "response.create").response.instructions, /kitchen pipe is leaking/);
   sendAI({ type: "response.created", response: { id: "response-1" } });
   sendAI({ type: "response.output_audio.delta", response_id: "response-1", item_id: "item-1", delta: "////" });
   await until(() => phoneMessages.some(m => m.event === "media"));
-  sendAI({ type: "input_audio_buffer.speech_started" });
+  sendAI({ type: "input_audio_buffer.speech_started", item_id: "business-1" });
   await until(() => phoneMessages.some(m => m.event === "clear"));
   assert.ok(aiMessages.some(m => m.type === "conversation.item.truncate"));
-  const ongoing = aiMessages.filter(m => m.type === "session.update").at(-1);
-  assert.match(ongoing.session.instructions, /The opening phase is finished/);
-  assert.match(ongoing.session.instructions, /kitchen pipe is leaking/);
   const openings = aiMessages.filter(m => m.type === "response.create").length;
   sendAI({ type: "session.updated" });
-  sendAI({ type: "input_audio_buffer.speech_started" });
+  sendAI({ type: "input_audio_buffer.speech_started", item_id: "business-1" });
   await pause();
-  assert.equal(aiMessages.filter(m => m.type === "response.create").length, openings, "session updates and repeated interruptions must not retrigger the opening");
-  assert.equal(aiMessages.filter(m => m.type === "session.update").length, 2);
+  assert.equal(aiMessages.filter(m => m.type === "response.create").length, openings, "never reply while the business is speaking");
+  assert.equal(aiMessages.filter(m => m.type === "session.update").length, 1);
   sendAI({ type: "conversation.item.input_audio_transcription.completed", item_id: "business-1", transcript: "We can help in twenty minutes for 125 dollars, estimated." });
+  await pause();
+  assert.equal(aiMessages.filter(m => m.type === "response.create").length, openings, "transcription alone must not start a response before speech stops");
+  sendAI({ type: "input_audio_buffer.speech_stopped", item_id: "business-1" });
   const args = JSON.stringify({ availability: "available", etaMinutes: 20, amountMinor: 12500, currency: "USD", quoteType: "estimate", conditions: null, evidence: { availability: "We can help", eta: "twenty minutes", price: "125 dollars" } });
   const badArgs = JSON.stringify({ ...JSON.parse(args), evidence: { ...JSON.parse(args).evidence, eta: "20 mins" } });
   sendAI({ type: "response.function_call_arguments.done", call_id: "repair-tool", name: "report_quote", arguments: badArgs });
@@ -177,6 +178,9 @@ test("audio bridge configures PCMU, relays audio, handles interruption, and save
   assert.equal(r.events.filter(e => e.type === "offer").length, 0);
   sendAI({ type: "response.done", response: { status: "completed" } });
   await until(() => aiMessages.filter(m => m.type === "response.create").length === 2);
+  const ongoing = aiMessages.filter(m => m.type === "response.create").at(-1);
+  assert.match(ongoing.response.instructions, /The opening phase is finished/);
+  assert.match(ongoing.response.instructions, /normally one short question/);
   sendAI({ type: "response.created", response: { id: "response-repair" } });
   sendAI({ type: "response.function_call_arguments.done", call_id: "tool-1", name: "report_quote", arguments: args });
   await until(() => r.events.some(e => e.type === "offer"));
@@ -185,8 +189,13 @@ test("audio bridge configures PCMU, relays audio, handles interruption, and save
   assert.equal(aiMessages.filter(m => m.type === "response.create").length, 2, "do not start a tool follow-up while its originating response is active");
   sendAI({ type: "response.done", response: { status: "completed" } });
   await until(() => aiMessages.filter(m => m.type === "response.create").length === 3);
-  sendAI({ type: "error", error: { code: "test_failure" } });
+  sendAI({ type: "response.created", response: { id: "response-closing" } });
+  sendAI({ type: "response.output_audio_transcript.done", item_id: "closing", transcript: "Thanks, I’ll get back to you." });
+  sendAI({ type: "response.done", response: { status: "completed" } });
+  sendAI({ type: "conversation.item.input_audio_transcription.completed", item_id: "business-thanks", transcript: "Okay" });
   await until(() => finished.length === 1);
+  assert.equal(finished[0], "Agent ended conversation");
+  assert.equal(aiMessages.filter(m => m.type === "response.create").length, 3, "closing must not trigger another spoken goodbye");
 });
 
 test("media upgrades require both a signed request and the call correlation token", async t => {

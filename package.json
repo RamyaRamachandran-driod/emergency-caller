@@ -17,7 +17,8 @@
     "voice:tunnel": "node scripts/voice-tunnel.mjs",
     "test:voice": "tsx --test services/voice/test/*.test.ts",
     "voice:vonage:setup": "node scripts/vonage-setup.mjs",
-    "test:workflow": "tsx --test services/orchestrator/test/*.test.ts"
+    "test:workflow": "tsx --test services/orchestrator/test/*.test.ts",
+    "voice:smoke": "tsx scripts/voice-conversation-smoke.mts"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
