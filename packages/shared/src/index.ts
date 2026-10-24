@@ -64,6 +64,7 @@ export const CallEvent = z.discriminatedUnion("type", [
     ...base,
     type: z.literal("status"),
     status: z.enum(["dialing", "connected", "completed", "failed"]),
+    reason: z.string().max(500).optional(),
   }),
   z.object({
     ...base,

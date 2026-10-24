@@ -75,7 +75,7 @@ function CallThread({ call, offer }: { call: Call; offer: Offer | undefined }) {
           </div>
         ))}
         {transcript.length === 0 && (
-          <p className="drawer-empty">{call.status === "failed" ? "No conversation recorded." : "Waiting for the conversation to start."}</p>
+          <p className="drawer-empty">{call.status === "failed" ? call.events.flatMap(e => e.type === "status" && e.status === "failed" && e.reason ? [e.reason] : []).at(-1) ?? "No conversation recorded." : "Waiting for the conversation to start."}</p>
         )}
         {offer && (
           <div className="offer-bubble">

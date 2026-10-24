@@ -1,5 +1,5 @@
 import { API_CONTRACT_VERSION, CallAccepted, CallRequest, DiscoveryRequest, DiscoveryResult } from "@emergency/shared";
-import { token } from "@emergency/server-kit";
+import { token, testCallNumber } from "@emergency/server-kit";
 
 const discoveryTimeout = Number(process.env.DISCOVERY_TIMEOUT_MS ?? 180_000);
 const voiceTimeout = Number(process.env.VOICE_REQUEST_TIMEOUT_MS ?? 15_000);
@@ -56,15 +56,16 @@ export async function workflowReadiness() {
   await Promise.all([
     ["discovery", process.env.DISCOVERY_URL ?? "http://localhost:4101"],
     ["voice", process.env.VOICE_URL ?? "http://localhost:4102"],
-  ].map(async ([name, base]) => {
+  ].filter(([name]) => !(expected === "live" && testCallNumber && name === "discovery")).map(async ([name, base]) => {
     try {
       const response = await fetch(`${base}/health`, { signal: AbortSignal.timeout(3000) });
       const health = await response.json();
       if (!response.ok || health.service !== name || health.status !== "ok") issues.push(`${name} is not healthy.`);
       else if (health.mode !== expected) issues.push(`${name} must use ${expected} mode to match the orchestrator.`);
       else if (expected === "live" && !health.liveReady) issues.push(`${name} live setup is incomplete.`);
-      else if (name === "voice" && expected === "live" && health.destinationPolicy !== "sourced") issues.push("Set VOICE_DESTINATION_POLICY=sourced to call discovered business numbers.");
+      else if (name === "voice" && expected === "live" && testCallNumber && (health.testNumber !== testCallNumber || health.destinationPolicy !== "allowlist")) issues.push("Voice must match the personal test number and use allowlist policy.");
+      else if (name === "voice" && expected === "live" && !testCallNumber && health.destinationPolicy !== "sourced") issues.push("Set VOICE_DESTINATION_POLICY=sourced to call discovered business numbers.");
     } catch { issues.push(`${name} is unreachable.`); }
   }));
-  return { mode: expected, ready: issues.length === 0, issues, liveBookingEnabled: false };
+  return { mode: expected, ready: issues.length === 0, issues, liveBookingEnabled: false, testCallNumber };
 }

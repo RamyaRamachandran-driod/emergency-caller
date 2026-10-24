@@ -138,3 +138,12 @@ npm run build
 The automated suite uses local HTTP/WebSocket mocks and generated test keys, not paid calls. It covers both transports, resampling across packet boundaries, playback interruption, request/JWT authentication, call-body generation, probe operation, callback reconciliation, durable state and callback retry. Actual team-phone calls remain necessary to verify provider permissions, microphone/speaker quality, model access and latency.
 
 References: [Vonage WebSockets](https://developer.vonage.com/en/voice/voice-api/concepts/websockets), [NCCO](https://developer.vonage.com/en/voice/voice-api/ncco-reference), [signed callbacks](https://developer.vonage.com/en/getting-started/concepts/webhooks), [OpenAI Realtime](https://developers.openai.com/api/docs/guides/realtime-conversations).
+
+
+### Personal phone and transcript quote recovery
+
+Set `VOICE_TEST_NUMBER` and `VOICE_ALLOWED_NUMBERS` to your own number, with `VOICE_DESTINATION_POLICY=allowlist`. The dashboard bypasses discovery and makes one personal-phone call per request. Every other live destination is rejected by the voice service even when it has a published source URL. The dashboard reads the configured target through `/api/setup` and labels the action **Call my phone**.
+
+Set `OPENAI_TEXT_MODEL` to enable transcript-based recovery when the audio model's quote evidence does not match finalized ASR wording. The text extractor receives finalized speaker-labelled transcripts, uses a strict quote schema, and passes the same business-evidence validation before an offer is saved. Missing data stays unknown; call-out fees must not become repair totals. An authenticated `POST /calls/:id/recover-quote` can review an ended live quote call without redialing. It returns an existing offer on repeat and blocks concurrent review requests. Failed reviews return 422, leaving the transcript intact. This endpoint is available only on the internal listener.
+
+Vonage completion without a verified connection counts as failure. Detailed failure callbacks correct generic polling results, and status events carry the provider reason to the dashboard.

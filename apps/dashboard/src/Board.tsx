@@ -103,7 +103,7 @@ function CallCard({
         </span>
         <span className={`status-text status-${call?.status ?? "queued"}`}>{label(call?.status ?? "not called")}</span>
       </div>
-      {call?.status === "failed" && <p className="call-card-note warn"><Icon name="alert" size={12} />Call failed before a quote</p>}
+      {call?.status === "failed" && <p className="call-card-note warn"><Icon name="alert" size={12} />{call.events.flatMap(e => e.type === "status" && e.status === "failed" && e.reason ? [e.reason] : []).at(-1) ?? "Call failed before a quote"}</p>}
       {reason && <p className="call-card-note warn"><Icon name="alert" size={12} />{reason}</p>}
       <div className="call-card-foot">
         <span className="channel"><Icon name="phone" size={12} /></span>

@@ -8,15 +8,16 @@ export const Phone = z.string().regex(/^\+[1-9]\d{7,14}$/, "Use an international
 export type ProviderName = "twilio" | "vonage";
 export interface VoiceConfig {
   provider: ProviderName; vonageApplicationId: string; vonagePrivateKeyPath: string; vonageApiKey: string; vonageSignatureSecret: string;
-  live: boolean; port: number; providerPort: number; publicUrl: string;
+  testNumber: string | null; live: boolean; port: number; providerPort: number; publicUrl: string;
   accountSid: string; authToken: string; from: string; apiKey: string;
-  model: string; voice: string; transcriptionModel: string; allowedNumbers: string[]; destinationPolicy: "allowlist" | "sourced";
+  quoteModel: string; model: string; voice: string; transcriptionModel: string; allowedNumbers: string[]; destinationPolicy: "allowlist" | "sourced";
   maxSeconds: number; maxConcurrent: number; dataDir: string;
 }
 export function configFromEnv(env: NodeJS.ProcessEnv): VoiceConfig {
   const integer = (key: string, fallback: number, max: number) => z.coerce.number().int().positive().max(max).parse(env[key] || fallback);
   const provider = z.enum(["twilio", "vonage"]).parse(env.VOICE_PROVIDER || "twilio");
   return {
+    testNumber: env.VOICE_TEST_NUMBER ? Phone.parse(env.VOICE_TEST_NUMBER) : null,
     provider, vonageApplicationId: env.VONAGE_APPLICATION_ID || "", vonagePrivateKeyPath: resolve(root, env.VONAGE_PRIVATE_KEY_PATH || ".secrets/vonage-private.key"),
     vonageApiKey: env.VONAGE_API_KEY || "", vonageSignatureSecret: env.VONAGE_SIGNATURE_SECRET || "",
     live: z.enum(["test", "live"]).parse(env.VOICE_MODE || env.APP_MODE || "test") === "live",
@@ -24,6 +25,7 @@ export function configFromEnv(env: NodeJS.ProcessEnv): VoiceConfig {
     publicUrl: (env.PUBLIC_VOICE_URL ?? "").replace(/\/$/, ""),
     accountSid: env.TWILIO_ACCOUNT_SID ?? "", authToken: env.TWILIO_AUTH_TOKEN ?? "",
     from: provider === "vonage" ? (env.VONAGE_FROM_NUMBER || "123456789") : (env.TWILIO_PHONE_NUMBER || ""), apiKey: env.OPENAI_API_KEY ?? "",
+    quoteModel: env.OPENAI_TEXT_MODEL || "",
     model: env.OPENAI_REALTIME_MODEL || "gpt-realtime",
     voice: env.OPENAI_VOICE || "marin", transcriptionModel: env.OPENAI_TRANSCRIPTION_MODEL || "gpt-4o-mini-transcribe",
     destinationPolicy: z.enum(["allowlist", "sourced"]).parse(env.VOICE_DESTINATION_POLICY || "allowlist"),

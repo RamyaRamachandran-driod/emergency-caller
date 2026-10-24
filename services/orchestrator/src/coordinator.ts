@@ -1,4 +1,4 @@
-import { mode } from "@emergency/server-kit";
+import { mode, testCallNumber } from "@emergency/server-kit";
 import { randomUUID } from "node:crypto";
 import { CallEvent, CallRequest, type Call, type Task, type TaskInput } from "@emergency/shared";
 import type { MutationResult } from "./store.js";
@@ -91,7 +91,11 @@ export class Orchestrator {
     try {
       const initial = this.store.get(taskId);
       if (!initial) return;
-      const result = await this.discovery.find({ taskId, input: initial.input, searchAt: new Date().toISOString() });
+      const searchAt = new Date().toISOString();
+      const result = this.live && testCallNumber ? {
+        businesses: [{ id: "personal-phone-test", name: "Your phone (live test)", phone: testCallNumber, sourceUrl: null, openingStatus: "unknown" as const, checkedAt: searchAt }],
+        warnings: ["Personal-phone test: one real call to your number. No businesses are searched or called. Answer as the mechanic to test quote collection."],
+      } : await this.discovery.find({ taskId, input: initial.input, searchAt });
       const found = this.store.mutate(taskId, (current) => {
         current.businesses = result.businesses.slice(0, 3);
         current.warnings.push(...result.warnings);

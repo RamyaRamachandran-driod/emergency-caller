@@ -54,3 +54,10 @@ Set `APP_MODE=live`, `VOICE_MODE=live`, `VOICE_DESTINATION_POLICY=sourced`, `OPE
 Run `npm run voice:tunnel`, keep `PUBLIC_VOICE_URL` current, and run `npm run dev`. Open `/app` for the dashboard (`/` is the landing page). The dashboard proxies to `ORCHESTRATOR_URL`, including when using custom local ports. Check `/api/setup` through the dashboard: all services must use the same mode. **Find and call businesses** starts real quote calls; it does not book or dispatch. Standalone CLI tests can use live voice with `APP_MODE=test`, but mixed service modes cannot start dashboard tasks.
 
 `npm run test:workflow` verifies the live HTTP workflow with stub discovery and an injected phone provider, including transcript/offer callbacks, duplicate submission protection, mixed-mode rejection and the live booking block. It does not place a real call or verify the external discovery model.
+
+
+### Personal-phone dashboard rehearsal
+
+For a real call only to yourself, set `APP_MODE=live`, `VOICE_MODE=live`, `VOICE_TEST_NUMBER=+YOUR_NUMBER`, `VOICE_ALLOWED_NUMBERS=+YOUR_NUMBER`, and `VOICE_DESTINATION_POLICY=allowlist`. Restart the backend services after changing `.env`. The dashboard shows **Call my phone** and creates exactly one personal-phone test candidate, bypassing business discovery. The voice service rejects every different destination even if sourced calling was accidentally enabled. Answer as the mechanic to test availability, ETA, and quote collection. Requests remain real phone calls, not simulated offers. No booking is enabled. Task links use `/app?task=<task-id>` and can restore the task after a refresh.
+
+Call failures include the provider reason in dashboard events. A provider `completed` status without a verified connection is a failed attempt; a later detailed failure callback replaces a generic earlier result. Historical completed calls with recorded failures and no connection are corrected on voice startup without redialing.

@@ -6,7 +6,7 @@ import express, {
 import cors from "cors";
 import dotenv from "dotenv";
 import { fileURLToPath } from "node:url";
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import { API_CONTRACT_VERSION } from "@emergency/shared";
 dotenv.config({
   path: fileURLToPath(new URL("../../../.env", import.meta.url)),
@@ -15,6 +15,7 @@ dotenv.config({
 export const mode = process.env.APP_MODE ?? "test";
 if (!["test", "live"].includes(mode))
   throw new Error("APP_MODE must be test or live");
+export const testCallNumber = process.env.VOICE_TEST_NUMBER ? z.string().regex(/^\+[1-9]\d{7,14}$/).parse(process.env.VOICE_TEST_NUMBER) : null;
 export const token = process.env.INTERNAL_SERVICE_TOKEN;
 if (!token) throw new Error("Set INTERNAL_SERVICE_TOKEN in root .env");
 export function appFor(name: string, health: () => Record<string, unknown> = () => ({})) {
