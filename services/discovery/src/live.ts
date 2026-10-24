@@ -12,7 +12,7 @@ export const Found = z.object({
     z.object({
       name: z.string(),
       phone: z.string(),
-      sourceUrl: z.string(),
+      sourceUrl: z.string().describe("The full absolute http:// or https:// URL of the page publishing the phone number. Never a citation ID such as turn0search1."),
       hours: Hours,
     }),
   ),
@@ -25,22 +25,27 @@ Problem: ${input.request}
 
 Rules:
 - phone: use E.164 format (+1 followed by 10 digits for US/Canada); only a number published on the business's own site or a listing page. Never guess or construct a number.
-- sourceUrl: the page where you found that phone number.
+- sourceUrl: the FULL absolute http:// or https:// URL of the page where you found that phone number. Never return a citation ID (for example turn0search1), a Markdown link, or a reference marker. If you cannot find a real source URL and published number, omit that business.
 - hours: weekly opening hours as published. day 0=Sunday..6=Saturday, open/close as 24h "HH:MM" local time. Use "00:00"-"24:00" for open 24 hours. A close earlier than open means it closes after midnight. Use null when hours are not published.
 - timezone: the IANA timezone of the breakdown location.`;
 
-export async function discoverLive(input: TaskInput, searchAt: string) {
+export async function searchLive(input: TaskInput) {
   const model = process.env.OPENAI_TEXT_MODEL;
   if (!process.env.OPENAI_API_KEY || !model)
     throw new Error("Set OPENAI_API_KEY and OPENAI_TEXT_MODEL in root .env");
   const response = await new OpenAI({ timeout: 180_000 }).responses.parse({
     model,
     tools: [{ type: "web_search" }],
+    tool_choice: "required",
     input: prompt(input),
     text: { format: zodTextFormat(Found, "discovery") },
   });
   if (!response.output_parsed) throw new Error("Discovery model returned no result");
-  return shortlist(response.output_parsed, input, searchAt);
+  return response.output_parsed;
+}
+
+export async function discoverLive(input: TaskInput, searchAt: string) {
+  return shortlist(await searchLive(input), input, searchAt);
 }
 
 // Turns raw search results into at most three callable, sourced, not-closed businesses.
@@ -63,7 +68,7 @@ export function shortlist(found: Found, input: TaskInput, searchAt: string) {
     if (seen.has(phone) || seen.has(name)) continue;
     seen.add(phone).add(name);
     candidates.push({
-      id: `biz-${phone.slice(1)}`,
+      id: "",
       name: b.name,
       phone,
       sourceUrl: b.sourceUrl,
@@ -76,7 +81,9 @@ export function shortlist(found: Found, input: TaskInput, searchAt: string) {
   const businesses = candidates
     .filter((b) => b.openingStatus !== "closed")
     .sort((a, b) => Number(b.openingStatus === "open") - Number(a.openingStatus === "open"))
-    .slice(0, 3);
+    .slice(0, 3)
+    // Same <prefix>-<n> shape as the demo ids; the simulated voice agent derives quotes from n.
+    .map((b, i) => ({ ...b, id: `live-${i + 1}` }));
   for (const b of businesses)
     if (b.openingStatus === "unknown") warnings.push(`${b.name}: opening hours not found.`);
   return DiscoveryResult.parse({ businesses, warnings });

@@ -85,7 +85,7 @@ export interface Call {
   id: string;
   business: Business;
   purpose: "quote" | "booking";
-  status: "dialing" | "connected" | "completed" | "failed";
+  status: "queued" | "dialing" | "connected" | "completed" | "failed";
   events: CallEvent[];
 }
 export interface Task {
@@ -93,6 +93,7 @@ export interface Task {
   input: TaskInput;
   stage:
     | "finding"
+    | "found"
     | "calling"
     | "offers_ready"
     | "no_matches"

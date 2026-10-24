@@ -116,7 +116,7 @@ export default function App() {
   return (
     <div className="shell">
       <nav className="rail" aria-label="Main navigation">
-        <div className="rail-brand" title="Emergency Caller"><Icon name="spark" size={16} /></div>
+        <a className="rail-brand" href="/" title="Emergency Caller home" aria-label="Emergency Caller home"><Icon name="spark" size={16} /></a>
         <button className="rail-item active" title="Task board" aria-label="Task board"><Icon name="board" /></button>
         <button className="rail-item" title="New request" aria-label="New request" onClick={() => requestDialog.current?.showModal()}>
           <Icon name="plus" />

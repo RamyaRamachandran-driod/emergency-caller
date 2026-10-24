@@ -9,6 +9,16 @@ function scenarioOf(location: string): string | null {
   return /scenario:\s*([a-z-]+)/i.exec(location)?.[1].toLowerCase() ?? null;
 }
 
+function simulatedBusinessOrdinal(businessId: string): number {
+  // Demo IDs already contain a small sequence number. Live discovery IDs contain phone digits,
+  // so hash those IDs instead of treating the phone number as a quote index.
+  const demoMatch = /^demo-(\d+)$/.exec(businessId);
+  if (demoMatch) return ((Number(demoMatch[1]) - 1) % 3 + 3) % 3 + 1;
+  let hash = 0;
+  for (const character of businessId) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+  return (hash % 3) + 1;
+}
+
 type SimulatedQuote = Omit<Offer, "id" | "callId" | "businessId"> & { reply: string };
 
 function simulatedQuote(n: number, scenario: string | null, maxArrivalMinutes: number): SimulatedQuote {
@@ -58,7 +68,7 @@ export async function simulate(r: Record, store: Store) {
   store.emit(r, { type: "transcript", sequence: r.sequence++, speaker: "agent", text: call.purpose === "quote" ? "Can you provide a mobile mechanic arrival estimate and quote?" : "Please reconfirm the selected quote and dispatch request." });
   await wait(1000);
   if (store.terminal(r)) return;
-  const n = Number(call.business.id.split("-").at(-1)) || 1;
+  const n = simulatedBusinessOrdinal(call.business.id);
   if (call.purpose === "quote") {
     if (scenario === "failed-call" && n === 2) { store.emit(r, { type: "status", status: "failed" }); return; }
     const { reply, ...offer } = simulatedQuote(n, scenario, call.input.maxArrivalMinutes);

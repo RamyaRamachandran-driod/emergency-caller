@@ -53,7 +53,7 @@ test("live task API drives sourced calls, delivers transcripts and offers, dedup
   await new Promise<void>(resolve => reservation.close(() => resolve()));
   process.env.ORCHESTRATOR_URL = base;
   const child = spawn(process.execPath, ["--import", "tsx", "services/orchestrator/src/index.ts"], {
-    env: { ...process.env, APP_MODE: "live", ORCHESTRATOR_PORT: new URL(base).port, DATABASE_PATH: join(dir, "tasks.sqlite"), DISCOVERY_URL: origin(discovery), VOICE_URL: origin(voice.internalServer) },
+    env: { ...process.env, APP_MODE: "live", FOUND_STAGE_HOLD_MS: "0", ORCHESTRATOR_PORT: new URL(base).port, DATABASE_PATH: join(dir, "tasks.sqlite"), DISCOVERY_URL: origin(discovery), VOICE_URL: origin(voice.internalServer) },
     stdio: ["ignore", "pipe", "pipe"],
   });
   let output = "";
@@ -74,6 +74,13 @@ test("live task API drives sourced calls, delivers transcripts and offers, dedup
   assert.equal((await submit("blocked")).status, 503);
   assert.equal(dialCount, 0); assert.equal(searches, 0);
   discoveryMode = "live";
+  config.live = false;
+  assert.equal((await submit("mixed-voice")).status, 503);
+  config.live = true;
+  config.destinationPolicy = "allowlist";
+  assert.equal((await submit("restricted-voice")).status, 503);
+  assert.equal(dialCount, 0); assert.equal(searches, 0);
+  config.destinationPolicy = "sourced";
   assert.equal((await (await fetch(`${base}/api/setup`)).json()).ready, true);
   const responses = await Promise.all([submit("same-key"), submit("same-key")]);
   const tasks = await Promise.all(responses.map(r => r.json() as Promise<Task>));

@@ -18,9 +18,10 @@ interface Row {
 }
 
 function laneFor(call: Call | undefined, offer: Offer | undefined): LaneId {
-  if (!call) return "queued";
+  if (!call || call.status === "queued") return "queued";
+  if (offer) return "quoted";
   if (call.status === "dialing" || call.status === "connected") return "live";
-  return offer ? "quoted" : "closed";
+  return "closed";
 }
 
 export function Board({

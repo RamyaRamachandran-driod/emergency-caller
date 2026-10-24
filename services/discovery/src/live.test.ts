@@ -34,6 +34,7 @@ test("shortlist dedupes, drops unsourced and closed, prefers open, caps at 3", (
         { name: "Unknown Hours", phone: "415-555-0101", sourceUrl: "https://a.example", hours: null },
         { name: "Dup", phone: "(415) 555-0101", sourceUrl: "https://b.example", hours: null },
         { name: "No Source", phone: "415-555-0102", sourceUrl: "", hours: null },
+        { name: "Citation ID", phone: "415-555-0107", sourceUrl: "turn0search1", hours: null },
         { name: "Closed", phone: "415-555-0103", sourceUrl: "https://c.example", hours: [{ day: 2, open: "09:00", close: "17:00" }] },
         { name: "Open A", phone: "415-555-0104", sourceUrl: "https://d.example", hours: allWeek },
         { name: "Open B", phone: "415-555-0105", sourceUrl: "https://e.example", hours: allWeek },
@@ -44,6 +45,7 @@ test("shortlist dedupes, drops unsourced and closed, prefers open, caps at 3", (
     monday1pmLA,
   );
   assert.deepEqual(result.businesses.map((b) => b.name), ["Open A", "Open B", "Open C"]);
+  assert.deepEqual(result.businesses.map((b) => b.id), ["live-1", "live-2", "live-3"]);
   assert.ok(result.warnings.some((w) => w.includes("Using location timezone America/Los_Angeles")));
   assert.ok(result.warnings.some((w) => w.includes("No Source")));
   assert.ok(result.warnings.some((w) => w.includes("1 business(es) closed")));
