@@ -2,24 +2,24 @@
   "test_id": "2c08d55e-5306-4c71-a77e-d41fe2d9fcbc",
   "version": "v4",
   "auto_heal_version": "AH2",
-  "session_id": "82bcb5d2-3009-4291-a008-4c2efbcbe117",
+  "session_id": "6f5bc4cf-3d76-4e57-8c39-6154b78696e8",
   "org_id": "3394593",
   "user_id": "3570389",
   "url": "",
-  "start_timestamp": "2026-10-24T21:03:00.259Z",
-  "end_timestamp": "2026-10-24T21:03:46.657Z",
+  "start_timestamp": "2026-10-24T21:37:05.829Z",
+  "end_timestamp": "2026-10-24T21:37:51.544Z",
   "status": "success",
-  "commit_id": "82bcb5d2-3009-4291-a008-4c2efbcbe117",
+  "commit_id": "6f5bc4cf-3d76-4e57-8c39-6154b78696e8",
   "instructions": [
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_00f5df3831244deda2667cb8968c735f",
-      "generative_id": "00f5df3831244deda2667cb8968c735f",
+      "instruction_id": "generative_block_1f36afa900e5431b9c102763500d7ab0",
+      "generative_id": "1f36afa900e5431b9c102763500d7ab0",
       "objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "1680de99-3fde-41c0-9e3e-b94b5ce6a88b",
+          "instruction_id": "a2ae0a82-21d2-4644-b0ae-bb17ebac2c7c",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Navigate to {{global.start_url}}",
@@ -31,11 +31,11 @@
           "operations": [
             {
               "operation_id": "f2e8c6db-2dd9-46ac-aa1a-3b14cab98589",
-              "instruction_id": "1680de99-3fde-41c0-9e3e-b94b5ce6a88b",
+              "instruction_id": "a2ae0a82-21d2-4644-b0ae-bb17ebac2c7c",
               "instruction": "Navigate to {{global.start_url}}",
               "intent": "Navigate to {{global.start_url}}",
-              "operation_start": "2026-10-24T21:03:19.079626+00:00",
-              "operation_end": "2026-10-24T21:03:19.114Z",
+              "operation_start": "2026-10-24T21:37:21.136151+00:00",
+              "operation_end": "2026-10-24T21:37:21.178Z",
               "status": "success",
               "command": "OPEN",
               "name": "",
@@ -158,8 +158,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:19.079626+00:00",
-          "end_timestamp": "2026-10-24T21:03:19.114Z",
+          "start_timestamp": "2026-10-24T21:37:21.136151+00:00",
+          "end_timestamp": "2026-10-24T21:37:21.178Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -185,7 +185,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "00f5df3831244deda2667cb8968c735f",
+          "generative_id": "1f36afa900e5431b9c102763500d7ab0",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -196,7 +196,7 @@
           "reasoning": "Navigate to {{global.start_url}}"
         },
         {
-          "instruction_id": "6a1823da-dfcf-4ace-9969-552a697bd4f1",
+          "instruction_id": "2c600556-6f10-43ea-9aff-399e5925b88b",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Typing breakdown location into the location field",
@@ -208,11 +208,11 @@
           "operations": [
             {
               "operation_id": "7f802654-332d-47ff-afe8-cf1afdce9823",
-              "instruction_id": "6a1823da-dfcf-4ace-9969-552a697bd4f1",
+              "instruction_id": "2c600556-6f10-43ea-9aff-399e5925b88b",
               "instruction": "Typing breakdown location into the location field",
               "intent": "Typing breakdown location into the location field",
-              "operation_start": "2026-10-24T21:03:19.231763+00:00",
-              "operation_end": "2026-10-24T21:03:19.295Z",
+              "operation_start": "2026-10-24T21:37:21.282579+00:00",
+              "operation_end": "2026-10-24T21:37:21.347Z",
               "status": "success",
               "command": "TYPE",
               "name": "",
@@ -360,8 +360,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:19.231763+00:00",
-          "end_timestamp": "2026-10-24T21:03:19.295Z",
+          "start_timestamp": "2026-10-24T21:37:21.282579+00:00",
+          "end_timestamp": "2026-10-24T21:37:21.347Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -387,7 +387,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "00f5df3831244deda2667cb8968c735f",
+          "generative_id": "1f36afa900e5431b9c102763500d7ab0",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -398,7 +398,7 @@
           "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: container=breakdown request dialog"
         },
         {
-          "instruction_id": "f88a8ff4-6d71-4283-b55f-7457d55180f4",
+          "instruction_id": "c6ed1fac-61eb-4052-b128-0fc4bc8985c3",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for the completed breakdown description and location state confirmation",
@@ -410,11 +410,11 @@
           "operations": [
             {
               "operation_id": "786549c2-9677-4e51-82af-bb356ebc3ed1",
-              "instruction_id": "f88a8ff4-6d71-4283-b55f-7457d55180f4",
+              "instruction_id": "c6ed1fac-61eb-4052-b128-0fc4bc8985c3",
               "instruction": "Waiting for the completed breakdown description and location state confirmation",
               "intent": "Waiting for the completed breakdown description and location state confirmation",
-              "operation_start": "2026-10-24T21:03:19.605664+00:00",
-              "operation_end": "2026-10-24T21:03:19.908Z",
+              "operation_start": "2026-10-24T21:37:21.637551+00:00",
+              "operation_end": "2026-10-24T21:37:21.940Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -537,8 +537,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:19.605664+00:00",
-          "end_timestamp": "2026-10-24T21:03:19.908Z",
+          "start_timestamp": "2026-10-24T21:37:21.637551+00:00",
+          "end_timestamp": "2026-10-24T21:37:21.940Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -564,7 +564,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "00f5df3831244deda2667cb8968c735f",
+          "generative_id": "1f36afa900e5431b9c102763500d7ab0",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -575,7 +575,7 @@
           "reasoning": "PRIMARY: confirm the completed breakdown description and location state"
         },
         {
-          "instruction_id": "3d02b35e-8101-4948-a3fd-d4e32d830ab8",
+          "instruction_id": "d4e4db13-79e8-43d4-87ba-ead6bc55954e",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Selecting maximum arrival time in Arrive within dropdown",
@@ -587,11 +587,11 @@
           "operations": [
             {
               "operation_id": "d0a56ca6-1247-40f4-95c0-36f15c831eb7",
-              "instruction_id": "3d02b35e-8101-4948-a3fd-d4e32d830ab8",
+              "instruction_id": "d4e4db13-79e8-43d4-87ba-ead6bc55954e",
               "instruction": "Selecting maximum arrival time in Arrive within dropdown",
               "intent": "Selecting maximum arrival time in Arrive within dropdown",
-              "operation_start": "2026-10-24T21:03:19.665756+00:00",
-              "operation_end": "2026-10-24T21:03:19.678Z",
+              "operation_start": "2026-10-24T21:37:21.697409+00:00",
+              "operation_end": "2026-10-24T21:37:21.709Z",
               "status": "success",
               "command": "SELECT",
               "name": "",
@@ -739,8 +739,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:19.665756+00:00",
-          "end_timestamp": "2026-10-24T21:03:19.678Z",
+          "start_timestamp": "2026-10-24T21:37:21.697409+00:00",
+          "end_timestamp": "2026-10-24T21:37:21.709Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -766,7 +766,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "00f5df3831244deda2667cb8968c735f",
+          "generative_id": "1f36afa900e5431b9c102763500d7ab0",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -777,7 +777,7 @@
           "reasoning": "PRIMARY: maximum arrival time dropdown; role=combobox; text=\"Arrive within\" | HINTS: container=breakdown request dialog"
         },
         {
-          "instruction_id": "af1ea281-6bc1-451c-9509-f2e433bd517e",
+          "instruction_id": "901a1ef8-fd43-457f-a136-d10c1ed6580c",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Find help button in breakdown request dialog",
@@ -789,11 +789,11 @@
           "operations": [
             {
               "operation_id": "2685d21c-256e-4820-a0d3-2e2890072ba5",
-              "instruction_id": "af1ea281-6bc1-451c-9509-f2e433bd517e",
+              "instruction_id": "901a1ef8-fd43-457f-a136-d10c1ed6580c",
               "instruction": "Clicking Find help button in breakdown request dialog",
               "intent": "Clicking Find help button in breakdown request dialog",
-              "operation_start": "2026-10-24T21:03:19.762874+00:00",
-              "operation_end": "2026-10-24T21:03:19.807Z",
+              "operation_start": "2026-10-24T21:37:21.796964+00:00",
+              "operation_end": "2026-10-24T21:37:21.842Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -941,8 +941,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:19.762874+00:00",
-          "end_timestamp": "2026-10-24T21:03:19.807Z",
+          "start_timestamp": "2026-10-24T21:37:21.796964+00:00",
+          "end_timestamp": "2026-10-24T21:37:21.842Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -968,7 +968,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "00f5df3831244deda2667cb8968c735f",
+          "generative_id": "1f36afa900e5431b9c102763500d7ab0",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -979,7 +979,7 @@
           "reasoning": "PRIMARY: submit breakdown search button; role=button; text=\"Find help\" | HINTS: bottom of breakdown request dialog"
         },
         {
-          "instruction_id": "5c3a4a3d-4e14-4f1a-b22b-cedd4b48323b",
+          "instruction_id": "716af2d1-f617-48fb-a83b-2687b72959b7",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for the mechanic offers board to finish loading",
@@ -991,11 +991,11 @@
           "operations": [
             {
               "operation_id": "810583dc-554d-468c-9710-d5994f4e9e92",
-              "instruction_id": "5c3a4a3d-4e14-4f1a-b22b-cedd4b48323b",
+              "instruction_id": "716af2d1-f617-48fb-a83b-2687b72959b7",
               "instruction": "Waiting for the mechanic offers board to finish loading",
               "intent": "Waiting for the mechanic offers board to finish loading",
-              "operation_start": "2026-10-24T21:03:21.354093+00:00",
-              "operation_end": "2026-10-24T21:03:22.356Z",
+              "operation_start": "2026-10-24T21:37:23.388049+00:00",
+              "operation_end": "2026-10-24T21:37:24.390Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -1118,8 +1118,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:21.354093+00:00",
-          "end_timestamp": "2026-10-24T21:03:22.356Z",
+          "start_timestamp": "2026-10-24T21:37:23.388049+00:00",
+          "end_timestamp": "2026-10-24T21:37:24.390Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1145,7 +1145,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "00f5df3831244deda2667cb8968c735f",
+          "generative_id": "1f36afa900e5431b9c102763500d7ab0",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -1156,7 +1156,7 @@
           "reasoning": "PRIMARY: wait for the mechanic offers board to finish loading"
         },
         {
-          "instruction_id": "14c67616-c75a-44c1-b110-d9d6eca5d3cf",
+          "instruction_id": "70d3e309-a25c-4173-8b9e-76ea3915183b",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Recording the dispatch request and offer-ready network responses",
@@ -1168,11 +1168,11 @@
           "operations": [
             {
               "operation_id": "b6f6d2ab-c275-4033-b833-d1eff09eb491",
-              "instruction_id": "14c67616-c75a-44c1-b110-d9d6eca5d3cf",
+              "instruction_id": "70d3e309-a25c-4173-8b9e-76ea3915183b",
               "instruction": "Recording the dispatch request and offer-ready network responses",
               "intent": "Recording the dispatch request and offer-ready network responses",
-              "operation_start": "2026-10-24T21:03:21.423394+00:00",
-              "operation_end": "2026-10-24T21:03:21.424Z",
+              "operation_start": "2026-10-24T21:37:23.456662+00:00",
+              "operation_end": "2026-10-24T21:37:23.457Z",
               "status": "success",
               "command": "DEVTOOLS_NETWORK_QUERY",
               "name": "",
@@ -1297,8 +1297,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:21.423394+00:00",
-          "end_timestamp": "2026-10-24T21:03:21.424Z",
+          "start_timestamp": "2026-10-24T21:37:23.456662+00:00",
+          "end_timestamp": "2026-10-24T21:37:23.457Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1344,16 +1344,16 @@
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_631cc09a568941e9bdd7b1e960719ab9",
-      "generative_id": "631cc09a568941e9bdd7b1e960719ab9",
+      "instruction_id": "generative_block_8a52d5b41f6e49468335cfbafbd65327",
+      "generative_id": "8a52d5b41f6e49468335cfbafbd65327",
       "objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} but do not authorize confirmation, then assert that this eligible offer is selectable and no booking dispatch occurs without user authorization.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "2f631dd6-0989-4cf7-9d9c-7d2fe5d0929f",
+          "instruction_id": "19cee579-edf2-43ff-bb39-effd1e7ed9a9",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Clicking the eligible offer selection button for #1 $110 Demo Mobile Mechanics",
+          "instruction": "Selecting the #1 Demo Mobile Mechanics offer with 20 min arrival",
           "command": "CLICK",
           "error": null,
           "parent_instruction_id": "",
@@ -1361,12 +1361,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "7bd7332b-7123-4a16-90ac-b5b9b0292ada",
-              "instruction_id": "2f631dd6-0989-4cf7-9d9c-7d2fe5d0929f",
-              "instruction": "Clicking the eligible offer selection button for #1 $110 Demo Mobile Mechanics",
-              "intent": "Clicking the eligible offer selection button for #1 $110 Demo Mobile Mechanics",
-              "operation_start": "2026-10-24T21:03:30.704097+00:00",
-              "operation_end": "2026-10-24T21:03:30.747Z",
+              "operation_id": "6742eab1-658d-4f42-9509-948ec3fc02cd",
+              "instruction_id": "19cee579-edf2-43ff-bb39-effd1e7ed9a9",
+              "instruction": "Selecting the #1 Demo Mobile Mechanics offer with 20 min arrival",
+              "intent": "Selecting the #1 Demo Mobile Mechanics offer with 20 min arrival",
+              "operation_start": "2026-10-24T21:37:32.586552+00:00",
+              "operation_end": "2026-10-24T21:37:32.634Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -1380,7 +1380,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking the eligible offer selection button for #1 $110 Demo Mobile Mechanics\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: eligible offer selection button; role=button; text=\\\"#1 $110.00 Demo Mobile Mechanics 20 min\\\" | HINTS: container=OFFERS list\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Selecting the #1 Demo Mobile Mechanics offer with 20 min arrival\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: select the available-now Demo Mobile Mechanics offer with 20 min arrival, within {{global.max_arrival_time}}; role=button; text=\\\"#1 $110.00 Demo Mobile Mechanics 20 min\\\" | HINTS: container=quoted offers list\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1391,7 +1391,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7bd7332b-7123-4a16-90ac-b5b9b0292ada.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6742eab1-658d-4f42-9509-948ec3fc02cd.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1492,30 +1492,30 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": {
-                "x": 311,
+                "x": 326,
                 "y": 1046,
                 "confidence": 0,
                 "bbox": {
-                  "x": 168,
+                  "x": 185,
                   "y": 1023,
-                  "width": 286,
+                  "width": 283,
                   "height": 46
                 },
                 "bbox_source": "accessibility_tree",
                 "viewport_width": 1920,
                 "viewport_height": 1080,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7bd7332b-7123-4a16-90ac-b5b9b0292ada.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6742eab1-658d-4f42-9509-948ec3fc02cd.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: eligible offer selection button; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=OFFERS list"
+              "reasoning": "PRIMARY: select the available-now Demo Mobile Mechanics offer with 20 min arrival, within {{global.max_arrival_time}}; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=quoted offers list"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:30.704097+00:00",
-          "end_timestamp": "2026-10-24T21:03:30.747Z",
+          "start_timestamp": "2026-10-24T21:37:32.586552+00:00",
+          "end_timestamp": "2026-10-24T21:37:32.634Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1541,7 +1541,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "631cc09a568941e9bdd7b1e960719ab9",
+          "generative_id": "8a52d5b41f6e49468335cfbafbd65327",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} but do not authorize confirmation, then assert that this eligible offer is selectable and no booking dispatch occurs without user authorization.",
           "error_message": "",
@@ -1549,13 +1549,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: eligible offer selection button; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=OFFERS list"
+          "reasoning": "PRIMARY: select the available-now Demo Mobile Mechanics offer with 20 min arrival, within {{global.max_arrival_time}}; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=quoted offers list"
         },
         {
-          "instruction_id": "6989cc3c-1644-4cb4-8b62-3c076f66c928",
+          "instruction_id": "eacada1d-b8e6-4d70-87ff-0592fde78b8e",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking whether the eligible offer can be selected",
+          "instruction": "Checking whether the eligible offer is selectable",
           "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
@@ -1563,11 +1563,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "139282fb-d683-43c7-a865-cb8b499ca4c5",
-              "instruction_id": "6989cc3c-1644-4cb4-8b62-3c076f66c928",
-              "instruction": "Checking whether the eligible offer can be selected",
-              "intent": "Checking whether the eligible offer can be selected",
-              "operation_start": "2026-10-24T21:03:43.431672+00:00",
+              "operation_id": "d973d1a7-95dc-4437-9737-56eb1335e30c",
+              "instruction_id": "eacada1d-b8e6-4d70-87ff-0592fde78b8e",
+              "instruction": "Checking whether the eligible offer is selectable",
+              "intent": "Checking whether the eligible offer is selectable",
+              "operation_start": "2026-10-24T21:37:48.626445+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -1582,7 +1582,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether the eligible offer can be selected\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the eligible offer selectable is present (in the booking confirmation dialog)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(14).matches(':enabled')\",\"wrapped_js\":\"(els) => {\\n  const __m = {14: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(14).matches(':enabled'));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"Request confirmation call\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the eligible offer selectable is present (in the booking confirmation dialog)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"the eligible offer is selectable.\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking whether the eligible offer is selectable\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether this eligible offer selectable is present (in the booking request dialog)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"!el(14).disabled && el(14).getAttribute('aria-disabled') !== 'true'\",\"wrapped_js\":\"(els) => {\\n  const __m = {14: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (!el(14).disabled && el(14).getAttribute('aria-disabled') !== 'true');\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"Request confirmation call\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether this eligible offer selectable is present (in the booking request dialog)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"this eligible offer is selectable\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1593,7 +1593,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/139282fb-d683-43c7-a865-cb8b499ca4c5.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/d973d1a7-95dc-4437-9737-56eb1335e30c.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1689,11 +1689,11 @@
                 "eligible_offer_selectable": "true"
               },
               "visual_context": null,
-              "reasoning": "whether the eligible offer selectable is present (in the booking confirmation dialog)"
+              "reasoning": "whether this eligible offer selectable is present (in the booking request dialog)"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:43.431672+00:00",
+          "start_timestamp": "2026-10-24T21:37:48.626445+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -1720,7 +1720,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "631cc09a568941e9bdd7b1e960719ab9",
+          "generative_id": "8a52d5b41f6e49468335cfbafbd65327",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} but do not authorize confirmation, then assert that this eligible offer is selectable and no booking dispatch occurs without user authorization.",
           "error_message": "",
@@ -1728,13 +1728,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether the eligible offer selectable is present (in the booking confirmation dialog)"
+          "reasoning": "whether this eligible offer selectable is present (in the booking request dialog)"
         },
         {
-          "instruction_id": "2108cde6-0ca0-455f-896c-32d07ecbca72",
+          "instruction_id": "bf971fa4-a6d3-42af-938d-2f4b51453599",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking whether a booking dispatch was sent without user authorization",
+          "instruction": "Checking for a booking dispatch before user authorization",
           "command": "DEVTOOLS_NETWORK_QUERY",
           "error": null,
           "parent_instruction_id": "",
@@ -1742,11 +1742,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "37d70e1a-ade3-4fc1-a5eb-a8406346a9b4",
-              "instruction_id": "2108cde6-0ca0-455f-896c-32d07ecbca72",
-              "instruction": "Checking whether a booking dispatch was sent without user authorization",
-              "intent": "Checking whether a booking dispatch was sent without user authorization",
-              "operation_start": "2026-10-24T21:03:43.432040+00:00",
+              "operation_id": "f6fc2de8-b6cd-455f-b151-e0550c418595",
+              "instruction_id": "bf971fa4-a6d3-42af-938d-2f4b51453599",
+              "instruction": "Checking for a booking dispatch before user authorization",
+              "intent": "Checking for a booking dispatch before user authorization",
+              "operation_start": "2026-10-24T21:37:48.627682+00:00",
               "operation_end": "",
               "status": "success",
               "command": "DEVTOOLS_NETWORK_QUERY",
@@ -1761,7 +1761,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether a booking dispatch was sent without user authorization\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"DEVTOOLS_NETWORK_QUERY\"},\"reasoning\":\"whether booking dispatch without user authorization is present (in the captured page network requests)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code\":\"return any(r.method != 'GET' for r in network.requests())\",\"code_js\":\"return network.requests().some(r => r.method !== 'GET');\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking for a booking dispatch before user authorization\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"DEVTOOLS_NETWORK_QUERY\"},\"reasoning\":\"whether booking dispatch without user authorization is present (in the captured page network traffic)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code\":\"return any(r.method != 'GET' and ('booking' in r.path.lower() or 'dispatch' in r.path.lower() or 'confirm' in r.path.lower()) for r in network.requests())\",\"code_js\":\"return network.requests().some(r => r.method !== 'GET' && (r.path.toLowerCase().includes('booking') || r.path.toLowerCase().includes('dispatch') || r.path.toLowerCase().includes('confirm')));\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1772,7 +1772,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/37d70e1a-ade3-4fc1-a5eb-a8406346a9b4.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/f6fc2de8-b6cd-455f-b151-e0550c418595.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1868,11 +1868,11 @@
                 "booking_dispatch_without_user_authorization": "false"
               },
               "visual_context": null,
-              "reasoning": "whether booking dispatch without user authorization is present (in the captured page network requests)"
+              "reasoning": "whether booking dispatch without user authorization is present (in the captured page network traffic)"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:43.432040+00:00",
+          "start_timestamp": "2026-10-24T21:37:48.627682+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -1907,10 +1907,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether booking dispatch without user authorization is present (in the captured page network requests)"
+          "reasoning": "whether booking dispatch without user authorization is present (in the captured page network traffic)"
         },
         {
-          "instruction_id": "e712e80a-3823-432e-bc87-f5d2c3a64242",
+          "instruction_id": "2e1dd331-ccab-42f3-8ee3-580d15c24c88",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -1926,7 +1926,7 @@
                 "assertion_tree": {
                   "sub_results": [
                     {
-                      "description": "the eligible offer is selectable.",
+                      "description": "this eligible offer is selectable",
                       "passed": true,
                       "operator": "equals",
                       "transforms": [],
@@ -1939,7 +1939,7 @@
                       }
                     },
                     {
-                      "description": "no booking dispatch occurs without user authorization.",
+                      "description": "no booking dispatch occurs without user authorization",
                       "passed": true,
                       "operator": "equals",
                       "transforms": [],
@@ -1954,7 +1954,7 @@
                   ],
                   "sub_checks": [
                     {
-                      "description": "the eligible offer is selectable.",
+                      "description": "this eligible offer is selectable",
                       "store_key": "eligible_offer_selectable",
                       "expected_value": "true",
                       "extracted_value": "{{eligible_offer_selectable}}",
@@ -1962,7 +1962,7 @@
                       "transforms": []
                     },
                     {
-                      "description": "no booking dispatch occurs without user authorization.",
+                      "description": "no booking dispatch occurs without user authorization",
                       "store_key": "booking_dispatch_without_user_authorization",
                       "expected_value": "false",
                       "extracted_value": "{{booking_dispatch_without_user_authorization}}",
@@ -1972,7 +1972,7 @@
                   ],
                   "composite_operator": "and",
                   "verification": "",
-                  "claim": "this eligible offer is selectable and no booking dispatch occurs without user authorization.",
+                  "claim": "this eligible offer is selectable and no booking dispatch occurs without user authorization",
                   "operator": [],
                   "assertion_operands": [],
                   "left_operand": null,
@@ -1988,11 +1988,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "33709a8b-83a4-4cb0-bb34-3682cf10855a",
-              "instruction_id": "e712e80a-3823-432e-bc87-f5d2c3a64242",
+              "operation_id": "33375c78-7b36-4214-911d-fdd26950a9bf",
+              "instruction_id": "2e1dd331-ccab-42f3-8ee3-580d15c24c88",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-10-24T21:03:44.038627+00:00",
+              "operation_start": "2026-10-24T21:37:49.214451+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -2018,7 +2018,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/33709a8b-83a4-4cb0-bb34-3682cf10855a.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/33375c78-7b36-4214-911d-fdd26950a9bf.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -2084,7 +2084,7 @@
                 "operands": [],
                 "sub_results": [
                   {
-                    "description": "the eligible offer is selectable.",
+                    "description": "this eligible offer is selectable",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
@@ -2097,7 +2097,7 @@
                     }
                   },
                   {
-                    "description": "no booking dispatch occurs without user authorization.",
+                    "description": "no booking dispatch occurs without user authorization",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
@@ -2112,7 +2112,7 @@
                 ],
                 "sub_checks": [
                   {
-                    "description": "the eligible offer is selectable.",
+                    "description": "this eligible offer is selectable",
                     "store_key": "eligible_offer_selectable",
                     "expected_value": "true",
                     "extracted_value": "{{eligible_offer_selectable}}",
@@ -2120,7 +2120,7 @@
                     "transforms": []
                   },
                   {
-                    "description": "no booking dispatch occurs without user authorization.",
+                    "description": "no booking dispatch occurs without user authorization",
                     "store_key": "booking_dispatch_without_user_authorization",
                     "expected_value": "false",
                     "extracted_value": "{{booking_dispatch_without_user_authorization}}",
@@ -2129,16 +2129,16 @@
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "The selected eligible offer can be selected, and no booking dispatch has occurred without user authorization.",
-                "claim": "this eligible offer is selectable and no booking dispatch occurs without user authorization."
+                "verification": "The selected eligible offer is selectable, and no booking dispatch occurs without user authorization.",
+                "claim": "this eligible offer is selectable and no booking dispatch occurs without user authorization"
               },
               "assertion_tree": {
                 "assertion_id": "assert_cp_1",
                 "status": "passed",
-                "description": "this eligible offer is selectable and no booking dispatch occurs without user authorization.",
+                "description": "this eligible offer is selectable and no booking dispatch occurs without user authorization",
                 "sub_results": [
                   {
-                    "description": "the eligible offer is selectable.",
+                    "description": "this eligible offer is selectable",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
@@ -2151,7 +2151,7 @@
                     }
                   },
                   {
-                    "description": "no booking dispatch occurs without user authorization.",
+                    "description": "no booking dispatch occurs without user authorization",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
@@ -2168,7 +2168,7 @@
                 "passed": true,
                 "step": 3,
                 "is_final": true,
-                "verification": "The selected eligible offer can be selected, and no booking dispatch has occurred without user authorization.",
+                "verification": "The selected eligible offer is selectable, and no booking dispatch occurs without user authorization.",
                 "error_message": null,
                 "duration_ms": 0
               },
@@ -2210,7 +2210,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:03:44.038627+00:00",
+          "start_timestamp": "2026-10-24T21:37:49.214451+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -2237,7 +2237,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "631cc09a568941e9bdd7b1e960719ab9",
+          "generative_id": "8a52d5b41f6e49468335cfbafbd65327",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} but do not authorize confirmation, then assert that this eligible offer is selectable and no booking dispatch occurs without user authorization.",
           "error_message": "",
@@ -2253,9 +2253,9 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Selected an available-now offer that met the required arrival-time limit.",
-        "The selected offer remained available to proceed with through the confirmation step.",
-        "No booking was sent or confirmed without the user's authorization."
+        "Requested an available-now offer with an arrival estimate within the specified limit.",
+        "Selected an eligible offer and left it ready for a confirmation call.",
+        "No booking or confirmation was sent without authorization."
       ],
       "one_liner": null
     }
@@ -2268,8 +2268,8 @@
     {
       "id": 465150,
       "name": "start_url",
-      "value": "http://127.0.0.1:5174",
-      "session_value": "http://127.0.0.1:5174",
+      "value": "http://127.0.0.1:5174/app",
+      "session_value": "http://127.0.0.1:5174/app",
       "is_persist": false,
       "environment_id": 0,
       "environment_name": "No Env"

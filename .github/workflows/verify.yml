@@ -40,7 +40,7 @@ jobs:
           timeout 60 sh -c "until curl -sf http://127.0.0.1:5173 > /dev/null; do sleep 1; done"
       - name: Point the suite at the CI dashboard
         run: |
-          node -e 'const f=".testmuai/variables/assurance.json";const fs=require("fs");const v=JSON.parse(fs.readFileSync(f));v.start_url.value="http://127.0.0.1:5173";fs.writeFileSync(f,JSON.stringify(v,null,2))'
+          node -e 'const f=".testmuai/variables/assurance.json";const fs=require("fs");const v=JSON.parse(fs.readFileSync(f));v.start_url.value="http://127.0.0.1:5173/app";fs.writeFileSync(f,JSON.stringify(v,null,2))'
       - name: Sign in to Kane
         env:
           KANE_USERNAME: ${{ secrets.KANE_USERNAME }}

@@ -1,5 +1,5 @@
 {
-  "commit_id": "6c915abd-9eaf-475b-a2b2-59087b39ba5a",
+  "commit_id": "2d789775-5757-41e5-9a91-474d657d1272",
   "test_id": "c3d23832-da94-45b2-9c01-bd444eb6b102",
   "testcase_id": "01M5QTZFRJJ7Z2QSVN8J8AH3A5",
   "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
@@ -8,12 +8,12 @@
   "session_name": "pending-business-response-does-not-confirm-booking",
   "executions": [
     {
-      "execution_id": "5b5cbc85-5ccd-46c3-b767-3b8837fa47c0",
+      "execution_id": "7cef0ee8-ebdb-49e3-a157-794dbde1992b",
       "run_kind": "author",
       "status": "passed",
       "valid": true,
       "uploaded": true,
-      "at": "2026-10-24T21:06:03.378Z"
+      "at": "2026-10-24T21:40:15.483Z"
     }
   ]
 }
