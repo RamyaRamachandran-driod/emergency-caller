@@ -4,10 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "test": "tsx --test src/live.test.ts"
   },
   "dependencies": {
+    "@emergency/server-kit": "*",
     "@emergency/shared": "*",
-    "@emergency/server-kit": "*"
+    "openai": "^7.43.0"
   }
 }
