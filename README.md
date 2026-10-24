@@ -31,6 +31,9 @@ kane-cli evidence serve tests/kane/evidence/run4-bug-unknown-availability-before
 [Architecture, graph and integration plan](docs/ARCHITECTURE.md) · [Shared contracts](packages/shared/src/index.ts)
 
 ## Run locally
+
+Step-by-step guide for a teammate's laptop, including how to open the Kane evidence: [docs/RUN_LOCALLY.md](docs/RUN_LOCALLY.md).
+
 Requires Node.js 22+ and npm. From this folder:
 
 ```sh
