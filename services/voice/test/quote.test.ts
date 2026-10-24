@@ -32,7 +32,7 @@ test("transcript extraction preserves verbatim evidence, rejects invented eviden
   assert.throws(() => saveQuote(r, store, result), /already been saved/);
   assert.equal(r.events.filter(e => e.type === "offer").length, 1);
   const offer = r.events.find(e => e.type === "offer");
-  assert.equal(offer?.offer.availableNow, false);
+  assert.equal(offer?.offer.availableNow, null); // availability "unknown" stays unknown
   quote.evidence.price = "Two hundred dollars";
   await assert.rejects(extractTranscriptQuote(r, config, mock), /exact business transcript/);
   await assert.rejects(extractTranscriptQuote(r, config, async () => new Response("unavailable", { status: 503 })), /HTTP 503/);
