@@ -5,6 +5,10 @@ dist/
 !.env.example
 *.db
 *.db-*
+*.sqlite
+*.sqlite-*
+data/
 artifacts/
 .context/
 .DS_Store
+.testmuai/

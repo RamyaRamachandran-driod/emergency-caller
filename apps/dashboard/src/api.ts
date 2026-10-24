@@ -2,7 +2,9 @@ import type { Task, TaskInput } from "@emergency/shared";
 
 // Relative paths: Vite proxies /api to the orchestrator in development.
 async function request(path: string, init?: RequestInit): Promise<Task> {
-  const response = await fetch(path, { ...init, headers: { "content-type": "application/json" } });
+  const headers = new Headers(init?.headers);
+  headers.set("content-type", "application/json");
+  const response = await fetch(path, { ...init, headers });
   const body = await response.json().catch(() => null);
   if (!response.ok) {
     const error = body?.error;
@@ -26,6 +28,7 @@ export function getTask(taskId: string): Promise<Task> {
 export function bookOffer(taskId: string, offerId: string): Promise<Task> {
   return request(`/api/tasks/${encodeURIComponent(taskId)}/book`, {
     method: "POST",
+    headers: { "Idempotency-Key": crypto.randomUUID() },
     body: JSON.stringify({ offerId }),
   });
 }

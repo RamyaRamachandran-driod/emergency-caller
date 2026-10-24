@@ -7,6 +7,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { fileURLToPath } from "node:url";
 import { ZodError } from "zod";
+import { API_CONTRACT_VERSION } from "@emergency/shared";
 dotenv.config({
   path: fileURLToPath(new URL("../../../.env", import.meta.url)),
   quiet: true,
@@ -30,6 +31,10 @@ export function internal(req: Request, res: Response, next: NextFunction) {
     res.status(401).json({ error: "Unauthorized service request" });
     return;
   }
+  if (req.headers["x-emergency-contract-version"] !== API_CONTRACT_VERSION) {
+    res.status(426).json({ error: "Unsupported internal contract version. Update shared contracts and service adapters together." });
+    return;
+  }
   next();
 }
 export async function post(url: string, body: unknown) {
@@ -38,6 +43,7 @@ export async function post(url: string, body: unknown) {
     headers: {
       "content-type": "application/json",
       authorization: `Bearer ${token}`,
+      "x-emergency-contract-version": API_CONTRACT_VERSION,
     },
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(15000),

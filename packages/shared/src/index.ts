@@ -1,4 +1,5 @@
 import { z } from "zod";
+export const API_CONTRACT_VERSION = "1" as const;
 export const TaskInput = z.object({
   request: z.string().min(1).max(4000),
   location: z.string().min(1).max(500),
@@ -51,6 +52,7 @@ export const CallRequest = z.object({
   purpose: z.enum(["quote", "booking"]),
   selectedOffer: Offer.nullable(),
 });
+export const CallAccepted = z.object({ callId: z.string().uuid() });
 const base = {
   eventId: z.string().uuid(),
   taskId: z.string().uuid(),
