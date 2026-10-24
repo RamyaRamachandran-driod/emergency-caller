@@ -49,5 +49,8 @@ Sealed Kane evidence packs and NDJSON run streams live in `tests/kane/evidence/`
 | `run4-bug-unknown-availability-before-fix-FAIL` | after adding the availability rule to `requirements/demo.md` and `kane-cli maintain reconcile` | **Kane caught a real bug.** Its new test (AC-26) failed: the transcript says "I'm not sure anyone is free", the offer said "Available now: No". The same collapse existed in the live voice bridge |
 | `run5-bug-unknown-availability-after-fix-PASS` | `Offer.availableNow` nullable, voice bridge and simulation send null for unknown, dashboard shows "Unknown" and blocks booking | AC-26 passes |
 | `run6-full-suite-after-fix` (stream only) | full suite, 17 tests | 16 of 17, 89% coverage. The failure is the older availability test (t-7): its double-negative check read the reported 20-minute ETA as an availability answer. t-17 now covers the same criterion |
+| `run7-devtools-network-checks` | two new tests from the requirement "the browser never calls phone or AI providers directly" and "the screen matches the server's task data", asserting on browser network traffic | 2 of 2 passed |
+| `run8-full-suite-19-tests` (stream only) | full suite on latest `main` (orchestrator found-stage flow, voice changes) | 17 of 19. Both failures are test-side by Kane's own diagnosis: a replay misread the correct "Booking… nothing is booked until the business accepts" state, and another started from an already-confirmed session. The two earlier flaky checks passed |
+| CI run on `main` (first with secrets) | GitHub Actions `kane` job | 15 of 17; the two known flaky double-negative checks failed, and the gate blocked |
 
 `Offer.availableNow` is now nullable: `null` means the business did not say, and such offers cannot be booked.

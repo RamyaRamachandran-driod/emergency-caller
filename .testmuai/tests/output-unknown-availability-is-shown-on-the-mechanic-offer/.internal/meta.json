@@ -8,20 +8,12 @@
   "session_name": "unknown-availability-is-shown-on-the-mechanic-offer",
   "executions": [
     {
-      "execution_id": "0d5cebf5-1b7a-4a69-9c43-996969f71633",
+      "execution_id": "9affb47b-ab3a-4356-aa5b-fff426ab192e",
       "run_kind": "author",
       "status": "passed",
       "valid": true,
       "uploaded": true,
-      "at": "2026-10-24T22:17:29.908Z"
-    },
-    {
-      "execution_id": "599f23b7-3172-4826-98fd-cc9616bbcb55",
-      "run_kind": "replay",
-      "status": "passed",
-      "valid": true,
-      "uploaded": true,
-      "at": "2026-10-24T22:21:42.891Z"
+      "at": "2026-10-24T22:54:53.586Z"
     }
   ]
 }
