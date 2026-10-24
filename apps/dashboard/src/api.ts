@@ -1,4 +1,4 @@
-import type { Task, TaskInput } from "@emergency/shared";
+import type { Task, TaskInput, BookingContact } from "@emergency/shared";
 
 // Relative paths: Vite proxies /api to the orchestrator in development.
 async function request<T = Task>(path: string, init?: RequestInit): Promise<T> {
@@ -28,10 +28,10 @@ export function getTask(taskId: string): Promise<Task> {
   return request(`/api/tasks/${encodeURIComponent(taskId)}`);
 }
 
-export function bookOffer(taskId: string, offerId: string): Promise<Task> {
+export function bookOffer(taskId: string, offerId: string, contact: BookingContact, key: string): Promise<Task> {
   return request(`/api/tasks/${encodeURIComponent(taskId)}/book`, {
     method: "POST",
-    headers: { "Idempotency-Key": crypto.randomUUID() },
-    body: JSON.stringify({ offerId }),
+    headers: { "Idempotency-Key": key },
+    body: JSON.stringify({ offerId, contact }),
   });
 }

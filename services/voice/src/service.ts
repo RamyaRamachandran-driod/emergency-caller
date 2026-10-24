@@ -116,7 +116,15 @@ export function createVoiceService(config = configFromEnv(process.env), provider
         if (config.testNumber && request.business.phone !== config.testNumber) { res.status(403).json({ error: "Personal-phone test mode blocks every other destination" }); return; }
         const missing = missingConfig(config, { probe });
         if (missing.length) { res.status(503).json({ error: "Voice setup incomplete", missing }); return; }
-        if (request.purpose !== "quote") { res.status(409).json({ error: "Live booking requires dispatch contacts and durable orchestrator booking state; only quote calls are enabled" }); return; }
+        if (request.purpose === "booking") {
+          const a = request.approval, offer = request.selectedOffer;
+          if (!callback || probe || !a || a.callId !== request.callId || !offer ||
+            JSON.stringify(a.offer) !== JSON.stringify(offer) || offer.businessId !== request.business.id ||
+            !offer.availableNow || offer.amountMinor === null || !offer.currency || offer.quoteType === "unknown" ||
+            offer.etaMinutes === null || offer.etaMinutes > request.input.maxArrivalMinutes) {
+            res.status(409).json({ error: "Live booking requires a matching durable customer approval, priced offer, arrival time and dispatch contact." }); return;
+          }
+        }
         let sourced = false;
         try {
           const url = new URL(request.business.sourceUrl || "");

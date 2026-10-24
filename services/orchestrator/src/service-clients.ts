@@ -56,7 +56,7 @@ export async function workflowReadiness() {
   await Promise.all([
     ["discovery", process.env.DISCOVERY_URL ?? "http://localhost:4101"],
     ["voice", process.env.VOICE_URL ?? "http://localhost:4102"],
-  ].filter(([name]) => !(expected === "live" && testCallNumber && name === "discovery")).map(async ([name, base]) => {
+  ].map(async ([name, base]) => {
     try {
       const response = await fetch(`${base}/health`, { signal: AbortSignal.timeout(3000) });
       const health = await response.json();
@@ -67,5 +67,5 @@ export async function workflowReadiness() {
       else if (name === "voice" && expected === "live" && !testCallNumber && health.destinationPolicy !== "sourced") issues.push("Set VOICE_DESTINATION_POLICY=sourced to call discovered business numbers.");
     } catch { issues.push(`${name} is unreachable.`); }
   }));
-  return { mode: expected, ready: issues.length === 0, issues, liveBookingEnabled: false, testCallNumber };
+  return { mode: expected, ready: issues.length === 0, issues, liveBookingEnabled: true, testCallNumber };
 }

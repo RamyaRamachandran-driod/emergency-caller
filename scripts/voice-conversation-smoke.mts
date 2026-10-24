@@ -23,7 +23,10 @@ async function speech(text: string) {
   return new PcmResampler(24000, 16000).push(Buffer.from(await response.arrayBuffer()));
 }
 const acknowledgement = process.argv.includes("--ack");
-const interrupt = await speech(acknowledgement ? "Uh-huh." : "Wait, is the leak in the bathroom or the kitchen?");
+const pricing = process.argv.includes("--pricing");
+const location = process.argv.includes("--location");
+const identity = process.argv.includes("--identity");
+const interrupt = identity ? Buffer.alloc(0) : await speech(location ? "Yes, I can help with that kind of leak." : pricing ? "Yes, I can fix that bathroom leak at 1550 Mission Street. I can be there in fifteen minutes." : acknowledgement ? "Uh-huh." : "Wait, is the leak in the bathroom or the kitchen?");
 const dir = mkdtempSync(join(tmpdir(), "savior-conversation-smoke-"));
 const store = new Store(dir), record = store.create({ taskId: randomUUID(), callId: randomUUID(), purpose: "quote", selectedOffer: null,
   input: { request: "My bathroom pipe is leaking badly. I need a plumber.", location: "1550 Mission Street, San Francisco", timezone: "America/Los_Angeles", maxArrivalMinutes: 60 },
@@ -34,10 +37,11 @@ await once(server, "listening");
 let controller: ReturnType<typeof bridge> | undefined;
 let failure: string | undefined;
 const wire: string[] = [];
+let speechStoppedAt = 0, replyStartedAt = 0, firstReplyAudioAt = 0;
 server.on("connection", ws => {
   controller = bridge(ws, record, store, config, async reason => { failure = reason; }, () => {
     const ai = new WebSocket(`wss://api.openai.com/v1/realtime?model=${encodeURIComponent(config.model)}`, { headers: { Authorization: `Bearer ${config.apiKey}` } });
-    ai.on("message", raw => { const m = JSON.parse(raw.toString()); if (["input_audio_buffer.speech_started", "input_audio_buffer.speech_stopped", "response.created"].includes(m.type)) wire.push(m.type); });
+    ai.on("message", raw => { const m = JSON.parse(raw.toString()); if (m.type === "input_audio_buffer.speech_stopped") speechStoppedAt = Date.now(); if (m.type === "response.created" && speechStoppedAt) replyStartedAt = Date.now(); if (m.type === "response.output_audio.delta" && replyStartedAt && !firstReplyAudioAt) firstReplyAudioAt = Date.now(); if (["input_audio_buffer.speech_started", "input_audio_buffer.speech_stopped", "response.created"].includes(m.type)) wire.push(m.type); });
     return ai;
   });
 });
@@ -55,7 +59,7 @@ const tick = setInterval(() => {
 caller.on("message", (raw, binary) => {
   if (binary) {
     playback.push(Buffer.from(raw as Buffer));
-    if (!injected) {
+    if (!injected && !identity) {
       injected = true;
       injection = (async () => {
         await new Promise(r => setTimeout(r, 350));
@@ -78,21 +82,33 @@ try {
   const deadline = Date.now() + 40000;
   while (Date.now() < deadline) {
     if (failure) throw Error(failure);
+    if (identity && record.events.some(e => e.type === "transcript" && e.speaker === "agent")) break;
     const business = record.events.find(e => e.type === "transcript" && e.speaker === "business");
     if (business && record.events.some(e => e.type === "transcript" && e.speaker === "agent" && e.sequence > business.sequence)) break;
     await new Promise(r => setTimeout(r, 100));
   }
   const transcript = record.events.filter(e => e.type === "transcript");
-  console.log(JSON.stringify({ wire, transcript: transcript.map(e => ({ speaker: e.speaker, text: e.text })) }));
+  console.log(JSON.stringify({ wire, speechEndToReplyAudioMs: firstReplyAudioAt && speechStoppedAt ? firstReplyAudioAt - speechStoppedAt : null, transcript: transcript.map(e => ({ speaker: e.speaker, text: e.text })) }));
+  if (identity) {
+    const opening = transcript.find(e => e.speaker === "agent");
+    assert.ok(opening);
+    assert.ok(opening.text.toLowerCase().includes(record.request.business.name.toLowerCase()));
+    assert.match(opening.text, /\?/);
+    assert.doesNotMatch(opening.text, /bathroom|leak|price|how soon|1550/i);
+    console.log("PASS: opening confirms the supplied business name without bundling the job requirements.");
+  } else {
   const business = transcript.find(e => e.speaker === "business");
   assert.ok(business, "the synthesized interruption must be transcribed");
   const reply = transcript.find(e => e.speaker === "agent" && e.sequence > business.sequence);
   assert.ok(reply, "the caller must answer the interruption");
-  if (!acknowledgement) assert.match(reply.text, /bathroom/i);
+  if (location) { assert.match(reply.text, /mission/i); assert.match(reply.text, /san francisco/i); }
+  else if (pricing) assert.match(reply.text, /cost|price|fee|charge|quote|estimate|how much/i, "availability and ETA alone must lead to a pricing question");
+  else if (!acknowledgement) assert.match(reply.text, /bathroom/i);
   assert.doesNotMatch(reply.text, /(?:how soon|when).*(?:cost|price|fee)|(?:cost|price).*(?:how soon|when)/i, "do not combine timing and pricing requirements in one turn");
-  assert.doesNotMatch(reply.text, /hello|this is Savior|calling on behalf|call.out fees/i);
+  assert.doesNotMatch(reply.text, /hello|this is Savior|calling on behalf/i);
   assert.ok(reply.text.split(/\s+/).length <= 40, "interruption reply must be brief");
-  console.log("PASS: real audio interruption received a brief contextual reply without restarting the introduction.");
+  console.log(location ? "PASS: the caller shared the actual street and city and asked for service-area confirmation." : pricing ? "PASS: availability and ETA without price prompted a pricing question." : "PASS: real audio interruption received a brief contextual reply without restarting the introduction.");
+  }
 } finally {
   clearInterval(tick); controller?.close(); caller.terminate();
   await injection;

@@ -21,6 +21,9 @@ export default function App() {
   const [openBusinessId, setOpenBusinessId] = useState<string | null>(null);
   const [pendingOfferId, setPendingOfferId] = useState<string | null>(null);
   const requestDialog = useRef<HTMLDialogElement>(null);
+  const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const approvalKey = useRef<string | null>(null);
   const bookingDialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -88,20 +91,23 @@ export default function App() {
   }
 
   function reviewOffer(offerId: string) {
+    if (pendingOfferId !== offerId) approvalKey.current = null;
+    if (!customerPhone && setup?.testCallNumber) setCustomerPhone(setup.testCallNumber);
     setPendingOfferId(offerId);
     bookingDialog.current?.showModal();
   }
 
   async function confirmBooking() {
     if (!task || !pendingOfferId || busy) return;
+    if (!customerName.trim() || !/^\+[1-9]\d{7,14}$/.test(customerPhone.trim())) { setError("Enter your name and callback number with country code."); return; }
+    approvalKey.current ??= crypto.randomUUID();
     setBusy(true);
     setError("");
     try {
-      setTask(await bookOffer(task.id, pendingOfferId));
+      setTask(await bookOffer(task.id, pendingOfferId, { name: customerName.trim(), phone: customerPhone.trim() }, approvalKey.current!));
       bookingDialog.current?.close();
     } catch (bookingError) {
       setError(bookingError instanceof Error ? bookingError.message : "Could not request booking confirmation.");
-      bookingDialog.current?.close();
     } finally {
       setBusy(false);
     }
@@ -228,7 +234,7 @@ export default function App() {
             <option value={60}>1 hour</option>
             <option value={90}>90 minutes</option>
           </select>
-          <p className="footnote muted">{!setup ? "Checking service readiness…" : setup.testCallNumber ? `Personal-phone test: one real call to ${setup.testCallNumber}. No businesses will be searched or called. Answer as the mechanic.` : setup.mode === "live" ? "Live calling: this will find and phone up to three businesses for quotes. No booking or dispatch is requested." : "Simulation: no real businesses will be called."}</p>
+          <p className="footnote muted">{!setup ? "Checking service readiness…" : setup.testCallNumber ? `Personal-phone test: one real call to ${setup.testCallNumber}. A real business will be found; only its phone is replaced with yours. One call to your phone—answer as the business shown.` : setup.mode === "live" ? "Live calling: this will find and phone up to three businesses for quotes. No booking or dispatch is requested." : "Simulation: no real businesses will be called."}</p>
           {setup && !setup.ready && <div className="strip warn">{setup.issues.join(" ")}</div>}
           {error && <div className="strip error" role="alert">{error}</div>}
           <button className="btn primary wide" type="submit" disabled={busy || !setup?.ready || !request.trim() || !location.trim()}>
@@ -244,23 +250,27 @@ export default function App() {
           <div>
             <div className="modal-head">
               <div>
-                <h2 id="booking-title" className="display">Request this booking?</h2>
-                <p className="muted">{pendingBusiness?.name} will be called to confirm dispatch.</p>
+                <h2 id="booking-title" className="display">Approve this quote?</h2>
+                <p className="muted">{setup?.testCallNumber ? `Phone test: calling ${setup.testCallNumber} again as ${pendingBusiness?.name}. No real business will be dispatched.` : `${pendingBusiness?.name} will be called to confirm dispatch.`}</p>
               </div>
               <button type="button" className="icon-button" aria-label="Close" onClick={() => bookingDialog.current?.close()}><Icon name="close" /></button>
             </div>
             <dl className="offer-summary">
               <div><dt>Price</dt><dd>{money(pendingOffer.amountMinor, pendingOffer.currency)} <span className="chip">{label(pendingOffer.quoteType)}</span></dd></div>
-              <div><dt>ETA</dt><dd>{pendingOffer.etaMinutes === null ? "Unknown" : `${pendingOffer.etaMinutes} min`}</dd></div>
+              <div className="wide"><dt>Service address</dt><dd>{task?.input.location}</dd></div>
+              <div><dt>Original ETA</dt><dd>{pendingOffer.etaMinutes === null ? "Unknown" : `${pendingOffer.etaMinutes} min`}</dd></div>
               <div className="wide"><dt>Conditions</dt><dd>{pendingOffer.conditions ?? "None stated"}</dd></div>
             </dl>
+            <label className="field-label">Customer name<input value={customerName} onChange={event => setCustomerName(event.target.value)} autoComplete="name" maxLength={100} /></label>
+            <label className="field-label">Callback number<input type="tel" value={customerPhone} onChange={event => setCustomerPhone(event.target.value)} autoComplete="tel" placeholder="+14155550101" /></label>
             <p className="footnote muted">
-              This starts a confirmation call. It is not a booking until the business explicitly accepts. Changed terms come back to you; a higher price is never accepted silently.
+              Approving authorizes this quoted scope and shares your contact details with the business. We reconfirm the original arrival window from confirmation. This starts a confirmation call. It is not a booking until the business explicitly accepts. Changed terms come back to you; a higher price is never accepted silently.
             </p>
+            {error && <p role="alert">{error}</p>}
             <div className="modal-actions">
               <button className="btn" onClick={() => bookingDialog.current?.close()}>Cancel</button>
-              <button className="btn primary" onClick={confirmBooking} disabled={busy}>
-                {busy ? "Requesting…" : "Request confirmation call"} <Icon name="arrow" size={15} />
+              <button className="btn primary" onClick={confirmBooking} disabled={busy || !customerName.trim() || !/^\+[1-9]\d{7,14}$/.test(customerPhone.trim())}>
+                {busy ? "Requesting…" : "Approve & call to confirm"} <Icon name="arrow" size={15} />
               </button>
             </div>
           </div>

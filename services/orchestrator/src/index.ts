@@ -1,4 +1,4 @@
-import { TaskInput } from "@emergency/shared";
+import { TaskInput, BookingContact } from "@emergency/shared";
 import { appFor, internal, errors, mode } from "@emergency/server-kit";
 import { Orchestrator } from "./coordinator.js";
 import { workflowReadiness } from "./service-clients.js";
@@ -28,11 +28,12 @@ app.get("/api/tasks/:id", (req, res) => {
 
 app.post("/api/tasks/:id/book", async (req, res) => {
   const existing = orchestrator.getTask(req.params.id);
-  if (existing && !existing.simulated) { res.status(409).json({ error: "Live quotes are available. Booking requires customer dispatch contact details and is not enabled yet." }); return; }
+  const contact = req.body?.contact ? BookingContact.parse(req.body.contact) : undefined;
+  if (existing && !existing.simulated && !contact) { res.status(400).json({ error: "Provide a customer name and callback number to approve dispatch." }); return; }
   const key = req.header("Idempotency-Key")?.trim();
   if (!key) { res.status(400).json({ error: "Set an Idempotency-Key header to prevent duplicate booking calls." }); return; }
   const offerId = typeof req.body?.offerId === "string" ? req.body.offerId : "";
-  const { result, task } = await orchestrator.requestBooking(req.params.id, offerId, key);
+  const { result, task } = await orchestrator.requestBooking(req.params.id, offerId, key, contact);
   if (result === "missing") { res.status(404).json({ error: "Task not found" }); return; }
   if (result === "invalid") { res.status(409).json({ error: "Task or offer is not eligible for booking." }); return; }
   if (result === "booking_exists") { res.status(409).json({ error: "This task already has a booking attempt; duplicate dispatch is blocked." }); return; }

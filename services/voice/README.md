@@ -1,6 +1,6 @@
 # Local voice agent
 
-Owner: Tanay. Node.js 22+. Supports outbound quote calls through **Vonage or Twilio**, with OpenAI Realtime for the conversation. The services stay on your computer; a temporary tunnel forwards provider events and audio. Live booking is blocked until dispatch contacts and durable booking coordination exist.
+Owner: Tanay. Node.js 22+. Supports outbound quote and approved confirmation calls through **Vonage or Twilio**, with OpenAI Realtime for the conversation. The services stay on your computer; a temporary tunnel forwards provider events and audio. Live confirmation callbacks are available through dashboard quote approval: customer contact and an immutable approved quote are required, and the orchestrator claims one callback before dialing. Standalone CLI calls remain quote inquiries.
 
 ## Vonage: first real call
 
@@ -142,7 +142,7 @@ References: [Vonage WebSockets](https://developer.vonage.com/en/voice/voice-api/
 
 ### Personal phone and transcript quote recovery
 
-Set `VOICE_TEST_NUMBER` and `VOICE_ALLOWED_NUMBERS` to your own number, with `VOICE_DESTINATION_POLICY=allowlist`. The dashboard bypasses discovery and makes one personal-phone call per request. Every other live destination is rejected by the voice service even when it has a published source URL. The dashboard reads the configured target through `/api/setup` and labels the action **Call my phone**.
+Set `VOICE_TEST_NUMBER` and `VOICE_ALLOWED_NUMBERS` to your own number, with `VOICE_DESTINATION_POLICY=allowlist`. The dashboard discovers real matching businesses, keeps the first business’s real name, ID, source URL and other details, and substitutes only its phone number with your own. It makes one personal-phone call per request. Every other live destination is rejected by the voice service even when it has a published source URL. The caller opens by confirming the discovered business name, then explains the job after receiving an answer. The dashboard reads the configured target through `/api/setup` and labels the action **Call my phone**.
 
 Set `OPENAI_TEXT_MODEL` to enable transcript-based recovery when the audio model's quote evidence does not match finalized ASR wording. The text extractor receives finalized speaker-labelled transcripts, uses a strict quote schema, and passes the same business-evidence validation before an offer is saved. Missing data stays unknown; call-out fees must not become repair totals. An authenticated `POST /calls/:id/recover-quote` can review an ended live quote call without redialing. It returns an existing offer on repeat and blocks concurrent review requests. Failed reviews return 422, leaving the transcript intact. This endpoint is available only on the internal listener.
 
@@ -151,6 +151,15 @@ Vonage completion without a verified connection counts as failure. Detailed fail
 
 ### Conversational turns and audio checks
 
-Voice detection interrupts output, but does not automatically generate replies. The bridge waits until the person stops speaking and their transcript is finalized, then starts one response with the current conversation phase and original orchestrator brief. Tool follow-ups share that same turn controller. The opening is brief; later turns address the latest caller intent with one relevant question rather than listing the brief. A completed closing ends playback without another spoken follow-up.
+Voice detection interrupts output, but does not automatically generate replies. The bridge starts one response at speech-end using the model’s existing audio context, without waiting for the separate ASR transcript. Late transcripts are stored as evidence and never trigger duplicate replies. Each response retains the current conversation phase and original orchestrator brief. Tool follow-ups share that same turn controller. The opening is brief; later turns address the latest caller intent with one relevant question rather than listing the brief. A completed closing ends playback without another spoken follow-up.
 
 `npm run voice:smoke` exercises a genuine Realtime audio interruption using synthesized speech and a fake local telephone socket. `npm run voice:smoke -- --ack` tests a short acknowledgement. These manual checks use paid OpenAI TTS and Realtime APIs and never call the phone provider or dial any number. They print transcripts and assert a brief contextual reply without a repeated introduction or combined timing/price checklist.
+
+
+Pricing is a required objective, rather than a nullable shortcut: if an available business has not volunteered pricing and no pricing question was asked, `report_quote` returns an incomplete-pricing objective and keeps the conversation open. Unknown prices remain valid when the business cannot quote, needs inspection, or declines. Quote evidence retries use a short 300 ms grace period before transcript extraction instead of a fixed five-second wait. `npm run voice:smoke -- --pricing` verifies that availability and ETA without a price produce a pricing question. Audio smoke output reports the delay from detected speech-end to the first reply audio packet; this excludes the phone network and VAD endpointing delay.
+
+
+The orchestrator brief requires the known customer service address to be communicated to the business, with confirmation that it can attend there before relying on ETA or a location-dependent quote. The agent should use the address already supplied by the customer, rather than referring vaguely to “the location” or asking the business to supply it. Quote completion checks for an address discussion and a subsequent business response; street-name matching tolerates spoken-number and street-abbreviation differences in ASR. `npm run voice:smoke -- --location` checks that the model supplies the actual street and city after the business confirms it can handle the issue.
+
+
+`npm run voice:smoke -- --identity` checks the real audio model’s opening: it must ask for the supplied business name without bundling the job requirements into that question. It uses a local test business and never dials a phone.

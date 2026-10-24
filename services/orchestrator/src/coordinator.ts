@@ -1,6 +1,6 @@
 import { mode, testCallNumber } from "@emergency/server-kit";
 import { randomUUID } from "node:crypto";
-import { CallEvent, CallRequest, quoteCallBrief, type Call, type Task, type TaskInput } from "@emergency/shared";
+import { CallEvent, CallRequest, quoteCallBrief, bookingCallBrief, type BookingContact, type Call, type Task, type TaskInput } from "@emergency/shared";
 import type { MutationResult } from "./store.js";
 import { TaskStore } from "./store.js";
 import { DiscoveryClient, VoiceClient } from "./service-clients.js";
@@ -35,21 +35,25 @@ export class Orchestrator {
     const task: Task = {
       id: randomUUID(), input, stage: "finding", businesses: [], calls: [], offers: [],
       warnings: [], simulated: !this.live,
+      ...(this.live && testCallNumber ? { testCallNumber } : {}),
     };
     this.store.create(task, clientRequestId);
     void this.findAndStartQuotes(task.id);
     return task;
   }
 
-  async requestBooking(taskId: string, offerId: string, idempotencyKey: string): Promise<{ result: MutationResult; task: Task | null }> {
+  async requestBooking(taskId: string, offerId: string, idempotencyKey: string, contact?: BookingContact): Promise<{ result: MutationResult; task: Task | null }> {
     let callToStart: Call | null = null;
     const claimed = this.store.claimBooking(taskId, idempotencyKey, (task) => {
       if (task.stage !== "offers_ready") return false;
       const offer = task.offers.find((candidate) => candidate.id === offerId);
       if (!offer || !offer.availableNow || offer.etaMinutes === null || offer.etaMinutes > task.input.maxArrivalMinutes) return false;
+      if (!task.simulated && (!contact || offer.amountMinor === null || !offer.currency || offer.quoteType === "unknown")) return false;
       const business = task.businesses.find((candidate) => candidate.id === offer.businessId);
       if (!business) return false;
       callToStart = { id: randomUUID(), business, purpose: "booking", status: "queued", events: [] };
+      if (contact) task.approval = { callId: callToStart.id, approvedAt: new Date().toISOString(), offer: structuredClone(offer), contact };
+      if (this.live && testCallNumber) task.testCallNumber = testCallNumber;
       task.stage = "booking";
       task.selectedOfferId = offer.id;
       task.bookingAccepted = false;
@@ -68,7 +72,7 @@ export class Orchestrator {
       const call = task.calls.find((candidate) => candidate.id === event.callId);
       if (!call) return "invalid";
       if (event.type === "offer" && (call.purpose !== "quote" || event.offer.callId !== call.id || event.offer.businessId !== call.business.id)) return "invalid";
-      if (event.type === "booking_result" && call.purpose !== "booking") return "invalid";
+      if (event.type === "booking_result" && (call.purpose !== "booking" || call.events.some(e => e.type === "booking_result"))) return "invalid";
       call.events.push(event);
       if (event.type === "status") {
         call.status = event.status;
@@ -92,10 +96,12 @@ export class Orchestrator {
       const initial = this.store.get(taskId);
       if (!initial) return;
       const searchAt = new Date().toISOString();
-      const result = this.live && testCallNumber ? {
-        businesses: [{ id: "personal-phone-test", name: "Your phone (live test)", phone: testCallNumber, sourceUrl: null, openingStatus: "unknown" as const, checkedAt: searchAt }],
-        warnings: ["Personal-phone test: one real call to your number. No businesses are searched or called. Answer as the mechanic to test quote collection."],
-      } : await this.discovery.find({ taskId, input: initial.input, searchAt });
+      const discovered = await this.discovery.find({ taskId, input: initial.input, searchAt });
+      const testDestination = this.live ? testCallNumber : null;
+      const result = testDestination ? {
+        businesses: discovered.businesses.slice(0, 1).map(business => ({ ...business, phone: testDestination })),
+        warnings: [...discovered.warnings, "Personal-phone test: showing a real discovered business, but its phone is replaced with your number. Only your phone is called once; answer as the named business."],
+      } : discovered;
       const found = this.store.mutate(taskId, (current) => {
         current.businesses = result.businesses.slice(0, 3);
         current.warnings.push(...result.warnings);
@@ -129,7 +135,8 @@ export class Orchestrator {
   private async startCall(task: Task, call: Call): Promise<void> {
     const payload = CallRequest.parse({
       taskId: task.id, callId: call.id, input: task.input, business: call.business,
-      brief: quoteCallBrief(task.input),
+      brief: call.purpose === "booking" && task.approval ? bookingCallBrief(task.input, call.business, task.approval) : quoteCallBrief(task.input, call.business),
+      approval: call.purpose === "booking" ? task.approval : undefined,
       purpose: call.purpose,
       selectedOffer: call.purpose === "booking" ? task.offers.find((offer) => offer.id === task.selectedOfferId) ?? null : null,
     });
