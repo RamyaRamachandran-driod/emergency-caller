@@ -247,8 +247,10 @@ test("quote caller uses the requested problem and has separate opening and ongoi
   const opening = instructions(r), ongoing = instructions(r, true);
   assert.match(opening, /leaking bathroom pipe needs a plumber/);
   assert.match(opening, /Choose your own wording, questions, and order/);
+  assert.match(opening, /just one question confirming the actual business name/);
+  assert.ok(opening.includes(r.business.name));
   assert.doesNotMatch(opening, /collect a mobile mechanic quote|Introduce yourself clearly as an AI assistant/);
-  assert.match(ongoing, /do not restart your introduction/);
+  assert.match(ongoing, /do not restart a completed introduction/);
   assert.match(ongoing, /respond to the person.s latest intent/);
   r.brief = { task: "Repair a kitchen leak", objective: "Establish repair options and visit cost", neededInformation: ["Which repairs can be done today"], completionCriteria: ["Save the supported options and limitations"] };
   const delegated = instructions(r);

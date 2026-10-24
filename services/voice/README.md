@@ -142,7 +142,7 @@ References: [Vonage WebSockets](https://developer.vonage.com/en/voice/voice-api/
 
 ### Personal phone and transcript quote recovery
 
-Set `VOICE_TEST_NUMBER` and `VOICE_ALLOWED_NUMBERS` to your own number, with `VOICE_DESTINATION_POLICY=allowlist`. The dashboard bypasses discovery and makes one personal-phone call per request. Every other live destination is rejected by the voice service even when it has a published source URL. The dashboard reads the configured target through `/api/setup` and labels the action **Call my phone**.
+Set `VOICE_TEST_NUMBER` and `VOICE_ALLOWED_NUMBERS` to your own number, with `VOICE_DESTINATION_POLICY=allowlist`. The dashboard discovers real matching businesses, keeps the first business’s real name, ID, source URL and other details, and substitutes only its phone number with your own. It makes one personal-phone call per request. Every other live destination is rejected by the voice service even when it has a published source URL. The caller opens by confirming the discovered business name, then explains the job after receiving an answer. The dashboard reads the configured target through `/api/setup` and labels the action **Call my phone**.
 
 Set `OPENAI_TEXT_MODEL` to enable transcript-based recovery when the audio model's quote evidence does not match finalized ASR wording. The text extractor receives finalized speaker-labelled transcripts, uses a strict quote schema, and passes the same business-evidence validation before an offer is saved. Missing data stays unknown; call-out fees must not become repair totals. An authenticated `POST /calls/:id/recover-quote` can review an ended live quote call without redialing. It returns an existing offer on repeat and blocks concurrent review requests. Failed reviews return 422, leaving the transcript intact. This endpoint is available only on the internal listener.
 
@@ -160,3 +160,6 @@ Pricing is a required objective, rather than a nullable shortcut: if an availabl
 
 
 The orchestrator brief requires the known customer service address to be communicated to the business, with confirmation that it can attend there before relying on ETA or a location-dependent quote. The agent should use the address already supplied by the customer, rather than referring vaguely to “the location” or asking the business to supply it. Quote completion checks for an address discussion and a subsequent business response; street-name matching tolerates spoken-number and street-abbreviation differences in ASR. `npm run voice:smoke -- --location` checks that the model supplies the actual street and city after the business confirms it can handle the issue.
+
+
+`npm run voice:smoke -- --identity` checks the real audio model’s opening: it must ask for the supplied business name without bundling the job requirements into that question. It uses a local test business and never dials a phone.

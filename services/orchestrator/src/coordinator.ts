@@ -92,10 +92,12 @@ export class Orchestrator {
       const initial = this.store.get(taskId);
       if (!initial) return;
       const searchAt = new Date().toISOString();
-      const result = this.live && testCallNumber ? {
-        businesses: [{ id: "personal-phone-test", name: "Your phone (live test)", phone: testCallNumber, sourceUrl: null, openingStatus: "unknown" as const, checkedAt: searchAt }],
-        warnings: ["Personal-phone test: one real call to your number. No businesses are searched or called. Answer as the mechanic to test quote collection."],
-      } : await this.discovery.find({ taskId, input: initial.input, searchAt });
+      const discovered = await this.discovery.find({ taskId, input: initial.input, searchAt });
+      const testDestination = this.live ? testCallNumber : null;
+      const result = testDestination ? {
+        businesses: discovered.businesses.slice(0, 1).map(business => ({ ...business, phone: testDestination })),
+        warnings: [...discovered.warnings, "Personal-phone test: showing a real discovered business, but its phone is replaced with your number. Only your phone is called once; answer as the named business."],
+      } : discovered;
       const found = this.store.mutate(taskId, (current) => {
         current.businesses = result.businesses.slice(0, 3);
         current.warnings.push(...result.warnings);
@@ -129,7 +131,7 @@ export class Orchestrator {
   private async startCall(task: Task, call: Call): Promise<void> {
     const payload = CallRequest.parse({
       taskId: task.id, callId: call.id, input: task.input, business: call.business,
-      brief: quoteCallBrief(task.input),
+      brief: quoteCallBrief(task.input, call.business),
       purpose: call.purpose,
       selectedOffer: call.purpose === "booking" ? task.offers.find((offer) => offer.id === task.selectedOfferId) ?? null : null,
     });

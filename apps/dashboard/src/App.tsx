@@ -228,7 +228,7 @@ export default function App() {
             <option value={60}>1 hour</option>
             <option value={90}>90 minutes</option>
           </select>
-          <p className="footnote muted">{!setup ? "Checking service readiness…" : setup.testCallNumber ? `Personal-phone test: one real call to ${setup.testCallNumber}. No businesses will be searched or called. Answer as the mechanic.` : setup.mode === "live" ? "Live calling: this will find and phone up to three businesses for quotes. No booking or dispatch is requested." : "Simulation: no real businesses will be called."}</p>
+          <p className="footnote muted">{!setup ? "Checking service readiness…" : setup.testCallNumber ? `Personal-phone test: one real call to ${setup.testCallNumber}. A real business will be found; only its phone is replaced with yours. One call to your phone—answer as the business shown.` : setup.mode === "live" ? "Live calling: this will find and phone up to three businesses for quotes. No booking or dispatch is requested." : "Simulation: no real businesses will be called."}</p>
           {setup && !setup.ready && <div className="strip warn">{setup.issues.join(" ")}</div>}
           {error && <div className="strip error" role="alert">{error}</div>}
           <button className="btn primary wide" type="submit" disabled={busy || !setup?.ready || !request.trim() || !location.trim()}>

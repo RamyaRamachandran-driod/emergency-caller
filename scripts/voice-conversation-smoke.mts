@@ -25,7 +25,8 @@ async function speech(text: string) {
 const acknowledgement = process.argv.includes("--ack");
 const pricing = process.argv.includes("--pricing");
 const location = process.argv.includes("--location");
-const interrupt = await speech(location ? "Yes, I can help with that kind of leak." : pricing ? "Yes, I can fix that bathroom leak at 1550 Mission Street. I can be there in fifteen minutes." : acknowledgement ? "Uh-huh." : "Wait, is the leak in the bathroom or the kitchen?");
+const identity = process.argv.includes("--identity");
+const interrupt = identity ? Buffer.alloc(0) : await speech(location ? "Yes, I can help with that kind of leak." : pricing ? "Yes, I can fix that bathroom leak at 1550 Mission Street. I can be there in fifteen minutes." : acknowledgement ? "Uh-huh." : "Wait, is the leak in the bathroom or the kitchen?");
 const dir = mkdtempSync(join(tmpdir(), "savior-conversation-smoke-"));
 const store = new Store(dir), record = store.create({ taskId: randomUUID(), callId: randomUUID(), purpose: "quote", selectedOffer: null,
   input: { request: "My bathroom pipe is leaking badly. I need a plumber.", location: "1550 Mission Street, San Francisco", timezone: "America/Los_Angeles", maxArrivalMinutes: 60 },
@@ -58,7 +59,7 @@ const tick = setInterval(() => {
 caller.on("message", (raw, binary) => {
   if (binary) {
     playback.push(Buffer.from(raw as Buffer));
-    if (!injected) {
+    if (!injected && !identity) {
       injected = true;
       injection = (async () => {
         await new Promise(r => setTimeout(r, 350));
@@ -81,12 +82,21 @@ try {
   const deadline = Date.now() + 40000;
   while (Date.now() < deadline) {
     if (failure) throw Error(failure);
+    if (identity && record.events.some(e => e.type === "transcript" && e.speaker === "agent")) break;
     const business = record.events.find(e => e.type === "transcript" && e.speaker === "business");
     if (business && record.events.some(e => e.type === "transcript" && e.speaker === "agent" && e.sequence > business.sequence)) break;
     await new Promise(r => setTimeout(r, 100));
   }
   const transcript = record.events.filter(e => e.type === "transcript");
   console.log(JSON.stringify({ wire, speechEndToReplyAudioMs: firstReplyAudioAt && speechStoppedAt ? firstReplyAudioAt - speechStoppedAt : null, transcript: transcript.map(e => ({ speaker: e.speaker, text: e.text })) }));
+  if (identity) {
+    const opening = transcript.find(e => e.speaker === "agent");
+    assert.ok(opening);
+    assert.ok(opening.text.toLowerCase().includes(record.request.business.name.toLowerCase()));
+    assert.match(opening.text, /\?/);
+    assert.doesNotMatch(opening.text, /bathroom|leak|price|how soon|1550/i);
+    console.log("PASS: opening confirms the supplied business name without bundling the job requirements.");
+  } else {
   const business = transcript.find(e => e.speaker === "business");
   assert.ok(business, "the synthesized interruption must be transcribed");
   const reply = transcript.find(e => e.speaker === "agent" && e.sequence > business.sequence);
@@ -98,6 +108,7 @@ try {
   assert.doesNotMatch(reply.text, /hello|this is Savior|calling on behalf/i);
   assert.ok(reply.text.split(/\s+/).length <= 40, "interruption reply must be brief");
   console.log(location ? "PASS: the caller shared the actual street and city and asked for service-area confirmation." : pricing ? "PASS: availability and ETA without price prompted a pricing question." : "PASS: real audio interruption received a brief contextual reply without restarting the introduction.");
+  }
 } finally {
   clearInterval(tick); controller?.close(); caller.terminate();
   await injection;

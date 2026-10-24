@@ -47,7 +47,7 @@ for (const personal of [false, true]) test(`live task API: ${personal ? "persona
     assert.equal(req.headers["x-emergency-contract-version"], "1");
     searches++;
     for await (const _chunk of req) { /* Consume the body. */ }
-    res.end(JSON.stringify({ businesses: [{ id: "published-mechanic", name: "Test mechanic", phone: "+14155550101", sourceUrl: "https://example.test/contact", openingStatus: "unknown", checkedAt: new Date().toISOString() }], warnings: [] }));
+    res.end(JSON.stringify({ businesses: [{ id: "published-mechanic", name: "Test mechanic", phone: "+14155550199", sourceUrl: "https://example.test/contact", openingStatus: "unknown", checkedAt: new Date().toISOString() }], warnings: [] }));
   });
   await listen(discovery);
   const reservation = createServer(); await listen(reservation);
@@ -73,7 +73,7 @@ for (const personal of [false, true]) test(`live task API: ${personal ? "persona
   });
   const submit = (key: string) => fetch(`${base}/api/tasks`, { method: "POST", headers: { "content-type": "application/json", "Idempotency-Key": key }, body: JSON.stringify({ request: "Test quote", location: "Test location", timezone: "America/Los_Angeles", maxArrivalMinutes: 30 }) });
   discoveryMode = "test";
-  if (!personal) assert.equal((await submit("blocked")).status, 503);
+  assert.equal((await submit("blocked")).status, 503);
   assert.equal(dialCount, 0); assert.equal(searches, 0);
   discoveryMode = "live";
   config.live = false;
@@ -88,14 +88,17 @@ for (const personal of [false, true]) test(`live task API: ${personal ? "persona
   const tasks = await Promise.all(responses.map(r => r.json() as Promise<Task>));
   assert.equal(tasks[0].id, tasks[1].id); assert.equal(tasks[0].simulated, false);
   await until(async () => dialCount === 1);
-  assert.equal(searches, personal ? 0 : 1);
+  assert.equal(searches, 1);
   assert.equal(tasks[0].businesses.length, 0); // Discovery finishes asynchronously.
   const record = [...voice.store.records.values()][0];
-  assert.equal(record.request.business.phone, "+14155550101");
+  assert.equal(record.request.business.phone, personal ? "+14155550101" : "+14155550199");
+  assert.equal(record.request.business.name, "Test mechanic");
+  assert.equal(record.request.business.sourceUrl, "https://example.test/contact");
+  assert.equal(record.request.business.id, "published-mechanic");
   assert.equal(record.request.brief?.task, "Test quote");
   assert.ok(record.request.brief?.neededInformation.length);
   assert.ok(record.request.brief?.completionCriteria.length);
-  if (personal) assert.equal(record.request.business.name, "Your phone (live test)");
+  if (personal) { const view: Task = await (await fetch(`${base}/api/tasks/${tasks[0].id}`)).json(); assert.equal(view.businesses[0].name, "Test mechanic"); assert.equal(view.businesses[0].phone, "+14155550101"); }
   voice.store.emit(record, { type: "status", status: "connected" });
   voice.store.emit(record, { type: "transcript", speaker: "business", sequence: 0, text: "Twenty minutes, two hundred dollars." });
   voice.store.emit(record, { type: "offer", offer: { id: randomUUID(), callId: record.request.callId, businessId: record.request.business.id, availableNow: true, etaMinutes: 20, amountMinor: 20000, currency: "USD", quoteType: "estimate", conditions: null } });
