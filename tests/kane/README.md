@@ -45,5 +45,6 @@ Sealed Kane evidence packs and NDJSON run streams live in `tests/kane/evidence/`
 |---|---|---|
 | `run1-first-run-15-of-16` | scaffold orchestrator, first run (authoring) | 15 of 16 passed, 19 of 23 criteria (85%). The failure was the designed check's double-negative wording on unknown conditions, not an app defect |
 | `run2-replay-merged-orchestrator-16-of-16` | Ramya's SQLite orchestrator after merging main | 16 of 16 passed, 88% coverage. Booking tests re-recorded their steps (healed) against the new orchestrator |
+| `run3-replay-landing-theme` (stream only) | landing page at `/`, dashboard at `/app`, Kane theme | 15 of 16; only `unknown-conditions` failed, on the same double-negative check as run 1, so that test is flaky and due a redesign |
 
 Known limitation: the shared `Offer.availableNow` is a boolean, so a mechanic who is unsure is sent as "not available". The "unknown availability is not fabricated" pass should not be read as proof until the contract can express unknown.

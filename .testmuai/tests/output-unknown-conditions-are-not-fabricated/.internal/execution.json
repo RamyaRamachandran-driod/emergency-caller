@@ -2,24 +2,24 @@
   "test_id": "3dc294bf-8ddc-4203-8c5f-d95909f78bfb",
   "version": "v4",
   "auto_heal_version": "AH2",
-  "session_id": "a531d7ed-4961-450b-94ff-fe7abdeb26d4",
+  "session_id": "3d81cf91-9216-42aa-8e7a-6a34613a6d83",
   "org_id": "3394593",
   "user_id": "3570389",
   "url": "",
-  "start_timestamp": "2026-10-24T21:04:23.426Z",
-  "end_timestamp": "2026-10-24T21:05:26.476Z",
-  "status": "success",
-  "commit_id": "a531d7ed-4961-450b-94ff-fe7abdeb26d4",
+  "start_timestamp": "2026-10-24T21:38:24.677Z",
+  "end_timestamp": "2026-10-24T21:40:10.054Z",
+  "status": "error",
+  "commit_id": "3d81cf91-9216-42aa-8e7a-6a34613a6d83",
   "instructions": [
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_56a69b555dc341cf922dc8a6623479f0",
-      "generative_id": "56a69b555dc341cf922dc8a6623479f0",
+      "instruction_id": "generative_block_77a5cbdee7304c9bbe81c8340c42b4dd",
+      "generative_id": "77a5cbdee7304c9bbe81c8340c42b4dd",
       "objective": "Open {{global.start_url}} and reach the breakdown request journey for mobile mechanic help.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "f1ce54ab-4c18-47d5-a887-7e5d588aaca7",
+          "instruction_id": "b2f1e2ef-53c3-428c-badc-c792574326bb",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Navigate to {{global.start_url}}",
@@ -31,11 +31,11 @@
           "operations": [
             {
               "operation_id": "753b714e-fa0d-430c-8804-ee97942b1ee9",
-              "instruction_id": "f1ce54ab-4c18-47d5-a887-7e5d588aaca7",
+              "instruction_id": "b2f1e2ef-53c3-428c-badc-c792574326bb",
               "instruction": "Navigate to {{global.start_url}}",
               "intent": "Navigate to {{global.start_url}}",
-              "operation_start": "2026-10-24T21:04:30.978069+00:00",
-              "operation_end": "2026-10-24T21:04:31.423Z",
+              "operation_start": "2026-10-24T21:39:03.371497+00:00",
+              "operation_end": "2026-10-24T21:39:03.410Z",
               "status": "success",
               "command": "OPEN",
               "name": "",
@@ -158,8 +158,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:04:30.978069+00:00",
-          "end_timestamp": "2026-10-24T21:04:31.423Z",
+          "start_timestamp": "2026-10-24T21:39:03.371497+00:00",
+          "end_timestamp": "2026-10-24T21:39:03.410Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -185,7 +185,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "56a69b555dc341cf922dc8a6623479f0",
+          "generative_id": "77a5cbdee7304c9bbe81c8340c42b4dd",
           "plan_id": "",
           "generative_objective": "Open {{global.start_url}} and reach the breakdown request journey for mobile mechanic help.",
           "error_message": "",
@@ -196,7 +196,7 @@
           "reasoning": "Navigate to {{global.start_url}}"
         },
         {
-          "instruction_id": "962c3829-9e2b-4da0-ba53-68d5e1bfd47a",
+          "instruction_id": "61c2117c-bb0e-47b5-b13c-4a3009c14162",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Use my location button",
@@ -208,11 +208,11 @@
           "operations": [
             {
               "operation_id": "27c92aaf-3499-4725-9e8b-07d1b4eba2b5",
-              "instruction_id": "962c3829-9e2b-4da0-ba53-68d5e1bfd47a",
+              "instruction_id": "61c2117c-bb0e-47b5-b13c-4a3009c14162",
               "instruction": "Clicking Use my location button",
               "intent": "Clicking Use my location button",
-              "operation_start": "2026-10-24T21:04:31.091861+00:00",
-              "operation_end": "2026-10-24T21:04:31.132Z",
+              "operation_start": "2026-10-24T21:39:03.509584+00:00",
+              "operation_end": "2026-10-24T21:39:03.551Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -360,8 +360,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:04:31.091861+00:00",
-          "end_timestamp": "2026-10-24T21:04:31.132Z",
+          "start_timestamp": "2026-10-24T21:39:03.509584+00:00",
+          "end_timestamp": "2026-10-24T21:39:03.551Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -387,7 +387,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "56a69b555dc341cf922dc8a6623479f0",
+          "generative_id": "77a5cbdee7304c9bbe81c8340c42b4dd",
           "plan_id": "",
           "generative_objective": "Open {{global.start_url}} and reach the breakdown request journey for mobile mechanic help.",
           "error_message": "",
@@ -398,7 +398,7 @@
           "reasoning": "PRIMARY: use current location button; role=button; text=\"Use my location\" | HINTS: container=breakdown request dialog"
         },
         {
-          "instruction_id": "a7e6e68f-3296-43ca-a644-ac60fbcfd172",
+          "instruction_id": "6850b4f8-7f6e-4a62-b26b-45fe52a6163d",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Typing Lond in breakdown location field",
@@ -410,11 +410,11 @@
           "operations": [
             {
               "operation_id": "8dbf50a3-2204-4cc7-a7f2-5720c5f3add7",
-              "instruction_id": "a7e6e68f-3296-43ca-a644-ac60fbcfd172",
+              "instruction_id": "6850b4f8-7f6e-4a62-b26b-45fe52a6163d",
               "instruction": "Typing Lond in breakdown location field",
               "intent": "Typing Lond in breakdown location field",
-              "operation_start": "2026-10-24T21:04:31.732783+00:00",
-              "operation_end": "2026-10-24T21:04:31.798Z",
+              "operation_start": "2026-10-24T21:39:04.131949+00:00",
+              "operation_end": "2026-10-24T21:39:04.195Z",
               "status": "success",
               "command": "TYPE",
               "name": "",
@@ -562,8 +562,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:04:31.732783+00:00",
-          "end_timestamp": "2026-10-24T21:04:31.798Z",
+          "start_timestamp": "2026-10-24T21:39:04.131949+00:00",
+          "end_timestamp": "2026-10-24T21:39:04.195Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -589,7 +589,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "56a69b555dc341cf922dc8a6623479f0",
+          "generative_id": "77a5cbdee7304c9bbe81c8340c42b4dd",
           "plan_id": "",
           "generative_objective": "Open {{global.start_url}} and reach the breakdown request journey for mobile mechanic help.",
           "error_message": "",
@@ -600,7 +600,7 @@
           "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: container=breakdown request dialog"
         },
         {
-          "instruction_id": "280c18e4-dbc4-400e-ac8b-c0f16997901e",
+          "instruction_id": "2186a3d9-fc1e-4e03-a287-2fcfdcda1e3f",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Find help button",
@@ -612,11 +612,11 @@
           "operations": [
             {
               "operation_id": "a8384513-0d8c-48ad-83f1-9f772559ab6f",
-              "instruction_id": "280c18e4-dbc4-400e-ac8b-c0f16997901e",
+              "instruction_id": "2186a3d9-fc1e-4e03-a287-2fcfdcda1e3f",
               "instruction": "Clicking Find help button",
               "intent": "Clicking Find help button",
-              "operation_start": "2026-10-24T21:04:31.848950+00:00",
-              "operation_end": "2026-10-24T21:04:31.897Z",
+              "operation_start": "2026-10-24T21:39:04.228842+00:00",
+              "operation_end": "2026-10-24T21:39:04.274Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -764,8 +764,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:04:31.848950+00:00",
-          "end_timestamp": "2026-10-24T21:04:31.897Z",
+          "start_timestamp": "2026-10-24T21:39:04.228842+00:00",
+          "end_timestamp": "2026-10-24T21:39:04.274Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -791,7 +791,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "56a69b555dc341cf922dc8a6623479f0",
+          "generative_id": "77a5cbdee7304c9bbe81c8340c42b4dd",
           "plan_id": "",
           "generative_objective": "Open {{global.start_url}} and reach the breakdown request journey for mobile mechanic help.",
           "error_message": "",
@@ -811,16 +811,16 @@
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_722487d7f021403abd44d4d794bb35e8",
-      "generative_id": "722487d7f021403abd44d4d794bb35e8",
+      "instruction_id": "generative_block_e97cfa44266e4f3280899cec9f6d6141",
+      "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
       "objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
-      "status": "success",
+      "status": "error",
       "children": [
         {
-          "instruction_id": "b1ff8b0f-714c-48eb-9263-8cdbfff0375d",
+          "instruction_id": "f841c9b5-a33b-402a-bfb8-887fb757ac19",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Clicking New request to start a new breakdown request",
+          "instruction": "Clicking New request button in main navigation",
           "command": "CLICK",
           "error": null,
           "parent_instruction_id": "",
@@ -828,12 +828,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "5e372ca2-9e67-4595-b88b-99dd560398f1",
-              "instruction_id": "b1ff8b0f-714c-48eb-9263-8cdbfff0375d",
-              "instruction": "Clicking New request to start a new breakdown request",
-              "intent": "Clicking New request to start a new breakdown request",
-              "operation_start": "2026-10-24T21:04:41.508014+00:00",
-              "operation_end": "2026-10-24T21:04:41.540Z",
+              "operation_id": "ab2d03e8-862f-4c10-8e7f-dff0bc1c9392",
+              "instruction_id": "f841c9b5-a33b-402a-bfb8-887fb757ac19",
+              "instruction": "Clicking New request button in main navigation",
+              "intent": "Clicking New request button in main navigation",
+              "operation_start": "2026-10-24T21:39:13.878125+00:00",
+              "operation_end": "2026-10-24T21:39:13.918Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -847,7 +847,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking New request to start a new breakdown request\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: start a new breakdown request; role=button; text=\\\"New request\\\" | HINTS: main content header\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Clicking New request button in main navigation\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: new breakdown request button; role=button; text=\\\"New request\\\" | HINTS: container=main navigation\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -858,7 +858,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/5e372ca2-9e67-4595-b88b-99dd560398f1.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/ab2d03e8-862f-4c10-8e7f-dff0bc1c9392.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -914,7 +914,7 @@
               "clicks_order_code": "se_js_ac",
               "selector": [
                 {
-                  "selector": "internal:text=\"New request\"i",
+                  "selector": "internal:label=\"New request\"i",
                   "score": 100,
                   "isXPath": false,
                   "type": "css"
@@ -959,30 +959,30 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": {
-                "x": 1837,
-                "y": 33,
+                "x": 27,
+                "y": 128,
                 "confidence": 0,
                 "bbox": {
-                  "x": 1788,
-                  "y": 17,
-                  "width": 98,
-                  "height": 32
+                  "x": 13,
+                  "y": 109,
+                  "width": 28,
+                  "height": 38
                 },
                 "bbox_source": "accessibility_tree",
                 "viewport_width": 1920,
                 "viewport_height": 1080,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/5e372ca2-9e67-4595-b88b-99dd560398f1.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/ab2d03e8-862f-4c10-8e7f-dff0bc1c9392.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: start a new breakdown request; role=button; text=\"New request\" | HINTS: main content header"
+              "reasoning": "PRIMARY: new breakdown request button; role=button; text=\"New request\" | HINTS: container=main navigation"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:04:41.508014+00:00",
-          "end_timestamp": "2026-10-24T21:04:41.540Z",
+          "start_timestamp": "2026-10-24T21:39:13.878125+00:00",
+          "end_timestamp": "2026-10-24T21:39:13.918Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1008,7 +1008,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "722487d7f021403abd44d4d794bb35e8",
+          "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
           "plan_id": "",
           "generative_objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
           "error_message": "",
@@ -1016,13 +1016,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: start a new breakdown request; role=button; text=\"New request\" | HINTS: main content header"
+          "reasoning": "PRIMARY: new breakdown request button; role=button; text=\"New request\" | HINTS: container=main navigation"
         },
         {
-          "instruction_id": "f3303de3-c252-4792-aa51-8646da72290f",
+          "instruction_id": "d49d02ad-16b3-4e92-900d-195cc12ed4b3",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Waiting for the next step to start",
+          "instruction": "Waiting for the plan to proceed",
           "command": "WAIT",
           "error": null,
           "parent_instruction_id": "",
@@ -1030,12 +1030,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "2d659b42-d4ba-4fd6-b461-8b46a044c7bc",
-              "instruction_id": "f3303de3-c252-4792-aa51-8646da72290f",
-              "instruction": "Waiting for the next step to start",
-              "intent": "Waiting for the next step to start",
-              "operation_start": "2026-10-24T21:04:47.753272+00:00",
-              "operation_end": "2026-10-24T21:04:48.756Z",
+              "operation_id": "bf59203e-125a-49a1-814b-1cc8a24d7890",
+              "instruction_id": "d49d02ad-16b3-4e92-900d-195cc12ed4b3",
+              "instruction": "Waiting for the plan to proceed",
+              "intent": "Waiting for the plan to proceed",
+              "operation_start": "2026-10-24T21:39:20.442456+00:00",
+              "operation_end": "2026-10-24T21:39:21.447Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -1049,7 +1049,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Waiting for the next step to start\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"queued plan (2 steps): type \\\"Breakdown location\\\"; click \\\"Find help\\\"\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Waiting for the plan to proceed\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"queued plan (2 steps): type \\\"Breakdown location\\\"; click \\\"Find help\\\"\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1060,7 +1060,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/2d659b42-d4ba-4fd6-b461-8b46a044c7bc.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/bf59203e-125a-49a1-814b-1cc8a24d7890.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1158,8 +1158,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:04:47.753272+00:00",
-          "end_timestamp": "2026-10-24T21:04:48.756Z",
+          "start_timestamp": "2026-10-24T21:39:20.442456+00:00",
+          "end_timestamp": "2026-10-24T21:39:21.447Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1185,7 +1185,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "722487d7f021403abd44d4d794bb35e8",
+          "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
           "plan_id": "",
           "generative_objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
           "error_message": "",
@@ -1196,7 +1196,7 @@
           "reasoning": "queued plan (2 steps): type \"Breakdown location\"; click \"Find help\""
         },
         {
-          "instruction_id": "e0cb8e13-aaed-481b-9a4c-771a6c50b4ff",
+          "instruction_id": "2c30e954-f72e-4a5e-9b32-0a570ad71edc",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Type \"{{global.unknown_conditions_location}}\" into \"Breakdown location\"",
@@ -1207,12 +1207,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "babc5914-e7fe-4f8f-8d15-e78ba4c762af",
-              "instruction_id": "e0cb8e13-aaed-481b-9a4c-771a6c50b4ff",
+              "operation_id": "1bb36e84-61e0-4b02-9b7a-dfb31408d0d2",
+              "instruction_id": "2c30e954-f72e-4a5e-9b32-0a570ad71edc",
               "instruction": "Type \"{{global.unknown_conditions_location}}\" into \"Breakdown location\"",
               "intent": "Type \"{{global.unknown_conditions_location}}\" into \"Breakdown location\"",
-              "operation_start": "2026-10-24T21:04:48.405959+00:00",
-              "operation_end": "2026-10-24T21:04:48.458Z",
+              "operation_start": "2026-10-24T21:39:21.125657+00:00",
+              "operation_end": "2026-10-24T21:39:21.180Z",
               "status": "success",
               "command": "TYPE",
               "name": "",
@@ -1226,7 +1226,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Type \\\"{{global.unknown_conditions_location}}\\\" into \\\"Breakdown location\\\"\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"TYPE\"},\"reasoning\":\"PRIMARY: breakdown location input; role=textbox; text=\\\"Breakdown location\\\" | HINTS: request dialog below the incident description\",\"variable\":{\"intent\":\"Type \\\"{{global.unknown_conditions_location}}\\\" into \\\"Breakdown location\\\"\",\"value\":\"{{global.unknown_conditions_location}}\"},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Type \\\"{{global.unknown_conditions_location}}\\\" into \\\"Breakdown location\\\"\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"TYPE\"},\"reasoning\":\"PRIMARY: breakdown location input; role=textbox; text=\\\"Breakdown location\\\" | HINTS: container=breakdown request dialog\",\"variable\":{\"intent\":\"Type \\\"{{global.unknown_conditions_location}}\\\" into \\\"Breakdown location\\\"\",\"value\":\"{{global.unknown_conditions_location}}\"},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1237,7 +1237,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/babc5914-e7fe-4f8f-8d15-e78ba4c762af.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/1bb36e84-61e0-4b02-9b7a-dfb31408d0d2.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1339,29 +1339,29 @@
               "output_variables": {},
               "visual_context": {
                 "x": 960,
-                "y": 564,
+                "y": 567,
                 "confidence": 0,
                 "bbox": {
                   "x": 752,
-                  "y": 554,
+                  "y": 558,
                   "width": 416,
-                  "height": 20
+                  "height": 18
                 },
                 "bbox_source": "accessibility_tree",
                 "viewport_width": 1920,
                 "viewport_height": 1080,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/babc5914-e7fe-4f8f-8d15-e78ba4c762af.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/1bb36e84-61e0-4b02-9b7a-dfb31408d0d2.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: request dialog below the incident description"
+              "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: container=breakdown request dialog"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:04:48.405959+00:00",
-          "end_timestamp": "2026-10-24T21:04:48.458Z",
+          "start_timestamp": "2026-10-24T21:39:21.125657+00:00",
+          "end_timestamp": "2026-10-24T21:39:21.180Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1387,7 +1387,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "722487d7f021403abd44d4d794bb35e8",
+          "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
           "plan_id": "",
           "generative_objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
           "error_message": "",
@@ -1395,13 +1395,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: request dialog below the incident description"
+          "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: container=breakdown request dialog"
         },
         {
-          "instruction_id": "0a15b4b8-8fb2-4d81-b1f0-9b2dcfb7312f",
+          "instruction_id": "9b317cb5-925a-453c-ad3f-3268d730c8f6",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Clicking Find help in the new request dialog",
+          "instruction": "Clicking Find help button in the breakdown request dialog",
           "command": "CLICK",
           "error": null,
           "parent_instruction_id": "",
@@ -1409,12 +1409,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "32901569-26f5-403e-a205-ec662c7bcba9",
-              "instruction_id": "0a15b4b8-8fb2-4d81-b1f0-9b2dcfb7312f",
-              "instruction": "Clicking Find help in the new request dialog",
-              "intent": "Clicking Find help in the new request dialog",
-              "operation_start": "2026-10-24T21:04:52.363034+00:00",
-              "operation_end": "2026-10-24T21:04:52.406Z",
+              "operation_id": "56e2c933-0f0d-4103-aee6-98666bf1ba6e",
+              "instruction_id": "9b317cb5-925a-453c-ad3f-3268d730c8f6",
+              "instruction": "Clicking Find help button in the breakdown request dialog",
+              "intent": "Clicking Find help button in the breakdown request dialog",
+              "operation_start": "2026-10-24T21:39:26.181069+00:00",
+              "operation_end": "2026-10-24T21:39:26.222Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -1428,7 +1428,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking Find help in the new request dialog\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: submit breakdown request; role=button; text=\\\"Find help\\\" | HINTS: bottom of the new request dialog\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Clicking Find help button in the breakdown request dialog\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: find help button; role=button; text=\\\"Find help\\\" | HINTS: bottom of breakdown request dialog\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1439,7 +1439,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/32901569-26f5-403e-a205-ec662c7bcba9.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/56e2c933-0f0d-4103-aee6-98666bf1ba6e.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1541,29 +1541,29 @@
               "output_variables": {},
               "visual_context": {
                 "x": 960,
-                "y": 697,
+                "y": 703,
                 "confidence": 0,
                 "bbox": {
-                  "x": 754,
-                  "y": 678,
-                  "width": 412,
-                  "height": 38
+                  "x": 756,
+                  "y": 683,
+                  "width": 408,
+                  "height": 40
                 },
                 "bbox_source": "accessibility_tree",
                 "viewport_width": 1920,
                 "viewport_height": 1080,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/32901569-26f5-403e-a205-ec662c7bcba9.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/56e2c933-0f0d-4103-aee6-98666bf1ba6e.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: submit breakdown request; role=button; text=\"Find help\" | HINTS: bottom of the new request dialog"
+              "reasoning": "PRIMARY: find help button; role=button; text=\"Find help\" | HINTS: bottom of breakdown request dialog"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:04:52.363034+00:00",
-          "end_timestamp": "2026-10-24T21:04:52.406Z",
+          "start_timestamp": "2026-10-24T21:39:26.181069+00:00",
+          "end_timestamp": "2026-10-24T21:39:26.222Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1589,7 +1589,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "722487d7f021403abd44d4d794bb35e8",
+          "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
           "plan_id": "",
           "generative_objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
           "error_message": "",
@@ -1597,13 +1597,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: submit breakdown request; role=button; text=\"Find help\" | HINTS: bottom of the new request dialog"
+          "reasoning": "PRIMARY: find help button; role=button; text=\"Find help\" | HINTS: bottom of breakdown request dialog"
         },
         {
-          "instruction_id": "9f5a95f2-64a5-4845-8d4f-49f945adfb60",
+          "instruction_id": "8ec5f026-6447-4935-a6d9-d3ded8678a0a",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Waiting 5 seconds for simulated mechanic responses and offers",
+          "instruction": "Waiting for breakdown request responses",
           "command": "WAIT",
           "error": null,
           "parent_instruction_id": "",
@@ -1611,17 +1611,17 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "525a6df5-408b-47ec-b5fc-994919785fe8",
-              "instruction_id": "9f5a95f2-64a5-4845-8d4f-49f945adfb60",
-              "instruction": "Waiting 5 seconds for simulated mechanic responses and offers",
-              "intent": "Waiting 5 seconds for simulated mechanic responses and offers",
-              "operation_start": "2026-10-24T21:05:01.417830+00:00",
-              "operation_end": "2026-10-24T21:05:06.421Z",
+              "operation_id": "7f5fed71-38bd-4f37-9c6b-ce7db0bd353c",
+              "instruction_id": "8ec5f026-6447-4935-a6d9-d3ded8678a0a",
+              "instruction": "Waiting for breakdown request responses",
+              "intent": "Waiting for breakdown request responses",
+              "operation_start": "2026-10-24T21:39:32.743194+00:00",
+              "operation_end": "2026-10-24T21:39:35.248Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
               "target": "",
-              "value": "5000",
+              "value": "2500",
               "message": "",
               "operation_dict": "",
               "frame": "",
@@ -1630,7 +1630,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Waiting 5 seconds for simulated mechanic responses and offers\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: wait 5000 ms for simulated mechanic responses and offers\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Waiting for breakdown request responses\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: wait 2500 ms for the submitted breakdown request to receive responses\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1641,7 +1641,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/525a6df5-408b-47ec-b5fc-994919785fe8.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7f5fed71-38bd-4f37-9c6b-ce7db0bd353c.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1735,12 +1735,12 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": null,
-              "reasoning": "PRIMARY: wait 5000 ms for simulated mechanic responses and offers"
+              "reasoning": "PRIMARY: wait 2500 ms for the submitted breakdown request to receive responses"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:05:01.417830+00:00",
-          "end_timestamp": "2026-10-24T21:05:06.421Z",
+          "start_timestamp": "2026-10-24T21:39:32.743194+00:00",
+          "end_timestamp": "2026-10-24T21:39:35.248Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1766,7 +1766,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "722487d7f021403abd44d4d794bb35e8",
+          "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
           "plan_id": "",
           "generative_objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
           "error_message": "",
@@ -1774,13 +1774,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: wait 5000 ms for simulated mechanic responses and offers"
+          "reasoning": "PRIMARY: wait 2500 ms for the submitted breakdown request to receive responses"
         },
         {
-          "instruction_id": "b4c28d33-d481-418b-ae1a-eda7a2581c0b",
+          "instruction_id": "c91e378b-7801-466c-9236-cb3f574a181d",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Waiting for the transcript comparison view to display and offer options",
+          "instruction": "Pausing after inspecting comparison offers and agent activity transcript",
           "command": "WAIT",
           "error": null,
           "parent_instruction_id": "",
@@ -1788,12 +1788,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "d49f994e-44d2-4e14-8bb3-2fbda7687b27",
-              "instruction_id": "b4c28d33-d481-418b-ae1a-eda7a2581c0b",
-              "instruction": "Waiting for the transcript comparison view to display and offer options",
-              "intent": "Waiting for the transcript comparison view to display and offer options",
-              "operation_start": "2026-10-24T21:05:08.481185+00:00",
-              "operation_end": "2026-10-24T21:05:08.985Z",
+              "operation_id": "c89cc223-2b3f-41d1-87d4-000978f84065",
+              "instruction_id": "c91e378b-7801-466c-9236-cb3f574a181d",
+              "instruction": "Pausing after inspecting comparison offers and agent activity transcript",
+              "intent": "Pausing after inspecting comparison offers and agent activity transcript",
+              "operation_start": "2026-10-24T21:39:38.780542+00:00",
+              "operation_end": "2026-10-24T21:39:39.283Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -1807,7 +1807,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Waiting for the transcript comparison view to display and offer options\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: confirm the comparison view displays the transcript and offers\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Pausing after inspecting comparison offers and agent activity transcript\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: pause after inspecting the comparison offers and agent activity transcript\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1818,7 +1818,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/d49f994e-44d2-4e14-8bb3-2fbda7687b27.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/c89cc223-2b3f-41d1-87d4-000978f84065.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1912,12 +1912,12 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": null,
-              "reasoning": "PRIMARY: confirm the comparison view displays the transcript and offers"
+              "reasoning": "PRIMARY: pause after inspecting the comparison offers and agent activity transcript"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:05:08.481185+00:00",
-          "end_timestamp": "2026-10-24T21:05:08.985Z",
+          "start_timestamp": "2026-10-24T21:39:38.780542+00:00",
+          "end_timestamp": "2026-10-24T21:39:39.283Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1943,7 +1943,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "722487d7f021403abd44d4d794bb35e8",
+          "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
           "plan_id": "",
           "generative_objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
           "error_message": "",
@@ -1951,28 +1951,28 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: confirm the comparison view displays the transcript and offers"
+          "reasoning": "PRIMARY: pause after inspecting the comparison offers and agent activity transcript"
         },
         {
-          "instruction_id": "c1dd7f16-bf98-473e-911a-47c362f9b395",
+          "instruction_id": "6c670579-5f18-43f5-b144-24b0749d00c4",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking for an unreported mechanic condition",
-          "command": "VISION_QUERY",
+          "instruction": "Checking whether an unreported mechanic condition is present",
+          "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
           "classification_layer_resp": [],
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "180e019f-e63b-4a40-b6ec-551e28478f0b",
-              "instruction_id": "c1dd7f16-bf98-473e-911a-47c362f9b395",
-              "instruction": "Checking for an unreported mechanic condition",
-              "intent": "Checking for an unreported mechanic condition",
-              "operation_start": "2026-10-24T21:05:23.423333+00:00",
+              "operation_id": "5f3accdf-db80-474d-a1cf-8b91c360862b",
+              "instruction_id": "6c670579-5f18-43f5-b144-24b0749d00c4",
+              "instruction": "Checking whether an unreported mechanic condition is present",
+              "intent": "Checking whether an unreported mechanic condition is present",
+              "operation_start": "2026-10-24T21:39:56.909953+00:00",
               "operation_end": "",
               "status": "success",
-              "command": "VISION_QUERY",
+              "command": "TEXTUAL_ANALYZER",
               "name": "",
               "target": "",
               "value": "",
@@ -1984,7 +1984,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking for an unreported mechanic condition\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"VISION_QUERY\"},\"reasoning\":\"whether a condition not reported by that mechanic is present (in the mechanic quotes and activity feed)\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Checking whether an unreported mechanic condition is present\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether a condition not reported by that mechanic is present (on the Demo Mobile Mechanics offer card)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(24).innerText.includes('Hours Unknown')\",\"wrapped_js\":\"(els) => {\\n  const __m = {24: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(24).innerText.includes('Hours Unknown'));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"Demo Mobile Mechanicshours\\\"i\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether a condition not reported by that mechanic is present (on the Demo Mobile Mechanics offer card)\",\"expected_value\":\"false\",\"needs_unit_conversion\":false,\"condition\":\"there is no condition not reported by that mechanic\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1995,15 +1995,15 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/180e019f-e63b-4a40-b6ec-551e28478f0b.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/5f3accdf-db80-474d-a1cf-8b91c360862b.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
               "url": "",
               "navigation_direction": "",
               "tagified_image_url": "",
-              "query_variable_name": "no_unreported_mechanic_condition",
-              "query_variable_value": "false",
+              "query_variable_name": "unreported_mechanic_condition_check",
+              "query_variable_value": "true",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -2088,14 +2088,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "no_unreported_mechanic_condition": "false"
+                "unreported_mechanic_condition_check": "true"
               },
               "visual_context": null,
-              "reasoning": "whether a condition not reported by that mechanic is present (in the mechanic quotes and activity feed)"
+              "reasoning": "whether a condition not reported by that mechanic is present (on the Demo Mobile Mechanics offer card)"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T21:05:23.423333+00:00",
+          "start_timestamp": "2026-10-24T21:39:56.909953+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -2122,7 +2122,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "722487d7f021403abd44d4d794bb35e8",
+          "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
           "plan_id": "",
           "generative_objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
           "error_message": "",
@@ -2130,10 +2130,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether a condition not reported by that mechanic is present (in the mechanic quotes and activity feed)"
+          "reasoning": "whether a condition not reported by that mechanic is present (on the Demo Mobile Mechanics offer card)"
         },
         {
-          "instruction_id": "119baa0d-1cf7-4924-9de5-a55a54dee66a",
+          "instruction_id": "c5384265-db07-43a3-b0cf-8ea282672fa2",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -2149,32 +2149,32 @@
                 "assertion_tree": {
                   "sub_results": [
                     {
-                      "description": "there is no condition not reported by that mechanic.",
-                      "passed": true,
+                      "description": "there is no condition not reported by that mechanic",
+                      "passed": false,
                       "operator": "equals",
                       "transforms": [],
                       "json_path": null,
                       "expected": "false",
-                      "extracted_value": "{{no_unreported_mechanic_condition}}",
-                      "store_key": "no_unreported_mechanic_condition",
+                      "extracted_value": "{{unreported_mechanic_condition_check}}",
+                      "store_key": "unreported_mechanic_condition_check",
                       "variable_refs": {
-                        "{{no_unreported_mechanic_condition}}": "false"
+                        "{{unreported_mechanic_condition_check}}": "true"
                       }
                     }
                   ],
                   "sub_checks": [
                     {
-                      "description": "there is no condition not reported by that mechanic.",
-                      "store_key": "no_unreported_mechanic_condition",
+                      "description": "there is no condition not reported by that mechanic",
+                      "store_key": "unreported_mechanic_condition_check",
                       "expected_value": "false",
-                      "extracted_value": "{{no_unreported_mechanic_condition}}",
+                      "extracted_value": "{{unreported_mechanic_condition_check}}",
                       "operator": "equals",
                       "transforms": []
                     }
                   ],
                   "composite_operator": "and",
                   "verification": "",
-                  "claim": "there is no condition not reported by that mechanic.",
+                  "claim": "there is no condition not reported by that mechanic",
                   "operator": [],
                   "assertion_operands": [],
                   "left_operand": null,
@@ -2190,13 +2190,13 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "dbe2fb5b-da99-4efa-9cf5-942678ec124a",
-              "instruction_id": "119baa0d-1cf7-4924-9de5-a55a54dee66a",
+              "operation_id": "a80a1f2c-b09d-4442-ab20-ce12ad7144b2",
+              "instruction_id": "c5384265-db07-43a3-b0cf-8ea282672fa2",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-10-24T21:05:24.087678+00:00",
+              "operation_start": "2026-10-24T21:39:57.594565+00:00",
               "operation_end": "",
-              "status": "success",
+              "status": "failed",
               "command": "ASSERTION",
               "name": "",
               "target": "",
@@ -2207,7 +2207,7 @@
               "surface": "",
               "frame_path": "",
               "grounded_by": "",
-              "error_message": "",
+              "error_message": "Checkpoint failed: \"there is no condition not reported by that mechanic\"",
               "code_snippet": "",
               "sub_instruction_obj": "{\"operation\":\"Assertion check\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"ASSERTION\"},\"reasoning\":\"\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
@@ -2220,7 +2220,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/dbe2fb5b-da99-4efa-9cf5-942678ec124a.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/a80a1f2c-b09d-4442-ab20-ce12ad7144b2.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -2233,7 +2233,7 @@
               "expected_value": "",
               "queried_value": "",
               "operator": "",
-              "assertion_status": true,
+              "assertion_status": false,
               "query_info_dict": {},
               "query_content_confidence": "none",
               "debugging_logs": [],
@@ -2286,58 +2286,58 @@
                 "operands": [],
                 "sub_results": [
                   {
-                    "description": "there is no condition not reported by that mechanic.",
-                    "passed": true,
+                    "description": "there is no condition not reported by that mechanic",
+                    "passed": false,
                     "operator": "equals",
                     "transforms": [],
                     "json_path": null,
                     "expected": "false",
-                    "extracted_value": "{{no_unreported_mechanic_condition}}",
-                    "store_key": "no_unreported_mechanic_condition",
+                    "extracted_value": "{{unreported_mechanic_condition_check}}",
+                    "store_key": "unreported_mechanic_condition_check",
                     "variable_refs": {
-                      "{{no_unreported_mechanic_condition}}": "false"
+                      "{{unreported_mechanic_condition_check}}": "true"
                     }
                   }
                 ],
                 "sub_checks": [
                   {
-                    "description": "there is no condition not reported by that mechanic.",
-                    "store_key": "no_unreported_mechanic_condition",
+                    "description": "there is no condition not reported by that mechanic",
+                    "store_key": "unreported_mechanic_condition_check",
                     "expected_value": "false",
-                    "extracted_value": "{{no_unreported_mechanic_condition}}",
+                    "extracted_value": "{{unreported_mechanic_condition_check}}",
                     "operator": "equals",
                     "transforms": []
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "The comparison view's transcript and offer show no condition that was not reported by that mechanic.",
-                "claim": "there is no condition not reported by that mechanic."
+                "verification": "the transcript and offer contain no condition not reported by that mechanic",
+                "claim": "there is no condition not reported by that mechanic"
               },
               "assertion_tree": {
                 "assertion_id": "assert_cp_1",
-                "status": "passed",
-                "description": "there is no condition not reported by that mechanic.",
+                "status": "failed",
+                "description": "there is no condition not reported by that mechanic",
                 "sub_results": [
                   {
-                    "description": "there is no condition not reported by that mechanic.",
-                    "passed": true,
+                    "description": "there is no condition not reported by that mechanic",
+                    "passed": false,
                     "operator": "equals",
                     "transforms": [],
                     "json_path": null,
                     "expected": "false",
-                    "extracted_value": "{{no_unreported_mechanic_condition}}",
-                    "store_key": "no_unreported_mechanic_condition",
+                    "extracted_value": "{{unreported_mechanic_condition_check}}",
+                    "store_key": "unreported_mechanic_condition_check",
                     "variable_refs": {
-                      "{{no_unreported_mechanic_condition}}": "false"
+                      "{{unreported_mechanic_condition_check}}": "true"
                     }
                   }
                 ],
                 "composite_operator": "and",
-                "passed": true,
+                "passed": false,
                 "step": 9,
                 "is_final": true,
-                "verification": "The comparison view's transcript and offer show no condition that was not reported by that mechanic.",
-                "error_message": null,
+                "verification": "the transcript and offer contain no condition not reported by that mechanic",
+                "error_message": "Checkpoint failed: \"there is no condition not reported by that mechanic\"",
                 "duration_ms": 0
               },
               "assertion_tree_simplified": {},
@@ -2377,8 +2377,8 @@
               "reasoning": ""
             }
           ],
-          "status": "success",
-          "start_timestamp": "2026-10-24T21:05:24.087678+00:00",
+          "status": "failed",
+          "start_timestamp": "2026-10-24T21:39:57.594565+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -2405,7 +2405,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "722487d7f021403abd44d4d794bb35e8",
+          "generative_id": "e97cfa44266e4f3280899cec9f6d6141",
           "plan_id": "",
           "generative_objective": "In the breakdown request journey, describe the car breakdown and supply {{global.unknown_conditions_location}}, a seeded case where the mechanic does not report conditions; reach the comparison view and inspect the transcript and offer, then assert there is no condition not reported by that mechanic.",
           "error_message": "",
@@ -2421,9 +2421,8 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Completed the breakdown request journey for the seeded case, including providing the requested location and describing the car breakdown.",
-        "Reached the comparison view and reviewed the transcript and mechanic offer.",
-        "Confirmed that the mechanic did not have any unreported condition in the displayed information."
+        "The run used the intended unknown-conditions scenario and waited until offers were ready. The comparison view visibly marked the offers as having unknown hours, so the agent's final interpretation of the absence/unknown condition did not match the scenario it was asked to verify.",
+        "Update the final assertion to explicitly accept the product's unknown/not-reported presentation (for example, the displayed \"Hours Unknown\") and scope the check to the intended mechanic."
       ],
       "one_liner": null
     }
@@ -2431,13 +2430,13 @@
   "modules": [],
   "uploaded_files": [],
   "test_params": [],
-  "test_level_variables": "[{\"name\":\"no_unreported_mechanic_condition\",\"value\":\"false\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
+  "test_level_variables": "[{\"name\":\"unreported_mechanic_condition_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
   "test_global_variables": [
     {
       "id": 465150,
       "name": "start_url",
-      "value": "http://127.0.0.1:5174",
-      "session_value": "http://127.0.0.1:5174",
+      "value": "http://127.0.0.1:5174/app",
+      "session_value": "http://127.0.0.1:5174/app",
       "is_persist": false,
       "environment_id": 0,
       "environment_name": "No Env"
