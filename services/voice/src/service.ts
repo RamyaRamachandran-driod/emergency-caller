@@ -11,6 +11,7 @@ import { Store, type Record } from "./store.js";
 import { makeProvider, type Provider } from "./providers.js";
 import { equalSecret, ProviderError, verifyVonageWebhook } from "./vonage.js";
 import { bridge } from "./bridge.js";
+import { extractTranscriptQuote, saveQuote } from "./quote.js";
 import { simulate } from "./simulate.js";
 
 export function createVoiceService(config = configFromEnv(process.env), provider?: Provider) {
@@ -41,9 +42,9 @@ export function createVoiceService(config = configFromEnv(process.env), provider
     const work = (async () => {
       clearTimeout(limits.get(id)); limits.delete(id);
       active.get(id)?.close(); active.delete(id);
-      if (!store.terminal(r)) {
+      if (!store.terminal(r) || (failed && (r.status === "completed" || r.reason !== reason))) {
         r.reason = reason;
-        store.emit(r, { type: "status", status: failed ? "failed" : "completed" });
+        store.emit(r, { type: "status", status: failed ? "failed" : "completed", reason });
       }
       await hangup(r);
     })();
@@ -57,11 +58,15 @@ export function createVoiceService(config = configFromEnv(process.env), provider
     if (!previous || previous.status !== status || previous.detail !== detail || previous.sipCode !== sipCode || previous.source !== source) {
       r.providerEvents = [...(r.providerEvents || []), { status, detail, sipCode, source }].slice(-50); store.save(r);
     }
+    if (r.status === "failed" && status === "completed") return;
     if (["completed", "busy", "unanswered", "timeout", "failed", "rejected", "cancelled"].includes(status)) {
       r.providerEnded = true; store.save(r);
       const connection = active.get(r.request.callId);
       if (status === "completed" && connection) connection.remoteEnd(`Vonage: ${status}`);
-      else await finish(r, `Vonage: ${status}${detail ? ` (${detail})` : ""}${sipCode ? ` SIP ${sipCode}` : ""}`, status !== "completed");
+      else {
+        const connected = r.events.some(e => e.type === "status" && e.status === "connected");
+        await finish(r, `Vonage: ${status}${detail ? ` (${detail})` : ""}${sipCode ? ` SIP ${sipCode}` : ""}${status === "completed" && !connected ? "; ended without a verified connection" : ""}`, status !== "completed" || !connected);
+      }
     } else if (r.probe && status === "answered" && r.status === "dialing") store.emit(r, { type: "status", status: "connected" });
   }
   const polled = new Map<string, number>();
@@ -94,7 +99,7 @@ export function createVoiceService(config = configFromEnv(process.env), provider
     } finally { draining = false; }
   }
   const worker = setInterval(() => void drain(), 1000); worker.unref();
-  const app = appFor("voice", () => ({ mode: config.live ? "live" : "test", provider: config.provider, destinationPolicy: config.destinationPolicy, liveReady: config.live && missingConfig(config).length === 0 }));
+  const app = appFor("voice", () => ({ mode: config.live ? "live" : "test", testNumber: config.testNumber, provider: config.provider, destinationPolicy: config.destinationPolicy, liveReady: config.live && missingConfig(config).length === 0 }));
   app.get("/setup", internal, (_req, res) => res.json({ provider: config.provider, mode: config.live ? "live" : "test", liveReady: missingConfig(config).length === 0, missing: missingConfig(config), probeReady: missingConfig(config, { probe: true }).length === 0, probeMissing: missingConfig(config, { probe: true }), providerPort: config.providerPort, activeCalls: [...store.records.values()].filter(r => !store.terminal(r)).length }));
   function accept(callback: boolean, probe = false) {
     return async (req: HttpRequest, res: express.Response) => {
@@ -108,6 +113,7 @@ export function createVoiceService(config = configFromEnv(process.env), provider
       if (request.purpose === "booking" && !request.selectedOffer) { res.status(400).json({ error: "Booking requires selectedOffer" }); return; }
       if (probe && config.provider !== "vonage") { res.status(409).json({ error: "Select VOICE_PROVIDER=vonage for the connection probe" }); return; }
       if (config.live) {
+        if (config.testNumber && request.business.phone !== config.testNumber) { res.status(403).json({ error: "Personal-phone test mode blocks every other destination" }); return; }
         const missing = missingConfig(config, { probe });
         if (missing.length) { res.status(503).json({ error: "Voice setup incomplete", missing }); return; }
         if (request.purpose !== "quote") { res.status(409).json({ error: "Live booking requires dispatch contacts and durable orchestrator booking state; only quote calls are enabled" }); return; }
@@ -142,6 +148,18 @@ export function createVoiceService(config = configFromEnv(process.env), provider
   app.post("/dev/calls", internal, accept(false));
   app.post("/dev/probe", internal, accept(false, true));
   app.get("/calls/:id", internal, (req, res) => { const r = store.records.get(String(req.params.id)); if (!r) { res.status(404).json({ error: "Unknown call" }); return; } res.json(store.public(r)); });
+  const recoveringQuotes = new Set<string>();
+  app.post("/calls/:id/recover-quote", internal, async (req, res) => {
+    const r = store.records.get(String(req.params.id));
+    if (!r) { res.status(404).json({ error: "Unknown call" }); return; }
+    if (!store.terminal(r) || !r.live || r.request.purpose !== "quote") { res.status(409).json({ error: "Only ended live quote calls can be reviewed" }); return; }
+    if (r.events.some(e => e.type === "offer")) { res.json(store.public(r)); return; }
+    if (recoveringQuotes.has(r.request.callId)) { res.status(409).json({ error: "Quote review is already running" }); return; }
+    recoveringQuotes.add(r.request.callId);
+    try { saveQuote(r, store, await extractTranscriptQuote(r, config)); await drain(); res.json(store.public(r)); }
+    catch { res.status(422).json({ error: "The finalized transcript could not support a validated quote" }); }
+    finally { recoveringQuotes.delete(r.request.callId); }
+  });
   app.post("/calls/:id/stop", internal, async (req, res) => { const r = store.records.get(String(req.params.id)); if (!r) { res.status(404).json({ error: "Unknown call" }); return; } await finish(r, "Stopped by user", true); res.json(store.public(r)); });
   errors(app);
   const internalServer = createServer(app);
@@ -218,6 +236,11 @@ export function createVoiceService(config = configFromEnv(process.env), provider
     store.records = new Store(config.dataDir).records;
   // Never redial after a crash. Reconcile and hang up previous telephone legs instead.
   for (const r of store.records.values()) {
+    // Repair old polling/callback races without ever redialing an ended call.
+    const failure = [...(r.providerEvents || [])].reverse().find(e => ["failed", "rejected", "busy", "unanswered", "timeout"].includes(e.status));
+    if (r.status === "completed" && failure && !r.events.some(e => e.type === "status" && e.status === "connected")) {
+      await providerStatus(r, failure.status, { detail: failure.detail, sip_code: failure.sipCode }, "recovery");
+    }
     if (!store.terminal(r)) {
       r.reason = "Voice process restarted; call interrupted and not redialed";
       store.emit(r, { type: "status", status: "failed" });

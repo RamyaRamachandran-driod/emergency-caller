@@ -15,6 +15,7 @@ import { PcmResampler } from "../src/media.js";
 import { Store, type Request } from "../src/store.js";
 import { bridge } from "../src/bridge.js";
 process.env.INTERNAL_SERVICE_TOKEN = "vonage-test-token";
+process.env.VOICE_TEST_NUMBER = "";
 const { createVoiceService } = await import("../src/service.js");
 const root = mkdtempSync(join(tmpdir(), "savior-vonage-tests-"));
 const keys = generateKeyPairSync("rsa", { modulusLength: 2048, privateKeyEncoding: { type: "pkcs8", format: "pem" }, publicKeyEncoding: { type: "spki", format: "pem" } });
@@ -77,13 +78,13 @@ test("streaming resampling is independent of packet boundaries and preserves sam
   assert.deepEqual(Buffer.concat(chunks), whole); assert.ok(Math.abs(whole.length - 960) <= 4);
   const down = new PcmResampler(24000,16000).push(whole); assert.ok(Math.abs(down.length - 640) <= 6);
 });
-test("connection probe dials without AI credentials and polls through completion", async t => {
+test("completed provider status without a verified connection is not success", async t => {
   const h = await harness(t, { missingAi: true, missingSignature: true }), r = request();
   assert.equal((await h.api("/dev/calls", r)).status, 503);
   assert.equal((await h.api("/dev/probe", r)).status, 202);
   assert.equal(h.dialed.length, 1); assert.equal(h.dialed[0].probe, true); assert.equal(h.dialed[0].maxSeconds, 30);
   h.setStatus("completed"); await h.service.drain();
-  assert.equal(h.service.store.records.get(r.callId)?.status, "completed"); assert.equal(h.hung.length, 0);
+  assert.equal(h.service.store.records.get(r.callId)?.status, "failed"); assert.match(h.service.store.records.get(r.callId)?.reason || "", /without a verified connection/); assert.equal(h.hung.length, 0);
   await h.api("/dev/probe", r); assert.equal(h.dialed.length, 1);
 });
 test("Vonage event handler validates signatures, body integrity and telephone leg UUID", async t => {
@@ -131,4 +132,17 @@ test("Vonage bridge relays binary PCM both ways, flushes the tail and clears int
   assert.ok(controls.some(e=>e.action==="notify"));
   peer!.send(JSON.stringify({type:"input_audio_buffer.speech_started"})); await until(()=>controls.some(e=>e.action==="clear"));
   assert.ok(events.some(e=>e.type==="conversation.item.truncate"));
+});
+
+test("detailed failure callback replaces an earlier generic completed result", async t => {
+  const h = await harness(t), r = request(); await h.api("/dev/calls", r);
+  const record = h.service.store.records.get(r.callId)!;
+  h.setStatus("completed"); await h.service.drain();
+  assert.equal(record.status, "failed");
+  const body = Buffer.from(JSON.stringify({ uuid: record.sid, status: "failed", detail: "cannot_route", sip_code: "404" }));
+  const response = await fetch(`${origin(h.service.providerServer)}/vonage/events/${r.callId}/${record.token}`, { method: "POST", headers: { authorization: `Bearer ${await signature(h.c, body)}`, "content-type": "application/json" }, body });
+  assert.equal(response.status, 204); assert.equal(record.status, "failed");
+  assert.match(record.reason || "", /cannot_route.*404/);
+  const last = record.events.at(-1);
+  assert.equal(last?.type, "status"); if (last?.type === "status") assert.match(last.reason || "", /cannot_route.*404/);
 });

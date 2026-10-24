@@ -1,0 +1,39 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { randomUUID } from "node:crypto";
+import { configFromEnv } from "../src/config.js";
+import { Store } from "../src/store.js";
+import { extractTranscriptQuote, saveQuote } from "../src/quote.js";
+
+test("transcript extraction preserves verbatim evidence, rejects invented evidence, and saves once", async t => {
+  const dir = mkdtempSync(join(tmpdir(), "savior-extract-"));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  const store = new Store(dir);
+  const r = store.create({ taskId: randomUUID(), callId: randomUUID(), purpose: "quote", selectedOffer: null,
+    input: { request: "Test", location: "San Jose, California", timezone: "America/Los_Angeles", maxArrivalMinutes: 30 },
+    business: { id: "personal-phone-test", name: "Your phone", phone: "+14155550101", sourceUrl: null, openingStatus: "unknown", checkedAt: new Date().toISOString() } }, true, true);
+  store.emit(r, { type: "transcript", speaker: "agent", sequence: 0, text: "How soon and what price?" });
+  store.emit(r, { type: "transcript", speaker: "business", sequence: 1, text: "Twenty-five minutes. Hundred dollars. Fixed fee for coming out." });
+  const config = configFromEnv({ OPENAI_TEXT_MODEL: "test-model", OPENAI_API_KEY: "fake" });
+  const quote = { availability: "unknown", etaMinutes: 25, amountMinor: 10000, currency: "USD", quoteType: "fixed", conditions: "Call-out fee only; repair total unknown.", evidence: { availability: "", eta: "Twenty-five minutes", price: "Hundred dollars" } };
+  const mock: typeof fetch = async (_url, init) => {
+    const body = JSON.parse(String(init?.body));
+    assert.equal(body.model, "test-model");
+    assert.ok(body.input.includes("Twenty-five minutes"));
+    assert.equal(body.text.format.strict, true);
+    return Response.json({ output: [{ content: [{ type: "output_text", text: JSON.stringify(quote) }] }] });
+  };
+  const result = await extractTranscriptQuote(r, config, mock);
+  assert.equal(result.etaMinutes, 25); assert.equal(result.amountMinor, 10000);
+  saveQuote(r, store, result);
+  assert.throws(() => saveQuote(r, store, result), /already been saved/);
+  assert.equal(r.events.filter(e => e.type === "offer").length, 1);
+  const offer = r.events.find(e => e.type === "offer");
+  assert.equal(offer?.offer.availableNow, false);
+  quote.evidence.price = "Two hundred dollars";
+  await assert.rejects(extractTranscriptQuote(r, config, mock), /exact business transcript/);
+  await assert.rejects(extractTranscriptQuote(r, config, async () => new Response("unavailable", { status: 503 })), /HTTP 503/);
+});

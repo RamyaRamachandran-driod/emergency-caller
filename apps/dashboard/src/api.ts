@@ -17,7 +17,7 @@ async function request<T = Task>(path: string, init?: RequestInit): Promise<T> {
   return body as T;
 }
 
-export interface Setup { mode: "test" | "live"; ready: boolean; issues: string[]; liveBookingEnabled: boolean }
+export interface Setup { mode: "test" | "live"; ready: boolean; issues: string[]; liveBookingEnabled: boolean; testCallNumber: string | null }
 export function getSetup() { return request<Setup>("/api/setup"); }
 
 export function createTask(input: TaskInput, idempotencyKey: string): Promise<Task> {

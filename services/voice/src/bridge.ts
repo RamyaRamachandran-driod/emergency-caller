@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import WebSocket from "ws";
 import type { VoiceConfig } from "./config.js";
 import { PhoneMedia } from "./media.js";
+import { extractTranscriptQuote, saveQuote } from "./quote.js";
 import { instructions, tools, validateQuote } from "./prompt.js";
 import { Store, type Record } from "./store.js";
 
@@ -77,16 +78,12 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
             const text = r.events.filter(e => e.type === "transcript" && e.speaker === "business").map(e => e.type === "transcript" ? e.text : "").join("\n");
             quote = validateQuote(args, text); break;
           } catch (error) {
-            if (n === 19) throw error;
+            if (n === 19) { quote = await extractTranscriptQuote(r, config); break; }
             await new Promise(resolve => setTimeout(resolve, 250));
           }
         }
         if (closed || !quote) return;
-        if (r.events.some(e => e.type === "offer")) throw Error("A quote has already been saved for this call");
-        store.emit(r, { type: "offer", offer: { id: randomUUID(), callId: r.request.callId, businessId: r.request.business.id,
-          availableNow: quote.availability === "available", etaMinutes: quote.etaMinutes, amountMinor: quote.amountMinor,
-          currency: quote.currency, quoteType: quote.quoteType,
-          conditions: [quote.conditions, quote.availability === "unknown" ? "Availability not established." : null].filter(Boolean).join(" ") || null } });
+        saveQuote(r, store, quote);
         result = { saved: true, instruction: "Do not summarize or repeat the quote. Say only: Thanks, I’ll get back to you. Then use end_call after the closing has played. No dispatch has been authorized." };
       } else if (message.name === "end_call") {
         endRequested = true;

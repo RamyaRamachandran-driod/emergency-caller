@@ -19,13 +19,15 @@ async function until<T>(fn: () => Promise<T | null | false>, timeout = 10000): P
 function origin(server: Server) { return `http://127.0.0.1:${(server.address() as { port: number }).port}`; }
 async function listen(server: Server) { server.listen(0, "127.0.0.1"); await once(server, "listening"); }
 
-test("live task API drives sourced calls, delivers transcripts and offers, deduplicates submissions and blocks booking", async t => {
+for (const personal of [false, true]) test(`live task API: ${personal ? "personal phone only" : "sourced calls"}, callbacks, deduplication and booking block`, async t => {
   const dir = mkdtempSync(join(tmpdir(), "savior-workflow-"));
   process.env.INTERNAL_SERVICE_TOKEN = "workflow-test-token";
   process.env.APP_MODE = "live";
+  process.env.VOICE_TEST_NUMBER = "";
   const { createVoiceService } = await import("../../voice/src/service.js");
   const config = configFromEnv({
-    VOICE_MODE: "live", VOICE_PROVIDER: "twilio", VOICE_DESTINATION_POLICY: "sourced",
+    VOICE_MODE: "live", VOICE_PROVIDER: "twilio", VOICE_DESTINATION_POLICY: personal ? "allowlist" : "sourced",
+    VOICE_TEST_NUMBER: personal ? "+14155550101" : "", VOICE_ALLOWED_NUMBERS: personal ? "+14155550101" : "",
     TWILIO_ACCOUNT_SID: `AC${"a".repeat(32)}`, TWILIO_AUTH_TOKEN: "fake",
     TWILIO_PHONE_NUMBER: "+14155550100", OPENAI_API_KEY: "fake",
     PUBLIC_VOICE_URL: "https://example.test", VOICE_DATA_DIR: dir,
@@ -53,7 +55,7 @@ test("live task API drives sourced calls, delivers transcripts and offers, dedup
   await new Promise<void>(resolve => reservation.close(() => resolve()));
   process.env.ORCHESTRATOR_URL = base;
   const child = spawn(process.execPath, ["--import", "tsx", "services/orchestrator/src/index.ts"], {
-    env: { ...process.env, APP_MODE: "live", FOUND_STAGE_HOLD_MS: "0", ORCHESTRATOR_PORT: new URL(base).port, DATABASE_PATH: join(dir, "tasks.sqlite"), DISCOVERY_URL: origin(discovery), VOICE_URL: origin(voice.internalServer) },
+    env: { ...process.env, VOICE_TEST_NUMBER: personal ? "+14155550101" : "", APP_MODE: "live", FOUND_STAGE_HOLD_MS: "0", ORCHESTRATOR_PORT: new URL(base).port, DATABASE_PATH: join(dir, "tasks.sqlite"), DISCOVERY_URL: origin(discovery), VOICE_URL: origin(voice.internalServer) },
     stdio: ["ignore", "pipe", "pipe"],
   });
   let output = "";
@@ -71,23 +73,26 @@ test("live task API drives sourced calls, delivers transcripts and offers, dedup
   });
   const submit = (key: string) => fetch(`${base}/api/tasks`, { method: "POST", headers: { "content-type": "application/json", "Idempotency-Key": key }, body: JSON.stringify({ request: "Test quote", location: "Test location", timezone: "America/Los_Angeles", maxArrivalMinutes: 30 }) });
   discoveryMode = "test";
-  assert.equal((await submit("blocked")).status, 503);
+  if (!personal) assert.equal((await submit("blocked")).status, 503);
   assert.equal(dialCount, 0); assert.equal(searches, 0);
   discoveryMode = "live";
   config.live = false;
   assert.equal((await submit("mixed-voice")).status, 503);
   config.live = true;
-  config.destinationPolicy = "allowlist";
+  config.destinationPolicy = personal ? "sourced" : "allowlist";
   assert.equal((await submit("restricted-voice")).status, 503);
   assert.equal(dialCount, 0); assert.equal(searches, 0);
-  config.destinationPolicy = "sourced";
+  config.destinationPolicy = personal ? "allowlist" : "sourced";
   assert.equal((await (await fetch(`${base}/api/setup`)).json()).ready, true);
   const responses = await Promise.all([submit("same-key"), submit("same-key")]);
   const tasks = await Promise.all(responses.map(r => r.json() as Promise<Task>));
   assert.equal(tasks[0].id, tasks[1].id); assert.equal(tasks[0].simulated, false);
   await until(async () => dialCount === 1);
-  assert.equal(searches, 1);
+  assert.equal(searches, personal ? 0 : 1);
+  assert.equal(tasks[0].businesses.length, 0); // Discovery finishes asynchronously.
   const record = [...voice.store.records.values()][0];
+  assert.equal(record.request.business.phone, "+14155550101");
+  if (personal) assert.equal(record.request.business.name, "Your phone (live test)");
   voice.store.emit(record, { type: "status", status: "connected" });
   voice.store.emit(record, { type: "transcript", speaker: "business", sequence: 0, text: "Twenty minutes, two hundred dollars." });
   voice.store.emit(record, { type: "offer", offer: { id: randomUUID(), callId: record.request.callId, businessId: record.request.business.id, availableNow: true, etaMinutes: 20, amountMinor: 20000, currency: "USD", quoteType: "estimate", conditions: null } });

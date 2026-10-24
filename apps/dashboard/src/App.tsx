@@ -24,8 +24,13 @@ export default function App() {
   const bookingDialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    requestDialog.current?.showModal();
     let cancelled = false;
+    const taskId = new URLSearchParams(window.location.search).get("task");
+    if (taskId) {
+      getTask(taskId).then(value => { if (!cancelled) setTask(value); }).catch(() => {
+        if (!cancelled) { setError("Could not restore the task."); requestDialog.current?.showModal(); }
+      });
+    } else requestDialog.current?.showModal();
     const refresh = () => getSetup().then(value => { if (!cancelled) setSetup(value); }).catch(() => { if (!cancelled) setSetup(null); });
     void refresh();
     const timer = window.setInterval(refresh, 5000);
@@ -72,6 +77,7 @@ export default function App() {
       const created = await createTask(input, submission.current!.key);
       submission.current = null;
       setTask(created);
+      window.history.replaceState(null, "", `${window.location.pathname}?task=${created.id}`);
       setOpenBusinessId(null);
       requestDialog.current?.close();
     } catch (submitError) {
@@ -222,11 +228,11 @@ export default function App() {
             <option value={60}>1 hour</option>
             <option value={90}>90 minutes</option>
           </select>
-          <p className="footnote muted">{!setup ? "Checking service readiness…" : setup.mode === "live" ? "Live calling: this will find and phone up to three businesses for quotes. No booking or dispatch is requested." : "Simulation: no real businesses will be called."}</p>
+          <p className="footnote muted">{!setup ? "Checking service readiness…" : setup.testCallNumber ? `Personal-phone test: one real call to ${setup.testCallNumber}. No businesses will be searched or called. Answer as the mechanic.` : setup.mode === "live" ? "Live calling: this will find and phone up to three businesses for quotes. No booking or dispatch is requested." : "Simulation: no real businesses will be called."}</p>
           {setup && !setup.ready && <div className="strip warn">{setup.issues.join(" ")}</div>}
           {error && <div className="strip error" role="alert">{error}</div>}
           <button className="btn primary wide" type="submit" disabled={busy || !setup?.ready || !request.trim() || !location.trim()}>
-            {busy ? "Starting…" : setup?.mode === "live" ? "Find and call businesses" : "Find help"}
+            {busy ? "Starting…" : setup?.testCallNumber ? "Call my phone" : setup?.mode === "live" ? "Find and call businesses" : "Find help"}
             <Icon name="arrow" size={15} />
           </button>
           <p className="footnote muted">We ask before requesting any booking.</p>

@@ -40,7 +40,7 @@ export function ActivityFeed({ task, onOpen }: { task: Task; onOpen: (businessId
       const base = { id: event.eventId, at: event.at, businessId: call.business.id };
       if (event.type === "transcript") items.push({ ...base, order: event.sequence, kind: event.speaker, text: event.text });
       if (event.type === "status" && event.status === "failed")
-        items.push({ ...base, order: 1e6, kind: "failed", text: `${call.purpose === "quote" ? "Quote" : "Booking"} call failed` });
+        items.push({ ...base, order: 1e6, kind: "failed", text: event.reason ?? `${call.purpose === "quote" ? "Quote" : "Booking"} call failed` });
       if (event.type === "offer")
         items.push({
           ...base,

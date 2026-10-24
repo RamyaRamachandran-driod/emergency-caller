@@ -14,6 +14,7 @@ import { Store, type Request } from "../src/store.js";
 import { validateQuote } from "../src/prompt.js";
 import { bridge } from "../src/bridge.js";
 process.env.INTERNAL_SERVICE_TOKEN = "local-test-token";
+process.env.VOICE_TEST_NUMBER = "";
 const { createVoiceService } = await import("../src/service.js");
 const pause = (ms = 20) => new Promise(r => setTimeout(r, ms));
 async function until(fn: () => boolean, timeout = 4000) { const end = Date.now() + timeout; while (!fn()) { if (Date.now() > end) throw Error("Timed out waiting for condition"); await pause(); } }
@@ -206,4 +207,14 @@ test("sourced policy only permits authenticated discovery calls with a published
   assert.equal((await h.api("/calls", r)).status, 202);
   await until(() => h.dialed.length === 1);
   assert.equal((await h.api("/health")).status, 200);
+});
+
+test("personal phone lock overrides sourced policy and every other allowlisted destination", async t => {
+  const h = await harness(t, { testNumber: "+14155550101", destinationPolicy: "sourced", allowedNumbers: ["+14155550101", "+14155550199"] });
+  const r = request(); r.business.phone = "+14155550199"; r.business.sourceUrl = "https://example.test/contact";
+  assert.equal((await h.api("/calls", r)).status, 403);
+  assert.equal(h.dialed.length, 0);
+  const own = request();
+  assert.equal((await h.api("/calls", own)).status, 202);
+  await until(() => h.dialed.length === 1);
 });
