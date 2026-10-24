@@ -1,3 +1,4 @@
+import { mode } from "@emergency/server-kit";
 import { randomUUID } from "node:crypto";
 import { CallEvent, CallRequest, type Call, type Task, type TaskInput } from "@emergency/shared";
 import type { MutationResult } from "./store.js";
@@ -17,6 +18,7 @@ export class Orchestrator {
     private readonly store = new TaskStore(),
     private readonly discovery = new DiscoveryClient(),
     private readonly voice = new VoiceClient(),
+    private readonly live = mode === "live",
   ) {}
 
   getTask(taskId: string): Task | null { return this.store.get(taskId); }
@@ -29,7 +31,7 @@ export class Orchestrator {
     }
     const task: Task = {
       id: randomUUID(), input, stage: "finding", businesses: [], calls: [], offers: [],
-      warnings: [], simulated: true,
+      warnings: [], simulated: !this.live,
     };
     this.store.create(task, clientRequestId);
     void this.findAndStartQuotes(task.id);

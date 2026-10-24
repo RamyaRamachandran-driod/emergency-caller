@@ -1,21 +1,22 @@
 import { TaskInput } from "@emergency/shared";
 import { appFor, internal, errors, mode } from "@emergency/server-kit";
 import { Orchestrator } from "./coordinator.js";
+import { workflowReadiness } from "./service-clients.js";
 import { TaskStore } from "./store.js";
 
 const app = appFor("orchestrator");
 const store = new TaskStore();
 const orchestrator = new Orchestrator(store);
 
-app.post("/api/tasks", (req, res) => {
+app.get("/api/setup", async (_req, res) => res.json(await workflowReadiness()));
+
+app.post("/api/tasks", async (req, res) => {
   const input = TaskInput.parse(req.body);
-  if (mode === "live") {
-    res.status(501).json({ error: "Live orchestration is disabled until the discovery and voice agents are ready." });
-    return;
-  }
   const key = req.header("Idempotency-Key")?.trim() || null;
   const prior = key ? orchestrator.getTaskByRequestId(key) : null;
   if (prior) { res.status(200).json(prior); return; }
+  const setup = await workflowReadiness();
+  if (!setup.ready) { res.status(503).json({ error: setup.issues.join(" ") }); return; }
   res.status(202).json(orchestrator.submit(input, key));
 });
 
@@ -26,6 +27,8 @@ app.get("/api/tasks/:id", (req, res) => {
 });
 
 app.post("/api/tasks/:id/book", async (req, res) => {
+  const existing = orchestrator.getTask(req.params.id);
+  if (existing && !existing.simulated) { res.status(409).json({ error: "Live quotes are available. Booking requires customer dispatch contact details and is not enabled yet." }); return; }
   const key = req.header("Idempotency-Key")?.trim();
   if (!key) { res.status(400).json({ error: "Set an Idempotency-Key header to prevent duplicate booking calls." }); return; }
   const offerId = typeof req.body?.offerId === "string" ? req.body.offerId : "";

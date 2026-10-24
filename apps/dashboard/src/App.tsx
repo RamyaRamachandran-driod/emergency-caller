@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Task } from "@emergency/shared";
-import { bookOffer, createTask, getTask } from "./api";
+import { bookOffer, createTask, getTask, getSetup, type Setup } from "./api";
 import { ActivityFeed } from "./ActivityFeed";
 import { Board } from "./Board";
 import { QuoteBar } from "./QuoteBar";
@@ -10,6 +10,8 @@ import { Icon, LiveDot, label, money } from "./ui";
 const TERMINAL: Task["stage"][] = ["confirmed", "failed", "no_matches"];
 
 export default function App() {
+  const [setup, setSetup] = useState<Setup | null>(null);
+  const submission = useRef<{ fingerprint: string; key: string } | null>(null);
   const [task, setTask] = useState<Task | null>(null);
   const [request, setRequest] = useState("My car won’t start. I need a mobile mechanic within 30 minutes.");
   const [location, setLocation] = useState("");
@@ -23,6 +25,11 @@ export default function App() {
 
   useEffect(() => {
     requestDialog.current?.showModal();
+    let cancelled = false;
+    const refresh = () => getSetup().then(value => { if (!cancelled) setSetup(value); }).catch(() => { if (!cancelled) setSetup(null); });
+    void refresh();
+    const timer = window.setInterval(refresh, 5000);
+    return () => { cancelled = true; window.clearInterval(timer); };
   }, []);
 
   useEffect(() => {
@@ -53,13 +60,17 @@ export default function App() {
     setBusy(true);
     setError("");
     try {
-      const created = await createTask({
+      const input = {
         request: request.trim(),
         location: location.trim(),
         // Placeholder per docs/ARCHITECTURE.md: live discovery must use the breakdown location's timezone.
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         maxArrivalMinutes: arrival,
-      });
+      };
+      const fingerprint = JSON.stringify(input);
+      if (submission.current?.fingerprint !== fingerprint) submission.current = { fingerprint, key: crypto.randomUUID() };
+      const created = await createTask(input, submission.current!.key);
+      submission.current = null;
       setTask(created);
       setOpenBusinessId(null);
       requestDialog.current?.close();
@@ -211,9 +222,11 @@ export default function App() {
             <option value={60}>1 hour</option>
             <option value={90}>90 minutes</option>
           </select>
+          <p className="footnote muted">{!setup ? "Checking service readiness…" : setup.mode === "live" ? "Live calling: this will find and phone up to three businesses for quotes. No booking or dispatch is requested." : "Simulation: no real businesses will be called."}</p>
+          {setup && !setup.ready && <div className="strip warn">{setup.issues.join(" ")}</div>}
           {error && <div className="strip error" role="alert">{error}</div>}
-          <button className="btn primary wide" type="submit" disabled={busy || !request.trim() || !location.trim()}>
-            {busy ? "Starting…" : "Find help"}
+          <button className="btn primary wide" type="submit" disabled={busy || !setup?.ready || !request.trim() || !location.trim()}>
+            {busy ? "Starting…" : setup?.mode === "live" ? "Find and call businesses" : "Find help"}
             <Icon name="arrow" size={15} />
           </button>
           <p className="footnote muted">We ask before requesting any booking.</p>

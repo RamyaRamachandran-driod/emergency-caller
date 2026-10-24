@@ -1,7 +1,7 @@
 import { DiscoveryRequest } from "@emergency/shared";
 import { appFor, internal, errors, mode } from "@emergency/server-kit";
 import { discoverLive } from "./live";
-const app = appFor("discovery");
+const app = appFor("discovery", () => ({ liveReady: mode === "live" && !!process.env.OPENAI_API_KEY && !!process.env.OPENAI_TEXT_MODEL }));
 app.post("/discover", internal, async (req, res) => {
   const input = DiscoveryRequest.parse(req.body);
   if (mode === "live") {

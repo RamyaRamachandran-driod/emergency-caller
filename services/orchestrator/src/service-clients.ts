@@ -48,3 +48,23 @@ export class VoiceClient {
     return CallAccepted.parse(response);
   }
 }
+
+// Check both services before accepting work; mixed simulation/live modes must never dial.
+export async function workflowReadiness() {
+  const expected = process.env.APP_MODE ?? "test";
+  const issues: string[] = [];
+  await Promise.all([
+    ["discovery", process.env.DISCOVERY_URL ?? "http://localhost:4101"],
+    ["voice", process.env.VOICE_URL ?? "http://localhost:4102"],
+  ].map(async ([name, base]) => {
+    try {
+      const response = await fetch(`${base}/health`, { signal: AbortSignal.timeout(3000) });
+      const health = await response.json();
+      if (!response.ok || health.service !== name || health.status !== "ok") issues.push(`${name} is not healthy.`);
+      else if (health.mode !== expected) issues.push(`${name} must use ${expected} mode to match the orchestrator.`);
+      else if (expected === "live" && !health.liveReady) issues.push(`${name} live setup is incomplete.`);
+      else if (name === "voice" && expected === "live" && health.destinationPolicy !== "sourced") issues.push("Set VOICE_DESTINATION_POLICY=sourced to call discovered business numbers.");
+    } catch { issues.push(`${name} is unreachable.`); }
+  }));
+  return { mode: expected, ready: issues.length === 0, issues, liveBookingEnabled: false };
+}

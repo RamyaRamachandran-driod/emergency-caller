@@ -13,7 +13,7 @@ export function QuoteBar({
   const max = task.input.maxArrivalMinutes;
   const ranked = rankOffers(task.offers, max);
   if (ranked.length === 0) return null;
-  const canChoose = task.stage === "offers_ready";
+  const canChoose = task.simulated && task.stage === "offers_ready";
   const name = (businessId: string) => task.businesses.find((entry) => entry.id === businessId)?.name ?? "Unknown business";
   const top = ranked.find((offer) => !ineligibleReason(offer, max));
   const selected = task.offers.find((offer) => offer.id === task.selectedOfferId);
@@ -21,6 +21,7 @@ export function QuoteBar({
   return (
     <div className="quote-bar">
       {selected && <BookingStatus task={task} businessName={name(selected.businessId)} />}
+      {!task.simulated && <p className="footnote muted">Live quotes only. Contact the business directly to arrange booking.</p>}
       <div className="quote-bar-row">
         <div className="quote-bar-label">
           Offers <span className="mono">{ranked.length}</span>

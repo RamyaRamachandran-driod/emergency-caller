@@ -7,6 +7,8 @@ const LA = "America/Los_Angeles";
 test("normalizePhone keeps only valid +1 numbers", () => {
   assert.equal(normalizePhone("(415) 555-0123"), "+14155550123");
   assert.equal(normalizePhone("+1 415.555.0123"), "+14155550123");
+  assert.equal(normalizePhone("+1 408‑703‑6190"), "+14087036190");
+  assert.equal(normalizePhone("+1 408–703–6190"), "+14087036190");
   assert.equal(normalizePhone("1-800-TOW-TRUCK"), null);
   assert.equal(normalizePhone("+44 20 7946 0958"), null);
   assert.equal(normalizePhone("555-0123"), null);

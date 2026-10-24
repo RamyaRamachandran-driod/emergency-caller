@@ -24,7 +24,7 @@ Breakdown location: ${input.location}
 Problem: ${input.request}
 
 Rules:
-- phone: only a number published on the business's own site or a listing page. Never guess or construct a number.
+- phone: use E.164 format (+1 followed by 10 digits for US/Canada); only a number published on the business's own site or a listing page. Never guess or construct a number.
 - sourceUrl: the page where you found that phone number.
 - hours: weekly opening hours as published. day 0=Sunday..6=Saturday, open/close as 24h "HH:MM" local time. Use "00:00"-"24:00" for open 24 hours. A close earlier than open means it closes after midnight. Use null when hours are not published.
 - timezone: the IANA timezone of the breakdown location.`;
@@ -84,6 +84,7 @@ export function shortlist(found: Found, input: TaskInput, searchAt: string) {
 
 export function normalizePhone(raw: string) {
   // ponytail: US/Canada (+1) only; switch to libphonenumber-js if discovery goes international
+  raw = raw.normalize("NFKC").replace(/[\u2010-\u2015\u2212]/g, "-");
   if (!/^[\d\s().+-]+$/.test(raw)) return null;
   const digits = raw.replace(/\D/g, "").replace(/^1(?=\d{10}$)/, "");
   return /^[2-9]\d{2}[2-9]\d{6}$/.test(digits) ? `+1${digits}` : null;

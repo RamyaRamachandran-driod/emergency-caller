@@ -191,3 +191,19 @@ test("media upgrades require both a signed request and the call correlation toke
   t.after(() => good.terminate());
   assert.equal(good.readyState, WebSocket.OPEN);
 });
+
+test("sourced policy only permits authenticated discovery calls with a published, open-or-unknown business", async t => {
+  const h = await harness(t, { destinationPolicy: "sourced", allowedNumbers: [] });
+  for (const sourceUrl of [null, "file:///tmp/phone", "https://user:pass@example.test/phone"]) {
+    const r = request(); r.business.sourceUrl = sourceUrl;
+    assert.equal((await h.api("/calls", r)).status, 403);
+  }
+  const closed = request(); closed.business.sourceUrl = "https://example.test/phone"; closed.business.openingStatus = "closed";
+  assert.equal((await h.api("/calls", closed)).status, 403);
+  const r = request(); r.business.sourceUrl = "https://example.test/phone";
+  assert.equal((await h.api("/dev/calls", r)).status, 403);
+  assert.equal(h.dialed.length, 0);
+  assert.equal((await h.api("/calls", r)).status, 202);
+  await until(() => h.dialed.length === 1);
+  assert.equal((await h.api("/health")).status, 200);
+});

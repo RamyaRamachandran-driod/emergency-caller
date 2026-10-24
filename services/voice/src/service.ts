@@ -94,7 +94,7 @@ export function createVoiceService(config = configFromEnv(process.env), provider
     } finally { draining = false; }
   }
   const worker = setInterval(() => void drain(), 1000); worker.unref();
-  const app = appFor("voice", () => ({ mode: config.live ? "live" : "test", provider: config.provider, liveReady: config.live && missingConfig(config).length === 0 }));
+  const app = appFor("voice", () => ({ mode: config.live ? "live" : "test", provider: config.provider, destinationPolicy: config.destinationPolicy, liveReady: config.live && missingConfig(config).length === 0 }));
   app.get("/setup", internal, (_req, res) => res.json({ provider: config.provider, mode: config.live ? "live" : "test", liveReady: missingConfig(config).length === 0, missing: missingConfig(config), probeReady: missingConfig(config, { probe: true }).length === 0, probeMissing: missingConfig(config, { probe: true }), providerPort: config.providerPort, activeCalls: [...store.records.values()].filter(r => !store.terminal(r)).length }));
   function accept(callback: boolean, probe = false) {
     return async (req: HttpRequest, res: express.Response) => {
@@ -111,7 +111,12 @@ export function createVoiceService(config = configFromEnv(process.env), provider
         const missing = missingConfig(config, { probe });
         if (missing.length) { res.status(503).json({ error: "Voice setup incomplete", missing }); return; }
         if (request.purpose !== "quote") { res.status(409).json({ error: "Live booking requires dispatch contacts and durable orchestrator booking state; only quote calls are enabled" }); return; }
-        if (!Phone.safeParse(request.business.phone).success || !config.allowedNumbers.includes(request.business.phone)) { res.status(403).json({ error: "Destination must be in VOICE_ALLOWED_NUMBERS" }); return; }
+        let sourced = false;
+        try {
+          const url = new URL(request.business.sourceUrl || "");
+          sourced = callback && !probe && config.destinationPolicy === "sourced" && ["https:", "http:"].includes(url.protocol) && !url.username && !url.password && request.business.openingStatus !== "closed";
+        } catch { /* Unpublished numbers require the explicit allowlist. */ }
+        if (!Phone.safeParse(request.business.phone).success || (!config.allowedNumbers.includes(request.business.phone) && !sourced)) { res.status(403).json({ error: "Destination requires VOICE_ALLOWED_NUMBERS or sourced discovery calling enabled" }); return; }
         if ([...store.records.values()].filter(r => r.live && !store.terminal(r)).length >= config.maxConcurrent) { res.status(429).json({ error: "Voice call capacity reached" }); return; }
       }
       const r = store.create(request, config.live, callback, config.provider, probe);
@@ -222,6 +227,8 @@ export function createVoiceService(config = configFromEnv(process.env), provider
   }
   async function close() {
     closing = true; clearInterval(worker);
+    for (const timer of limits.values()) clearTimeout(timer);
+    limits.clear();
     await Promise.all([...store.records.values()].filter(r => !store.terminal(r)).map(r => finish(r, "Voice service shutting down", true)));
     await Promise.all([...dialing]);
     while (draining) await new Promise(resolve => setTimeout(resolve, 25));

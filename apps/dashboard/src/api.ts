@@ -1,7 +1,7 @@
 import type { Task, TaskInput } from "@emergency/shared";
 
 // Relative paths: Vite proxies /api to the orchestrator in development.
-async function request(path: string, init?: RequestInit): Promise<Task> {
+async function request<T = Task>(path: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers);
   headers.set("content-type", "application/json");
   const response = await fetch(path, { ...init, headers });
@@ -14,11 +14,14 @@ async function request(path: string, init?: RequestInit): Promise<Task> {
         : (error ?? `Request failed with status ${response.status}`),
     );
   }
-  return body as Task;
+  return body as T;
 }
 
-export function createTask(input: TaskInput): Promise<Task> {
-  return request("/api/tasks", { method: "POST", body: JSON.stringify(input) });
+export interface Setup { mode: "test" | "live"; ready: boolean; issues: string[]; liveBookingEnabled: boolean }
+export function getSetup() { return request<Setup>("/api/setup"); }
+
+export function createTask(input: TaskInput, idempotencyKey: string): Promise<Task> {
+  return request("/api/tasks", { method: "POST", headers: { "Idempotency-Key": idempotencyKey }, body: JSON.stringify(input) });
 }
 
 export function getTask(taskId: string): Promise<Task> {

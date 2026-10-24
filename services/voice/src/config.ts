@@ -10,7 +10,7 @@ export interface VoiceConfig {
   provider: ProviderName; vonageApplicationId: string; vonagePrivateKeyPath: string; vonageApiKey: string; vonageSignatureSecret: string;
   live: boolean; port: number; providerPort: number; publicUrl: string;
   accountSid: string; authToken: string; from: string; apiKey: string;
-  model: string; voice: string; transcriptionModel: string; allowedNumbers: string[];
+  model: string; voice: string; transcriptionModel: string; allowedNumbers: string[]; destinationPolicy: "allowlist" | "sourced";
   maxSeconds: number; maxConcurrent: number; dataDir: string;
 }
 export function configFromEnv(env: NodeJS.ProcessEnv): VoiceConfig {
@@ -26,6 +26,7 @@ export function configFromEnv(env: NodeJS.ProcessEnv): VoiceConfig {
     from: provider === "vonage" ? (env.VONAGE_FROM_NUMBER || "123456789") : (env.TWILIO_PHONE_NUMBER || ""), apiKey: env.OPENAI_API_KEY ?? "",
     model: env.OPENAI_REALTIME_MODEL || "gpt-realtime",
     voice: env.OPENAI_VOICE || "marin", transcriptionModel: env.OPENAI_TRANSCRIPTION_MODEL || "gpt-4o-mini-transcribe",
+    destinationPolicy: z.enum(["allowlist", "sourced"]).parse(env.VOICE_DESTINATION_POLICY || "allowlist"),
     allowedNumbers: (env.VOICE_ALLOWED_NUMBERS ?? "").split(",").map(s => s.trim()).filter(Boolean),
     maxSeconds: integer("VOICE_MAX_SECONDS", 180, 600), maxConcurrent: integer("VOICE_MAX_CONCURRENT", 3, 10),
     dataDir: resolve(root, env.VOICE_DATA_DIR || "data/voice"),
@@ -52,6 +53,6 @@ export function missingConfig(c: VoiceConfig, options: { probe?: boolean } = {})
     try { const u = new URL(c.publicUrl); if (u.protocol !== "https:" || u.pathname !== "/" || u.search || u.hash || u.username || u.password) throw Error(); }
     catch { missing.push("PUBLIC_VOICE_URL (HTTPS tunnel origin)"); }
   }
-  if (!c.allowedNumbers.length || c.allowedNumbers.some(p => !Phone.safeParse(p).success)) missing.push("VOICE_ALLOWED_NUMBERS");
+  if ((c.destinationPolicy === "allowlist" && !c.allowedNumbers.length) || c.allowedNumbers.some(p => !Phone.safeParse(p).success)) missing.push("VOICE_ALLOWED_NUMBERS");
   return missing;
 }

@@ -42,6 +42,15 @@ Live outbound quote calls use Vonage or Twilio with OpenAI Realtime. A local CLI
 The orchestrator uses one canonical set of shared Zod contracts. Its discovery and voice clients validate messages at the service boundary; bump the shared contract version and update the matching adapter when a team payload changes. Discovery requests time out after three minutes by default. Kane CLI is the planned generated-journey validation path.
 
 ## Not implemented yet
-Clarification turns, dispatch-contact collection, live booking validation, offer expiry, production authentication, and deployment. Customer requests are typed. The dashboard defaults to simulation; live discovery and live quote calling are implemented as independently configured services. End-to-end production dispatch is not verified. Do not expose the internal APIs or use the scaffold for actual dispatch.
+Clarification turns, dispatch-contact collection, live booking validation, offer expiry, production authentication, and deployment. Customer requests are typed. The dashboard defaults to simulation. Set APP_MODE=live, VOICE_MODE=live and VOICE_DESTINATION_POLICY=sourced to run discovery and quote calls from the dashboard. GET /api/setup checks service readiness and matching modes before any task starts. Live requests call up to three sourced businesses and stream transcripts and quotes back to the board. Live booking stays disabled. End-to-end production dispatch is not verified. Do not expose the internal APIs or use the scaffold for actual dispatch.
 
 Use root .env for server credentials; never put OpenAI/Twilio keys into frontend variables. Keep databases, real contacts, recordings, and credentials out of Git.
+
+
+### Local live dashboard
+
+Set `APP_MODE=live`, `VOICE_MODE=live`, `VOICE_DESTINATION_POLICY=sourced`, `OPENAI_TEXT_MODEL` and the voice credentials in `.env`. Keep `VOICE_ALLOWED_NUMBERS` for personal CLI tests; sourced calling applies only to authenticated `/calls` requests with a published HTTP(S) business source and a business not known to be closed. Discovery filters phone numbers to US/Canada and uses the breakdown location timezone for opening hours.
+
+Run `npm run voice:tunnel`, keep `PUBLIC_VOICE_URL` current, and run `npm run dev`. The dashboard proxies to `ORCHESTRATOR_URL`, including when using custom local ports. Check `/api/setup` through the dashboard: all services must use the same mode. **Find and call businesses** starts real quote calls; it does not book or dispatch. Standalone CLI tests can use live voice with `APP_MODE=test`, but mixed service modes cannot start dashboard tasks.
+
+`npm run test:workflow` verifies the live HTTP workflow with stub discovery and an injected phone provider, including transcript/offer callbacks, duplicate submission protection, mixed-mode rejection and the live booking block. It does not place a real call or verify the external discovery model.

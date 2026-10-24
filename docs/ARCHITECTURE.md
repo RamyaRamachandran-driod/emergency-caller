@@ -12,7 +12,7 @@ flowchart TD
 ```
 
 ## Ramya: services/orchestrator
-Own shared contracts, backend API, coordination, SQLite persistence, and validation. The orchestrator stores task snapshots and callback de-duplication records in SQLite. Discovery and voice calls cross explicit HTTP client boundaries that validate the shared Zod contracts; evolve those shared contracts and client adapters together when an agent's payload changes. Discovery gets a three-minute request timeout by default. The current scaffold is simulated; live integrations and durable callback delivery still need validation.
+Own shared contracts, backend API, coordination, SQLite persistence, and validation. The orchestrator stores task snapshots and callback de-duplication records in SQLite. Discovery and voice calls cross explicit HTTP client boundaries that validate the shared Zod contracts; evolve those shared contracts and client adapters together when an agent's payload changes. Discovery gets a three-minute request timeout by default. The dashboard supports simulation or live quote workflows. GET /api/setup checks discovery and voice health, matching modes, live readiness, and sourced destination policy. Tasks are marked simulated only in test mode. Duplicate submission keys reuse the existing task. Live booking is rejected before claiming a booking attempt.
 
 ## Safi: services/discovery
 Implement OpenAI web search discovery using breakdown location, backend-supplied UTC time, and the location's IANA timezone. Return at most three deduplicated businesses, normalized published phone numbers, source URLs, opening status, and warnings. Missing hours remain unknown. Opening hours do not establish a 30-minute ETA. Test mode returns fictional businesses. Live mode uses OpenAI web search with sourced, normalized business candidates.
@@ -26,7 +26,7 @@ Own typed complaint input, breakdown location, clarification UI, progress counts
 ## Interfaces
 All runtime request/event schemas and the internal API contract version live in packages/shared/src/index.ts. Internal discovery, voice and callback endpoints require INTERNAL_SERVICE_TOKEN and the matching x-emergency-contract-version. Payload shape changes must update the shared schema and the relevant service adapter together; incompatible versions fail explicitly. The browser only talks to orchestrator. Services use HTTP; voice acknowledges immediately and reports progress through callbacks. Bind locally during development and expose only the voice provider endpoints through a tunnel once implemented.
 
-Current endpoints: POST /api/tasks, GET /api/tasks/:id, POST /api/tasks/:id/book (body offerId), POST /internal/events; POST /discover; POST /calls; GET /health on each service. VOICE_MODE independently selects simulated or live quote calls. Missing voice configuration returns 503 and live booking returns 409. The local voice CLI can rehearse a quote call without the dashboard or orchestrator.
+Current endpoints: GET /api/setup, POST /api/tasks, GET /api/tasks/:id, POST /api/tasks/:id/book (body offerId), POST /internal/events; POST /discover; POST /calls; GET /health on each service. VOICE_MODE independently selects simulated or live quote calls. Missing voice configuration returns 503 and live booking returns 409. The local voice CLI can rehearse a quote call without the dashboard or orchestrator.
 
 ## Integration order
 1. Agree on contracts; all four work in their owned directories.
