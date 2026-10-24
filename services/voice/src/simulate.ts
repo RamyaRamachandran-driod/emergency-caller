@@ -40,8 +40,7 @@ function simulatedQuote(n: number, scenario: string | null, maxArrivalMinutes: n
     case "unknown-eta":
       return { ...quote, reply: `Simulated response: we can come out, estimated $${price}, but I can't say when we'd arrive.`, etaMinutes: null };
     case "unknown-availability":
-      // The shared contract has no "unknown" for availableNow, so the closest truthful value is false.
-      return { ...quote, reply: `Simulated response: I'm not sure anyone is free right now; it would be about ${eta} minutes, estimated $${price}.`, availableNow: false };
+      return { ...quote, reply: `Simulated response: I'm not sure anyone is free right now; it would be about ${eta} minutes, estimated $${price}.`, availableNow: null };
     case "unavailable":
       return { ...quote, reply: "Simulated response: sorry, nobody is free right now.", availableNow: false };
     case "unknown-conditions":

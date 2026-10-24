@@ -28,7 +28,7 @@ export async function extractTranscriptQuote(r: Record, config: VoiceConfig, req
 export function saveQuote(r: Record, store: Store, quote: z.infer<typeof QuoteResult>) {
   if (r.events.some(e => e.type === "offer")) throw Error("A quote has already been saved for this call");
   store.emit(r, { type: "offer", offer: { id: randomUUID(), callId: r.request.callId, businessId: r.request.business.id,
-    availableNow: quote.availability === "available", etaMinutes: quote.etaMinutes, amountMinor: quote.amountMinor,
+    availableNow: quote.availability === "unknown" ? null : quote.availability === "available", etaMinutes: quote.etaMinutes, amountMinor: quote.amountMinor,
     currency: quote.currency, quoteType: quote.quoteType,
     conditions: [quote.conditions, quote.availability === "unknown" ? "Availability not established." : null].filter(Boolean).join(" ") || null } });
 }

@@ -1,5 +1,5 @@
 {
-  "commit_id": "f1902aee-68d2-4a0b-8cd9-bf4792cfbda8",
+  "commit_id": "b56caf03-590f-4c93-8674-26233fbe254a",
   "test_id": "779b6ec9-2ae4-4230-9301-0a9b79c6e8ad",
   "testcase_id": "01M5QTVVHD1N85AC6R11JF9D22",
   "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
@@ -8,12 +8,12 @@
   "session_name": "eligible-booking-confirms-after-business-acceptance",
   "executions": [
     {
-      "execution_id": "7cef0ee8-ebdb-49e3-a157-794dbde1992b",
+      "execution_id": "599f23b7-3172-4826-98fd-cc9616bbcb55",
       "run_kind": "author",
       "status": "passed",
       "valid": true,
       "uploaded": true,
-      "at": "2026-10-24T21:40:15.480Z"
+      "at": "2026-10-24T22:21:42.882Z"
     }
   ]
 }

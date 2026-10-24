@@ -26,7 +26,7 @@ test("merged Kane simulation preserves unknown fields, arrival boundaries, failu
   ]);
   const offer = (record: typeof unknownPrice) => record.events.find(e => e.type === "offer")?.offer;
   assert.equal(offer(unknownPrice)?.amountMinor, null); assert.equal(offer(unknownPrice)?.currency, null);
-  assert.equal(offer(unknownEta)?.etaMinutes, null); assert.equal(offer(unknownAvailability)?.availableNow, false);
+  assert.equal(offer(unknownEta)?.etaMinutes, null); assert.equal(offer(unknownAvailability)?.availableNow, null);
   assert.equal(offer(unknownConditions)?.conditions, null); assert.equal(offer(unavailable)?.availableNow, false);
   assert.equal(offer(over)?.etaMinutes, 50); assert.equal(offer(exact)?.etaMinutes, 30);
   assert.equal(failed.status, "failed"); assert.equal(offer(failed), undefined);

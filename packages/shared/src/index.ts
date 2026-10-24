@@ -36,7 +36,7 @@ export const Offer = z.object({
   id: z.string().uuid(),
   businessId: z.string(),
   callId: z.string().uuid(),
-  availableNow: z.boolean(),
+  availableNow: z.boolean().nullable(), // null when the business did not say
   etaMinutes: z.number().nonnegative().nullable(),
   amountMinor: z.number().int().nonnegative().nullable(),
   currency: z.string().nullable(),
