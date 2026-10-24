@@ -1,49 +1,19 @@
 {
+  "commit_id": "645da3f7-6a82-465e-ac1f-da4f0c102622",
   "test_id": "be7c65c0-4cb3-4050-b68f-b2f33a8bd268",
+  "testcase_id": "01M5QTVV26E8V2RMGJ0273V4BP",
   "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
   "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
   "org_id": "3394593",
   "session_name": "concurrent-mechanic-calls-show-progress-and-transcripts",
-  "commit_id": "645da3f7-6a82-465e-ac1f-da4f0c102622",
-  "testcase_id": "01M5QTVV26E8V2RMGJ0273V4BP",
   "executions": [
     {
-      "execution_id": "ac59428c-ee07-4928-a093-f3599e6efc75",
+      "execution_id": "9affb47b-ab3a-4356-aa5b-fff426ab192e",
       "run_kind": "author",
       "status": "passed",
       "valid": true,
-      "at": "2026-10-24T20:52:35.827Z"
-    },
-    {
-      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
-      "run_kind": "author",
-      "status": "passed",
-      "at": "2026-10-24T20:59:06.297Z",
-      "uploaded": true
-    },
-    {
-      "execution_id": "5b5cbc85-5ccd-46c3-b767-3b8837fa47c0",
-      "run_kind": "replay",
-      "status": "passed",
-      "valid": true,
       "uploaded": true,
-      "at": "2026-10-24T21:06:03.375Z"
-    },
-    {
-      "execution_id": "7cef0ee8-ebdb-49e3-a157-794dbde1992b",
-      "run_kind": "replay",
-      "status": "passed",
-      "valid": true,
-      "uploaded": true,
-      "at": "2026-10-24T21:40:15.479Z"
-    },
-    {
-      "execution_id": "599f23b7-3172-4826-98fd-cc9616bbcb55",
-      "run_kind": "replay",
-      "status": "passed",
-      "valid": true,
-      "uploaded": true,
-      "at": "2026-10-24T22:21:42.881Z"
+      "at": "2026-10-24T22:54:53.576Z"
     }
   ]
 }

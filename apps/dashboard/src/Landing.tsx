@@ -91,14 +91,15 @@ export function Landing() {
               <span className="verified-label"><Icon name="check" size={14} /> Verified by Kane CLI</span>
               <h3>Every promise above is tested in a real browser</h3>
               <p>
-                Kane CLI turned our requirements into acceptance criteria and requirement-linked tests, and replays them
-                against the app on every change. Last run: 16 of 16 passed.
+                Kane CLI turned our requirements into acceptance criteria and requirement-linked browser tests, and
+                replays them on every change. It caught a real bug: a mechanic who wasn't sure if they were free was
+                shown as unavailable.
               </p>
             </div>
             <div className="verified-stats">
-              <div><strong>16</strong><span>Tests</span></div>
-              <div><strong>23</strong><span>Criteria</span></div>
-              <div><strong>88%</strong><span>Proven</span></div>
+              <div><strong>19</strong><span>Tests</span></div>
+              <div><strong>26</strong><span>Criteria</span></div>
+              <div><strong>1</strong><span>Bug caught</span></div>
             </div>
           </div>
         </section>

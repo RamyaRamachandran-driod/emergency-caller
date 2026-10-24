@@ -4,6 +4,22 @@ Four-person hackathon monorepo for consumer roadside assistance. This is **your 
 
 The scaffold provides a simulated end-to-end workflow with a React dashboard and separate orchestrator, discovery, and voice services.
 
+## Verified with Kane CLI
+
+[Kane CLI](https://github.com/LambdaTest/kane-cli) designs and runs our browser tests from the written requirements, in a real Chrome browser.
+
+- **Spec to tests:** `requirements/demo.md` (plain English) became 2 use-cases, 26 acceptance criteria and 19 requirement-linked tests in [`.testmuai/tests/`](.testmuai/tests). Nobody wrote a test by hand.
+- **Controlled situations:** in test mode the simulated voice service reads `Scenario: <name>` from the location (failed call, unknown price/ETA/availability, late arrival, unanswered booking) so every criterion has a reproducible setup. See [`tests/kane/README.md`](tests/kane/README.md).
+- **Kane caught a real bug:** a mechanic who said "I'm not sure anyone is free" was shown as "Available now: No", on live calls too. The test failed before the fix and passed after; both evidence packs are in [`tests/kane/evidence/`](tests/kane/evidence).
+- **DevTools checks:** Kane watches browser network traffic to prove the browser never calls Twilio, Vonage or OpenAI directly, and that the screen matches the server's task data.
+- **Release gate:** the `kane` CI job replays the suite on every push and PR, uploads the evidence, and is a required check on `main`.
+
+```sh
+npm run dev          # all services in test mode
+npm run test:kane    # replay the Kane suite (headless)
+kane-cli evidence serve tests/kane/evidence/run4-bug-unknown-availability-before-fix-FAIL.evidence
+```
+
 ## Team
 | Owner | Workstream |
 |---|---|

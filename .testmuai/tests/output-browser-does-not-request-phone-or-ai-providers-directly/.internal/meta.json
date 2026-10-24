@@ -1,0 +1,19 @@
+{
+  "commit_id": "afcff836-e945-4497-8d4b-d6fd2ff15a03",
+  "test_id": "fdef078a-38f6-4859-ac99-2e15348c2e67",
+  "testcase_id": "01M5R19MM4Z1GVETPAK1P27P9H",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "browser-does-not-request-phone-or-ai-providers-directly",
+  "executions": [
+    {
+      "execution_id": "9affb47b-ab3a-4356-aa5b-fff426ab192e",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "uploaded": true,
+      "at": "2026-10-24T22:54:53.574Z"
+    }
+  ]
+}

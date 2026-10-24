@@ -52,6 +52,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: kane-evidence
+          include-hidden-files: true
           path: |
             artifacts/
             .testmuai/evidence/
