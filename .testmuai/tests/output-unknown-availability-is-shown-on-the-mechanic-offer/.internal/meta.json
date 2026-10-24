@@ -1,0 +1,27 @@
+{
+  "commit_id": "b20bf875-bf9e-4c5d-9350-8ea6e88857c2",
+  "test_id": "bc58fce2-3773-4ca7-ba03-2345e0726346",
+  "testcase_id": "01M5QZJ2X9Y6G47SHQ90AV238A",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "unknown-availability-is-shown-on-the-mechanic-offer",
+  "executions": [
+    {
+      "execution_id": "0d5cebf5-1b7a-4a69-9c43-996969f71633",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "uploaded": true,
+      "at": "2026-10-24T22:17:29.908Z"
+    },
+    {
+      "execution_id": "599f23b7-3172-4826-98fd-cc9616bbcb55",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "uploaded": true,
+      "at": "2026-10-24T22:21:42.891Z"
+    }
+  ]
+}

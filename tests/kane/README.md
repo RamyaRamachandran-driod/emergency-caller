@@ -20,7 +20,7 @@ Most criteria need a controlled situation. In test mode the simulated voice serv
 | `failed-call` | the second business's call fails; the others return offers |
 | `unknown-quote` | first business gives no price |
 | `unknown-eta` | first business gives no arrival estimate |
-| `unknown-availability` | first business is unsure it is free (sent as not available: the contract has no "unknown") |
+| `unknown-availability` | first business is unsure it is free (availability sent as unknown) |
 | `unknown-conditions` | first business states no conditions |
 | `unavailable` | first business is not available now |
 | `over-max` | first business arrives 20 minutes after the arrival goal |
@@ -46,5 +46,8 @@ Sealed Kane evidence packs and NDJSON run streams live in `tests/kane/evidence/`
 | `run1-first-run-15-of-16` | scaffold orchestrator, first run (authoring) | 15 of 16 passed, 19 of 23 criteria (85%). The failure was the designed check's double-negative wording on unknown conditions, not an app defect |
 | `run2-replay-merged-orchestrator-16-of-16` | Ramya's SQLite orchestrator after merging main | 16 of 16 passed, 88% coverage. Booking tests re-recorded their steps (healed) against the new orchestrator |
 | `run3-replay-landing-theme` (stream only) | landing page at `/`, dashboard at `/app`, Kane theme | 15 of 16; only `unknown-conditions` failed, on the same double-negative check as run 1, so that test is flaky and due a redesign |
+| `run4-bug-unknown-availability-before-fix-FAIL` | after adding the availability rule to `requirements/demo.md` and `kane-cli maintain reconcile` | **Kane caught a real bug.** Its new test (AC-26) failed: the transcript says "I'm not sure anyone is free", the offer said "Available now: No". The same collapse existed in the live voice bridge |
+| `run5-bug-unknown-availability-after-fix-PASS` | `Offer.availableNow` nullable, voice bridge and simulation send null for unknown, dashboard shows "Unknown" and blocks booking | AC-26 passes |
+| `run6-full-suite-after-fix` (stream only) | full suite, 17 tests | 16 of 17, 89% coverage. The failure is the older availability test (t-7): its double-negative check read the reported 20-minute ETA as an availability answer. t-17 now covers the same criterion |
 
-Known limitation: the shared `Offer.availableNow` is a boolean, so a mechanic who is unsure is sent as "not available". The "unknown availability is not fabricated" pass should not be read as proof until the contract can express unknown.
+`Offer.availableNow` is now nullable: `null` means the business did not say, and such offers cannot be booked.
