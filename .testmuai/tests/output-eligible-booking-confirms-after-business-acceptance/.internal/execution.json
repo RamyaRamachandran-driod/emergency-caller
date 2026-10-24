@@ -2,24 +2,24 @@
   "test_id": "779b6ec9-2ae4-4230-9301-0a9b79c6e8ad",
   "version": "v4",
   "auto_heal_version": "AH2",
-  "session_id": "bcfea4aa-bfd6-4fe8-899f-67a3480508fd",
+  "session_id": "38ca6085-09b1-4ce9-bece-0496c6029b70",
   "org_id": "3394593",
   "user_id": "3570389",
   "url": "",
-  "start_timestamp": "2026-10-24T20:50:31.820Z",
-  "end_timestamp": "2026-10-24T20:53:15.154Z",
+  "start_timestamp": "2026-10-24T21:02:12.258Z",
+  "end_timestamp": "2026-10-24T21:03:59.276Z",
   "status": "success",
-  "commit_id": "bcfea4aa-bfd6-4fe8-899f-67a3480508fd",
+  "commit_id": "38ca6085-09b1-4ce9-bece-0496c6029b70",
   "instructions": [
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_379401ad9915490dbad6190904693da5",
-      "generative_id": "379401ad9915490dbad6190904693da5",
+      "instruction_id": "generative_block_5e79d43e93e443258a6002e23bcb1afb",
+      "generative_id": "5e79d43e93e443258a6002e23bcb1afb",
       "objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_accepted_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "a00be83a-e45b-422c-864d-e91253c3261e",
+          "instruction_id": "cd56006d-af56-4b64-8bba-6fae6a13235c",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Navigate to {{global.start_url}}",
@@ -31,11 +31,11 @@
           "operations": [
             {
               "operation_id": "db29f2d3-cdf9-4f9d-82d2-6ab72fe51d6a",
-              "instruction_id": "a00be83a-e45b-422c-864d-e91253c3261e",
+              "instruction_id": "cd56006d-af56-4b64-8bba-6fae6a13235c",
               "instruction": "Navigate to {{global.start_url}}",
               "intent": "Navigate to {{global.start_url}}",
-              "operation_start": "2026-10-24T20:50:55.652442+00:00",
-              "operation_end": "2026-10-24T20:50:55.875Z",
+              "operation_start": "2026-10-24T21:02:29.792549+00:00",
+              "operation_end": "2026-10-24T21:02:29.829Z",
               "status": "success",
               "command": "OPEN",
               "name": "",
@@ -158,8 +158,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:50:55.652442+00:00",
-          "end_timestamp": "2026-10-24T20:50:55.875Z",
+          "start_timestamp": "2026-10-24T21:02:29.792549+00:00",
+          "end_timestamp": "2026-10-24T21:02:29.829Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -185,7 +185,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "379401ad9915490dbad6190904693da5",
+          "generative_id": "5e79d43e93e443258a6002e23bcb1afb",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_accepted_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -196,7 +196,7 @@
           "reasoning": "Navigate to {{global.start_url}}"
         },
         {
-          "instruction_id": "95dc5bb5-c4dc-4e9f-9742-36cd4165ec61",
+          "instruction_id": "e7cca5d0-0ef9-4524-85ae-9b4c5f51f696",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Typing breakdown location into the breakdown location field",
@@ -208,11 +208,11 @@
           "operations": [
             {
               "operation_id": "a08e7187-5759-4d1e-913a-0c4083be537e",
-              "instruction_id": "95dc5bb5-c4dc-4e9f-9742-36cd4165ec61",
+              "instruction_id": "e7cca5d0-0ef9-4524-85ae-9b4c5f51f696",
               "instruction": "Typing breakdown location into the breakdown location field",
               "intent": "Typing breakdown location into the breakdown location field",
-              "operation_start": "2026-10-24T20:51:02.054679+00:00",
-              "operation_end": "2026-10-24T20:51:02.083Z",
+              "operation_start": "2026-10-24T21:02:29.948671+00:00",
+              "operation_end": "2026-10-24T21:02:30.013Z",
               "status": "success",
               "command": "TYPE",
               "name": "",
@@ -360,8 +360,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:02.054679+00:00",
-          "end_timestamp": "2026-10-24T20:51:02.083Z",
+          "start_timestamp": "2026-10-24T21:02:29.948671+00:00",
+          "end_timestamp": "2026-10-24T21:02:30.013Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -387,7 +387,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "379401ad9915490dbad6190904693da5",
+          "generative_id": "5e79d43e93e443258a6002e23bcb1afb",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_accepted_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -398,7 +398,7 @@
           "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: container=What do you need? dialog"
         },
         {
-          "instruction_id": "de841423-9238-46aa-b7e5-a37fa6fc4f6b",
+          "instruction_id": "3e162585-b33b-4b43-a753-26eaa7d13bc5",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for confirmation of entered breakdown details at {{global.eligible_accepted_location}}",
@@ -410,11 +410,11 @@
           "operations": [
             {
               "operation_id": "848284d7-40f6-47a0-8115-649e22afb73a",
-              "instruction_id": "de841423-9238-46aa-b7e5-a37fa6fc4f6b",
+              "instruction_id": "3e162585-b33b-4b43-a753-26eaa7d13bc5",
               "instruction": "Waiting for confirmation of entered breakdown details at {{global.eligible_accepted_location}}",
               "intent": "Waiting for confirmation of entered breakdown details at {{global.eligible_accepted_location}}",
-              "operation_start": "2026-10-24T20:51:06.776672+00:00",
-              "operation_end": "2026-10-24T20:51:06.980Z",
+              "operation_start": "2026-10-24T21:02:30.218963+00:00",
+              "operation_end": "2026-10-24T21:02:30.421Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -537,8 +537,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:06.776672+00:00",
-          "end_timestamp": "2026-10-24T20:51:06.980Z",
+          "start_timestamp": "2026-10-24T21:02:30.218963+00:00",
+          "end_timestamp": "2026-10-24T21:02:30.421Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -564,7 +564,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "379401ad9915490dbad6190904693da5",
+          "generative_id": "5e79d43e93e443258a6002e23bcb1afb",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_accepted_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -575,7 +575,7 @@
           "reasoning": "PRIMARY: confirm the entered breakdown details at {{global.eligible_accepted_location}}"
         },
         {
-          "instruction_id": "60e5b40e-9bc1-4918-b6f4-4fe24584d1af",
+          "instruction_id": "1f110f18-c363-42b6-aadd-c525037ee713",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for maximum arrival time confirmation",
@@ -587,11 +587,11 @@
           "operations": [
             {
               "operation_id": "a84b45a7-42f7-4b4e-87c7-49f39bc73279",
-              "instruction_id": "60e5b40e-9bc1-4918-b6f4-4fe24584d1af",
+              "instruction_id": "1f110f18-c363-42b6-aadd-c525037ee713",
               "instruction": "Waiting for maximum arrival time confirmation",
               "intent": "Waiting for maximum arrival time confirmation",
-              "operation_start": "2026-10-24T20:51:11.163136+00:00",
-              "operation_end": "2026-10-24T20:51:11.369Z",
+              "operation_start": "2026-10-24T21:02:30.470371+00:00",
+              "operation_end": "2026-10-24T21:02:30.673Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -714,8 +714,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:11.163136+00:00",
-          "end_timestamp": "2026-10-24T20:51:11.369Z",
+          "start_timestamp": "2026-10-24T21:02:30.470371+00:00",
+          "end_timestamp": "2026-10-24T21:02:30.673Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -741,7 +741,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "379401ad9915490dbad6190904693da5",
+          "generative_id": "5e79d43e93e443258a6002e23bcb1afb",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_accepted_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -752,7 +752,7 @@
           "reasoning": "PRIMARY: confirm the maximum arrival time is {{global.max_arrival_time}}"
         },
         {
-          "instruction_id": "cf3b369d-bc4e-4587-9eb7-5cfa3ef01ba0",
+          "instruction_id": "311a4185-a44e-42ad-8dfd-9e8a0c5e6b64",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Find help button in the What do you need? dialog",
@@ -764,11 +764,11 @@
           "operations": [
             {
               "operation_id": "b48061bd-b466-4654-afba-8dc90d6d73ab",
-              "instruction_id": "cf3b369d-bc4e-4587-9eb7-5cfa3ef01ba0",
+              "instruction_id": "311a4185-a44e-42ad-8dfd-9e8a0c5e6b64",
               "instruction": "Clicking Find help button in the What do you need? dialog",
               "intent": "Clicking Find help button in the What do you need? dialog",
-              "operation_start": "2026-10-24T20:51:15.480266+00:00",
-              "operation_end": "2026-10-24T20:51:15.511Z",
+              "operation_start": "2026-10-24T21:02:30.560848+00:00",
+              "operation_end": "2026-10-24T21:02:30.604Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -916,8 +916,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:15.480266+00:00",
-          "end_timestamp": "2026-10-24T20:51:15.511Z",
+          "start_timestamp": "2026-10-24T21:02:30.560848+00:00",
+          "end_timestamp": "2026-10-24T21:02:30.604Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -943,7 +943,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "379401ad9915490dbad6190904693da5",
+          "generative_id": "5e79d43e93e443258a6002e23bcb1afb",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_accepted_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -954,7 +954,7 @@
           "reasoning": "PRIMARY: find help button; role=button; text=\"Find help\" | HINTS: container=bottom of What do you need? dialog"
         },
         {
-          "instruction_id": "c83c12a8-597d-4b6c-aec6-b797eb4fc2e2",
+          "instruction_id": "2a985504-5401-459c-822e-94a595b4a3af",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for mechanic offers to appear on the request board",
@@ -966,11 +966,11 @@
           "operations": [
             {
               "operation_id": "eaf3aab2-6c6f-4a8c-aa0e-814f15849fb8",
-              "instruction_id": "c83c12a8-597d-4b6c-aec6-b797eb4fc2e2",
+              "instruction_id": "2a985504-5401-459c-822e-94a595b4a3af",
               "instruction": "Waiting for mechanic offers to appear on the request board",
               "intent": "Waiting for mechanic offers to appear on the request board",
-              "operation_start": "2026-10-24T20:51:19.427303+00:00",
-              "operation_end": "2026-10-24T20:51:19.930Z",
+              "operation_start": "2026-10-24T21:02:31.636983+00:00",
+              "operation_end": "2026-10-24T21:02:32.139Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -1093,8 +1093,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:19.427303+00:00",
-          "end_timestamp": "2026-10-24T20:51:19.930Z",
+          "start_timestamp": "2026-10-24T21:02:31.636983+00:00",
+          "end_timestamp": "2026-10-24T21:02:32.139Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1120,7 +1120,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "379401ad9915490dbad6190904693da5",
+          "generative_id": "5e79d43e93e443258a6002e23bcb1afb",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_accepted_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -1133,24 +1133,20 @@
       ],
       "error_message": null,
       "error_code": null,
-      "result_code": null,
+      "result_code": 100,
       "bifurcation_context": [],
-      "approach_reason": [
-        "The requested location breakdown was reviewed.",
-        "The maximum arrival time was set as requested.",
-        "The displayed mechanic offers were reached."
-      ],
+      "approach_reason": [],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_0014ae395a564054a10c6a19ae7976d9",
-      "generative_id": "0014ae395a564054a10c6a19ae7976d9",
+      "instruction_id": "generative_block_bab2ddf708e44a45b6034b44b82b8ab4",
+      "generative_id": "bab2ddf708e44a45b6034b44b82b8ab4",
       "objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} without authorizing confirmation, then assert that the eligible offer can be selected and no booking dispatch occurs before user authorization.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "70c28625-dabb-4c53-bbd5-960b48b93433",
+          "instruction_id": "407df0a0-fae4-4aed-8e5a-13adfabc776c",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking the #1 $110.00 Demo Mobile Mechanics 20 min offer",
@@ -1161,12 +1157,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "9fd5f29e-5a98-4205-b348-54680a978155",
-              "instruction_id": "70c28625-dabb-4c53-bbd5-960b48b93433",
+              "operation_id": "9ca0f0a8-0770-4be3-87b7-b2540935ebad",
+              "instruction_id": "407df0a0-fae4-4aed-8e5a-13adfabc776c",
               "instruction": "Clicking the #1 $110.00 Demo Mobile Mechanics 20 min offer",
               "intent": "Clicking the #1 $110.00 Demo Mobile Mechanics 20 min offer",
-              "operation_start": "2026-10-24T20:51:33.761214+00:00",
-              "operation_end": "2026-10-24T20:51:33.805Z",
+              "operation_start": "2026-10-24T21:02:42.199663+00:00",
+              "operation_end": "2026-10-24T21:02:42.239Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -1180,7 +1176,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking the #1 $110.00 Demo Mobile Mechanics 20 min offer\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: available-now offer selection; role=button; text=\\\"#1 $110.00 Demo Mobile Mechanics 20 min\\\" | HINTS: container=Offers list; eligible arrival estimate is within {{global.max_arrival_time}}\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Clicking the #1 $110.00 Demo Mobile Mechanics 20 min offer\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: select the available-now Demo Mobile Mechanics offer with 20 min arrival, within {{global.max_arrival_time}}; role=button; text=\\\"#1 $110.00 Demo Mobile Mechanics 20 min\\\" | HINTS: container=OFFERS list\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1191,7 +1187,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9fd5f29e-5a98-4205-b348-54680a978155.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9ca0f0a8-0770-4be3-87b7-b2540935ebad.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1305,17 +1301,17 @@
                 "viewport_width": 1920,
                 "viewport_height": 1080,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9fd5f29e-5a98-4205-b348-54680a978155.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9ca0f0a8-0770-4be3-87b7-b2540935ebad.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: available-now offer selection; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=Offers list; eligible arrival estimate is within {{global.max_arrival_time}}"
+              "reasoning": "PRIMARY: select the available-now Demo Mobile Mechanics offer with 20 min arrival, within {{global.max_arrival_time}}; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=OFFERS list"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:33.761214+00:00",
-          "end_timestamp": "2026-10-24T20:51:33.805Z",
+          "start_timestamp": "2026-10-24T21:02:42.199663+00:00",
+          "end_timestamp": "2026-10-24T21:02:42.239Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1341,7 +1337,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "0014ae395a564054a10c6a19ae7976d9",
+          "generative_id": "bab2ddf708e44a45b6034b44b82b8ab4",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} without authorizing confirmation, then assert that the eligible offer can be selected and no booking dispatch occurs before user authorization.",
           "error_message": "",
@@ -1349,10 +1345,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: available-now offer selection; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=Offers list; eligible arrival estimate is within {{global.max_arrival_time}}"
+          "reasoning": "PRIMARY: select the available-now Demo Mobile Mechanics offer with 20 min arrival, within {{global.max_arrival_time}}; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=OFFERS list"
         },
         {
-          "instruction_id": "2550e09c-9085-4ca0-9310-d23bde8e1aa9",
+          "instruction_id": "785e0cd8-0b2a-409a-9a38-7edb7b616799",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Checking whether the eligible offer can be selected",
@@ -1363,11 +1359,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "e9988f5c-7af9-4f88-a522-9cabfc51c0e3",
-              "instruction_id": "2550e09c-9085-4ca0-9310-d23bde8e1aa9",
+              "operation_id": "9085cdd2-ebfa-46ff-b66c-b9d3fa7cf559",
+              "instruction_id": "785e0cd8-0b2a-409a-9a38-7edb7b616799",
               "instruction": "Checking whether the eligible offer can be selected",
               "intent": "Checking whether the eligible offer can be selected",
-              "operation_start": "2026-10-24T20:51:51.042903+00:00",
+              "operation_start": "2026-10-24T21:02:55.389523+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -1382,7 +1378,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether the eligible offer can be selected\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the eligible offer selectable is present (in the booking confirmation dialog)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(14).matches(':enabled')\",\"wrapped_js\":\"(els) => {\\n  const __m = {14: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(14).matches(':enabled'));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"Request confirmation call\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the eligible offer selectable is present (in the booking confirmation dialog)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"the eligible offer can be selected\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking whether the eligible offer can be selected\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the eligible offer selectable is present (in the booking confirmation dialog)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(14).matches(':enabled') && /Request confirmation call/.test(el(14).innerText)\",\"wrapped_js\":\"(els) => {\\n  const __m = {14: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(14).matches(':enabled') && /Request confirmation call/.test(el(14).innerText));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"Request confirmation call\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the eligible offer selectable is present (in the booking confirmation dialog)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"the eligible offer can be selected\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1393,7 +1389,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/e9988f5c-7af9-4f88-a522-9cabfc51c0e3.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9085cdd2-ebfa-46ff-b66c-b9d3fa7cf559.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1493,7 +1489,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:51.042903+00:00",
+          "start_timestamp": "2026-10-24T21:02:55.389523+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -1520,7 +1516,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "0014ae395a564054a10c6a19ae7976d9",
+          "generative_id": "bab2ddf708e44a45b6034b44b82b8ab4",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} without authorizing confirmation, then assert that the eligible offer can be selected and no booking dispatch occurs before user authorization.",
           "error_message": "",
@@ -1531,10 +1527,10 @@
           "reasoning": "whether the eligible offer selectable is present (in the booking confirmation dialog)"
         },
         {
-          "instruction_id": "853b5977-7cbf-4603-a424-0d1577a28dee",
+          "instruction_id": "b4305280-5c87-4599-9708-de4a5516db2f",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking for a booking dispatch before user authorization",
+          "instruction": "Checking for booking dispatch before user authorization",
           "command": "DEVTOOLS_NETWORK_QUERY",
           "error": null,
           "parent_instruction_id": "",
@@ -1542,11 +1538,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "97857171-6a35-4adf-8b47-c23261f4a48a",
-              "instruction_id": "853b5977-7cbf-4603-a424-0d1577a28dee",
-              "instruction": "Checking for a booking dispatch before user authorization",
-              "intent": "Checking for a booking dispatch before user authorization",
-              "operation_start": "2026-10-24T20:51:51.043544+00:00",
+              "operation_id": "bbf6f939-a3fe-4807-b92f-089d06b4f21b",
+              "instruction_id": "b4305280-5c87-4599-9708-de4a5516db2f",
+              "instruction": "Checking for booking dispatch before user authorization",
+              "intent": "Checking for booking dispatch before user authorization",
+              "operation_start": "2026-10-24T21:02:55.390121+00:00",
               "operation_end": "",
               "status": "success",
               "command": "DEVTOOLS_NETWORK_QUERY",
@@ -1561,7 +1557,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking for a booking dispatch before user authorization\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"DEVTOOLS_NETWORK_QUERY\"},\"reasoning\":\"whether booking dispatch before user authorization is present (in captured network requests)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code\":\"return any(r.method != 'GET' and ('dispatch' in r.url.lower() or 'booking' in r.url.lower()) for r in network.requests())\",\"code_js\":\"return network.requests().some(r => r.method !== 'GET' && (r.url.toLowerCase().includes('dispatch') || r.url.toLowerCase().includes('booking')));\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking for booking dispatch before user authorization\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"DEVTOOLS_NETWORK_QUERY\"},\"reasoning\":\"whether booking dispatch before user authorization is present (in captured network requests)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code\":\"dispatches = [r for r in network.requests() if r.method != 'GET' or 'dispatch' in r.path.lower() or 'booking' in r.path.lower() or 'confirm' in r.path.lower()]\\nreturn bool(dispatches)\",\"code_js\":\"const dispatches = network.requests().filter(r => r.method !== 'GET' || r.path.toLowerCase().includes('dispatch') || r.path.toLowerCase().includes('booking') || r.path.toLowerCase().includes('confirm'));\\nreturn String(Boolean(dispatches));\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1572,7 +1568,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/97857171-6a35-4adf-8b47-c23261f4a48a.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/bbf6f939-a3fe-4807-b92f-089d06b4f21b.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1672,7 +1668,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:51.043544+00:00",
+          "start_timestamp": "2026-10-24T21:02:55.390121+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -1710,7 +1706,7 @@
           "reasoning": "whether booking dispatch before user authorization is present (in captured network requests)"
         },
         {
-          "instruction_id": "145eb892-be83-45a4-a9c9-ec18195e84c5",
+          "instruction_id": "e82694b3-45a2-4350-8a7e-64faf37b85b9",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -1788,11 +1784,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "f5783579-140a-4726-b0c5-9aec8cb03098",
-              "instruction_id": "145eb892-be83-45a4-a9c9-ec18195e84c5",
+              "operation_id": "89bc0120-e8ea-4dc8-abc1-69adda5d731f",
+              "instruction_id": "e82694b3-45a2-4350-8a7e-64faf37b85b9",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-10-24T20:51:51.654693+00:00",
+              "operation_start": "2026-10-24T21:02:55.995406+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -1818,7 +1814,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/f5783579-140a-4726-b0c5-9aec8cb03098.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/89bc0120-e8ea-4dc8-abc1-69adda5d731f.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1929,7 +1925,7 @@
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "Check that the eligible offer is selectable and that no booking dispatch occurs before user authorization.",
+                "verification": "The selected eligible offer is selectable, and no booking dispatch occurs before user authorization.",
                 "claim": "the eligible offer can be selected and no booking dispatch occurs before user authorization"
               },
               "assertion_tree": {
@@ -1968,7 +1964,7 @@
                 "passed": true,
                 "step": 3,
                 "is_final": true,
-                "verification": "Check that the eligible offer is selectable and that no booking dispatch occurs before user authorization.",
+                "verification": "The selected eligible offer is selectable, and no booking dispatch occurs before user authorization.",
                 "error_message": null,
                 "duration_ms": 0
               },
@@ -2010,7 +2006,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:51.654693+00:00",
+          "start_timestamp": "2026-10-24T21:02:55.995406+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -2037,7 +2033,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "0014ae395a564054a10c6a19ae7976d9",
+          "generative_id": "bab2ddf708e44a45b6034b44b82b8ab4",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} without authorizing confirmation, then assert that the eligible offer can be selected and no booking dispatch occurs before user authorization.",
           "error_message": "",
@@ -2053,39 +2049,38 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Requested selection of an available-now offer with an arrival estimate within the required limit.",
-        "Selected an eligible offer and left it ready for confirmation.",
-        "No booking or dispatch was sent because confirmation was not authorized."
+        "The requested available-now offer was selected and remained available to request a confirmation call.",
+        "No booking was sent or confirmed before user authorization."
       ],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_38fd04bc4ea54f128718f2abeafb7ad0",
-      "generative_id": "38fd04bc4ea54f128718f2abeafb7ad0",
+      "instruction_id": "generative_block_3e1de63041144943a969610b2695612b",
+      "generative_id": "3e1de63041144943a969610b2695612b",
       "objective": "Authorize confirmation for the selected offer while its business has not yet accepted, then assert the booking is not shown as confirmed before explicit business acceptance.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "6565f9fa-b396-46a2-a987-9c8b87a37774",
+          "instruction_id": "75b58abf-1c6c-4ce0-a43f-ee80b3e65385",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking whether the business acceptance is present",
-          "command": "VISION_QUERY",
+          "instruction": "Clicking the Request confirmation call button",
+          "command": "CLICK",
           "error": null,
           "parent_instruction_id": "",
           "classification_layer_resp": [],
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "adbc7815-2e1d-47b6-bd2d-07a56897fcf1",
-              "instruction_id": "6565f9fa-b396-46a2-a987-9c8b87a37774",
-              "instruction": "Checking whether the business acceptance is present",
-              "intent": "Checking whether the business acceptance is present",
-              "operation_start": "2026-10-24T20:52:11.025268+00:00",
-              "operation_end": "",
+              "operation_id": "adbd0f87-8dc5-4a43-85e1-f109c1f0c09f",
+              "instruction_id": "75b58abf-1c6c-4ce0-a43f-ee80b3e65385",
+              "instruction": "Clicking the Request confirmation call button",
+              "intent": "Clicking the Request confirmation call button",
+              "operation_start": "2026-10-24T21:03:05.313686+00:00",
+              "operation_end": "2026-10-24T21:03:05.345Z",
               "status": "success",
-              "command": "VISION_QUERY",
+              "command": "CLICK",
               "name": "",
               "target": "",
               "value": "",
@@ -2097,7 +2092,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether the business acceptance is present\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"VISION_QUERY\"},\"reasoning\":\"whether its business acceptance is present (in the booking confirmation dialog and agent activity)\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Clicking the Request confirmation call button\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: authorize confirmation by clicking the request confirmation call button; role=button; text=\\\"Request confirmation call\\\" | HINTS: container=request booking confirmation modal\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -2108,15 +2103,15 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/adbc7815-2e1d-47b6-bd2d-07a56897fcf1.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/adbd0f87-8dc5-4a43-85e1-f109c1f0c09f.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
               "url": "",
               "navigation_direction": "",
               "tagified_image_url": "",
-              "query_variable_name": "business_acceptance_check",
-              "query_variable_value": "false",
+              "query_variable_name": "",
+              "query_variable_value": "",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -2162,7 +2157,14 @@
               "use_coordinates": false,
               "kaneaiMobileTaggingImageLimit": 1,
               "clicks_order_code": "se_js_ac",
-              "selector": "",
+              "selector": [
+                {
+                  "selector": "internal:role=button[name=\"Request confirmation call\"i]",
+                  "score": 100,
+                  "isXPath": false,
+                  "type": "css"
+                }
+              ],
               "selector_target": "",
               "math_result_variable_name": "",
               "math_result_variable_value": "",
@@ -2200,16 +2202,32 @@
               "until_max_retries": 0,
               "until_settle_ms": 0,
               "api_data": {},
-              "output_variables": {
-                "business_acceptance_check": "false"
+              "output_variables": {},
+              "visual_context": {
+                "x": 1075,
+                "y": 646,
+                "confidence": 0,
+                "bbox": {
+                  "x": 985,
+                  "y": 630,
+                  "width": 180,
+                  "height": 32
+                },
+                "bbox_source": "accessibility_tree",
+                "viewport_width": 1920,
+                "viewport_height": 1080,
+                "scale_factor": null,
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/adbd0f87-8dc5-4a43-85e1-f109c1f0c09f.webp",
+                "raw_image_sas_url": "",
+                "annotated_image_url": "",
+                "annotated_image_sas_url": ""
               },
-              "visual_context": null,
-              "reasoning": "whether its business acceptance is present (in the booking confirmation dialog and agent activity)"
+              "reasoning": "PRIMARY: authorize confirmation by clicking the request confirmation call button; role=button; text=\"Request confirmation call\" | HINTS: container=request booking confirmation modal"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:52:11.025268+00:00",
-          "end_timestamp": "",
+          "start_timestamp": "2026-10-24T21:03:05.313686+00:00",
+          "end_timestamp": "2026-10-24T21:03:05.345Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -2235,7 +2253,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "38fd04bc4ea54f128718f2abeafb7ad0",
+          "generative_id": "3e1de63041144943a969610b2695612b",
           "plan_id": "",
           "generative_objective": "Authorize confirmation for the selected offer while its business has not yet accepted, then assert the booking is not shown as confirmed before explicit business acceptance.",
           "error_message": "",
@@ -2243,282 +2261,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether its business acceptance is present (in the booking confirmation dialog and agent activity)"
+          "reasoning": "PRIMARY: authorize confirmation by clicking the request confirmation call button; role=button; text=\"Request confirmation call\" | HINTS: container=request booking confirmation modal"
         },
         {
-          "content_type": "conditional_block",
-          "instruction_id": "if_else_35f09a0e",
-          "instruction": "If-else checkpoint cp_1: condition 'its business has not yet accepted' matched",
-          "instruction_class": "driver_action",
-          "command": "",
-          "status": "success",
-          "resolved_branch_index": 0,
-          "branches": [
-            {
-              "branch_index": 0,
-              "condition": "its business has not yet accepted",
-              "branch_type": "sub_objective",
-              "passed": true,
-              "sub_objective": null,
-              "custom_event": "@v16:Authorize confirmation for the selected offer",
-              "children": [
-                {
-                  "instruction_id": "1eeee031-dd81-4286-917f-b088e04e09bf",
-                  "instruction_class": "driver_action",
-                  "module_id": "",
-                  "instruction": "Clicking Request confirmation call button",
-                  "command": "CLICK",
-                  "error": null,
-                  "parent_instruction_id": "",
-                  "classification_layer_resp": [],
-                  "classification_error": {},
-                  "operations": [
-                    {
-                      "operation_id": "9178f472-58ef-43bf-a754-800051a13c04",
-                      "instruction_id": "1eeee031-dd81-4286-917f-b088e04e09bf",
-                      "instruction": "Clicking Request confirmation call button",
-                      "intent": "Clicking Request confirmation call button",
-                      "operation_start": "2026-10-24T20:52:16.560614+00:00",
-                      "operation_end": "2026-10-24T20:52:16.603Z",
-                      "status": "success",
-                      "command": "CLICK",
-                      "name": "",
-                      "target": "",
-                      "value": "",
-                      "message": "",
-                      "operation_dict": "",
-                      "frame": "",
-                      "surface": "",
-                      "frame_path": "",
-                      "grounded_by": "",
-                      "error_message": "",
-                      "code_snippet": "",
-                      "sub_instruction_obj": "{\"operation\":\"Clicking Request confirmation call button\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: request confirmation call button; role=button; text=\\\"Request confirmation call\\\" | HINTS: container=request booking confirmation dialog\",\"variable\":{},\"secrets\":{},\"params\":{}}",
-                      "test_id": "",
-                      "test_version": "",
-                      "action": "",
-                      "string_to_float": false,
-                      "feedback_msg": "",
-                      "time_taken": "",
-                      "create_time_stamp": "",
-                      "update_time_stamp": "",
-                      "locator_variable": "",
-                      "locator_variable_name": "",
-                      "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9178f472-58ef-43bf-a754-800051a13c04.webp",
-                      "alternative_xpaths": [],
-                      "attribute": "",
-                      "value_description": "",
-                      "url": "",
-                      "navigation_direction": "",
-                      "tagified_image_url": "",
-                      "query_variable_name": "",
-                      "query_variable_value": "",
-                      "query_variable_type": "",
-                      "expected_value": "",
-                      "queried_value": "",
-                      "operator": "",
-                      "assertion_status": "",
-                      "query_info_dict": {},
-                      "query_content_confidence": "none",
-                      "debugging_logs": [],
-                      "locator_index": 0,
-                      "query_html": "",
-                      "user_variables": "[]",
-                      "optional_flag": false,
-                      "max_retries": 0,
-                      "retries_delay": 0,
-                      "explicit_wait": 0,
-                      "implicit_wait": 0,
-                      "tab_index": "",
-                      "tab_identifier": "",
-                      "scroll_value": 1,
-                      "scroll_direction": "",
-                      "mi_scroll_payload": {},
-                      "sleep_duration": 0,
-                      "app_id": "",
-                      "manual_interaction_tag": "",
-                      "string_to_float_list": [],
-                      "js_snippet": "",
-                      "code_error": "",
-                      "hide": false,
-                      "dismiss_dialog": false,
-                      "use_v2_mobile_tagging": false,
-                      "multiple_inputs": false,
-                      "dialog_action": "",
-                      "dialog_type": "",
-                      "is_coordinates_used_for_interaction": false,
-                      "element_coordinates_ratio": [],
-                      "element_bounds_ratio": [],
-                      "x_coord": null,
-                      "y_coord": null,
-                      "target_x_coord": null,
-                      "target_y_coord": null,
-                      "source_description": null,
-                      "target_description": null,
-                      "use_coordinates": false,
-                      "kaneaiMobileTaggingImageLimit": 1,
-                      "clicks_order_code": "se_js_ac",
-                      "selector": [
-                        {
-                          "selector": "internal:role=button[name=\"Request confirmation call\"i]",
-                          "score": 100,
-                          "isXPath": false,
-                          "type": "css"
-                        }
-                      ],
-                      "selector_target": "",
-                      "math_result_variable_name": "",
-                      "math_result_variable_value": "",
-                      "expression_tree": {},
-                      "assertion_tree": {},
-                      "assertion_tree_simplified": {},
-                      "network_throttle": {},
-                      "is_mobile_offline": false,
-                      "autoheal": false,
-                      "reprobe": false,
-                      "click_modifier": null,
-                      "db_query": "",
-                      "db_details": {},
-                      "db_query_decoded": "",
-                      "is_global_variable": false,
-                      "is_global_variable_persist": false,
-                      "global_variable_id": "",
-                      "wait_for_element_timeout": 0,
-                      "failure_condition": "",
-                      "screenshot_command": "",
-                      "smartui_contents": {},
-                      "smartui_results": {},
-                      "result_type": "",
-                      "result_hint": "",
-                      "drag_offset": {},
-                      "drag_displacement": {},
-                      "hold_duration_ms": null,
-                      "move_duration_ms": null,
-                      "hold_at_destination_ms": null,
-                      "start_coordinates": {},
-                      "end_coordinates": {},
-                      "element_rect": null,
-                      "is_canvas": false,
-                      "until_condition": "",
-                      "until_max_retries": 0,
-                      "until_settle_ms": 0,
-                      "api_data": {},
-                      "output_variables": {},
-                      "visual_context": {
-                        "x": 1075,
-                        "y": 646,
-                        "confidence": 0,
-                        "bbox": {
-                          "x": 985,
-                          "y": 630,
-                          "width": 180,
-                          "height": 32
-                        },
-                        "bbox_source": "accessibility_tree",
-                        "viewport_width": 1920,
-                        "viewport_height": 1080,
-                        "scale_factor": null,
-                        "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9178f472-58ef-43bf-a754-800051a13c04.webp",
-                        "raw_image_sas_url": "",
-                        "annotated_image_url": "",
-                        "annotated_image_sas_url": ""
-                      },
-                      "reasoning": "PRIMARY: request confirmation call button; role=button; text=\"Request confirmation call\" | HINTS: container=request booking confirmation dialog"
-                    }
-                  ],
-                  "status": "success",
-                  "start_timestamp": "2026-10-24T20:52:16.560614+00:00",
-                  "end_timestamp": "2026-10-24T20:52:16.603Z",
-                  "type": "agent_generated",
-                  "tags": [],
-                  "html_paths": [],
-                  "optional_flag": false,
-                  "max_retries": 0,
-                  "retries_delay": 0,
-                  "explicit_wait": 0,
-                  "implicit_wait": 0,
-                  "content_type": "instruction",
-                  "js_snippet": "",
-                  "user_variables": "[]",
-                  "api_data": {},
-                  "params_used": false,
-                  "hard_assertion": false,
-                  "expected_outcome": "",
-                  "module_execution_index": 0,
-                  "module_version": null,
-                  "network_throttle": {},
-                  "isEdited": false,
-                  "use_query_assertion_v2": false,
-                  "db_query": "",
-                  "db_details": {},
-                  "network_assertion_content": {},
-                  "screenshot_command": "",
-                  "smartui_contents": {},
-                  "generative_id": "",
-                  "plan_id": "",
-                  "generative_objective": "",
-                  "error_message": "",
-                  "error_code": "",
-                  "reason": "",
-                  "title": "",
-                  "used_variables": [],
-                  "reasoning": "PRIMARY: request confirmation call button; role=button; text=\"Request confirmation call\" | HINTS: container=request booking confirmation dialog"
-                }
-              ],
-              "sub_checks": [
-                {
-                  "description": "its business has not yet accepted",
-                  "store_key": "business_acceptance_check",
-                  "expected_value": "false",
-                  "stored_value": "{{business_acceptance_check}}",
-                  "operator": "equals",
-                  "transforms": []
-                }
-              ],
-              "composite_operator": "and"
-            },
-            {
-              "branch_index": 1,
-              "condition": null,
-              "branch_type": "sub_objective",
-              "passed": false,
-              "sub_objective": null,
-              "custom_event": "@v16:",
-              "children": [],
-              "sub_checks": [],
-              "composite_operator": "and"
-            }
-          ],
-          "generative_id": "",
-          "generative_objective": "",
-          "variables_used": {},
-          "classification_layer_resp": [],
-          "classification_error": {},
-          "used_variables": [],
-          "user_variables": "[]",
-          "module_id": "",
-          "module_execution_index": 0,
-          "module_version": "",
-          "plan_id": "",
-          "optional_flag": false,
-          "max_retries": 0,
-          "retries_delay": 0,
-          "explicit_wait": 0,
-          "implicit_wait": 0,
-          "error": null,
-          "error_message": "",
-          "error_code": "",
-          "reason": "",
-          "start_timestamp": "2026-10-24T20:52:11.644896+00:00",
-          "end_timestamp": "",
-          "type": "agent_generated",
-          "hook": null,
-          "hook_type": null,
-          "evaluation_context": {},
-          "query_variables": {}
-        },
-        {
-          "instruction_id": "cb3c7e55-b82a-4404-9744-ad827906061a",
+          "instruction_id": "3180db26-9eb1-4f06-91ef-7348def64224",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Checking whether the booking is shown as confirmed",
@@ -2529,11 +2275,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "5a98697b-b6e5-4784-a830-b9578a517228",
-              "instruction_id": "cb3c7e55-b82a-4404-9744-ad827906061a",
+              "operation_id": "a235f8b9-332a-40a0-8854-172a1142b702",
+              "instruction_id": "3180db26-9eb1-4f06-91ef-7348def64224",
               "instruction": "Checking whether the booking is shown as confirmed",
               "intent": "Checking whether the booking is shown as confirmed",
-              "operation_start": "2026-10-24T20:52:44.384825+00:00",
+              "operation_start": "2026-10-24T21:03:25.113507+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -2548,7 +2294,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether the booking is shown as confirmed\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the booking shown as confirmed is present (in the booking request status)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"!!el(10).querySelector('.stage.stage-confirmed') && /confirmed/i.test(el(10).querySelector('.stage.stage-confirmed').textContent)\",\"wrapped_js\":\"(els) => {\\n  const __m = {10: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (!!el(10).querySelector('.stage.stage-confirmed') && /confirmed/i.test(el(10).querySelector('.stage.stage-confirmed').textContent));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=main\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the booking shown as confirmed is present (in the booking request status)\",\"expected_value\":\"false\",\"needs_unit_conversion\":false,\"condition\":\"the booking is not shown as confirmed before explicit business acceptance\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking whether the booking is shown as confirmed\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the booking shown as confirmed is present (in the booking board)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"(() => [...el(10).querySelectorAll('.lane-confirmed, [data-status=\\\"confirmed\\\"], [class*=\\\"card\\\"], [class*=\\\"booking\\\"]')].some(node => /\\\\bconfirmed\\\\b/i.test(node.textContent || '') || node.classList.contains('lane-confirmed') || node.getAttribute('data-status') === 'confirmed'))()\",\"wrapped_js\":\"(els) => {\\n  const __m = {10: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = ((() => [...el(10).querySelectorAll('.lane-confirmed, [data-status=\\\"confirmed\\\"], [class*=\\\"card\\\"], [class*=\\\"booking\\\"]')].some(node => /\\\\bconfirmed\\\\b/i.test(node.textContent || '') || node.classList.contains('lane-confirmed') || node.getAttribute('data-status') === 'confirmed'))());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=main\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the booking shown as confirmed is present (in the booking board)\",\"expected_value\":\"false\",\"needs_unit_conversion\":false,\"condition\":\"the booking is not shown as confirmed before explicit business acceptance\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -2559,14 +2305,14 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/5a98697b-b6e5-4784-a830-b9578a517228.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/a235f8b9-332a-40a0-8854-172a1142b702.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
               "url": "",
               "navigation_direction": "",
               "tagified_image_url": "",
-              "query_variable_name": "booking_confirmed_check",
+              "query_variable_name": "booking_confirmed_status_check",
               "query_variable_value": "false",
               "query_variable_type": "",
               "expected_value": "",
@@ -2652,14 +2398,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "booking_confirmed_check": "false"
+                "booking_confirmed_status_check": "false"
               },
               "visual_context": null,
-              "reasoning": "whether the booking shown as confirmed is present (in the booking request status)"
+              "reasoning": "whether the booking shown as confirmed is present (in the booking board)"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:52:44.384825+00:00",
+          "start_timestamp": "2026-10-24T21:03:25.113507+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -2686,7 +2432,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "38fd04bc4ea54f128718f2abeafb7ad0",
+          "generative_id": "3e1de63041144943a969610b2695612b",
           "plan_id": "",
           "generative_objective": "Authorize confirmation for the selected offer while its business has not yet accepted, then assert the booking is not shown as confirmed before explicit business acceptance.",
           "error_message": "",
@@ -2694,10 +2440,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether the booking shown as confirmed is present (in the booking request status)"
+          "reasoning": "whether the booking shown as confirmed is present (in the booking board)"
         },
         {
-          "instruction_id": "b4e1a229-6e1d-40e9-bd25-f8e6efded94c",
+          "instruction_id": "c56700f6-77b2-4341-a774-fe5c6eced25f",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -2719,19 +2465,19 @@
                       "transforms": [],
                       "json_path": null,
                       "expected": "false",
-                      "extracted_value": "{{booking_confirmed_check}}",
-                      "store_key": "booking_confirmed_check",
+                      "extracted_value": "{{booking_confirmed_status_check}}",
+                      "store_key": "booking_confirmed_status_check",
                       "variable_refs": {
-                        "{{booking_confirmed_check}}": "false"
+                        "{{booking_confirmed_status_check}}": "false"
                       }
                     }
                   ],
                   "sub_checks": [
                     {
                       "description": "the booking is not shown as confirmed before explicit business acceptance",
-                      "store_key": "booking_confirmed_check",
+                      "store_key": "booking_confirmed_status_check",
                       "expected_value": "false",
-                      "extracted_value": "{{booking_confirmed_check}}",
+                      "extracted_value": "{{booking_confirmed_status_check}}",
                       "operator": "equals",
                       "transforms": []
                     }
@@ -2754,11 +2500,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "04f43c48-a39f-47be-92c7-6355bed659ee",
-              "instruction_id": "b4e1a229-6e1d-40e9-bd25-f8e6efded94c",
+              "operation_id": "19909cd1-8e49-478b-ac13-fe67689f3e9b",
+              "instruction_id": "c56700f6-77b2-4341-a774-fe5c6eced25f",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-10-24T20:52:45.002849+00:00",
+              "operation_start": "2026-10-24T21:03:25.763240+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -2784,7 +2530,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/04f43c48-a39f-47be-92c7-6355bed659ee.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/19909cd1-8e49-478b-ac13-fe67689f3e9b.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -2856,29 +2602,29 @@
                     "transforms": [],
                     "json_path": null,
                     "expected": "false",
-                    "extracted_value": "{{booking_confirmed_check}}",
-                    "store_key": "booking_confirmed_check",
+                    "extracted_value": "{{booking_confirmed_status_check}}",
+                    "store_key": "booking_confirmed_status_check",
                     "variable_refs": {
-                      "{{booking_confirmed_check}}": "false"
+                      "{{booking_confirmed_status_check}}": "false"
                     }
                   }
                 ],
                 "sub_checks": [
                   {
                     "description": "the booking is not shown as confirmed before explicit business acceptance",
-                    "store_key": "booking_confirmed_check",
+                    "store_key": "booking_confirmed_status_check",
                     "expected_value": "false",
-                    "extracted_value": "{{booking_confirmed_check}}",
+                    "extracted_value": "{{booking_confirmed_status_check}}",
                     "operator": "equals",
                     "transforms": []
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "Whether the booking is shown as confirmed before explicit business acceptance.",
+                "verification": "the booking is not shown as confirmed before explicit business acceptance",
                 "claim": "the booking is not shown as confirmed before explicit business acceptance"
               },
               "assertion_tree": {
-                "assertion_id": "assert_cp_2",
+                "assertion_id": "assert_cp_1",
                 "status": "passed",
                 "description": "the booking is not shown as confirmed before explicit business acceptance",
                 "sub_results": [
@@ -2889,18 +2635,18 @@
                     "transforms": [],
                     "json_path": null,
                     "expected": "false",
-                    "extracted_value": "{{booking_confirmed_check}}",
-                    "store_key": "booking_confirmed_check",
+                    "extracted_value": "{{booking_confirmed_status_check}}",
+                    "store_key": "booking_confirmed_status_check",
                     "variable_refs": {
-                      "{{booking_confirmed_check}}": "false"
+                      "{{booking_confirmed_status_check}}": "false"
                     }
                   }
                 ],
                 "composite_operator": "and",
                 "passed": true,
-                "step": 4,
+                "step": 3,
                 "is_final": true,
-                "verification": "Whether the booking is shown as confirmed before explicit business acceptance.",
+                "verification": "the booking is not shown as confirmed before explicit business acceptance",
                 "error_message": null,
                 "duration_ms": 0
               },
@@ -2942,7 +2688,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:52:45.002849+00:00",
+          "start_timestamp": "2026-10-24T21:03:25.763240+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -2969,7 +2715,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "38fd04bc4ea54f128718f2abeafb7ad0",
+          "generative_id": "3e1de63041144943a969610b2695612b",
           "plan_id": "",
           "generative_objective": "Authorize confirmation for the selected offer while its business has not yet accepted, then assert the booking is not shown as confirmed before explicit business acceptance.",
           "error_message": "",
@@ -2985,24 +2731,24 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Checked the booking request status on the local booking page.",
-        "Verified that the business had not accepted the request.",
-        "Verified that the booking was not shown as confirmed before business acceptance."
+        "You asked to authorize confirmation for the selected offer.",
+        "Confirmation was authorized while the business had not yet accepted the booking.",
+        "The booking was not shown as confirmed, as required before explicit business acceptance."
       ],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_876cb1a4f4b64a778a0588b2209d6c1b",
-      "generative_id": "876cb1a4f4b64a778a0588b2209d6c1b",
+      "instruction_id": "generative_block_ece39b5d5b1349aea0c67625ab0576e1",
+      "generative_id": "ece39b5d5b1349aea0c67625ab0576e1",
       "objective": "Follow the selected offer through its controlled explicit business acceptance, then assert its booking is shown as confirmed after that acceptance.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "a023557b-4fee-4243-962b-3ecf6b6245da",
+          "instruction_id": "1ae2558b-e6b7-45ff-a5be-4c22b15cd3fe",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Waiting briefly after the simulated dispatch acceptance",
+          "instruction": "Waiting briefly after the recorded business dispatch acceptance",
           "command": "WAIT",
           "error": null,
           "parent_instruction_id": "",
@@ -3010,12 +2756,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "db130375-2a21-4dd8-9ce0-d21dbb8dbddf",
-              "instruction_id": "a023557b-4fee-4243-962b-3ecf6b6245da",
-              "instruction": "Waiting briefly after the simulated dispatch acceptance",
-              "intent": "Waiting briefly after the simulated dispatch acceptance",
-              "operation_start": "2026-10-24T20:52:57.827036+00:00",
-              "operation_end": "2026-10-24T20:52:58.330Z",
+              "operation_id": "6744b1ba-5ce6-46da-a371-c34421714492",
+              "instruction_id": "1ae2558b-e6b7-45ff-a5be-4c22b15cd3fe",
+              "instruction": "Waiting briefly after the recorded business dispatch acceptance",
+              "intent": "Waiting briefly after the recorded business dispatch acceptance",
+              "operation_start": "2026-10-24T21:03:39.932084+00:00",
+              "operation_end": "2026-10-24T21:03:40.437Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -3029,7 +2775,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Waiting briefly after the simulated dispatch acceptance\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: wait briefly after the business's displayed simulated dispatch acceptance\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Waiting briefly after the recorded business dispatch acceptance\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: wait briefly after the recorded business dispatch acceptance\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -3040,7 +2786,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/db130375-2a21-4dd8-9ce0-d21dbb8dbddf.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6744b1ba-5ce6-46da-a371-c34421714492.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -3134,12 +2880,12 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": null,
-              "reasoning": "PRIMARY: wait briefly after the business's displayed simulated dispatch acceptance"
+              "reasoning": "PRIMARY: wait briefly after the recorded business dispatch acceptance"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:52:57.827036+00:00",
-          "end_timestamp": "2026-10-24T20:52:58.330Z",
+          "start_timestamp": "2026-10-24T21:03:39.932084+00:00",
+          "end_timestamp": "2026-10-24T21:03:40.437Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -3165,7 +2911,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "876cb1a4f4b64a778a0588b2209d6c1b",
+          "generative_id": "ece39b5d5b1349aea0c67625ab0576e1",
           "plan_id": "",
           "generative_objective": "Follow the selected offer through its controlled explicit business acceptance, then assert its booking is shown as confirmed after that acceptance.",
           "error_message": "",
@@ -3173,28 +2919,28 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: wait briefly after the business's displayed simulated dispatch acceptance"
+          "reasoning": "PRIMARY: wait briefly after the recorded business dispatch acceptance"
         },
         {
-          "instruction_id": "ee35e734-0290-4aca-9b9d-bce1b7f2340f",
+          "instruction_id": "78373c8a-b19b-4f00-8081-969c64e20563",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking whether the selected offer booking is shown as confirmed",
-          "command": "TEXTUAL_ANALYZER",
+          "instruction": "Checking whether the booking confirmed status is present",
+          "command": "VISION_QUERY",
           "error": null,
           "parent_instruction_id": "",
           "classification_layer_resp": [],
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "31d2b948-c6e6-41dd-9b77-b97ea1052e2a",
-              "instruction_id": "ee35e734-0290-4aca-9b9d-bce1b7f2340f",
-              "instruction": "Checking whether the selected offer booking is shown as confirmed",
-              "intent": "Checking whether the selected offer booking is shown as confirmed",
-              "operation_start": "2026-10-24T20:53:12.246445+00:00",
+              "operation_id": "ae4f7eff-2f0a-4bf8-9bd1-a3d6a0dd5351",
+              "instruction_id": "78373c8a-b19b-4f00-8081-969c64e20563",
+              "instruction": "Checking whether the booking confirmed status is present",
+              "intent": "Checking whether the booking confirmed status is present",
+              "operation_start": "2026-10-24T21:03:56.207677+00:00",
               "operation_end": "",
               "status": "success",
-              "command": "TEXTUAL_ANALYZER",
+              "command": "VISION_QUERY",
               "name": "",
               "target": "",
               "value": "",
@@ -3206,7 +2952,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether the selected offer booking is shown as confirmed\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the selected offer's booking shown as confirmed is present (in the booking activity feed after business acceptance)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"/\\\\bAccepted\\\\b/.test(el(52).innerText) && /Simulated dispatch acceptance/.test(el(52).innerText)\",\"wrapped_js\":\"(els) => {\\n  const __m = {52: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (/\\\\bAccepted\\\\b/.test(el(52).innerText) && /Simulated dispatch acceptance/.test(el(52).innerText));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"✓ Demo Mobile Mechanics 1s\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the selected offer's booking shown as confirmed is present (in the booking activity feed after business acceptance)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"the selected offer's booking is shown as confirmed after the controlled explicit business acceptance\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking whether the booking confirmed status is present\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"VISION_QUERY\"},\"reasoning\":\"whether the booking confirmed status is present (in the booking header)\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -3217,14 +2963,14 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/31d2b948-c6e6-41dd-9b77-b97ea1052e2a.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/ae4f7eff-2f0a-4bf8-9bd1-a3d6a0dd5351.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
               "url": "",
               "navigation_direction": "",
               "tagified_image_url": "",
-              "query_variable_name": "booking_confirmed_check",
+              "query_variable_name": "booking_confirmed_status",
               "query_variable_value": "true",
               "query_variable_type": "",
               "expected_value": "",
@@ -3310,14 +3056,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "booking_confirmed_check": "true"
+                "booking_confirmed_status": "true"
               },
               "visual_context": null,
-              "reasoning": "whether the selected offer's booking shown as confirmed is present (in the booking activity feed after business acceptance)"
+              "reasoning": "whether the booking confirmed status is present (in the booking header)"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:53:12.246445+00:00",
+          "start_timestamp": "2026-10-24T21:03:56.207677+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -3344,7 +3090,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "876cb1a4f4b64a778a0588b2209d6c1b",
+          "generative_id": "ece39b5d5b1349aea0c67625ab0576e1",
           "plan_id": "",
           "generative_objective": "Follow the selected offer through its controlled explicit business acceptance, then assert its booking is shown as confirmed after that acceptance.",
           "error_message": "",
@@ -3352,10 +3098,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether the selected offer's booking shown as confirmed is present (in the booking activity feed after business acceptance)"
+          "reasoning": "whether the booking confirmed status is present (in the booking header)"
         },
         {
-          "instruction_id": "f2a3eed0-1806-487d-ae81-0fdaae1f2425",
+          "instruction_id": "148389ab-723a-4c0d-a2f2-6bbc11e4b60d",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -3371,25 +3117,25 @@
                 "assertion_tree": {
                   "sub_results": [
                     {
-                      "description": "the selected offer's booking is shown as confirmed after the controlled explicit business acceptance",
+                      "description": "its booking is shown as confirmed after that acceptance",
                       "passed": true,
                       "operator": "equals",
                       "transforms": [],
                       "json_path": null,
                       "expected": "true",
-                      "extracted_value": "{{booking_confirmed_check}}",
-                      "store_key": "booking_confirmed_check",
+                      "extracted_value": "{{booking_confirmed_status}}",
+                      "store_key": "booking_confirmed_status",
                       "variable_refs": {
-                        "{{booking_confirmed_check}}": "true"
+                        "{{booking_confirmed_status}}": "true"
                       }
                     }
                   ],
                   "sub_checks": [
                     {
-                      "description": "the selected offer's booking is shown as confirmed after the controlled explicit business acceptance",
-                      "store_key": "booking_confirmed_check",
+                      "description": "its booking is shown as confirmed after that acceptance",
+                      "store_key": "booking_confirmed_status",
                       "expected_value": "true",
-                      "extracted_value": "{{booking_confirmed_check}}",
+                      "extracted_value": "{{booking_confirmed_status}}",
                       "operator": "equals",
                       "transforms": []
                     }
@@ -3412,11 +3158,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "c3f27a96-617e-4f87-8fc1-a673924efb7a",
-              "instruction_id": "f2a3eed0-1806-487d-ae81-0fdaae1f2425",
+              "operation_id": "08340158-365f-45bc-bc1d-cde3946c599d",
+              "instruction_id": "148389ab-723a-4c0d-a2f2-6bbc11e4b60d",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-10-24T20:53:12.876718+00:00",
+              "operation_start": "2026-10-24T21:03:56.829677+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -3442,7 +3188,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/c3f27a96-617e-4f87-8fc1-a673924efb7a.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/08340158-365f-45bc-bc1d-cde3946c599d.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -3508,31 +3254,31 @@
                 "operands": [],
                 "sub_results": [
                   {
-                    "description": "the selected offer's booking is shown as confirmed after the controlled explicit business acceptance",
+                    "description": "its booking is shown as confirmed after that acceptance",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
                     "json_path": null,
                     "expected": "true",
-                    "extracted_value": "{{booking_confirmed_check}}",
-                    "store_key": "booking_confirmed_check",
+                    "extracted_value": "{{booking_confirmed_status}}",
+                    "store_key": "booking_confirmed_status",
                     "variable_refs": {
-                      "{{booking_confirmed_check}}": "true"
+                      "{{booking_confirmed_status}}": "true"
                     }
                   }
                 ],
                 "sub_checks": [
                   {
-                    "description": "the selected offer's booking is shown as confirmed after the controlled explicit business acceptance",
-                    "store_key": "booking_confirmed_check",
+                    "description": "its booking is shown as confirmed after that acceptance",
+                    "store_key": "booking_confirmed_status",
                     "expected_value": "true",
-                    "extracted_value": "{{booking_confirmed_check}}",
+                    "extracted_value": "{{booking_confirmed_status}}",
                     "operator": "equals",
                     "transforms": []
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "The selected offer's booking is shown as confirmed after the controlled explicit business acceptance.",
+                "verification": "the booking status shown after the controlled explicit business acceptance",
                 "claim": "its booking is shown as confirmed after that acceptance"
               },
               "assertion_tree": {
@@ -3541,16 +3287,16 @@
                 "description": "its booking is shown as confirmed after that acceptance",
                 "sub_results": [
                   {
-                    "description": "the selected offer's booking is shown as confirmed after the controlled explicit business acceptance",
+                    "description": "its booking is shown as confirmed after that acceptance",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
                     "json_path": null,
                     "expected": "true",
-                    "extracted_value": "{{booking_confirmed_check}}",
-                    "store_key": "booking_confirmed_check",
+                    "extracted_value": "{{booking_confirmed_status}}",
+                    "store_key": "booking_confirmed_status",
                     "variable_refs": {
-                      "{{booking_confirmed_check}}": "true"
+                      "{{booking_confirmed_status}}": "true"
                     }
                   }
                 ],
@@ -3558,7 +3304,7 @@
                 "passed": true,
                 "step": 3,
                 "is_final": true,
-                "verification": "The selected offer's booking is shown as confirmed after the controlled explicit business acceptance.",
+                "verification": "the booking status shown after the controlled explicit business acceptance",
                 "error_message": null,
                 "duration_ms": 0
               },
@@ -3600,7 +3346,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:53:12.876718+00:00",
+          "start_timestamp": "2026-10-24T21:03:56.829677+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -3627,7 +3373,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "876cb1a4f4b64a778a0588b2209d6c1b",
+          "generative_id": "ece39b5d5b1349aea0c67625ab0576e1",
           "plan_id": "",
           "generative_objective": "Follow the selected offer through its controlled explicit business acceptance, then assert its booking is shown as confirmed after that acceptance.",
           "error_message": "",
@@ -3643,9 +3389,8 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Followed the selected offer through its explicit business acceptance process.",
-        "The booking activity showed the offer as accepted with a simulated dispatch acceptance.",
-        "The selected offer’s booking was confirmed."
+        "The selected offer was followed through its explicit business acceptance process.",
+        "The booking was shown as confirmed after the acceptance was completed."
       ],
       "one_liner": null
     }
@@ -3653,7 +3398,7 @@
   "modules": [],
   "uploaded_files": [],
   "test_params": [],
-  "test_level_variables": "[{\"name\":\"eligible_offer_selectable\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"booking_dispatch_before_user_authorization\",\"value\":\"false\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"business_acceptance_check\",\"value\":\"false\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"booking_confirmed_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
+  "test_level_variables": "[{\"name\":\"eligible_offer_selectable\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"booking_dispatch_before_user_authorization\",\"value\":\"false\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"booking_confirmed_status_check\",\"value\":\"false\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"booking_confirmed_status\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
   "test_global_variables": [
     {
       "id": 465150,

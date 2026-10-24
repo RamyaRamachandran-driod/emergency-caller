@@ -1,25 +1,19 @@
 {
+  "commit_id": "a531d7ed-4961-450b-94ff-fe7abdeb26d4",
   "test_id": "3dc294bf-8ddc-4203-8c5f-d95909f78bfb",
+  "testcase_id": "01M5QV6PK3DAZVDFC2GVQ4YTAA",
   "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
   "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
   "org_id": "3394593",
   "session_name": "unknown-conditions-are-not-fabricated",
-  "commit_id": "454b82f6-5070-4345-92bd-35d000be68b6",
-  "testcase_id": "01M5QV6PK3DAZVDFC2GVQ4YTAA",
   "executions": [
     {
-      "execution_id": "0f8003a5-190f-4b26-9566-935874d2e837",
+      "execution_id": "5b5cbc85-5ccd-46c3-b767-3b8837fa47c0",
       "run_kind": "author",
-      "status": "failed",
+      "status": "passed",
       "valid": true,
-      "at": "2026-10-24T20:57:58.983Z"
-    },
-    {
-      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
-      "run_kind": "author",
-      "status": "failed",
-      "at": "2026-10-24T20:59:06.308Z",
-      "uploaded": true
+      "uploaded": true,
+      "at": "2026-10-24T21:06:03.384Z"
     }
   ]
 }

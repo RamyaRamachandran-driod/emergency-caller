@@ -2,24 +2,24 @@
   "test_id": "2c08d55e-5306-4c71-a77e-d41fe2d9fcbc",
   "version": "v4",
   "auto_heal_version": "AH2",
-  "session_id": "8bdc8dbb-a303-4a06-8b24-bb56e252603b",
+  "session_id": "82bcb5d2-3009-4291-a008-4c2efbcbe117",
   "org_id": "3394593",
   "user_id": "3570389",
   "url": "",
-  "start_timestamp": "2026-10-24T20:54:14.667Z",
-  "end_timestamp": "2026-10-24T20:55:46.301Z",
+  "start_timestamp": "2026-10-24T21:03:00.259Z",
+  "end_timestamp": "2026-10-24T21:03:46.657Z",
   "status": "success",
-  "commit_id": "8bdc8dbb-a303-4a06-8b24-bb56e252603b",
+  "commit_id": "82bcb5d2-3009-4291-a008-4c2efbcbe117",
   "instructions": [
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_9e83706cabd54413b75bfe3433a88b83",
-      "generative_id": "9e83706cabd54413b75bfe3433a88b83",
+      "instruction_id": "generative_block_00f5df3831244deda2667cb8968c735f",
+      "generative_id": "00f5df3831244deda2667cb8968c735f",
       "objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "09aef8f1-a21d-4c2f-9e7d-7a6cbc4ff87c",
+          "instruction_id": "1680de99-3fde-41c0-9e3e-b94b5ce6a88b",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Navigate to {{global.start_url}}",
@@ -31,11 +31,11 @@
           "operations": [
             {
               "operation_id": "f2e8c6db-2dd9-46ac-aa1a-3b14cab98589",
-              "instruction_id": "09aef8f1-a21d-4c2f-9e7d-7a6cbc4ff87c",
+              "instruction_id": "1680de99-3fde-41c0-9e3e-b94b5ce6a88b",
               "instruction": "Navigate to {{global.start_url}}",
               "intent": "Navigate to {{global.start_url}}",
-              "operation_start": "2026-10-24T20:54:25.392192+00:00",
-              "operation_end": "2026-10-24T20:54:25.666Z",
+              "operation_start": "2026-10-24T21:03:19.079626+00:00",
+              "operation_end": "2026-10-24T21:03:19.114Z",
               "status": "success",
               "command": "OPEN",
               "name": "",
@@ -158,8 +158,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:54:25.392192+00:00",
-          "end_timestamp": "2026-10-24T20:54:25.666Z",
+          "start_timestamp": "2026-10-24T21:03:19.079626+00:00",
+          "end_timestamp": "2026-10-24T21:03:19.114Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -185,7 +185,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9e83706cabd54413b75bfe3433a88b83",
+          "generative_id": "00f5df3831244deda2667cb8968c735f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -196,7 +196,7 @@
           "reasoning": "Navigate to {{global.start_url}}"
         },
         {
-          "instruction_id": "ad54f0ac-3551-4a3c-ae88-766d9ce62753",
+          "instruction_id": "6a1823da-dfcf-4ace-9969-552a697bd4f1",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Typing breakdown location into the location field",
@@ -208,11 +208,11 @@
           "operations": [
             {
               "operation_id": "7f802654-332d-47ff-afe8-cf1afdce9823",
-              "instruction_id": "ad54f0ac-3551-4a3c-ae88-766d9ce62753",
+              "instruction_id": "6a1823da-dfcf-4ace-9969-552a697bd4f1",
               "instruction": "Typing breakdown location into the location field",
               "intent": "Typing breakdown location into the location field",
-              "operation_start": "2026-10-24T20:54:34.186257+00:00",
-              "operation_end": "2026-10-24T20:54:34.227Z",
+              "operation_start": "2026-10-24T21:03:19.231763+00:00",
+              "operation_end": "2026-10-24T21:03:19.295Z",
               "status": "success",
               "command": "TYPE",
               "name": "",
@@ -360,8 +360,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:54:34.186257+00:00",
-          "end_timestamp": "2026-10-24T20:54:34.227Z",
+          "start_timestamp": "2026-10-24T21:03:19.231763+00:00",
+          "end_timestamp": "2026-10-24T21:03:19.295Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -387,7 +387,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9e83706cabd54413b75bfe3433a88b83",
+          "generative_id": "00f5df3831244deda2667cb8968c735f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -398,7 +398,7 @@
           "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: container=breakdown request dialog"
         },
         {
-          "instruction_id": "47c05b0e-d599-48bc-ad84-e6cd80969a70",
+          "instruction_id": "f88a8ff4-6d71-4283-b55f-7457d55180f4",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for the completed breakdown description and location state confirmation",
@@ -410,11 +410,11 @@
           "operations": [
             {
               "operation_id": "786549c2-9677-4e51-82af-bb356ebc3ed1",
-              "instruction_id": "47c05b0e-d599-48bc-ad84-e6cd80969a70",
+              "instruction_id": "f88a8ff4-6d71-4283-b55f-7457d55180f4",
               "instruction": "Waiting for the completed breakdown description and location state confirmation",
               "intent": "Waiting for the completed breakdown description and location state confirmation",
-              "operation_start": "2026-10-24T20:54:40.872150+00:00",
-              "operation_end": "2026-10-24T20:54:41.176Z",
+              "operation_start": "2026-10-24T21:03:19.605664+00:00",
+              "operation_end": "2026-10-24T21:03:19.908Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -537,8 +537,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:54:40.872150+00:00",
-          "end_timestamp": "2026-10-24T20:54:41.176Z",
+          "start_timestamp": "2026-10-24T21:03:19.605664+00:00",
+          "end_timestamp": "2026-10-24T21:03:19.908Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -564,7 +564,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9e83706cabd54413b75bfe3433a88b83",
+          "generative_id": "00f5df3831244deda2667cb8968c735f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -575,7 +575,7 @@
           "reasoning": "PRIMARY: confirm the completed breakdown description and location state"
         },
         {
-          "instruction_id": "52e79f9a-5b3e-481a-9691-6f015e555dab",
+          "instruction_id": "3d02b35e-8101-4948-a3fd-d4e32d830ab8",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Selecting maximum arrival time in Arrive within dropdown",
@@ -587,11 +587,11 @@
           "operations": [
             {
               "operation_id": "d0a56ca6-1247-40f4-95c0-36f15c831eb7",
-              "instruction_id": "52e79f9a-5b3e-481a-9691-6f015e555dab",
+              "instruction_id": "3d02b35e-8101-4948-a3fd-d4e32d830ab8",
               "instruction": "Selecting maximum arrival time in Arrive within dropdown",
               "intent": "Selecting maximum arrival time in Arrive within dropdown",
-              "operation_start": "2026-10-24T20:54:44.992035+00:00",
-              "operation_end": "2026-10-24T20:54:44.998Z",
+              "operation_start": "2026-10-24T21:03:19.665756+00:00",
+              "operation_end": "2026-10-24T21:03:19.678Z",
               "status": "success",
               "command": "SELECT",
               "name": "",
@@ -739,8 +739,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:54:44.992035+00:00",
-          "end_timestamp": "2026-10-24T20:54:44.998Z",
+          "start_timestamp": "2026-10-24T21:03:19.665756+00:00",
+          "end_timestamp": "2026-10-24T21:03:19.678Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -766,7 +766,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9e83706cabd54413b75bfe3433a88b83",
+          "generative_id": "00f5df3831244deda2667cb8968c735f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -777,7 +777,7 @@
           "reasoning": "PRIMARY: maximum arrival time dropdown; role=combobox; text=\"Arrive within\" | HINTS: container=breakdown request dialog"
         },
         {
-          "instruction_id": "4ce83b86-13a7-41ea-9982-d72d13894ed0",
+          "instruction_id": "af1ea281-6bc1-451c-9509-f2e433bd517e",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Find help button in breakdown request dialog",
@@ -789,11 +789,11 @@
           "operations": [
             {
               "operation_id": "2685d21c-256e-4820-a0d3-2e2890072ba5",
-              "instruction_id": "4ce83b86-13a7-41ea-9982-d72d13894ed0",
+              "instruction_id": "af1ea281-6bc1-451c-9509-f2e433bd517e",
               "instruction": "Clicking Find help button in breakdown request dialog",
               "intent": "Clicking Find help button in breakdown request dialog",
-              "operation_start": "2026-10-24T20:54:50.442505+00:00",
-              "operation_end": "2026-10-24T20:54:50.475Z",
+              "operation_start": "2026-10-24T21:03:19.762874+00:00",
+              "operation_end": "2026-10-24T21:03:19.807Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -941,8 +941,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:54:50.442505+00:00",
-          "end_timestamp": "2026-10-24T20:54:50.475Z",
+          "start_timestamp": "2026-10-24T21:03:19.762874+00:00",
+          "end_timestamp": "2026-10-24T21:03:19.807Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -968,7 +968,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9e83706cabd54413b75bfe3433a88b83",
+          "generative_id": "00f5df3831244deda2667cb8968c735f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -979,7 +979,7 @@
           "reasoning": "PRIMARY: submit breakdown search button; role=button; text=\"Find help\" | HINTS: bottom of breakdown request dialog"
         },
         {
-          "instruction_id": "4b0f234e-eb6e-4dc2-aed0-97d65a48f5a1",
+          "instruction_id": "5c3a4a3d-4e14-4f1a-b22b-cedd4b48323b",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for the mechanic offers board to finish loading",
@@ -991,11 +991,11 @@
           "operations": [
             {
               "operation_id": "810583dc-554d-468c-9710-d5994f4e9e92",
-              "instruction_id": "4b0f234e-eb6e-4dc2-aed0-97d65a48f5a1",
+              "instruction_id": "5c3a4a3d-4e14-4f1a-b22b-cedd4b48323b",
               "instruction": "Waiting for the mechanic offers board to finish loading",
               "intent": "Waiting for the mechanic offers board to finish loading",
-              "operation_start": "2026-10-24T20:54:55.338156+00:00",
-              "operation_end": "2026-10-24T20:54:56.347Z",
+              "operation_start": "2026-10-24T21:03:21.354093+00:00",
+              "operation_end": "2026-10-24T21:03:22.356Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -1118,8 +1118,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:54:55.338156+00:00",
-          "end_timestamp": "2026-10-24T20:54:56.347Z",
+          "start_timestamp": "2026-10-24T21:03:21.354093+00:00",
+          "end_timestamp": "2026-10-24T21:03:22.356Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1145,7 +1145,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9e83706cabd54413b75bfe3433a88b83",
+          "generative_id": "00f5df3831244deda2667cb8968c735f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.eligible_unauthed_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers while capturing booking-dispatch traffic.",
           "error_message": "",
@@ -1156,7 +1156,7 @@
           "reasoning": "PRIMARY: wait for the mechanic offers board to finish loading"
         },
         {
-          "instruction_id": "2fc34e7b-eca8-4b4f-aac5-7eff385ec95a",
+          "instruction_id": "14c67616-c75a-44c1-b110-d9d6eca5d3cf",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Recording the dispatch request and offer-ready network responses",
@@ -1168,11 +1168,11 @@
           "operations": [
             {
               "operation_id": "b6f6d2ab-c275-4033-b833-d1eff09eb491",
-              "instruction_id": "2fc34e7b-eca8-4b4f-aac5-7eff385ec95a",
+              "instruction_id": "14c67616-c75a-44c1-b110-d9d6eca5d3cf",
               "instruction": "Recording the dispatch request and offer-ready network responses",
               "intent": "Recording the dispatch request and offer-ready network responses",
-              "operation_start": "2026-10-24T20:55:13.807542+00:00",
-              "operation_end": "",
+              "operation_start": "2026-10-24T21:03:21.423394+00:00",
+              "operation_end": "2026-10-24T21:03:21.424Z",
               "status": "success",
               "command": "DEVTOOLS_NETWORK_QUERY",
               "name": "",
@@ -1205,7 +1205,7 @@
               "navigation_direction": "",
               "tagified_image_url": "",
               "query_variable_name": "booking_dispatch_traffic",
-              "query_variable_value": "{\"dispatch_request\": {\"method\": \"POST\", \"url\": \"http://127.0.0.1:5174/api/tasks\", \"status\": 202, \"request_body\": \"{\\\"request\\\":\\\"My car won\\u2019t start. I need a mobile mechanic within 30 minutes.\\\",\\\"location\\\":\\\"Sunnyvale, CA\\\",\\\"timezone\\\":\\\"America/Los_Angeles\\\",\\\"maxArrivalMinutes\\\":30}\", \"response_body\": \"{\\\"id\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"input\\\":{\\\"request\\\":\\\"My car won\\u2019t start. I need a mobile mechanic within 30 minutes.\\\",\\\"location\\\":\\\"Sunnyvale, CA\\\",\\\"timezone\\\":\\\"America/Los_Angeles\\\",\\\"maxArrivalMinutes\\\":30},\\\"stage\\\":\\\"finding\\\",\\\"businesses\\\":[],\\\"calls\\\":[],\\\"offers\\\":[],\\\"warnings\\\":[],\\\"simulated\\\":true}\"}, \"offers_response\": {\"method\": \"GET\", \"url\": \"http://127.0.0.1:5174/api/tasks/cb1fa4f4-ace5-4413-af1b-094326387b70\", \"status\": 200, \"response_body\": \"{\\\"id\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"input\\\":{\\\"request\\\":\\\"My car won\\u2019t start. I need a mobile mechanic within 30 minutes.\\\",\\\"location\\\":\\\"Sunnyvale, CA\\\",\\\"timezone\\\":\\\"America/Los_Angeles\\\",\\\"maxArrivalMinutes\\\":30},\\\"stage\\\":\\\"offers_ready\\\",\\\"businesses\\\":[{\\\"id\\\":\\\"demo-1\\\",\\\"name\\\":\\\"Demo Mobile Mechanics\\\",\\\"phone\\\":\\\"+12025550100\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},{\\\"id\\\":\\\"demo-2\\\",\\\"name\\\":\\\"Demo Roadside Repair\\\",\\\"phone\\\":\\\"+12025550101\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},{\\\"id\\\":\\\"demo-3\\\",\\\"name\\\":\\\"Demo Auto Rescue\\\",\\\"phone\\\":\\\"+12025550102\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"}],\\\"calls\\\":[{\\\"id\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"business\\\":{\\\"id\\\":\\\"demo-1\\\",\\\"name\\\":\\\"Demo Mobile Mechanics\\\",\\\"phone\\\":\\\"+12025550100\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},\\\"purpose\\\":\\\"quote\\\",\\\"status\\\":\\\"completed\\\",\\\"events\\\":[{\\\"eventId\\\":\\\"c0745d5e-f037-4d5c-b7d2-7de5cab8116a\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.944Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"connected\\\"},{\\\"eventId\\\":\\\"e94a291b-275d-4f0c-97c7-8f75fa6eaa7f\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.945Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":0,\\\"speaker\\\":\\\"agent\\\",\\\"text\\\":\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\"},{\\\"eventId\\\":\\\"c52b6535-ec63-4e01-b4f1-933b80c9560c\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.947Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":1,\\\"speaker\\\":\\\"business\\\",\\\"text\\\":\\\"Simulated response: available in 20 minutes, estimated $110.\\\"},{\\\"eventId\\\":\\\"85e9e37c-32b5-40b4-8841-2b9be135a16b\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.948Z\\\",\\\"type\\\":\\\"offer\\\",\\\"offer\\\":{\\\"id\\\":\\\"ff182d11-8bf8-474e-9c27-02b9e9e22552\\\",\\\"businessId\\\":\\\"demo-1\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":20,\\\"amountMinor\\\":11000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"}},{\\\"eventId\\\":\\\"40a18ba3-b26f-4391-89bf-25641d562fbc\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.949Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"completed\\\"}]},{\\\"id\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"business\\\":{\\\"id\\\":\\\"demo-2\\\",\\\"name\\\":\\\"Demo Roadside Repair\\\",\\\"phone\\\":\\\"+12025550101\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},\\\"purpose\\\":\\\"quote\\\",\\\"status\\\":\\\"completed\\\",\\\"events\\\":[{\\\"eventId\\\":\\\"aeb32e13-f603-4b2f-8c15-13b313f6730d\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.944Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"connected\\\"},{\\\"eventId\\\":\\\"0297178f-3b48-4c04-8df7-5d5b3eb20b98\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.945Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":0,\\\"speaker\\\":\\\"agent\\\",\\\"text\\\":\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\"},{\\\"eventId\\\":\\\"95768bd3-6c21-4fb6-bd41-e4b35b0657a6\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.947Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":1,\\\"speaker\\\":\\\"business\\\",\\\"text\\\":\\\"Simulated response: available in 25 minutes, estimated $130.\\\"},{\\\"eventId\\\":\\\"1c51f96b-97d2-4866-942a-cca44177ff98\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.948Z\\\",\\\"type\\\":\\\"offer\\\",\\\"offer\\\":{\\\"id\\\":\\\"1dc089ab-88fc-41f1-bb5f-e3ba19868f25\\\",\\\"businessId\\\":\\\"demo-2\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":25,\\\"amountMinor\\\":13000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"}},{\\\"eventId\\\":\\\"c74e5d78-a1f0-4df2-8a5b-68af7c8d0cb8\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.949Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"completed\\\"}]},{\\\"id\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"business\\\":{\\\"id\\\":\\\"demo-3\\\",\\\"name\\\":\\\"Demo Auto Rescue\\\",\\\"phone\\\":\\\"+12025550102\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},\\\"purpose\\\":\\\"quote\\\",\\\"status\\\":\\\"completed\\\",\\\"events\\\":[{\\\"eventId\\\":\\\"ba393be7-e70f-4e88-9327-66c5151d63eb\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.944Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"connected\\\"},{\\\"eventId\\\":\\\"315afbcf-e1e5-41a0-8c1f-9a6664547f3a\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.945Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":0,\\\"speaker\\\":\\\"agent\\\",\\\"text\\\":\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\"},{\\\"eventId\\\":\\\"e11817d9-665c-420b-8402-5b8664b6adda\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.947Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":1,\\\"speaker\\\":\\\"business\\\",\\\"text\\\":\\\"Simulated response: available in 30 minutes, estimated $150.\\\"},{\\\"eventId\\\":\\\"ec57bb1e-c509-4d0b-9d8f-509b93007f7d\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.948Z\\\",\\\"type\\\":\\\"offer\\\",\\\"offer\\\":{\\\"id\\\":\\\"e6df12b5-6fca-4420-a19e-4309eb6436d4\\\",\\\"businessId\\\":\\\"demo-3\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":30,\\\"amountMinor\\\":15000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"}},{\\\"eventId\\\":\\\"1b2d3571-c9a7-4473-b1e0-6085ddeeea2d\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.949Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"completed\\\"}]}],\\\"offers\\\":[{\\\"id\\\":\\\"ff182d11-8bf8-474e-9c27-02b9e9e22552\\\",\\\"businessId\\\":\\\"demo-1\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":20,\\\"amountMinor\\\":11000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"},{\\\"id\\\":\\\"1dc089ab-88fc-41f1-bb5f-e3ba19868f25\\\",\\\"businessId\\\":\\\"demo-2\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":25,\\\"amountMinor\\\":13000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"},{\\\"id\\\":\\\"e6df12b5-6fca-4420-a19e-4309eb6436d4\\\",\\\"businessId\\\":\\\"demo-3\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":30,\\\"amountMinor\\\":15000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"}],\\\"warnings\\\":[\\\"SIMULATED discovery. Businesses and numbers are fictional.\\\"],\\\"simulated\\\":true}\"}}",
+              "query_variable_value": "",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -1290,15 +1290,15 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "booking_dispatch_traffic": "{\"dispatch_request\": {\"method\": \"POST\", \"url\": \"http://127.0.0.1:5174/api/tasks\", \"status\": 202, \"request_body\": \"{\\\"request\\\":\\\"My car won\\u2019t start. I need a mobile mechanic within 30 minutes.\\\",\\\"location\\\":\\\"Sunnyvale, CA\\\",\\\"timezone\\\":\\\"America/Los_Angeles\\\",\\\"maxArrivalMinutes\\\":30}\", \"response_body\": \"{\\\"id\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"input\\\":{\\\"request\\\":\\\"My car won\\u2019t start. I need a mobile mechanic within 30 minutes.\\\",\\\"location\\\":\\\"Sunnyvale, CA\\\",\\\"timezone\\\":\\\"America/Los_Angeles\\\",\\\"maxArrivalMinutes\\\":30},\\\"stage\\\":\\\"finding\\\",\\\"businesses\\\":[],\\\"calls\\\":[],\\\"offers\\\":[],\\\"warnings\\\":[],\\\"simulated\\\":true}\"}, \"offers_response\": {\"method\": \"GET\", \"url\": \"http://127.0.0.1:5174/api/tasks/cb1fa4f4-ace5-4413-af1b-094326387b70\", \"status\": 200, \"response_body\": \"{\\\"id\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"input\\\":{\\\"request\\\":\\\"My car won\\u2019t start. I need a mobile mechanic within 30 minutes.\\\",\\\"location\\\":\\\"Sunnyvale, CA\\\",\\\"timezone\\\":\\\"America/Los_Angeles\\\",\\\"maxArrivalMinutes\\\":30},\\\"stage\\\":\\\"offers_ready\\\",\\\"businesses\\\":[{\\\"id\\\":\\\"demo-1\\\",\\\"name\\\":\\\"Demo Mobile Mechanics\\\",\\\"phone\\\":\\\"+12025550100\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},{\\\"id\\\":\\\"demo-2\\\",\\\"name\\\":\\\"Demo Roadside Repair\\\",\\\"phone\\\":\\\"+12025550101\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},{\\\"id\\\":\\\"demo-3\\\",\\\"name\\\":\\\"Demo Auto Rescue\\\",\\\"phone\\\":\\\"+12025550102\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"}],\\\"calls\\\":[{\\\"id\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"business\\\":{\\\"id\\\":\\\"demo-1\\\",\\\"name\\\":\\\"Demo Mobile Mechanics\\\",\\\"phone\\\":\\\"+12025550100\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},\\\"purpose\\\":\\\"quote\\\",\\\"status\\\":\\\"completed\\\",\\\"events\\\":[{\\\"eventId\\\":\\\"c0745d5e-f037-4d5c-b7d2-7de5cab8116a\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.944Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"connected\\\"},{\\\"eventId\\\":\\\"e94a291b-275d-4f0c-97c7-8f75fa6eaa7f\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.945Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":0,\\\"speaker\\\":\\\"agent\\\",\\\"text\\\":\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\"},{\\\"eventId\\\":\\\"c52b6535-ec63-4e01-b4f1-933b80c9560c\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.947Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":1,\\\"speaker\\\":\\\"business\\\",\\\"text\\\":\\\"Simulated response: available in 20 minutes, estimated $110.\\\"},{\\\"eventId\\\":\\\"85e9e37c-32b5-40b4-8841-2b9be135a16b\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.948Z\\\",\\\"type\\\":\\\"offer\\\",\\\"offer\\\":{\\\"id\\\":\\\"ff182d11-8bf8-474e-9c27-02b9e9e22552\\\",\\\"businessId\\\":\\\"demo-1\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":20,\\\"amountMinor\\\":11000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"}},{\\\"eventId\\\":\\\"40a18ba3-b26f-4391-89bf-25641d562fbc\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.949Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"completed\\\"}]},{\\\"id\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"business\\\":{\\\"id\\\":\\\"demo-2\\\",\\\"name\\\":\\\"Demo Roadside Repair\\\",\\\"phone\\\":\\\"+12025550101\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},\\\"purpose\\\":\\\"quote\\\",\\\"status\\\":\\\"completed\\\",\\\"events\\\":[{\\\"eventId\\\":\\\"aeb32e13-f603-4b2f-8c15-13b313f6730d\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.944Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"connected\\\"},{\\\"eventId\\\":\\\"0297178f-3b48-4c04-8df7-5d5b3eb20b98\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.945Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":0,\\\"speaker\\\":\\\"agent\\\",\\\"text\\\":\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\"},{\\\"eventId\\\":\\\"95768bd3-6c21-4fb6-bd41-e4b35b0657a6\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.947Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":1,\\\"speaker\\\":\\\"business\\\",\\\"text\\\":\\\"Simulated response: available in 25 minutes, estimated $130.\\\"},{\\\"eventId\\\":\\\"1c51f96b-97d2-4866-942a-cca44177ff98\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.948Z\\\",\\\"type\\\":\\\"offer\\\",\\\"offer\\\":{\\\"id\\\":\\\"1dc089ab-88fc-41f1-bb5f-e3ba19868f25\\\",\\\"businessId\\\":\\\"demo-2\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":25,\\\"amountMinor\\\":13000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"}},{\\\"eventId\\\":\\\"c74e5d78-a1f0-4df2-8a5b-68af7c8d0cb8\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.949Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"completed\\\"}]},{\\\"id\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"business\\\":{\\\"id\\\":\\\"demo-3\\\",\\\"name\\\":\\\"Demo Auto Rescue\\\",\\\"phone\\\":\\\"+12025550102\\\",\\\"sourceUrl\\\":null,\\\"openingStatus\\\":\\\"unknown\\\",\\\"checkedAt\\\":\\\"2026-10-24T20:54:50.440Z\\\"},\\\"purpose\\\":\\\"quote\\\",\\\"status\\\":\\\"completed\\\",\\\"events\\\":[{\\\"eventId\\\":\\\"ba393be7-e70f-4e88-9327-66c5151d63eb\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.944Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"connected\\\"},{\\\"eventId\\\":\\\"315afbcf-e1e5-41a0-8c1f-9a6664547f3a\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:50.945Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":0,\\\"speaker\\\":\\\"agent\\\",\\\"text\\\":\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\"},{\\\"eventId\\\":\\\"e11817d9-665c-420b-8402-5b8664b6adda\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.947Z\\\",\\\"type\\\":\\\"transcript\\\",\\\"sequence\\\":1,\\\"speaker\\\":\\\"business\\\",\\\"text\\\":\\\"Simulated response: available in 30 minutes, estimated $150.\\\"},{\\\"eventId\\\":\\\"ec57bb1e-c509-4d0b-9d8f-509b93007f7d\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.948Z\\\",\\\"type\\\":\\\"offer\\\",\\\"offer\\\":{\\\"id\\\":\\\"e6df12b5-6fca-4420-a19e-4309eb6436d4\\\",\\\"businessId\\\":\\\"demo-3\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":30,\\\"amountMinor\\\":15000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"}},{\\\"eventId\\\":\\\"1b2d3571-c9a7-4473-b1e0-6085ddeeea2d\\\",\\\"taskId\\\":\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"at\\\":\\\"2026-10-24T20:54:51.949Z\\\",\\\"type\\\":\\\"status\\\",\\\"status\\\":\\\"completed\\\"}]}],\\\"offers\\\":[{\\\"id\\\":\\\"ff182d11-8bf8-474e-9c27-02b9e9e22552\\\",\\\"businessId\\\":\\\"demo-1\\\",\\\"callId\\\":\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":20,\\\"amountMinor\\\":11000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"},{\\\"id\\\":\\\"1dc089ab-88fc-41f1-bb5f-e3ba19868f25\\\",\\\"businessId\\\":\\\"demo-2\\\",\\\"callId\\\":\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":25,\\\"amountMinor\\\":13000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"},{\\\"id\\\":\\\"e6df12b5-6fca-4420-a19e-4309eb6436d4\\\",\\\"businessId\\\":\\\"demo-3\\\",\\\"callId\\\":\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\",\\\"availableNow\\\":true,\\\"etaMinutes\\\":30,\\\"amountMinor\\\":15000,\\\"currency\\\":\\\"USD\\\",\\\"quoteType\\\":\\\"estimate\\\",\\\"conditions\\\":\\\"Simulated estimate; no real business contacted.\\\"}],\\\"warnings\\\":[\\\"SIMULATED discovery. Businesses and numbers are fictional.\\\"],\\\"simulated\\\":true}\"}}"
+                "booking_dispatch_traffic": ""
               },
               "visual_context": null,
               "reasoning": "PRIMARY: booking-dispatch network traffic generated by submitting the breakdown request and reaching the displayed mechanic offers; role=text | HINTS: current mechanic offers board"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:55:13.807542+00:00",
-          "end_timestamp": "",
+          "start_timestamp": "2026-10-24T21:03:21.423394+00:00",
+          "end_timestamp": "2026-10-24T21:03:21.424Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1337,27 +1337,23 @@
       ],
       "error_message": null,
       "error_code": null,
-      "result_code": null,
+      "result_code": 100,
       "bifurcation_context": [],
-      "approach_reason": [
-        "Requested mobile-mechanic help for a car that would not start in Sunnyvale, CA, with a maximum arrival time of 30 minutes.",
-        "Reached the mechanic offers: Demo Mobile Mechanics estimated 20 minutes and $110; Demo Roadside Repair estimated 25 minutes and $130; Demo Auto Rescue estimated 30 minutes and $150.",
-        "The displayed businesses, quotes, and availability were simulated; no real businesses were contacted."
-      ],
+      "approach_reason": [],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_28a9af77ee3646f4a30715ba234f3a07",
-      "generative_id": "28a9af77ee3646f4a30715ba234f3a07",
+      "instruction_id": "generative_block_631cc09a568941e9bdd7b1e960719ab9",
+      "generative_id": "631cc09a568941e9bdd7b1e960719ab9",
       "objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} but do not authorize confirmation, then assert that this eligible offer is selectable and no booking dispatch occurs without user authorization.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "2efaf6e3-1f7d-4de2-831d-eb8f2185d6a6",
+          "instruction_id": "2f631dd6-0989-4cf7-9d9c-7d2fe5d0929f",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Clicking the eligible Demo Mobile Mechanics offer button",
+          "instruction": "Clicking the eligible offer selection button for #1 $110 Demo Mobile Mechanics",
           "command": "CLICK",
           "error": null,
           "parent_instruction_id": "",
@@ -1365,12 +1361,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "f34d9e9d-85f7-48e9-afec-a1e91f420457",
-              "instruction_id": "2efaf6e3-1f7d-4de2-831d-eb8f2185d6a6",
-              "instruction": "Clicking the eligible Demo Mobile Mechanics offer button",
-              "intent": "Clicking the eligible Demo Mobile Mechanics offer button",
-              "operation_start": "2026-10-24T20:55:29.657713+00:00",
-              "operation_end": "2026-10-24T20:55:29.705Z",
+              "operation_id": "7bd7332b-7123-4a16-90ac-b5b9b0292ada",
+              "instruction_id": "2f631dd6-0989-4cf7-9d9c-7d2fe5d0929f",
+              "instruction": "Clicking the eligible offer selection button for #1 $110 Demo Mobile Mechanics",
+              "intent": "Clicking the eligible offer selection button for #1 $110 Demo Mobile Mechanics",
+              "operation_start": "2026-10-24T21:03:30.704097+00:00",
+              "operation_end": "2026-10-24T21:03:30.747Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -1384,7 +1380,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking the eligible Demo Mobile Mechanics offer button\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: eligible Demo Mobile Mechanics offer button; role=button; text=\\\"#1 $110.00 Demo Mobile Mechanics 20 min\\\" | HINTS: container=offers to compare list\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Clicking the eligible offer selection button for #1 $110 Demo Mobile Mechanics\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: eligible offer selection button; role=button; text=\\\"#1 $110.00 Demo Mobile Mechanics 20 min\\\" | HINTS: container=OFFERS list\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1395,7 +1391,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/f34d9e9d-85f7-48e9-afec-a1e91f420457.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7bd7332b-7123-4a16-90ac-b5b9b0292ada.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1509,17 +1505,17 @@
                 "viewport_width": 1920,
                 "viewport_height": 1080,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/f34d9e9d-85f7-48e9-afec-a1e91f420457.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7bd7332b-7123-4a16-90ac-b5b9b0292ada.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: eligible Demo Mobile Mechanics offer button; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=offers to compare list"
+              "reasoning": "PRIMARY: eligible offer selection button; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=OFFERS list"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:55:29.657713+00:00",
-          "end_timestamp": "2026-10-24T20:55:29.705Z",
+          "start_timestamp": "2026-10-24T21:03:30.704097+00:00",
+          "end_timestamp": "2026-10-24T21:03:30.747Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1545,7 +1541,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "28a9af77ee3646f4a30715ba234f3a07",
+          "generative_id": "631cc09a568941e9bdd7b1e960719ab9",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} but do not authorize confirmation, then assert that this eligible offer is selectable and no booking dispatch occurs without user authorization.",
           "error_message": "",
@@ -1553,13 +1549,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: eligible Demo Mobile Mechanics offer button; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=offers to compare list"
+          "reasoning": "PRIMARY: eligible offer selection button; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 20 min\" | HINTS: container=OFFERS list"
         },
         {
-          "instruction_id": "3bd86a88-f58a-4f66-be60-facd6db76e11",
+          "instruction_id": "6989cc3c-1644-4cb4-8b62-3c076f66c928",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking whether the eligible offer is selectable",
+          "instruction": "Checking whether the eligible offer can be selected",
           "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
@@ -1567,11 +1563,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "644d4b7b-9a50-400e-a91e-c6a715db7845",
-              "instruction_id": "3bd86a88-f58a-4f66-be60-facd6db76e11",
-              "instruction": "Checking whether the eligible offer is selectable",
-              "intent": "Checking whether the eligible offer is selectable",
-              "operation_start": "2026-10-24T20:55:43.256804+00:00",
+              "operation_id": "139282fb-d683-43c7-a865-cb8b499ca4c5",
+              "instruction_id": "6989cc3c-1644-4cb4-8b62-3c076f66c928",
+              "instruction": "Checking whether the eligible offer can be selected",
+              "intent": "Checking whether the eligible offer can be selected",
+              "operation_start": "2026-10-24T21:03:43.431672+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -1586,7 +1582,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether the eligible offer is selectable\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether this eligible offer selectable is present (in the booking confirmation dialog)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(14).matches(':enabled')\",\"wrapped_js\":\"(els) => {\\n  const __m = {14: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(14).matches(':enabled'));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"Request confirmation call\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether this eligible offer selectable is present (in the booking confirmation dialog)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"this eligible offer is selectable\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking whether the eligible offer can be selected\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the eligible offer selectable is present (in the booking confirmation dialog)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(14).matches(':enabled')\",\"wrapped_js\":\"(els) => {\\n  const __m = {14: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(14).matches(':enabled'));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"Request confirmation call\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the eligible offer selectable is present (in the booking confirmation dialog)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"the eligible offer is selectable.\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1597,7 +1593,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/644d4b7b-9a50-400e-a91e-c6a715db7845.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/139282fb-d683-43c7-a865-cb8b499ca4c5.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1693,11 +1689,11 @@
                 "eligible_offer_selectable": "true"
               },
               "visual_context": null,
-              "reasoning": "whether this eligible offer selectable is present (in the booking confirmation dialog)"
+              "reasoning": "whether the eligible offer selectable is present (in the booking confirmation dialog)"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:55:43.256804+00:00",
+          "start_timestamp": "2026-10-24T21:03:43.431672+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -1724,7 +1720,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "28a9af77ee3646f4a30715ba234f3a07",
+          "generative_id": "631cc09a568941e9bdd7b1e960719ab9",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} but do not authorize confirmation, then assert that this eligible offer is selectable and no booking dispatch occurs without user authorization.",
           "error_message": "",
@@ -1732,13 +1728,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether this eligible offer selectable is present (in the booking confirmation dialog)"
+          "reasoning": "whether the eligible offer selectable is present (in the booking confirmation dialog)"
         },
         {
-          "instruction_id": "08178560-157e-44a2-bb4a-66bbf87c85d7",
+          "instruction_id": "2108cde6-0ca0-455f-896c-32d07ecbca72",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking for booking dispatch activity before authorization",
+          "instruction": "Checking whether a booking dispatch was sent without user authorization",
           "command": "DEVTOOLS_NETWORK_QUERY",
           "error": null,
           "parent_instruction_id": "",
@@ -1746,11 +1742,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "2fbf49e7-caf3-427d-b7b6-d4f4d475b014",
-              "instruction_id": "08178560-157e-44a2-bb4a-66bbf87c85d7",
-              "instruction": "Checking for booking dispatch activity before authorization",
-              "intent": "Checking for booking dispatch activity before authorization",
-              "operation_start": "2026-10-24T20:55:43.257074+00:00",
+              "operation_id": "37d70e1a-ade3-4fc1-a5eb-a8406346a9b4",
+              "instruction_id": "2108cde6-0ca0-455f-896c-32d07ecbca72",
+              "instruction": "Checking whether a booking dispatch was sent without user authorization",
+              "intent": "Checking whether a booking dispatch was sent without user authorization",
+              "operation_start": "2026-10-24T21:03:43.432040+00:00",
               "operation_end": "",
               "status": "success",
               "command": "DEVTOOLS_NETWORK_QUERY",
@@ -1765,7 +1761,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking for booking dispatch activity before authorization\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"DEVTOOLS_NETWORK_QUERY\"},\"reasoning\":\"whether booking dispatch without user authorization is present (in captured page network traffic)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code\":\"return any(r.method not in ('GET', 'HEAD', 'OPTIONS') for r in network.requests())\",\"code_js\":\"return network.requests().some(r => !['GET', 'HEAD', 'OPTIONS'].includes(r.method));\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking whether a booking dispatch was sent without user authorization\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"DEVTOOLS_NETWORK_QUERY\"},\"reasoning\":\"whether booking dispatch without user authorization is present (in the captured page network requests)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code\":\"return any(r.method != 'GET' for r in network.requests())\",\"code_js\":\"return network.requests().some(r => r.method !== 'GET');\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1776,7 +1772,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/2fbf49e7-caf3-427d-b7b6-d4f4d475b014.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/37d70e1a-ade3-4fc1-a5eb-a8406346a9b4.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1872,11 +1868,11 @@
                 "booking_dispatch_without_user_authorization": "false"
               },
               "visual_context": null,
-              "reasoning": "whether booking dispatch without user authorization is present (in captured page network traffic)"
+              "reasoning": "whether booking dispatch without user authorization is present (in the captured page network requests)"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:55:43.257074+00:00",
+          "start_timestamp": "2026-10-24T21:03:43.432040+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -1911,10 +1907,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether booking dispatch without user authorization is present (in captured page network traffic)"
+          "reasoning": "whether booking dispatch without user authorization is present (in the captured page network requests)"
         },
         {
-          "instruction_id": "d3eb1bda-0422-40d7-928e-fa32e8b57fa9",
+          "instruction_id": "e712e80a-3823-432e-bc87-f5d2c3a64242",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -1930,7 +1926,7 @@
                 "assertion_tree": {
                   "sub_results": [
                     {
-                      "description": "this eligible offer is selectable",
+                      "description": "the eligible offer is selectable.",
                       "passed": true,
                       "operator": "equals",
                       "transforms": [],
@@ -1943,7 +1939,7 @@
                       }
                     },
                     {
-                      "description": "no booking dispatch occurs without user authorization",
+                      "description": "no booking dispatch occurs without user authorization.",
                       "passed": true,
                       "operator": "equals",
                       "transforms": [],
@@ -1958,7 +1954,7 @@
                   ],
                   "sub_checks": [
                     {
-                      "description": "this eligible offer is selectable",
+                      "description": "the eligible offer is selectable.",
                       "store_key": "eligible_offer_selectable",
                       "expected_value": "true",
                       "extracted_value": "{{eligible_offer_selectable}}",
@@ -1966,7 +1962,7 @@
                       "transforms": []
                     },
                     {
-                      "description": "no booking dispatch occurs without user authorization",
+                      "description": "no booking dispatch occurs without user authorization.",
                       "store_key": "booking_dispatch_without_user_authorization",
                       "expected_value": "false",
                       "extracted_value": "{{booking_dispatch_without_user_authorization}}",
@@ -1976,7 +1972,7 @@
                   ],
                   "composite_operator": "and",
                   "verification": "",
-                  "claim": "this eligible offer is selectable and no booking dispatch occurs without user authorization",
+                  "claim": "this eligible offer is selectable and no booking dispatch occurs without user authorization.",
                   "operator": [],
                   "assertion_operands": [],
                   "left_operand": null,
@@ -1992,11 +1988,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "a429985c-64c3-4dbe-a396-94d2ad82e3b6",
-              "instruction_id": "d3eb1bda-0422-40d7-928e-fa32e8b57fa9",
+              "operation_id": "33709a8b-83a4-4cb0-bb34-3682cf10855a",
+              "instruction_id": "e712e80a-3823-432e-bc87-f5d2c3a64242",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-10-24T20:55:43.864069+00:00",
+              "operation_start": "2026-10-24T21:03:44.038627+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -2022,7 +2018,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/a429985c-64c3-4dbe-a396-94d2ad82e3b6.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/33709a8b-83a4-4cb0-bb34-3682cf10855a.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -2088,7 +2084,7 @@
                 "operands": [],
                 "sub_results": [
                   {
-                    "description": "this eligible offer is selectable",
+                    "description": "the eligible offer is selectable.",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
@@ -2101,7 +2097,7 @@
                     }
                   },
                   {
-                    "description": "no booking dispatch occurs without user authorization",
+                    "description": "no booking dispatch occurs without user authorization.",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
@@ -2116,7 +2112,7 @@
                 ],
                 "sub_checks": [
                   {
-                    "description": "this eligible offer is selectable",
+                    "description": "the eligible offer is selectable.",
                     "store_key": "eligible_offer_selectable",
                     "expected_value": "true",
                     "extracted_value": "{{eligible_offer_selectable}}",
@@ -2124,7 +2120,7 @@
                     "transforms": []
                   },
                   {
-                    "description": "no booking dispatch occurs without user authorization",
+                    "description": "no booking dispatch occurs without user authorization.",
                     "store_key": "booking_dispatch_without_user_authorization",
                     "expected_value": "false",
                     "extracted_value": "{{booking_dispatch_without_user_authorization}}",
@@ -2133,16 +2129,16 @@
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "The selected eligible offer can be selected, and no booking dispatch occurs without user authorization.",
-                "claim": "this eligible offer is selectable and no booking dispatch occurs without user authorization"
+                "verification": "The selected eligible offer can be selected, and no booking dispatch has occurred without user authorization.",
+                "claim": "this eligible offer is selectable and no booking dispatch occurs without user authorization."
               },
               "assertion_tree": {
                 "assertion_id": "assert_cp_1",
                 "status": "passed",
-                "description": "this eligible offer is selectable and no booking dispatch occurs without user authorization",
+                "description": "this eligible offer is selectable and no booking dispatch occurs without user authorization.",
                 "sub_results": [
                   {
-                    "description": "this eligible offer is selectable",
+                    "description": "the eligible offer is selectable.",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
@@ -2155,7 +2151,7 @@
                     }
                   },
                   {
-                    "description": "no booking dispatch occurs without user authorization",
+                    "description": "no booking dispatch occurs without user authorization.",
                     "passed": true,
                     "operator": "equals",
                     "transforms": [],
@@ -2172,7 +2168,7 @@
                 "passed": true,
                 "step": 3,
                 "is_final": true,
-                "verification": "The selected eligible offer can be selected, and no booking dispatch occurs without user authorization.",
+                "verification": "The selected eligible offer can be selected, and no booking dispatch has occurred without user authorization.",
                 "error_message": null,
                 "duration_ms": 0
               },
@@ -2214,7 +2210,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:55:43.864069+00:00",
+          "start_timestamp": "2026-10-24T21:03:44.038627+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -2241,7 +2237,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "28a9af77ee3646f4a30715ba234f3a07",
+          "generative_id": "631cc09a568941e9bdd7b1e960719ab9",
           "plan_id": "",
           "generative_objective": "Select an available-now offer with a known arrival estimate no later than {{global.max_arrival_time}} but do not authorize confirmation, then assert that this eligible offer is selectable and no booking dispatch occurs without user authorization.",
           "error_message": "",
@@ -2257,9 +2253,9 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Selected an available-now offer that met the requested arrival-time limit.",
-        "The eligible offer remained available to select through a confirmation request.",
-        "No booking was sent or confirmed because no user authorization was provided."
+        "Selected an available-now offer that met the required arrival-time limit.",
+        "The selected offer remained available to proceed with through the confirmation step.",
+        "No booking was sent or confirmed without the user's authorization."
       ],
       "one_liner": null
     }
@@ -2267,7 +2263,7 @@
   "modules": [],
   "uploaded_files": [],
   "test_params": [],
-  "test_level_variables": "[{\"name\":\"booking_dispatch_traffic\",\"value\":\"{\\\"dispatch_request\\\": {\\\"method\\\": \\\"POST\\\", \\\"url\\\": \\\"http://127.0.0.1:5174/api/tasks\\\", \\\"status\\\": 202, \\\"request_body\\\": \\\"{\\\\\\\"request\\\\\\\":\\\\\\\"My car won\\\\u2019t start. I need a mobile mechanic within 30 minutes.\\\\\\\",\\\\\\\"location\\\\\\\":\\\\\\\"Sunnyvale, CA\\\\\\\",\\\\\\\"timezone\\\\\\\":\\\\\\\"America/Los_Angeles\\\\\\\",\\\\\\\"maxArrivalMinutes\\\\\\\":30}\\\", \\\"response_body\\\": \\\"{\\\\\\\"id\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"input\\\\\\\":{\\\\\\\"request\\\\\\\":\\\\\\\"My car won\\\\u2019t start. I need a mobile mechanic within 30 minutes.\\\\\\\",\\\\\\\"location\\\\\\\":\\\\\\\"Sunnyvale, CA\\\\\\\",\\\\\\\"timezone\\\\\\\":\\\\\\\"America/Los_Angeles\\\\\\\",\\\\\\\"maxArrivalMinutes\\\\\\\":30},\\\\\\\"stage\\\\\\\":\\\\\\\"finding\\\\\\\",\\\\\\\"businesses\\\\\\\":[],\\\\\\\"calls\\\\\\\":[],\\\\\\\"offers\\\\\\\":[],\\\\\\\"warnings\\\\\\\":[],\\\\\\\"simulated\\\\\\\":true}\\\"}, \\\"offers_response\\\": {\\\"method\\\": \\\"GET\\\", \\\"url\\\": \\\"http://127.0.0.1:5174/api/tasks/cb1fa4f4-ace5-4413-af1b-094326387b70\\\", \\\"status\\\": 200, \\\"response_body\\\": \\\"{\\\\\\\"id\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"input\\\\\\\":{\\\\\\\"request\\\\\\\":\\\\\\\"My car won\\\\u2019t start. I need a mobile mechanic within 30 minutes.\\\\\\\",\\\\\\\"location\\\\\\\":\\\\\\\"Sunnyvale, CA\\\\\\\",\\\\\\\"timezone\\\\\\\":\\\\\\\"America/Los_Angeles\\\\\\\",\\\\\\\"maxArrivalMinutes\\\\\\\":30},\\\\\\\"stage\\\\\\\":\\\\\\\"offers_ready\\\\\\\",\\\\\\\"businesses\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"demo-1\\\\\\\",\\\\\\\"name\\\\\\\":\\\\\\\"Demo Mobile Mechanics\\\\\\\",\\\\\\\"phone\\\\\\\":\\\\\\\"+12025550100\\\\\\\",\\\\\\\"sourceUrl\\\\\\\":null,\\\\\\\"openingStatus\\\\\\\":\\\\\\\"unknown\\\\\\\",\\\\\\\"checkedAt\\\\\\\":\\\\\\\"2026-10-24T20:54:50.440Z\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"demo-2\\\\\\\",\\\\\\\"name\\\\\\\":\\\\\\\"Demo Roadside Repair\\\\\\\",\\\\\\\"phone\\\\\\\":\\\\\\\"+12025550101\\\\\\\",\\\\\\\"sourceUrl\\\\\\\":null,\\\\\\\"openingStatus\\\\\\\":\\\\\\\"unknown\\\\\\\",\\\\\\\"checkedAt\\\\\\\":\\\\\\\"2026-10-24T20:54:50.440Z\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"demo-3\\\\\\\",\\\\\\\"name\\\\\\\":\\\\\\\"Demo Auto Rescue\\\\\\\",\\\\\\\"phone\\\\\\\":\\\\\\\"+12025550102\\\\\\\",\\\\\\\"sourceUrl\\\\\\\":null,\\\\\\\"openingStatus\\\\\\\":\\\\\\\"unknown\\\\\\\",\\\\\\\"checkedAt\\\\\\\":\\\\\\\"2026-10-24T20:54:50.440Z\\\\\\\"}],\\\\\\\"calls\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\\\\\",\\\\\\\"business\\\\\\\":{\\\\\\\"id\\\\\\\":\\\\\\\"demo-1\\\\\\\",\\\\\\\"name\\\\\\\":\\\\\\\"Demo Mobile Mechanics\\\\\\\",\\\\\\\"phone\\\\\\\":\\\\\\\"+12025550100\\\\\\\",\\\\\\\"sourceUrl\\\\\\\":null,\\\\\\\"openingStatus\\\\\\\":\\\\\\\"unknown\\\\\\\",\\\\\\\"checkedAt\\\\\\\":\\\\\\\"2026-10-24T20:54:50.440Z\\\\\\\"},\\\\\\\"purpose\\\\\\\":\\\\\\\"quote\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"completed\\\\\\\",\\\\\\\"events\\\\\\\":[{\\\\\\\"eventId\\\\\\\":\\\\\\\"c0745d5e-f037-4d5c-b7d2-7de5cab8116a\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:50.944Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"status\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"connected\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"e94a291b-275d-4f0c-97c7-8f75fa6eaa7f\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:50.945Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"transcript\\\\\\\",\\\\\\\"sequence\\\\\\\":0,\\\\\\\"speaker\\\\\\\":\\\\\\\"agent\\\\\\\",\\\\\\\"text\\\\\\\":\\\\\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"c52b6535-ec63-4e01-b4f1-933b80c9560c\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.947Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"transcript\\\\\\\",\\\\\\\"sequence\\\\\\\":1,\\\\\\\"speaker\\\\\\\":\\\\\\\"business\\\\\\\",\\\\\\\"text\\\\\\\":\\\\\\\"Simulated response: available in 20 minutes, estimated $110.\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"85e9e37c-32b5-40b4-8841-2b9be135a16b\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.948Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"offer\\\\\\\",\\\\\\\"offer\\\\\\\":{\\\\\\\"id\\\\\\\":\\\\\\\"ff182d11-8bf8-474e-9c27-02b9e9e22552\\\\\\\",\\\\\\\"businessId\\\\\\\":\\\\\\\"demo-1\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\\\\\",\\\\\\\"availableNow\\\\\\\":true,\\\\\\\"etaMinutes\\\\\\\":20,\\\\\\\"amountMinor\\\\\\\":11000,\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"quoteType\\\\\\\":\\\\\\\"estimate\\\\\\\",\\\\\\\"conditions\\\\\\\":\\\\\\\"Simulated estimate; no real business contacted.\\\\\\\"}},{\\\\\\\"eventId\\\\\\\":\\\\\\\"40a18ba3-b26f-4391-89bf-25641d562fbc\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.949Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"status\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"completed\\\\\\\"}]},{\\\\\\\"id\\\\\\\":\\\\\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\\\\\",\\\\\\\"business\\\\\\\":{\\\\\\\"id\\\\\\\":\\\\\\\"demo-2\\\\\\\",\\\\\\\"name\\\\\\\":\\\\\\\"Demo Roadside Repair\\\\\\\",\\\\\\\"phone\\\\\\\":\\\\\\\"+12025550101\\\\\\\",\\\\\\\"sourceUrl\\\\\\\":null,\\\\\\\"openingStatus\\\\\\\":\\\\\\\"unknown\\\\\\\",\\\\\\\"checkedAt\\\\\\\":\\\\\\\"2026-10-24T20:54:50.440Z\\\\\\\"},\\\\\\\"purpose\\\\\\\":\\\\\\\"quote\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"completed\\\\\\\",\\\\\\\"events\\\\\\\":[{\\\\\\\"eventId\\\\\\\":\\\\\\\"aeb32e13-f603-4b2f-8c15-13b313f6730d\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:50.944Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"status\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"connected\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"0297178f-3b48-4c04-8df7-5d5b3eb20b98\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:50.945Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"transcript\\\\\\\",\\\\\\\"sequence\\\\\\\":0,\\\\\\\"speaker\\\\\\\":\\\\\\\"agent\\\\\\\",\\\\\\\"text\\\\\\\":\\\\\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"95768bd3-6c21-4fb6-bd41-e4b35b0657a6\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.947Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"transcript\\\\\\\",\\\\\\\"sequence\\\\\\\":1,\\\\\\\"speaker\\\\\\\":\\\\\\\"business\\\\\\\",\\\\\\\"text\\\\\\\":\\\\\\\"Simulated response: available in 25 minutes, estimated $130.\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"1c51f96b-97d2-4866-942a-cca44177ff98\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.948Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"offer\\\\\\\",\\\\\\\"offer\\\\\\\":{\\\\\\\"id\\\\\\\":\\\\\\\"1dc089ab-88fc-41f1-bb5f-e3ba19868f25\\\\\\\",\\\\\\\"businessId\\\\\\\":\\\\\\\"demo-2\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\\\\\",\\\\\\\"availableNow\\\\\\\":true,\\\\\\\"etaMinutes\\\\\\\":25,\\\\\\\"amountMinor\\\\\\\":13000,\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"quoteType\\\\\\\":\\\\\\\"estimate\\\\\\\",\\\\\\\"conditions\\\\\\\":\\\\\\\"Simulated estimate; no real business contacted.\\\\\\\"}},{\\\\\\\"eventId\\\\\\\":\\\\\\\"c74e5d78-a1f0-4df2-8a5b-68af7c8d0cb8\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.949Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"status\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"completed\\\\\\\"}]},{\\\\\\\"id\\\\\\\":\\\\\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\\\\\",\\\\\\\"business\\\\\\\":{\\\\\\\"id\\\\\\\":\\\\\\\"demo-3\\\\\\\",\\\\\\\"name\\\\\\\":\\\\\\\"Demo Auto Rescue\\\\\\\",\\\\\\\"phone\\\\\\\":\\\\\\\"+12025550102\\\\\\\",\\\\\\\"sourceUrl\\\\\\\":null,\\\\\\\"openingStatus\\\\\\\":\\\\\\\"unknown\\\\\\\",\\\\\\\"checkedAt\\\\\\\":\\\\\\\"2026-10-24T20:54:50.440Z\\\\\\\"},\\\\\\\"purpose\\\\\\\":\\\\\\\"quote\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"completed\\\\\\\",\\\\\\\"events\\\\\\\":[{\\\\\\\"eventId\\\\\\\":\\\\\\\"ba393be7-e70f-4e88-9327-66c5151d63eb\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:50.944Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"status\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"connected\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"315afbcf-e1e5-41a0-8c1f-9a6664547f3a\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:50.945Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"transcript\\\\\\\",\\\\\\\"sequence\\\\\\\":0,\\\\\\\"speaker\\\\\\\":\\\\\\\"agent\\\\\\\",\\\\\\\"text\\\\\\\":\\\\\\\"Can you send a mobile mechanic and provide an arrival estimate and quote?\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"e11817d9-665c-420b-8402-5b8664b6adda\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.947Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"transcript\\\\\\\",\\\\\\\"sequence\\\\\\\":1,\\\\\\\"speaker\\\\\\\":\\\\\\\"business\\\\\\\",\\\\\\\"text\\\\\\\":\\\\\\\"Simulated response: available in 30 minutes, estimated $150.\\\\\\\"},{\\\\\\\"eventId\\\\\\\":\\\\\\\"ec57bb1e-c509-4d0b-9d8f-509b93007f7d\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.948Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"offer\\\\\\\",\\\\\\\"offer\\\\\\\":{\\\\\\\"id\\\\\\\":\\\\\\\"e6df12b5-6fca-4420-a19e-4309eb6436d4\\\\\\\",\\\\\\\"businessId\\\\\\\":\\\\\\\"demo-3\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\\\\\",\\\\\\\"availableNow\\\\\\\":true,\\\\\\\"etaMinutes\\\\\\\":30,\\\\\\\"amountMinor\\\\\\\":15000,\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"quoteType\\\\\\\":\\\\\\\"estimate\\\\\\\",\\\\\\\"conditions\\\\\\\":\\\\\\\"Simulated estimate; no real business contacted.\\\\\\\"}},{\\\\\\\"eventId\\\\\\\":\\\\\\\"1b2d3571-c9a7-4473-b1e0-6085ddeeea2d\\\\\\\",\\\\\\\"taskId\\\\\\\":\\\\\\\"cb1fa4f4-ace5-4413-af1b-094326387b70\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\\\\\",\\\\\\\"at\\\\\\\":\\\\\\\"2026-10-24T20:54:51.949Z\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"status\\\\\\\",\\\\\\\"status\\\\\\\":\\\\\\\"completed\\\\\\\"}]}],\\\\\\\"offers\\\\\\\":[{\\\\\\\"id\\\\\\\":\\\\\\\"ff182d11-8bf8-474e-9c27-02b9e9e22552\\\\\\\",\\\\\\\"businessId\\\\\\\":\\\\\\\"demo-1\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"a622224e-e327-4929-8f75-d8c1f0683843\\\\\\\",\\\\\\\"availableNow\\\\\\\":true,\\\\\\\"etaMinutes\\\\\\\":20,\\\\\\\"amountMinor\\\\\\\":11000,\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"quoteType\\\\\\\":\\\\\\\"estimate\\\\\\\",\\\\\\\"conditions\\\\\\\":\\\\\\\"Simulated estimate; no real business contacted.\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"1dc089ab-88fc-41f1-bb5f-e3ba19868f25\\\\\\\",\\\\\\\"businessId\\\\\\\":\\\\\\\"demo-2\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"22db10c2-b0dd-4e58-9ca4-d4b50b6b0cff\\\\\\\",\\\\\\\"availableNow\\\\\\\":true,\\\\\\\"etaMinutes\\\\\\\":25,\\\\\\\"amountMinor\\\\\\\":13000,\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"quoteType\\\\\\\":\\\\\\\"estimate\\\\\\\",\\\\\\\"conditions\\\\\\\":\\\\\\\"Simulated estimate; no real business contacted.\\\\\\\"},{\\\\\\\"id\\\\\\\":\\\\\\\"e6df12b5-6fca-4420-a19e-4309eb6436d4\\\\\\\",\\\\\\\"businessId\\\\\\\":\\\\\\\"demo-3\\\\\\\",\\\\\\\"callId\\\\\\\":\\\\\\\"11b54a04-1a5d-4619-8e98-5dbd6c63a2bd\\\\\\\",\\\\\\\"availableNow\\\\\\\":true,\\\\\\\"etaMinutes\\\\\\\":30,\\\\\\\"amountMinor\\\\\\\":15000,\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"quoteType\\\\\\\":\\\\\\\"estimate\\\\\\\",\\\\\\\"conditions\\\\\\\":\\\\\\\"Simulated estimate; no real business contacted.\\\\\\\"}],\\\\\\\"warnings\\\\\\\":[\\\\\\\"SIMULATED discovery. Businesses and numbers are fictional.\\\\\\\"],\\\\\\\"simulated\\\\\\\":true}\\\"}}\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"eligible_offer_selectable\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"booking_dispatch_without_user_authorization\",\"value\":\"false\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
+  "test_level_variables": "[{\"name\":\"booking_dispatch_traffic\",\"value\":\"\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"eligible_offer_selectable\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"booking_dispatch_without_user_authorization\",\"value\":\"false\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
   "test_global_variables": [
     {
       "id": 465150,

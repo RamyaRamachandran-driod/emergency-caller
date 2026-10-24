@@ -1,25 +1,19 @@
 {
+  "commit_id": "a2d472d3-b61c-429a-b6e4-ed24a5507701",
   "test_id": "b4ee7dc6-f544-4d25-a019-d33babdf680c",
+  "testcase_id": "01M5QV5PPDN0D5YJMBDN3JQVN8",
   "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
   "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
   "org_id": "3394593",
   "session_name": "unknown-availability-is-not-fabricated",
-  "commit_id": "030873d1-5d7b-4405-b182-79b216fe52a3",
-  "testcase_id": "01M5QV5PPDN0D5YJMBDN3JQVN8",
   "executions": [
     {
-      "execution_id": "c3faf0fb-23ad-4e7d-85c5-9d918e13809e",
+      "execution_id": "5b5cbc85-5ccd-46c3-b767-3b8837fa47c0",
       "run_kind": "author",
       "status": "passed",
       "valid": true,
-      "at": "2026-10-24T20:57:18.222Z"
-    },
-    {
-      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
-      "run_kind": "author",
-      "status": "passed",
-      "at": "2026-10-24T20:59:06.307Z",
-      "uploaded": true
+      "uploaded": true,
+      "at": "2026-10-24T21:06:03.384Z"
     }
   ]
 }
