@@ -65,6 +65,7 @@ export function quoteCallBrief(input: TaskInput): CallBrief {
     completionCriteria: [
       "Use the conversation to resolve the objectives, choosing relevant questions and following up on real ambiguity. Do not follow a fixed question sequence.",
       "Before closing, ensure each needed detail is established or explicitly unavailable/unknown. Respect a refusal or request to stop rather than inventing facts or pressing indefinitely.",
+      "Pricing must be discussed before completion: ask for a price or visit fee if none was volunteered. A price can be unknown only after the business cannot provide it, requires inspection, or declines. Do not confuse not asked with unavailable.",
       "Save a transcript-supported quote with report_quote, including limitations and unknowns. A quote inquiry never authorizes a booking or dispatch.",
       "Finish with the customer's preferred brief thanks, without reading back a summary, then end the call.",
     ],

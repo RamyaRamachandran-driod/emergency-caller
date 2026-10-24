@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { randomUUID } from "node:crypto";
 import { configFromEnv } from "../src/config.js";
 import { Store } from "../src/store.js";
-import { extractTranscriptQuote, saveQuote } from "../src/quote.js";
+import { extractTranscriptQuote, saveQuote, needsPricingDiscussion } from "../src/quote.js";
 
 test("transcript extraction preserves verbatim evidence, rejects invented evidence, and saves once", async t => {
   const dir = mkdtempSync(join(tmpdir(), "savior-extract-"));
@@ -17,6 +17,13 @@ test("transcript extraction preserves verbatim evidence, rejects invented eviden
     business: { id: "personal-phone-test", name: "Your phone", phone: "+14155550101", sourceUrl: null, openingStatus: "unknown", checkedAt: new Date().toISOString() } }, true, true);
   store.emit(r, { type: "transcript", speaker: "agent", sequence: 0, text: "How soon and what price?" });
   store.emit(r, { type: "transcript", speaker: "business", sequence: 1, text: "Twenty-five minutes. Hundred dollars. Fixed fee for coming out." });
+  const missingPrice = { availability: "available" as const, etaMinutes: 25, amountMinor: null, currency: null, quoteType: "unknown" as const, conditions: null, evidence: { availability: "We can help", eta: "Twenty-five minutes", price: "" } };
+  const bare = { ...r, events: [] };
+  assert.equal(needsPricingDiscussion(bare, missingPrice), true);
+  assert.equal(needsPricingDiscussion({ ...bare, events: [{ ...r.events[0], type: "transcript", speaker: "agent", sequence: 0, text: "I'm calling for a quote. Can you help with a leak?" }] }, missingPrice), true);
+  assert.equal(needsPricingDiscussion({ ...bare, events: [{ ...r.events[0], type: "transcript", speaker: "agent", sequence: 0, text: "What would the visit cost?" }] }, missingPrice), false);
+  assert.equal(needsPricingDiscussion({ ...bare, events: [{ ...r.events[0], type: "transcript", speaker: "business", sequence: 0, text: "I need to inspect it before I can quote." }] }, missingPrice), false);
+  assert.equal(needsPricingDiscussion(bare, { ...missingPrice, availability: "unavailable" }), false);
   const config = configFromEnv({ OPENAI_TEXT_MODEL: "test-model", OPENAI_API_KEY: "fake" });
   const quote = { availability: "unknown", etaMinutes: 25, amountMinor: 10000, currency: "USD", quoteType: "fixed", conditions: "Call-out fee only; repair total unknown.", evidence: { availability: "", eta: "Twenty-five minutes", price: "Hundred dollars" } };
   const mock: typeof fetch = async (_url, init) => {

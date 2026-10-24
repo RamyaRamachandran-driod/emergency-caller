@@ -32,3 +32,15 @@ export function saveQuote(r: Record, store: Store, quote: z.infer<typeof QuoteRe
     currency: quote.currency, quoteType: quote.quoteType,
     conditions: [quote.conditions, quote.availability === "unknown" ? "Availability not established." : null].filter(Boolean).join(" ") || null } });
 }
+
+
+// Completion check, not a question script: unavailable is different from never discussed.
+export function needsPricingDiscussion(r: Record, quote: z.infer<typeof QuoteResult>): boolean {
+  if (quote.availability === "unavailable" || quote.amountMinor !== null) return false;
+  const transcripts = r.events.filter(e => e.type === "transcript");
+  const priceTerms = /\b(?:price|pricing|cost|charge|fee|rate|estimate|dollars?|usd|eur|gbp)\b|[$€£]/i;
+  return !transcripts.some(e => {
+    if (e.speaker === "business") return priceTerms.test(e.text) || /(?:can.t|cannot|unable).{0,30}quote|(?:need|have).{0,30}(?:inspect|see the (?:problem|issue|job))/i.test(e.text);
+    return (e.text.includes("?") && priceTerms.test(e.text)) || /(?:can|could|would).{0,25}(?:give|provide|offer).{0,15}(?:quote|estimate)/i.test(e.text);
+  });
+}

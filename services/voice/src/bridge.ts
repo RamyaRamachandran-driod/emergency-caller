@@ -2,8 +2,8 @@ import { randomUUID } from "node:crypto";
 import WebSocket from "ws";
 import type { VoiceConfig } from "./config.js";
 import { PhoneMedia } from "./media.js";
-import { extractTranscriptQuote, saveQuote } from "./quote.js";
-import { instructions, tools, validateQuote } from "./prompt.js";
+import { extractTranscriptQuote, saveQuote, needsPricingDiscussion } from "./quote.js";
+import { instructions, tools, validateQuote, QuoteResult } from "./prompt.js";
 import { Store, type Record } from "./store.js";
 
 type Message = { type?: string; [key: string]: any };
@@ -18,7 +18,8 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
   let userSpeaking = false, userTurnPending = false;
   const canceled = new Set<string>();
   const seen = new Set<string>();
-  const awaitingTranscripts = new Set<string>();
+  const repliedTurns = new Set<string>();
+  let pendingTurnId: string | undefined;
   const marks = new Map<string, { item: string; end: number }>();
   const timers = new Set<ReturnType<typeof setTimeout>>();
   const later = (fn: () => void, ms: number) => { const timer = setTimeout(() => { timers.delete(timer); fn(); }, ms); timers.add(timer); return timer; };
@@ -48,8 +49,10 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
     openingFinished = true;
   }
   function maybeRespond() {
-    if ((followupRequested || userTurnPending) && !userSpeaking && awaitingTranscripts.size === 0 && !responseActive && pendingTools === 0 && !endRequested && !remoteEnded && !closed) {
+    if ((followupRequested || userTurnPending) && !userSpeaking && !responseActive && pendingTools === 0 && !endRequested && !remoteEnded && !closed) {
       followupRequested = false; userTurnPending = false;
+      if (pendingTurnId) repliedTurns.add(pendingTurnId);
+      pendingTurnId = undefined;
       startResponse();
     }
   }
@@ -86,21 +89,26 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
     try {
       const args = JSON.parse(message.arguments);
       if (message.name === "report_quote") {
-        // Transcription completes asynchronously after the function call; wait a bounded interval.
-        let quote: ReturnType<typeof validateQuote> | undefined;
-        for (let n = 0; n < 20 && !closed; n++) {
-          try {
-            const text = r.events.filter(e => e.type === "transcript" && e.speaker === "business").map(e => e.type === "transcript" ? e.text : "").join("\n");
-            quote = validateQuote(args, text); break;
-          } catch (error) {
-            if (n === 19) { quote = await extractTranscriptQuote(r, config); break; }
-            await new Promise(resolve => setTimeout(resolve, 250));
+        const proposed = QuoteResult.parse(args);
+        if (needsPricingDiscussion(r, proposed)) {
+          result = { saved: false, incompleteObjectives: ["pricing"], instruction: "Pricing has not been discussed. Continue the conversation with one brief, relevant question about price or the visit fee. Do not close or mark the task complete yet. If they cannot quote before inspection or decline to give a price, record that limitation and keep the amount unknown." };
+        } else {
+          // Evidence validation can wait for ASR; ordinary conversational replies do not.
+          let quote: ReturnType<typeof validateQuote> | undefined;
+          for (let n = 0; n < 4 && !closed; n++) {
+            try {
+              const text = r.events.filter(e => e.type === "transcript" && e.speaker === "business").map(e => e.type === "transcript" ? e.text : "").join("\n");
+              quote = validateQuote(args, text); break;
+            } catch (error) {
+              if (n === 3) { quote = await extractTranscriptQuote(r, config); break; }
+              await new Promise(resolve => setTimeout(resolve, 100));
+            }
           }
+          if (closed || !quote) return;
+          saveQuote(r, store, quote);
+          if (r.events.some(e => e.type === "transcript" && e.speaker === "agent" && isClosing(e.text))) requestEnd();
+          result = { saved: true, instruction: "Do not summarize or repeat the quote. If you have not already said the closing, say only: Thanks, I’ll get back to you. If it has already been said, do not speak it again. Use end_call to finish. No dispatch has been authorized." };
         }
-        if (closed || !quote) return;
-        saveQuote(r, store, quote);
-        if (r.events.some(e => e.type === "transcript" && e.speaker === "agent" && isClosing(e.text))) requestEnd();
-        result = { saved: true, instruction: "Do not summarize or repeat the quote. If you have not already said the closing, say only: Thanks, I’ll get back to you. If it has already been said, do not speak it again. Use end_call to finish. No dispatch has been authorized." };
       } else if (message.name === "end_call") {
         requestEnd();
         result = { ending: true };
@@ -147,7 +155,6 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
       case "input_audio_buffer.speech_started":
         idle();
         userSpeaking = true;
-        if (typeof message.item_id === "string") awaitingTranscripts.add(message.item_id);
         if (marks.size) {
           canceled.add(outputResponse);
           media.clear();
@@ -157,19 +164,20 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
         break;
       case "input_audio_buffer.speech_stopped":
         userSpeaking = false;
+        if (!repliedTurns.has(message.item_id)) {
+          userTurnPending = true;
+          pendingTurnId = message.item_id;
+        }
         maybeRespond();
         break;
       case "conversation.item.input_audio_transcription.completed":
       case "response.output_audio_transcript.done": {
-        if (message.type.startsWith("conversation")) awaitingTranscripts.delete(message.item_id);
         const key = `${message.type}:${message.item_id}:${message.content_index ?? 0}`;
         if (seen.has(key) || typeof message.transcript !== "string" || !message.transcript.trim()) return;
         seen.add(key);
         store.emit(r, { type: "transcript", sequence: r.sequence++, speaker: message.type.startsWith("conversation") ? "business" : "agent", text: message.transcript });
-        if (message.type.startsWith("conversation")) {
-          userTurnPending = true;
-          maybeRespond();
-        } else if (r.events.some(e => e.type === "offer") && isClosing(message.transcript)) {
+        // Late ASR is evidence only; it must not trigger a duplicate reply.
+        if (!message.type.startsWith("conversation") && r.events.some(e => e.type === "offer") && isClosing(message.transcript)) {
           // One closing is enough. End after its playback instead of starting another tool follow-up.
           requestEnd();
         }
