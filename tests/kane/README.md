@@ -9,7 +9,7 @@ npm run dev          # all four services in test mode
 npm run test:kane    # replays every designed test, headless, 4 at a time
 ```
 
-`start_url` in the variables file must match the dashboard address (5173 by default).
+`start_url` in the variables file must point at the dashboard page, `/app` (port 5173 by default); `/` is the landing page.
 
 ## Test-mode scenarios
 
