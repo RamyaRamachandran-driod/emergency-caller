@@ -110,10 +110,10 @@ export class TaskStore {
     const rows = this.db.prepare("SELECT task_id FROM tasks").all() as { task_id: string }[];
     for (const { task_id: taskId } of rows) {
       this.mutate(taskId, (task) => {
-        if (!["finding", "calling", "booking"].includes(task.stage)) return;
+        if (!["finding", "found", "calling", "booking"].includes(task.stage)) return;
         task.stage = "failed";
         task.error = "Orchestrator restarted before this task completed. No call was retried.";
-        for (const call of task.calls) if (["dialing", "connected"].includes(call.status)) call.status = "failed";
+        for (const call of task.calls) if (["queued", "dialing", "connected"].includes(call.status)) call.status = "failed";
       });
     }
   }

@@ -9,10 +9,6 @@ const orchestrator = new Orchestrator(store);
 
 app.post("/api/tasks", (req, res) => {
   const input = TaskInput.parse(req.body);
-  if (mode === "live") {
-    res.status(501).json({ error: "Live orchestration is disabled until the discovery and voice agents are ready." });
-    return;
-  }
   const key = req.header("Idempotency-Key")?.trim() || null;
   const prior = key ? orchestrator.getTaskByRequestId(key) : null;
   if (prior) { res.status(200).json(prior); return; }

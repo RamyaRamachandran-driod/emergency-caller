@@ -15,6 +15,7 @@ const GLYPH: Record<FeedItem["kind"], string> = { agent: "A", business: "B", off
 const STEPS = [
   "Request received",
   "Finding nearby mobile mechanics",
+  "Businesses found",
   "Collecting availability and quotes",
   "Compare offers and choose one",
   "Business confirms dispatch",
@@ -22,9 +23,10 @@ const STEPS = [
 
 const ACTIVE_STEP: Record<Task["stage"], number> = {
   finding: 1,
-  calling: 2,
-  offers_ready: 3,
-  booking: 4,
+  found: 2,
+  calling: 3,
+  offers_ready: 4,
+  booking: 5,
   confirmed: STEPS.length,
   no_matches: 1,
   failed: 1,

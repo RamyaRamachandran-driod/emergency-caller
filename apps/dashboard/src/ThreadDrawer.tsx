@@ -47,7 +47,7 @@ export function ThreadDrawer({ task, businessId, onClose }: { task: Task; busine
 }
 
 function CallThread({ call, offer }: { call: Call; offer: Offer | undefined }) {
-  const current = call.status === "failed" ? CHAIN.length - 1 : CHAIN.indexOf(call.status);
+  const current = call.status === "queued" ? -1 : call.status === "failed" ? CHAIN.length - 1 : CHAIN.indexOf(call.status);
   const transcript = transcriptOf(call);
   const bookingResult = call.events.find((event) => event.type === "booking_result");
   return (

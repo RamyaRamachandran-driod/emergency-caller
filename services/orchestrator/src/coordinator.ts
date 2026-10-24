@@ -3,6 +3,10 @@ import { CallEvent, CallRequest, type Call, type Task, type TaskInput } from "@e
 import type { MutationResult } from "./store.js";
 import { TaskStore } from "./store.js";
 import { DiscoveryClient, VoiceClient } from "./service-clients.js";
+import { mode } from "@emergency/server-kit";
+
+const foundStageHoldMs = Number(process.env.FOUND_STAGE_HOLD_MS ?? 5_000);
+if (!Number.isFinite(foundStageHoldMs) || foundStageHoldMs < 0) throw new Error("FOUND_STAGE_HOLD_MS must be a nonnegative number.");
 
 function settle(task: Task): void {
   const quoteCalls = task.calls.filter((call) => call.purpose === "quote");
@@ -29,7 +33,7 @@ export class Orchestrator {
     }
     const task: Task = {
       id: randomUUID(), input, stage: "finding", businesses: [], calls: [], offers: [],
-      warnings: [], simulated: true,
+      warnings: [], simulated: mode !== "live",
     };
     this.store.create(task, clientRequestId);
     void this.findAndStartQuotes(task.id);
@@ -44,7 +48,7 @@ export class Orchestrator {
       if (!offer || !offer.availableNow || offer.etaMinutes === null || offer.etaMinutes > task.input.maxArrivalMinutes) return false;
       const business = task.businesses.find((candidate) => candidate.id === offer.businessId);
       if (!business) return false;
-      callToStart = { id: randomUUID(), business, purpose: "booking", status: "dialing", events: [] };
+      callToStart = { id: randomUUID(), business, purpose: "booking", status: "queued", events: [] };
       task.stage = "booking";
       task.selectedOfferId = offer.id;
       task.bookingAccepted = false;
@@ -87,16 +91,24 @@ export class Orchestrator {
       const initial = this.store.get(taskId);
       if (!initial) return;
       const result = await this.discovery.find({ taskId, input: initial.input, searchAt: new Date().toISOString() });
-      const task = this.store.mutate(taskId, (current) => {
+      const found = this.store.mutate(taskId, (current) => {
         current.businesses = result.businesses.slice(0, 3);
         current.warnings.push(...result.warnings);
         if (!current.businesses.length) {
           current.stage = "no_matches";
           return;
         }
+        current.stage = "found";
+      });
+      if (!found || found.stage !== "found") return;
+
+      // Give the dashboard a visible Found state before automatically starting all quote calls.
+      if (foundStageHoldMs > 0) await new Promise((resolve) => setTimeout(resolve, foundStageHoldMs));
+      const task = this.store.mutate(taskId, (current) => {
+        if (current.stage !== "found") return;
         current.stage = "calling";
         current.calls = current.businesses.map((business) => ({
-          id: randomUUID(), business, purpose: "quote", status: "dialing", events: [],
+          id: randomUUID(), business, purpose: "quote", status: "queued", events: [],
         }));
       });
       if (!task || task.stage !== "calling") return;
@@ -117,6 +129,10 @@ export class Orchestrator {
     });
     try {
       await this.voice.start(payload);
+      this.store.mutate(task.id, (current) => {
+        const currentCall = current.calls.find((candidate) => candidate.id === call.id);
+        if (currentCall?.status === "queued") currentCall.status = "dialing";
+      });
     } catch (error) {
       this.store.mutate(task.id, (current) => {
         const currentCall = current.calls.find((candidate) => candidate.id === call.id);
