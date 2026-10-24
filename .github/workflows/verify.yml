@@ -11,6 +11,45 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-# Khushi: add an authenticated Kane runner job, start all services in test mode,
-# configure generated suite variables, run npm run test:kane, and upload artifacts.
-# Branch protection and deployment must require that job before release.
+
+  # Replays the Kane-designed suite (.testmuai/tests) against all four services in test mode.
+  # Needs repository secrets KANE_USERNAME and KANE_ACCESS_KEY (TestMu AI basic auth).
+  # Make this job a required check in branch protection so a failed or incomplete run blocks merging.
+  kane:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm install -g @testmuai/kane-cli
+      - name: Start services in test mode
+        run: |
+          cp .env.example .env
+          sed -i "s/^INTERNAL_SERVICE_TOKEN=.*/INTERNAL_SERVICE_TOKEN=ci-$GITHUB_RUN_ID/" .env
+          npm run dev > services.log 2>&1 &
+          for port in 4100 4101 4102; do
+            timeout 60 sh -c "until curl -sf http://127.0.0.1:$port/health; do sleep 1; done"
+          done
+          timeout 60 sh -c "until curl -sf http://127.0.0.1:5173 > /dev/null; do sleep 1; done"
+      - name: Point the suite at the CI dashboard
+        run: |
+          node -e 'const f=".testmuai/variables/assurance.json";const fs=require("fs");const v=JSON.parse(fs.readFileSync(f));v.start_url.value="http://127.0.0.1:5173";fs.writeFileSync(f,JSON.stringify(v,null,2))'
+      - name: Sign in to Kane
+        env:
+          KANE_USERNAME: ${{ secrets.KANE_USERNAME }}
+          KANE_ACCESS_KEY: ${{ secrets.KANE_ACCESS_KEY }}
+        run: kane-cli login --username "$KANE_USERNAME" --access-key "$KANE_ACCESS_KEY" < /dev/null
+      - run: npm run test:kane
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kane-evidence
+          path: |
+            artifacts/
+            .testmuai/evidence/
+            services.log

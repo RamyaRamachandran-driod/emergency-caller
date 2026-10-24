@@ -1,0 +1,25 @@
+{
+  "test_id": "2c08d55e-5306-4c71-a77e-d41fe2d9fcbc",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "selecting-without-authorization-does-not-dispatch",
+  "commit_id": "8bdc8dbb-a303-4a06-8b24-bb56e252603b",
+  "testcase_id": "01M5QV2N9Q065TTJ95YK6E094V",
+  "executions": [
+    {
+      "execution_id": "bde6cd3c-d744-45e5-a671-8a3ecde26b2f",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T20:55:47.045Z"
+    },
+    {
+      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T20:59:06.304Z",
+      "uploaded": true
+    }
+  ]
+}

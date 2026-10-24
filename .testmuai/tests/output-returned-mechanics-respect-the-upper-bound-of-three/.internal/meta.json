@@ -1,0 +1,25 @@
+{
+  "test_id": "66ac87c3-cd16-41ff-9c4b-adeee75cde54",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "returned-mechanics-respect-the-upper-bound-of-three",
+  "commit_id": "a7adb3ca-899d-4a37-95a0-267f19041712",
+  "testcase_id": "01M5QV1376AGAS94TT6B49509R",
+  "executions": [
+    {
+      "execution_id": "d3d8854b-75d5-4cdd-9f2a-14e21782c1a5",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T20:54:47.265Z"
+    },
+    {
+      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T20:59:06.304Z",
+      "uploaded": true
+    }
+  ]
+}

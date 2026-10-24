@@ -1,0 +1,25 @@
+{
+  "test_id": "28c57d34-a173-4750-8267-a346ec3044d7",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "unknown-arrival-estimate-is-not-fabricated",
+  "commit_id": "1c04c906-72ae-46a2-b16d-bff484225403",
+  "testcase_id": "01M5QV3VW8G0KMTKBFQJDPMKDV",
+  "executions": [
+    {
+      "execution_id": "4e6655aa-2c9a-4a3c-8125-b43d71809858",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T20:56:19.643Z"
+    },
+    {
+      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T20:59:06.306Z",
+      "uploaded": true
+    }
+  ]
+}

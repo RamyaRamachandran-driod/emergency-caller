@@ -1,0 +1,25 @@
+{
+  "test_id": "f46a48d1-51f1-4878-9e2c-1f5a9f729226",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "simulation-is-visibly-identified",
+  "commit_id": "5e598c2e-9844-4d70-8bea-c90ca49a05a5",
+  "testcase_id": "01M5QV2WHX7B7BMY6D1TWAKR2E",
+  "executions": [
+    {
+      "execution_id": "75737a94-0931-40bf-99d2-722ac743fe2f",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T20:55:16.790Z"
+    },
+    {
+      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T20:59:06.305Z",
+      "uploaded": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "test_id": "be7c65c0-4cb3-4050-b68f-b2f33a8bd268",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "concurrent-mechanic-calls-show-progress-and-transcripts",
+  "commit_id": "645da3f7-6a82-465e-ac1f-da4f0c102622",
+  "testcase_id": "01M5QTVV26E8V2RMGJ0273V4BP",
+  "executions": [
+    {
+      "execution_id": "ac59428c-ee07-4928-a093-f3599e6efc75",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T20:52:35.827Z"
+    },
+    {
+      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T20:59:06.297Z",
+      "uploaded": true
+    }
+  ]
+}

@@ -12,12 +12,14 @@ app.post("/discover", internal, (req, res) => {
       });
     return;
   }
+  // Four simulated candidates so the three-business limit is exercised on every test-mode run.
   res.json({
     businesses: [
       "Demo Mobile Mechanics",
       "Demo Roadside Repair",
       "Demo Auto Rescue",
-    ].map((name, i) => ({
+      "Demo Tow and Tire",
+    ].slice(0, 3).map((name, i) => ({
       id: `demo-${i + 1}`,
       name,
       phone: `+1202555010${i}`,
