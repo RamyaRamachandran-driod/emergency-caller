@@ -11,6 +11,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npm run test:voice
+      - run: npm test -w @emergency/discovery
 
   # Replays the Kane-designed suite (.testmuai/tests) against all four services in test mode.
   # Needs repository secrets KANE_USERNAME and KANE_ACCESS_KEY (TestMu AI basic auth).

@@ -16,3 +16,7 @@ artifacts/
 .testmuai/*
 !.testmuai/tests/
 !.testmuai/variables/
+
+.secrets/
+*.key
+*.pem

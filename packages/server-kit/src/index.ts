@@ -17,12 +17,12 @@ if (!["test", "live"].includes(mode))
   throw new Error("APP_MODE must be test or live");
 export const token = process.env.INTERNAL_SERVICE_TOKEN;
 if (!token) throw new Error("Set INTERNAL_SERVICE_TOKEN in root .env");
-export function appFor(name: string) {
+export function appFor(name: string, health: () => Record<string, unknown> = () => ({})) {
   const app = express();
   app.use(cors({ origin: "http://localhost:5173" }));
   app.use(express.json({ limit: "64kb" }));
   app.get("/health", (_q, s) =>
-    s.json({ service: name, mode, status: "ok", liveReady: false }),
+    s.json({ service: name, mode, status: "ok", liveReady: false, ...health() }),
   );
   return app;
 }

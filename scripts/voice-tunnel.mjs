@@ -1,0 +1,12 @@
+import { spawn } from "node:child_process";
+import dotenv from "dotenv";
+import { fileURLToPath } from "node:url";
+dotenv.config({ path: fileURLToPath(new URL("../.env", import.meta.url)), quiet: true });
+const port = process.env.VOICE_PROVIDER_PORT || "4103";
+const provider = process.argv[2] || "cloudflared";
+if (!["cloudflared", "ngrok"].includes(provider)) throw Error("Choose cloudflared or ngrok");
+console.log(`Exposing provider callbacks only on port ${port}. Copy the HTTPS origin to PUBLIC_VOICE_URL in .env, then restart voice.`);
+const child = spawn(provider, provider === "cloudflared" ? ["tunnel", "--url", `http://127.0.0.1:${port}`] : ["http", `http://127.0.0.1:${port}`], { stdio: "inherit" });
+child.on("error", () => { console.error(`Install ${provider} first; see services/voice/README.md.`); process.exitCode = 1; });
+child.on("exit", code => { process.exitCode = code ?? 1; });
+for (const signal of ["SIGINT", "SIGTERM"]) process.on(signal, () => child.kill(signal));

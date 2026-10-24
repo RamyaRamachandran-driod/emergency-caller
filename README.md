@@ -7,7 +7,7 @@ The scaffold provides a simulated end-to-end workflow with a React dashboard and
 ## Team
 | Owner | Workstream |
 |---|---|
-| Tanay | Voice agent, Twilio, OpenAI Realtime |
+| Tanay | Voice agent, Vonage/Twilio, OpenAI Realtime |
 | Safi | Businesses and published phone numbers based on location and time |
 | Ramya | Main orchestrator, shared backend, database and contracts |
 | Khushi | Dashboard UI and Kane CLI integration |
@@ -26,7 +26,11 @@ npm run dev
 
 Open http://localhost:5173. Orchestrator: 4100; discovery: 4101; voice: 4102. Submit a request and location to watch three simulated calls, quotes and a simulated booking confirmation. No real businesses are called. Stop the root process to stop all four components.
 
-`npm run build` typechecks every workspace and builds the dashboard. `npm run test:kane` runs generated Kane tests and fails when none exist. The CI workflow currently verifies build only; Kane release enforcement is a remaining Khushi task.
+`npm run build` typechecks every workspace and builds the dashboard. `npm run test:kane` runs generated Kane tests and fails when none exist. CI verifies the build, voice integration tests, discovery tests, and the generated Kane suite. Kane needs the repository authentication secrets and a required branch-protection check.
+
+## Local voice agent
+
+Live outbound quote calls use Vonage or Twilio with OpenAI Realtime. A local CLI shows speaker transcripts and structured offers; a provider-only tunnel supplies call audio without deploying a server. The agent closes without a spoken recap. Vonage also offers a spoken connectivity probe. See [voice setup and first call](services/voice/README.md). Live booking remains blocked until dispatch contacts and booking validation are implemented.
 
 ## What works in the scaffold
 - Three independent backend processes communicating through validated HTTP contracts.
@@ -38,6 +42,6 @@ Open http://localhost:5173. Orchestrator: 4100; discovery: 4101; voice: 4102. Su
 The orchestrator uses one canonical set of shared Zod contracts. Its discovery and voice clients validate messages at the service boundary; bump the shared contract version and update the matching adapter when a team payload changes. Discovery requests time out after three minutes by default. Kane CLI is the planned generated-journey validation path.
 
 ## Not implemented yet
-Real OpenAI or Twilio calls, live search, clarification turns, dispatch-contact collection, offer expiry, production authentication, generated Kane tests, and deployment. Customer requests are typed; caller voice conversations are simulated until the voice adapter is implemented. Live mode fails explicitly. Do not expose the scaffold to the public internet or use it for actual dispatch.
+Clarification turns, dispatch-contact collection, live booking validation, offer expiry, production authentication, and deployment. Customer requests are typed. The dashboard defaults to simulation; live discovery and live quote calling are implemented as independently configured services. End-to-end production dispatch is not verified. Do not expose the internal APIs or use the scaffold for actual dispatch.
 
 Use root .env for server credentials; never put OpenAI/Twilio keys into frontend variables. Keep databases, real contacts, recordings, and credentials out of Git.

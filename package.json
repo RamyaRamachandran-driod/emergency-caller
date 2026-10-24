@@ -11,7 +11,12 @@
     "dev": "concurrently -k -n orchestrator,discovery,voice,dashboard \"npm run dev -w @emergency/orchestrator\" \"npm run dev -w @emergency/discovery\" \"npm run dev -w @emergency/voice\" \"npm run dev -w @emergency/dashboard\"",
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && npm run build -w @emergency/dashboard",
-    "test:kane": "node scripts/run-kane.mjs"
+    "test:kane": "node scripts/run-kane.mjs",
+    "voice:dev": "npm run dev -w @emergency/voice",
+    "voice:call": "node scripts/voice-call.mjs",
+    "voice:tunnel": "node scripts/voice-tunnel.mjs",
+    "test:voice": "tsx --test services/voice/test/*.test.ts",
+    "voice:vonage:setup": "node scripts/vonage-setup.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
