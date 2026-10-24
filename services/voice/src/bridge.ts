@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import WebSocket from "ws";
 import type { VoiceConfig } from "./config.js";
 import { PhoneMedia } from "./media.js";
-import { extractTranscriptQuote, saveQuote, needsPricingDiscussion } from "./quote.js";
+import { extractTranscriptQuote, saveQuote, needsPricingDiscussion, needsLocationDiscussion } from "./quote.js";
 import { instructions, tools, validateQuote, QuoteResult } from "./prompt.js";
 import { Store, type Record } from "./store.js";
 
@@ -90,7 +90,9 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
       const args = JSON.parse(message.arguments);
       if (message.name === "report_quote") {
         const proposed = QuoteResult.parse(args);
-        if (needsPricingDiscussion(r, proposed)) {
+        if (needsLocationDiscussion(r, proposed)) {
+          result = { saved: false, incompleteObjectives: ["location"], instruction: `The actual service address has not been communicated and confirmed. Tell the business ${r.request.input.location} and ask whether they can attend there. Do not merely say "the location". Keep the question brief, and then verify whether the previously discussed ETA and price apply there. Do not close yet.` };
+        } else if (needsPricingDiscussion(r, proposed)) {
           result = { saved: false, incompleteObjectives: ["pricing"], instruction: "Pricing has not been discussed. Continue the conversation with one brief, relevant question about price or the visit fee. Do not close or mark the task complete yet. If they cannot quote before inspection or decline to give a price, record that limitation and keep the amount unknown." };
         } else {
           // Evidence validation can wait for ASR; ordinary conversational replies do not.

@@ -164,6 +164,7 @@ test("audio bridge configures PCMU, relays audio, handles interruption, and save
   await pause();
   assert.equal(aiMessages.filter(m => m.type === "response.create").length, openings, "never reply while the business is speaking");
   assert.equal(aiMessages.filter(m => m.type === "session.update").length, 1);
+  sendAI({ type: "response.output_audio_transcript.done", item_id: "address-question", transcript: "Can you attend 123 Test Street, Test City?" });
   sendAI({ type: "conversation.item.input_audio_transcription.completed", item_id: "business-1", transcript: "We can help in twenty minutes for 125 dollars, estimated." });
   await pause();
   assert.equal(aiMessages.filter(m => m.type === "response.create").length, openings, "transcription alone must not start a response before speech stops");
@@ -280,6 +281,7 @@ test("speech-end starts a reply without waiting for ASR; unasked pricing cannot 
   send({ type: "input_audio_buffer.speech_stopped", item_id: "business-late-asr" });
   await until(() => messages.filter(m => m.type === "response.create").length === 2);
   send({ type: "response.created", response: { id: "next" } });
+  send({ type: "response.output_audio_transcript.done", item_id: "address", transcript: "Can you attend 123 Test Street, Test City?" });
   send({ type: "conversation.item.input_audio_transcription.completed", item_id: "business-late-asr", transcript: "Yes, I can help. Fifteen minutes." });
   const missingPrice = { availability: "available", etaMinutes: 15, amountMinor: null, currency: null, quoteType: "unknown", conditions: null, evidence: { availability: "I can help", eta: "Fifteen minutes", price: "" } };
   send({ type: "response.function_call_arguments.done", call_id: "premature", name: "report_quote", arguments: JSON.stringify(missingPrice) });

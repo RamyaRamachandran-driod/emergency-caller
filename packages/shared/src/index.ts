@@ -58,6 +58,7 @@ export function quoteCallBrief(input: TaskInput): CallBrief {
     task: input.request,
     objective: `Find out whether this business can help at ${input.location}, and obtain a useful quote for the customer's decision.`,
     neededInformation: [
+      `Communicate the actual service address (${input.location}) and confirm the business can attend there before relying on an arrival time or location-dependent quote. A generic reference to "the location" is insufficient.`,
       "Whether the business can handle the actual requested work at the supplied location.",
       `Availability and relevant timing; the customer wants arrival within ${input.maxArrivalMinutes} minutes. Establish actual timing rather than assuming it.`,
       "Price, currency, whether fixed or estimated, what it covers, and any visit fees or material conditions. Distinguish visit fees from the full job cost.",
