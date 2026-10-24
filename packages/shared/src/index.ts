@@ -44,6 +44,33 @@ export const Offer = z.object({
   conditions: z.string().nullable(),
 });
 export type Offer = z.infer<typeof Offer>;
+export const CallBrief = z.object({
+  task: z.string().min(1).max(4000),
+  objective: z.string().min(1).max(1000),
+  neededInformation: z.array(z.string().min(1).max(500)).min(1).max(12),
+  completionCriteria: z.array(z.string().min(1).max(500)).min(1).max(12),
+});
+export type CallBrief = z.infer<typeof CallBrief>;
+
+// Outcome brief, deliberately independent of industry and conversational order.
+export function quoteCallBrief(input: TaskInput): CallBrief {
+  return {
+    task: input.request,
+    objective: `Find out whether this business can help at ${input.location}, and obtain a useful quote for the customer's decision.`,
+    neededInformation: [
+      "Whether the business can handle the actual requested work at the supplied location.",
+      `Availability and relevant timing; the customer wants arrival within ${input.maxArrivalMinutes} minutes. Establish actual timing rather than assuming it.`,
+      "Price, currency, whether fixed or estimated, what it covers, and any visit fees or material conditions. Distinguish visit fees from the full job cost.",
+    ],
+    completionCriteria: [
+      "Use the conversation to resolve the objectives, choosing relevant questions and following up on real ambiguity. Do not follow a fixed question sequence.",
+      "Before closing, ensure each needed detail is established or explicitly unavailable/unknown. Respect a refusal or request to stop rather than inventing facts or pressing indefinitely.",
+      "Save a transcript-supported quote with report_quote, including limitations and unknowns. A quote inquiry never authorizes a booking or dispatch.",
+      "Finish with the customer's preferred brief thanks, without reading back a summary, then end the call.",
+    ],
+  };
+}
+
 export const CallRequest = z.object({
   taskId: z.string().uuid(),
   callId: z.string().uuid(),
@@ -51,6 +78,7 @@ export const CallRequest = z.object({
   business: Business,
   purpose: z.enum(["quote", "booking"]),
   selectedOffer: Offer.nullable(),
+  brief: CallBrief.optional(),
 });
 export const CallAccepted = z.object({ callId: z.string().uuid() });
 const base = {

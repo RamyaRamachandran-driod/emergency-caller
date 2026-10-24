@@ -13,7 +13,7 @@ export default function App() {
   const [setup, setSetup] = useState<Setup | null>(null);
   const submission = useRef<{ fingerprint: string; key: string } | null>(null);
   const [task, setTask] = useState<Task | null>(null);
-  const [request, setRequest] = useState("My car won’t start. I need a mobile mechanic within 30 minutes.");
+  const [request, setRequest] = useState("");
   const [location, setLocation] = useState("");
   const [arrival, setArrival] = useState(30);
   const [busy, setBusy] = useState(false);
@@ -134,7 +134,7 @@ export default function App() {
           {task ? (
             <div className="task-header-main">
               <div className="task-header-line">
-                <span className="service-chip">Mobile mechanic</span>
+                <span className="service-chip">Service quote</span>
                 <strong className="truncate">{task.input.location}</strong>
                 <span className="arrival-chip"><Icon name="clock" size={11} /> within {task.input.maxArrivalMinutes} min</span>
                 <span className="mono muted truncate">{task.input.timezone}</span>
@@ -185,7 +185,7 @@ export default function App() {
                 ) : (
                   <div className="empty">
                     {task.stage === "finding" ? <LiveDot /> : <Icon name="alert" size={22} />}
-                    <h3>{task.stage === "finding" ? "Finding nearby mobile mechanics…" : "No businesses to call"}</h3>
+                    <h3>{task.stage === "finding" ? "Finding nearby service providers…" : "No businesses to call"}</h3>
                     <p>{task.stage === "finding" ? "Up to three businesses will appear here." : "Try a different location or a wider arrival window."}</p>
                   </div>
                 )
@@ -210,14 +210,14 @@ export default function App() {
           <div className="modal-head">
             <div>
               <h2 id="request-title" className="display">What do you need?</h2>
-              <p className="muted">Describe the breakdown, including your vehicle if you can.</p>
+              <p className="muted">Describe the issue and the service you need.</p>
             </div>
             <button type="button" className="icon-button" aria-label="Close" onClick={() => requestDialog.current?.close()}><Icon name="close" /></button>
           </div>
           <label className="field-label" htmlFor="request">What happened?</label>
-          <textarea id="request" rows={3} value={request} onChange={(event) => setRequest(event.target.value)} placeholder="e.g. Flat tire on a 2021 Honda Civic" required />
+          <textarea id="request" rows={3} value={request} onChange={(event) => setRequest(event.target.value)} placeholder="e.g. A leaking kitchen pipe, a power outage, or a car that won’t start" required />
           <div className="field-label-row">
-            <label className="field-label" htmlFor="location">Breakdown location</label>
+            <label className="field-label" htmlFor="location">Service location</label>
             <button type="button" className="text-button" onClick={useCurrentLocation}><Icon name="pin" size={13} /> Use my location</button>
           </div>
           <input id="location" value={location} onChange={(event) => setLocation(event.target.value)} placeholder="Street address and city" required />

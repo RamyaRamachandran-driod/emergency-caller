@@ -11,7 +11,7 @@ import WebSocket, { WebSocketServer } from "ws";
 import twilio from "twilio";
 import { configFromEnv, missingConfig } from "../src/config.js";
 import { Store, type Request } from "../src/store.js";
-import { validateQuote } from "../src/prompt.js";
+import { instructions, validateQuote } from "../src/prompt.js";
 import { bridge } from "../src/bridge.js";
 process.env.INTERNAL_SERVICE_TOKEN = "local-test-token";
 process.env.VOICE_TEST_NUMBER = "";
@@ -128,7 +128,8 @@ test("durable outbox retries the same event ID after a callback failure", async 
 });
 test("audio bridge configures PCMU, relays audio, handles interruption, and saves supported quote", async t => {
   const dir = mkdtempSync(join(tmpdir(), "savior-bridge-"));
-  const store = new Store(dir), c = config(dir), r = store.create(request(), true, false); r.sid = `CA${"b".repeat(32)}`;
+  const plumbing = request(); plumbing.input.request = "My kitchen pipe is leaking; I need a plumber.";
+  const store = new Store(dir), c = config(dir), r = store.create(plumbing, true, false); r.sid = `CA${"b".repeat(32)}`;
   const phoneServer = new WebSocketServer({ port: 0, host: "127.0.0.1" });
   const aiServer = new WebSocketServer({ port: 0, host: "127.0.0.1" });
   await Promise.all([once(phoneServer, "listening"), once(aiServer, "listening")]);
@@ -144,15 +145,27 @@ test("audio bridge configures PCMU, relays audio, handles interruption, and save
   sendPhone({ event: "start", start: { streamSid: "MZtest", callSid: r.sid, accountSid: c.accountSid, mediaFormat: { encoding: "audio/x-mulaw", sampleRate: 8000 } } });
   await until(() => aiMessages.some(m => m.type === "session.update"));
   assert.equal(aiMessages[0].session.audio.input.format.type, "audio/pcmu");
+  assert.match(aiMessages[0].session.instructions, /kitchen pipe is leaking/);
+  assert.doesNotMatch(aiMessages[0].session.instructions, /mobile mechanic quote/);
   sendAI({ type: "session.updated" });
   sendPhone({ event: "media", streamSid: "MZtest", media: { payload: "////" } });
   await until(() => aiMessages.some(m => m.type === "input_audio_buffer.append"));
+  assert.deepEqual(aiMessages.find(m => m.type === "response.create"), { type: "response.create" });
   sendAI({ type: "response.created", response: { id: "response-1" } });
   sendAI({ type: "response.output_audio.delta", response_id: "response-1", item_id: "item-1", delta: "////" });
   await until(() => phoneMessages.some(m => m.event === "media"));
   sendAI({ type: "input_audio_buffer.speech_started" });
   await until(() => phoneMessages.some(m => m.event === "clear"));
   assert.ok(aiMessages.some(m => m.type === "conversation.item.truncate"));
+  const ongoing = aiMessages.filter(m => m.type === "session.update").at(-1);
+  assert.match(ongoing.session.instructions, /The opening phase is finished/);
+  assert.match(ongoing.session.instructions, /kitchen pipe is leaking/);
+  const openings = aiMessages.filter(m => m.type === "response.create").length;
+  sendAI({ type: "session.updated" });
+  sendAI({ type: "input_audio_buffer.speech_started" });
+  await pause();
+  assert.equal(aiMessages.filter(m => m.type === "response.create").length, openings, "session updates and repeated interruptions must not retrigger the opening");
+  assert.equal(aiMessages.filter(m => m.type === "session.update").length, 2);
   sendAI({ type: "conversation.item.input_audio_transcription.completed", item_id: "business-1", transcript: "We can help in twenty minutes for 125 dollars, estimated." });
   const args = JSON.stringify({ availability: "available", etaMinutes: 20, amountMinor: 12500, currency: "USD", quoteType: "estimate", conditions: null, evidence: { availability: "We can help", eta: "twenty minutes", price: "125 dollars" } });
   const badArgs = JSON.stringify({ ...JSON.parse(args), evidence: { ...JSON.parse(args).evidence, eta: "20 mins" } });
@@ -217,4 +230,18 @@ test("personal phone lock overrides sourced policy and every other allowlisted d
   const own = request();
   assert.equal((await h.api("/calls", own)).status, 202);
   await until(() => h.dialed.length === 1);
+});
+
+test("quote caller uses the requested problem and has separate opening and ongoing instructions", () => {
+  const r = request(); r.input.request = "A leaking bathroom pipe needs a plumber";
+  const opening = instructions(r), ongoing = instructions(r, true);
+  assert.match(opening, /leaking bathroom pipe needs a plumber/);
+  assert.match(opening, /Choose your own wording, questions, and order/);
+  assert.doesNotMatch(opening, /collect a mobile mechanic quote|Introduce yourself clearly as an AI assistant/);
+  assert.match(ongoing, /do not restart your introduction/);
+  assert.match(ongoing, /respond to the person.s latest intent/);
+  r.brief = { task: "Repair a kitchen leak", objective: "Establish repair options and visit cost", neededInformation: ["Which repairs can be done today"], completionCriteria: ["Save the supported options and limitations"] };
+  const delegated = instructions(r);
+  assert.match(delegated, /Which repairs can be done today/);
+  assert.match(delegated, /Establish repair options and visit cost/);
 });

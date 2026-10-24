@@ -14,7 +14,7 @@ const GLYPH: Record<FeedItem["kind"], string> = { agent: "A", business: "B", off
 
 const STEPS = [
   "Request received",
-  "Finding nearby mobile mechanics",
+  "Finding nearby service providers",
   "Businesses found",
   "Collecting availability and quotes",
   "Compare offers and choose one",

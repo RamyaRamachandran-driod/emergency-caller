@@ -92,6 +92,9 @@ for (const personal of [false, true]) test(`live task API: ${personal ? "persona
   assert.equal(tasks[0].businesses.length, 0); // Discovery finishes asynchronously.
   const record = [...voice.store.records.values()][0];
   assert.equal(record.request.business.phone, "+14155550101");
+  assert.equal(record.request.brief?.task, "Test quote");
+  assert.ok(record.request.brief?.neededInformation.length);
+  assert.ok(record.request.brief?.completionCriteria.length);
   if (personal) assert.equal(record.request.business.name, "Your phone (live test)");
   voice.store.emit(record, { type: "status", status: "connected" });
   voice.store.emit(record, { type: "transcript", speaker: "business", sequence: 0, text: "Twenty minutes, two hundred dollars." });

@@ -1,6 +1,6 @@
 import { mode, testCallNumber } from "@emergency/server-kit";
 import { randomUUID } from "node:crypto";
-import { CallEvent, CallRequest, type Call, type Task, type TaskInput } from "@emergency/shared";
+import { CallEvent, CallRequest, quoteCallBrief, type Call, type Task, type TaskInput } from "@emergency/shared";
 import type { MutationResult } from "./store.js";
 import { TaskStore } from "./store.js";
 import { DiscoveryClient, VoiceClient } from "./service-clients.js";
@@ -129,6 +129,7 @@ export class Orchestrator {
   private async startCall(task: Task, call: Call): Promise<void> {
     const payload = CallRequest.parse({
       taskId: task.id, callId: call.id, input: task.input, business: call.business,
+      brief: quoteCallBrief(task.input),
       purpose: call.purpose,
       selectedOffer: call.purpose === "booking" ? task.offers.find((offer) => offer.id === task.selectedOfferId) ?? null : null,
     });

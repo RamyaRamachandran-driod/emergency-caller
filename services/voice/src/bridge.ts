@@ -14,7 +14,7 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
   let ai: WebSocket | undefined, ready = false, closed = false;
   let queue: string[] = [], queuedBytes = 0, lastItem = "", outputMs = 0, playedMs = 0;
   let endRequested = false, responseActive = false, pendingTools = 0, followupRequested = false, remoteEnded = false;
-  let outputResponse = "", quoteValidationFailures = 0;
+  let outputResponse = "", quoteValidationFailures = 0, openingFinished = false;
   const canceled = new Set<string>();
   const seen = new Set<string>();
   const marks = new Map<string, { item: string; end: number }>();
@@ -112,7 +112,7 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
         for (const audio of queue) send(ai, { type: "input_audio_buffer.append", audio });
         queue = []; queuedBytes = 0;
         responseActive = true;
-        send(ai, { type: "response.create", response: { instructions: "Start now with a brief greeting, identify yourself as an AI assistant, and ask if they can discuss a mobile mechanic quote." } });
+        send(ai, { type: "response.create" });
         idle(); break;
       case "response.created": responseActive = true; outputResponse = message.response?.id ?? ""; break;
       case "response.output_audio.delta": {
@@ -131,6 +131,11 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
       }
       case "input_audio_buffer.speech_started":
         idle();
+        if (ready && !openingFinished) {
+          openingFinished = true;
+          // Audio truncation may remove the opening's text. Retain its completed phase explicitly.
+          send(ai, { type: "session.update", session: { type: "realtime", instructions: instructions(r.request, true) } });
+        }
         if (marks.size) {
           canceled.add(outputResponse);
           media.clear();

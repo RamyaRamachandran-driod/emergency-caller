@@ -19,8 +19,8 @@ export const Found = z.object({
 });
 export type Found = z.infer<typeof Found>;
 
-const prompt = (input: TaskInput) => `Find up to 5 businesses that can come to this vehicle breakdown (mobile mechanics, roadside repair, towing).
-Breakdown location: ${input.location}
+const prompt = (input: TaskInput) => `Find up to 5 local businesses that provide the service required by the customer problem below and can attend the supplied location. Infer the appropriate type of service provider from the actual customer request. Do not assume an industry.
+Service location: ${input.location}
 Problem: ${input.request}
 
 Rules:
