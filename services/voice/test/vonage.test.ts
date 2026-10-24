@@ -1,3 +1,4 @@
+import { API_CONTRACT_VERSION } from "@emergency/shared";
 import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
@@ -32,7 +33,7 @@ async function harness(t: test.TestContext, options: { missingAi?: boolean; miss
   const dialed: DialPlan[] = [], hung: string[] = []; let status = "started";
   const service = createVoiceService(c, { dial: async plan => { dialed.push(plan); return { sid: "ac3727f0-8a77-4d80-bbb8-2a00580c6fa8" }; }, hangup: async sid => { hung.push(sid); }, status: async () => ({ status }) });
   await service.listen(); t.after(() => service.close());
-  const api = (path: string, body?: object) => fetch(`${origin(service.internalServer)}${path}`, { method: body ? "POST" : "GET", headers: { authorization: "Bearer vonage-test-token", "content-type": "application/json" }, body: body ? JSON.stringify(body) : undefined });
+  const api = (path: string, body?: object) => fetch(`${origin(service.internalServer)}${path}`, { method: body ? "POST" : "GET", headers: { "x-emergency-contract-version": API_CONTRACT_VERSION, authorization: "Bearer vonage-test-token", "content-type": "application/json" }, body: body ? JSON.stringify(body) : undefined });
   return { c, service, api, dialed, hung, setStatus: (value: string) => status = value };
 }
 test("Vonage readiness uses application credentials; probe needs no OpenAI key or tunnel", () => {

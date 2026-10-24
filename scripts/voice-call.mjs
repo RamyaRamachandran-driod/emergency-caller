@@ -1,9 +1,10 @@
 import dotenv from "dotenv";
+import { API_CONTRACT_VERSION } from "@emergency/shared";
 import { randomUUID } from "node:crypto";
 import { fileURLToPath } from "node:url";
 dotenv.config({ path: fileURLToPath(new URL("../.env", import.meta.url)), quiet: true });
 const base = `http://127.0.0.1:${process.env.VOICE_PORT || 4102}`;
-const headers = { "content-type": "application/json", authorization: `Bearer ${process.env.INTERNAL_SERVICE_TOKEN || ""}` };
+const headers = { "x-emergency-contract-version": API_CONTRACT_VERSION, "content-type": "application/json", authorization: `Bearer ${process.env.INTERNAL_SERVICE_TOKEN || ""}` };
 const [command = "setup", ...args] = process.argv.slice(2);
 async function api(path, method = "GET", body) {
   const r = await fetch(`${base}${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined, signal: AbortSignal.timeout(10000) });

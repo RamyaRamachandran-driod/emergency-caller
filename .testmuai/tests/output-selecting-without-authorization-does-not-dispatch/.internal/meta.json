@@ -1,0 +1,19 @@
+{
+  "commit_id": "82bcb5d2-3009-4291-a008-4c2efbcbe117",
+  "test_id": "2c08d55e-5306-4c71-a77e-d41fe2d9fcbc",
+  "testcase_id": "01M5QV2N9Q065TTJ95YK6E094V",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "selecting-without-authorization-does-not-dispatch",
+  "executions": [
+    {
+      "execution_id": "5b5cbc85-5ccd-46c3-b767-3b8837fa47c0",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "uploaded": true,
+      "at": "2026-10-24T21:06:03.380Z"
+    }
+  ]
+}

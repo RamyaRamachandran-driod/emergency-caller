@@ -1,23 +1,21 @@
 import { DiscoveryRequest } from "@emergency/shared";
 import { appFor, internal, errors, mode } from "@emergency/server-kit";
+import { discoverLive } from "./live";
 const app = appFor("discovery");
-app.post("/discover", internal, (req, res) => {
+app.post("/discover", internal, async (req, res) => {
   const input = DiscoveryRequest.parse(req.body);
   if (mode === "live") {
-    res
-      .status(501)
-      .json({
-        error:
-          "Safi: implement sourced business discovery before enabling live mode",
-      });
+    res.json(await discoverLive(input.input, input.searchAt));
     return;
   }
+  // Four simulated candidates so the three-business limit is exercised on every test-mode run.
   res.json({
     businesses: [
       "Demo Mobile Mechanics",
       "Demo Roadside Repair",
       "Demo Auto Rescue",
-    ].map((name, i) => ({
+      "Demo Tow and Tire",
+    ].slice(0, 3).map((name, i) => ({
       id: `demo-${i + 1}`,
       name,
       phone: `+1202555010${i}`,

@@ -1,0 +1,82 @@
+{
+  "start_url": {
+    "value": "http://127.0.0.1:5174",
+    "secret": false,
+    "description": "Web entry URL for the product's breakdown request journey; confirm web is the intended surface."
+  },
+  "failed_call_location": {
+    "value": "Sunnyvale, CA. Scenario: failed-call",
+    "secret": false,
+    "description": "Seeded breakdown location producing at least two mechanic calls, one successful and one failed, with known successful result."
+  },
+  "simulation_location": {
+    "value": "Sunnyvale, CA",
+    "secret": false,
+    "description": "Seeded breakdown location and environment configuration that runs the mechanic calls in simulation mode."
+  },
+  "unknown_quote_location": {
+    "value": "Sunnyvale, CA. Scenario: unknown-quote",
+    "secret": false,
+    "description": "Seeded breakdown location with a mechanic call transcript that reports no quote."
+  },
+  "multiple_offers_location": {
+    "value": "Sunnyvale, CA",
+    "secret": false,
+    "description": "Seeded breakdown location yielding multiple overlapping mechanic calls and reported offers."
+  },
+  "four_candidates_location": {
+    "value": "Sunnyvale, CA",
+    "secret": false,
+    "description": "Seeded breakdown location with at least four potential mechanics for the three-result upper-bound case."
+  },
+  "unknown_arrival_location": {
+    "value": "Sunnyvale, CA. Scenario: unknown-eta",
+    "secret": false,
+    "description": "Seeded breakdown location with a mechanic call transcript that reports no arrival estimate."
+  },
+  "unknown_availability_location": {
+    "value": "Sunnyvale, CA. Scenario: unknown-availability",
+    "secret": false,
+    "description": "Seeded breakdown location with a mechanic call transcript that reports no availability."
+  },
+  "unknown_conditions_location": {
+    "value": "Sunnyvale, CA. Scenario: unknown-conditions",
+    "secret": false,
+    "description": "Seeded breakdown location with a mechanic call transcript that reports no conditions."
+  },
+  "eligible_accepted_location": {
+    "value": "Sunnyvale, CA",
+    "secret": false,
+    "description": "Breakdown location with an eligible offer and controlled explicit business acceptance after authorization."
+  },
+  "eligible_pending_location": {
+    "value": "Sunnyvale, CA. Scenario: pending",
+    "secret": false,
+    "description": "Breakdown location with an eligible offer whose business acceptance can be held pending."
+  },
+  "eligible_repeat_location": {
+    "value": "Sunnyvale, CA",
+    "secret": false,
+    "description": "Breakdown location with an eligible offer allowing repeated confirmation attempts and attributable dispatch observation."
+  },
+  "eligible_unauthed_location": {
+    "value": "Sunnyvale, CA",
+    "secret": false,
+    "description": "Breakdown location with an eligible offer that can be selected without authorizing booking."
+  },
+  "over_arrival_location": {
+    "value": "Sunnyvale, CA. Scenario: over-max",
+    "secret": false,
+    "description": "Breakdown location with an available-now offer whose known arrival exceeds the configured user maximum."
+  },
+  "at_max_arrival_location": {
+    "value": "Sunnyvale, CA. Scenario: at-max",
+    "secret": false,
+    "description": "Breakdown location with an available-now offer whose known arrival equals the configured user maximum."
+  },
+  "max_arrival_time": {
+    "value": "30 minutes",
+    "secret": false,
+    "description": "User maximum arrival time chosen to match the controlled offers, in the input's expected units."
+  }
+}

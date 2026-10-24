@@ -108,7 +108,7 @@ Stop the service before deleting local journals. Removing records also removes d
 
 ## Integration API
 
-All control routes require `Authorization: Bearer INTERNAL_SERVICE_TOKEN`:
+All control routes require `Authorization: Bearer INTERNAL_SERVICE_TOKEN` and `x-emergency-contract-version` matching `API_CONTRACT_VERSION` from the shared package. The CLI sends both headers:
 
 | Route | Purpose |
 |---|---|
@@ -119,7 +119,7 @@ All control routes require `Authorization: Bearer INTERNAL_SERVICE_TOKEN`:
 | `POST /calls/:id/stop` | Hang up and record user cancellation |
 | `GET /setup` | Provider, configuration readiness, probe readiness and missing variable names |
 
-Orchestrator events have stable IDs and per-call ordering in a durable retry outbox. An unavailable or restarted memory-only orchestrator can leave callbacks pending; local results remain readable. The tunnel server exposes only authenticated provider routes:
+Orchestrator events have stable IDs and per-call ordering in a durable retry outbox. An unavailable orchestrator can leave callbacks pending; local results remain readable. The tunnel server exposes only authenticated provider routes:
 
 - `POST /vonage/events/:callId/:token`
 - WebSocket `/vonage/media/:callId/:token`

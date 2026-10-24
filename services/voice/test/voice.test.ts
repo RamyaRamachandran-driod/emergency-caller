@@ -1,3 +1,4 @@
+import { API_CONTRACT_VERSION } from "@emergency/shared";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, rmSync } from "node:fs";
@@ -27,7 +28,7 @@ async function harness(t: test.TestContext, overrides = {}) {
   await service.listen();
   t.after(async () => { await service.close(); rmSync(dir, { recursive: true, force: true }); });
   async function api(path: string, body?: unknown, auth = true) {
-    return fetch(`${origin(service.internalServer)}${path}`, { method: body ? "POST" : "GET", headers: { "content-type": "application/json", ...(auth ? { authorization: "Bearer local-test-token" } : {}) }, body: body ? JSON.stringify(body) : undefined });
+    return fetch(`${origin(service.internalServer)}${path}`, { method: body ? "POST" : "GET", headers: { "x-emergency-contract-version": API_CONTRACT_VERSION, "content-type": "application/json", ...(auth ? { authorization: "Bearer local-test-token" } : {}) }, body: body ? JSON.stringify(body) : undefined });
   }
   return { service, c, api, dialed, hung };
 }
@@ -94,7 +95,7 @@ test("restart preserves idempotency and fails interrupted calls without redialin
   await service.listen(); t.after(async () => { await service.close(); rmSync(dir, { recursive: true, force: true }); });
   assert.equal(service.store.records.get(r.request.callId)?.status, "failed");
   await service.drain(); assert.equal(hangs, 1); assert.equal(dials, 0);
-  const response = await fetch(`${origin(service.internalServer)}/dev/calls`, { method: "POST", headers: { authorization: "Bearer local-test-token", "content-type": "application/json" }, body: JSON.stringify(r.request) });
+  const response = await fetch(`${origin(service.internalServer)}/dev/calls`, { method: "POST", headers: { "x-emergency-contract-version": API_CONTRACT_VERSION, authorization: "Bearer local-test-token", "content-type": "application/json" }, body: JSON.stringify(r.request) });
   assert.equal(response.status, 202); assert.equal(dials, 0);
 });
 test("simulation remains available without credentials and produces a quote", async t => {

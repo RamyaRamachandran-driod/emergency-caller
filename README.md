@@ -1,13 +1,13 @@
 # Emergency Caller
 
-Four-person hackathon monorepo for consumer voice assistance. This is **your own scaffold**; no Tavi code is used.
+Four-person hackathon monorepo for consumer roadside assistance. This is **your own scaffold**; no Tavi code is used.
 
 The scaffold provides a simulated end-to-end workflow with a React dashboard and separate orchestrator, discovery, and voice services.
 
 ## Team
 | Owner | Workstream |
 |---|---|
-| Tanay | Voice agent, Twilio, OpenAI Realtime |
+| Tanay | Voice agent, Vonage/Twilio, OpenAI Realtime |
 | Safi | Businesses and published phone numbers based on location and time |
 | Ramya | Main orchestrator, shared backend, database and contracts |
 | Khushi | Dashboard UI and Kane CLI integration |
@@ -26,19 +26,22 @@ npm run dev
 
 Open http://localhost:5173. Orchestrator: 4100; discovery: 4101; voice: 4102. Submit a request and location to watch three simulated calls, quotes and a simulated booking confirmation. No real businesses are called. Stop the root process to stop all four components.
 
-`npm run build` typechecks every workspace and builds the dashboard. `npm run test:kane` runs generated Kane tests and fails when none exist. The CI workflow verifies build and voice integration tests; Kane release enforcement is a remaining Khushi task.
+`npm run build` typechecks every workspace and builds the dashboard. `npm run test:kane` runs generated Kane tests and fails when none exist. CI verifies the build, voice integration tests, discovery tests, and the generated Kane suite. Kane needs the repository authentication secrets and a required branch-protection check.
 
 ## Local voice agent
 
-The voice worker now supports live outbound quote calls through Vonage or Twilio and OpenAI Realtime, with a local CLI, transcripts, structured offers, and a temporary provider-only tunnel. See [voice setup and first call](services/voice/README.md). Live booking remains blocked. No server deployment is required.
+Live outbound quote calls use Vonage or Twilio with OpenAI Realtime. A local CLI shows speaker transcripts and structured offers; a provider-only tunnel supplies call audio without deploying a server. The agent closes without a spoken recap. Vonage also offers a spoken connectivity probe. See [voice setup and first call](services/voice/README.md). Live booking remains blocked until dispatch contacts and booking validation are implemented.
 
 ## What works in the scaffold
 - Three independent backend processes communicating through validated HTTP contracts.
 - Authenticated internal endpoints and simulated concurrent call callbacks.
-- Task API, polling UI, speaker transcripts, offer eligibility and simulated confirmation.
+- Typed complaint intake, polling UI, speaker transcripts, offer eligibility and simulated confirmation.
+- SQLite task snapshots and durable callback de-duplication in the orchestrator.
 - Workspace commands, lockfile, environment template, requirements and CI build.
 
+The orchestrator uses one canonical set of shared Zod contracts. Its discovery and voice clients validate messages at the service boundary; bump the shared contract version and update the matching adapter when a team payload changes. Discovery requests time out after three minutes by default. Kane CLI is the planned generated-journey validation path.
+
 ## Not implemented yet
-Live search, browser speech recording/transcription, clarification turns, durable orchestrator SQLite storage, dispatch-contact collection, live booking, offer expiry, production authentication, generated Kane tests, and deployment. Orchestrator data is memory only; restarting it clears tasks. Voice call results persist locally. APP_MODE=live still rejects unfinished orchestration/discovery; VOICE_MODE independently enables live quote calls. Do not expose the scaffold to the public internet or use it for actual dispatch.
+Clarification turns, dispatch-contact collection, live booking validation, offer expiry, production authentication, and deployment. Customer requests are typed. The dashboard defaults to simulation; live discovery and live quote calling are implemented as independently configured services. End-to-end production dispatch is not verified. Do not expose the internal APIs or use the scaffold for actual dispatch.
 
 Use root .env for server credentials; never put OpenAI/Twilio keys into frontend variables. Keep databases, real contacts, recordings, and credentials out of Git.

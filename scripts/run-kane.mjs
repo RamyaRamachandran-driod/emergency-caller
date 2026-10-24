@@ -1,8 +1,10 @@
 import { readdirSync, mkdirSync } from "node:fs";
 import { spawnSync } from "node:child_process";
-const files = readdirSync("tests/kane")
+// Kane assurance writes designed tests here; moving them into a subfolder drops their requirement link.
+const testDir = ".testmuai/tests";
+const files = readdirSync(testDir)
   .filter((f) => f.endsWith("_test.md"))
-  .map((f) => `tests/kane/${f}`);
+  .map((f) => `${testDir}/${f}`);
 if (!files.length) {
   console.error(
     "Kane gate blocked: generate requirement-linked _test.md files through Kane assurance first.",
@@ -10,7 +12,7 @@ if (!files.length) {
   process.exit(1);
 }
 mkdirSync("artifacts", { recursive: true });
-const result = spawnSync("kane-cli", ["testrun", "run", ...files, "--agent"], {
+const result = spawnSync("kane-cli", ["testrun", "run", ...files, "--agent", "--headless", "--parallel", "4"], {
   stdio: ["ignore", "pipe", "inherit"],
   env: { ...process.env, KANE_CLI_USER_AGENT: "emergency-caller-ci" },
   encoding: "utf8",
