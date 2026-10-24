@@ -84,7 +84,7 @@ export function bridge(twilio: WebSocket, r: Record, store: Store, config: Voice
         if (closed || !quote) return;
         if (r.events.some(e => e.type === "offer")) throw Error("A quote has already been saved for this call");
         store.emit(r, { type: "offer", offer: { id: randomUUID(), callId: r.request.callId, businessId: r.request.business.id,
-          availableNow: quote.availability === "available", etaMinutes: quote.etaMinutes, amountMinor: quote.amountMinor,
+          availableNow: quote.availability === "unknown" ? null : quote.availability === "available", etaMinutes: quote.etaMinutes, amountMinor: quote.amountMinor,
           currency: quote.currency, quoteType: quote.quoteType,
           conditions: [quote.conditions, quote.availability === "unknown" ? "Availability not established." : null].filter(Boolean).join(" ") || null } });
         result = { saved: true, instruction: "Do not summarize or repeat the quote. Say only: Thanks, I’ll get back to you. Then use end_call after the closing has played. No dispatch has been authorized." };

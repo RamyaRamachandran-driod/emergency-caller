@@ -2,24 +2,24 @@
   "test_id": "d884d991-f826-40a2-91e9-fca353e25397",
   "version": "v4",
   "auto_heal_version": "AH2",
-  "session_id": "c05c5de0-332b-477b-8dd5-941572aa9acb",
+  "session_id": "3acabf0f-e105-4dc8-95f7-ab7af16dadcf",
   "org_id": "3394593",
   "user_id": "3570389",
   "url": "",
-  "start_timestamp": "2026-10-24T20:50:30.946Z",
-  "end_timestamp": "2026-10-24T20:51:55.009Z",
+  "start_timestamp": "2026-10-24T22:17:41.157Z",
+  "end_timestamp": "2026-10-24T22:18:43.203Z",
   "status": "success",
-  "commit_id": "c05c5de0-332b-477b-8dd5-941572aa9acb",
+  "commit_id": "3acabf0f-e105-4dc8-95f7-ab7af16dadcf",
   "instructions": [
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_674be88976c54d2f935e4fa36fa88d5e",
-      "generative_id": "674be88976c54d2f935e4fa36fa88d5e",
+      "instruction_id": "generative_block_53a28c02219c4577954c6acdd139db6f",
+      "generative_id": "53a28c02219c4577954c6acdd139db6f",
       "objective": "At {{global.start_url}}, describe the breakdown at {{global.at_max_arrival_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "8b1ec323-8a81-4fc2-89c1-a38af0d8004b",
+          "instruction_id": "fd274c11-0ccd-4f2f-a40a-b274e6fef636",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Navigate to {{global.start_url}}",
@@ -31,11 +31,11 @@
           "operations": [
             {
               "operation_id": "1558db4c-ffea-4e36-9dff-31aada50202a",
-              "instruction_id": "8b1ec323-8a81-4fc2-89c1-a38af0d8004b",
+              "instruction_id": "fd274c11-0ccd-4f2f-a40a-b274e6fef636",
               "instruction": "Navigate to {{global.start_url}}",
               "intent": "Navigate to {{global.start_url}}",
-              "operation_start": "2026-10-24T20:50:56.518234+00:00",
-              "operation_end": "2026-10-24T20:50:56.706Z",
+              "operation_start": "2026-10-24T22:18:12.041663+00:00",
+              "operation_end": "2026-10-24T22:18:12.081Z",
               "status": "success",
               "command": "OPEN",
               "name": "",
@@ -158,8 +158,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:50:56.518234+00:00",
-          "end_timestamp": "2026-10-24T20:50:56.706Z",
+          "start_timestamp": "2026-10-24T22:18:12.041663+00:00",
+          "end_timestamp": "2026-10-24T22:18:12.081Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -185,7 +185,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "674be88976c54d2f935e4fa36fa88d5e",
+          "generative_id": "53a28c02219c4577954c6acdd139db6f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.at_max_arrival_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -196,7 +196,7 @@
           "reasoning": "Navigate to {{global.start_url}}"
         },
         {
-          "instruction_id": "ee6aa325-b8a6-42cf-ac6b-5f37a1c01304",
+          "instruction_id": "95ea6a4d-c360-4512-b788-87d647ea6e42",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting while entering breakdown location and selecting arrival time",
@@ -208,11 +208,11 @@
           "operations": [
             {
               "operation_id": "747cf5cf-9083-4581-af6b-dde245b4061a",
-              "instruction_id": "ee6aa325-b8a6-42cf-ac6b-5f37a1c01304",
+              "instruction_id": "95ea6a4d-c360-4512-b788-87d647ea6e42",
               "instruction": "Waiting while entering breakdown location and selecting arrival time",
               "intent": "Waiting while entering breakdown location and selecting arrival time",
-              "operation_start": "2026-10-24T20:51:03.443396+00:00",
-              "operation_end": "2026-10-24T20:51:04.447Z",
+              "operation_start": "2026-10-24T22:18:13.141698+00:00",
+              "operation_end": "2026-10-24T22:18:14.145Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -335,8 +335,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:03.443396+00:00",
-          "end_timestamp": "2026-10-24T20:51:04.447Z",
+          "start_timestamp": "2026-10-24T22:18:13.141698+00:00",
+          "end_timestamp": "2026-10-24T22:18:14.145Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -362,7 +362,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "674be88976c54d2f935e4fa36fa88d5e",
+          "generative_id": "53a28c02219c4577954c6acdd139db6f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.at_max_arrival_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -373,7 +373,7 @@
           "reasoning": "queued plan (2 steps): type \"Breakdown location\"; select \"Arrive within\""
         },
         {
-          "instruction_id": "7076670c-f7fa-4efe-8b12-2194b25ebffd",
+          "instruction_id": "a4aa3915-1968-486b-bfd5-4ee9c2c5b7a3",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Type \"{{global.at_max_arrival_location}}\" into \"Breakdown location\"",
@@ -385,11 +385,11 @@
           "operations": [
             {
               "operation_id": "7050f963-cca5-48b3-8f2f-d1612857a3d2",
-              "instruction_id": "7076670c-f7fa-4efe-8b12-2194b25ebffd",
+              "instruction_id": "a4aa3915-1968-486b-bfd5-4ee9c2c5b7a3",
               "instruction": "Type \"{{global.at_max_arrival_location}}\" into \"Breakdown location\"",
               "intent": "Type \"{{global.at_max_arrival_location}}\" into \"Breakdown location\"",
-              "operation_start": "2026-10-24T20:51:04.092484+00:00",
-              "operation_end": "2026-10-24T20:51:04.136Z",
+              "operation_start": "2026-10-24T22:18:13.254896+00:00",
+              "operation_end": "2026-10-24T22:18:13.319Z",
               "status": "success",
               "command": "TYPE",
               "name": "",
@@ -537,8 +537,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:04.092484+00:00",
-          "end_timestamp": "2026-10-24T20:51:04.136Z",
+          "start_timestamp": "2026-10-24T22:18:13.254896+00:00",
+          "end_timestamp": "2026-10-24T22:18:13.319Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -564,7 +564,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "674be88976c54d2f935e4fa36fa88d5e",
+          "generative_id": "53a28c02219c4577954c6acdd139db6f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.at_max_arrival_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -575,7 +575,7 @@
           "reasoning": "PRIMARY: breakdown location input; role=textbox; text=\"Breakdown location\" | HINTS: container=breakdown assistance form"
         },
         {
-          "instruction_id": "d001d3a5-7b36-4309-9c28-e5b658730d86",
+          "instruction_id": "9d2db927-fdd8-42e9-989e-ab34266fbd68",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Find help button",
@@ -587,11 +587,11 @@
           "operations": [
             {
               "operation_id": "8e413dcb-9748-43e7-969f-2c5f749799e5",
-              "instruction_id": "d001d3a5-7b36-4309-9c28-e5b658730d86",
+              "instruction_id": "9d2db927-fdd8-42e9-989e-ab34266fbd68",
               "instruction": "Clicking Find help button",
               "intent": "Clicking Find help button",
-              "operation_start": "2026-10-24T20:51:09.266288+00:00",
-              "operation_end": "2026-10-24T20:51:09.289Z",
+              "operation_start": "2026-10-24T22:18:13.350009+00:00",
+              "operation_end": "2026-10-24T22:18:13.396Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -739,8 +739,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:09.266288+00:00",
-          "end_timestamp": "2026-10-24T20:51:09.289Z",
+          "start_timestamp": "2026-10-24T22:18:13.350009+00:00",
+          "end_timestamp": "2026-10-24T22:18:13.396Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -766,7 +766,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "674be88976c54d2f935e4fa36fa88d5e",
+          "generative_id": "53a28c02219c4577954c6acdd139db6f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.at_max_arrival_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -777,7 +777,7 @@
           "reasoning": "PRIMARY: find mechanic help button; role=button; text=\"Find help\" | HINTS: container=bottom of breakdown assistance form"
         },
         {
-          "instruction_id": "74b0c548-6775-4ecb-aedf-d2379aa51f17",
+          "instruction_id": "d6e4352c-b6df-4b65-ae76-f24599b052b9",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting 3 seconds for mechanic responses and quoted offers to appear",
@@ -789,11 +789,11 @@
           "operations": [
             {
               "operation_id": "49356a78-666c-4443-b6aa-a57d87407fb5",
-              "instruction_id": "74b0c548-6775-4ecb-aedf-d2379aa51f17",
+              "instruction_id": "d6e4352c-b6df-4b65-ae76-f24599b052b9",
               "instruction": "Waiting 3 seconds for mechanic responses and quoted offers to appear",
               "intent": "Waiting 3 seconds for mechanic responses and quoted offers to appear",
-              "operation_start": "2026-10-24T20:51:17.100424+00:00",
-              "operation_end": "2026-10-24T20:51:20.103Z",
+              "operation_start": "2026-10-24T22:18:16.944155+00:00",
+              "operation_end": "2026-10-24T22:18:19.947Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -916,8 +916,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:17.100424+00:00",
-          "end_timestamp": "2026-10-24T20:51:20.103Z",
+          "start_timestamp": "2026-10-24T22:18:16.944155+00:00",
+          "end_timestamp": "2026-10-24T22:18:19.947Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -943,7 +943,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "674be88976c54d2f935e4fa36fa88d5e",
+          "generative_id": "53a28c02219c4577954c6acdd139db6f",
           "plan_id": "",
           "generative_objective": "At {{global.start_url}}, describe the breakdown at {{global.at_max_arrival_location}}, set the user's maximum arrival time to {{global.max_arrival_time}}, and reach the displayed mechanic offers.",
           "error_message": "",
@@ -956,27 +956,23 @@
       ],
       "error_message": null,
       "error_code": null,
-      "result_code": null,
+      "result_code": 100,
       "bifurcation_context": [],
-      "approach_reason": [
-        "Opened the roadside-assistance page.",
-        "Described the breakdown location and set the maximum arrival time requested.",
-        "Reached the displayed mechanic offers."
-      ],
+      "approach_reason": [],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_42536c11c25e437da6fd19f60409b203",
-      "generative_id": "42536c11c25e437da6fd19f60409b203",
+      "instruction_id": "generative_block_dd2b00c502904af4b963c151abde08c3",
+      "generative_id": "dd2b00c502904af4b963c151abde08c3",
       "objective": "Select the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}}, then assert the offer can be selected for booking.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "fe197026-f099-4285-a638-d08105eca456",
+          "instruction_id": "ea472762-5927-438e-a573-f62803489b61",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Clicking on the maximum arrival time input",
+          "instruction": "Clicking the #1 $110.00 Demo Mobile Mechanics 30 min offer button",
           "command": "CLICK",
           "error": null,
           "parent_instruction_id": "",
@@ -984,12 +980,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "f3a5dae0-c912-418b-b98e-61be3a573e80",
-              "instruction_id": "fe197026-f099-4285-a638-d08105eca456",
-              "instruction": "Clicking on the maximum arrival time input",
-              "intent": "Clicking on the maximum arrival time input",
-              "operation_start": "2026-10-24T20:51:35.016839+00:00",
-              "operation_end": "2026-10-24T20:51:35.057Z",
+              "operation_id": "89401791-7a3b-40ff-a035-49ab1d516dc4",
+              "instruction_id": "ea472762-5927-438e-a573-f62803489b61",
+              "instruction": "Clicking the #1 $110.00 Demo Mobile Mechanics 30 min offer button",
+              "intent": "Clicking the #1 $110.00 Demo Mobile Mechanics 30 min offer button",
+              "operation_start": "2026-10-24T22:18:28.490791+00:00",
+              "operation_end": "2026-10-24T22:18:28.539Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -1003,7 +999,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking on the maximum arrival time input\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: click on {{global.max_arrival_time}}\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Clicking the #1 $110.00 Demo Mobile Mechanics 30 min offer button\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: available-now offer selection; role=button; text=\\\"#1 $110.00 Demo Mobile Mechanics 30 min\\\" | HINTS: container=OFFERS comparison list\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1014,7 +1010,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/f3a5dae0-c912-418b-b98e-61be3a573e80.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/89401791-7a3b-40ff-a035-49ab1d516dc4.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1085,7 +1081,7 @@
               "network_throttle": {},
               "is_mobile_offline": false,
               "autoheal": false,
-              "reprobe": true,
+              "reprobe": false,
               "click_modifier": null,
               "db_query": "",
               "db_details": {},
@@ -1115,30 +1111,30 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": {
-                "x": 311,
+                "x": 326,
                 "y": 1046,
                 "confidence": 0,
                 "bbox": {
-                  "x": 168,
+                  "x": 185,
                   "y": 1023,
-                  "width": 286,
+                  "width": 283,
                   "height": 46
                 },
                 "bbox_source": "accessibility_tree",
                 "viewport_width": 1920,
                 "viewport_height": 1080,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/f3a5dae0-c912-418b-b98e-61be3a573e80.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/89401791-7a3b-40ff-a035-49ab1d516dc4.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: click on {{global.max_arrival_time}}"
+              "reasoning": "PRIMARY: available-now offer selection; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 30 min\" | HINTS: container=OFFERS comparison list"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:35.016839+00:00",
-          "end_timestamp": "2026-10-24T20:51:35.057Z",
+          "start_timestamp": "2026-10-24T22:18:28.490791+00:00",
+          "end_timestamp": "2026-10-24T22:18:28.539Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1164,7 +1160,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "42536c11c25e437da6fd19f60409b203",
+          "generative_id": "dd2b00c502904af4b963c151abde08c3",
           "plan_id": "",
           "generative_objective": "Select the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}}, then assert the offer can be selected for booking.",
           "error_message": "",
@@ -1172,13 +1168,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: click on {{global.max_arrival_time}}"
+          "reasoning": "PRIMARY: available-now offer selection; role=button; text=\"#1 $110.00 Demo Mobile Mechanics 30 min\" | HINTS: container=OFFERS comparison list"
         },
         {
-          "instruction_id": "edaca60a-637a-4bda-a659-9116ab83642b",
+          "instruction_id": "cdecec1e-02fe-474e-9bd8-b3ff9360619c",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking whether the 30-minute offer can be selected for booking",
+          "instruction": "Checking whether the 30 minute offer can be selected for booking",
           "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
@@ -1186,11 +1182,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "026f9208-dc6a-48d8-b6bc-9adc5cb44946",
-              "instruction_id": "edaca60a-637a-4bda-a659-9116ab83642b",
-              "instruction": "Checking whether the 30-minute offer can be selected for booking",
-              "intent": "Checking whether the 30-minute offer can be selected for booking",
-              "operation_start": "2026-10-24T20:51:51.708034+00:00",
+              "operation_id": "1c739cbb-3073-4cff-a9c4-8f8f6dd07149",
+              "instruction_id": "cdecec1e-02fe-474e-9bd8-b3ff9360619c",
+              "instruction": "Checking whether the 30 minute offer can be selected for booking",
+              "intent": "Checking whether the 30 minute offer can be selected for booking",
+              "operation_start": "2026-10-24T22:18:39.530172+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -1205,7 +1201,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether the 30-minute offer can be selected for booking\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}} selectable for booking is present (in the booking request dialog)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"(() => { const eta = Array.from(el(1).querySelectorAll('dt')).find(x => x.textContent.trim() === 'ETA'); const value = eta && eta.nextElementSibling ? eta.nextElementSibling.textContent.trim() : ''; const request = Array.from(el(1).querySelectorAll('button')).find(x => x.textContent.trim() === 'Request confirmation call'); return value === '30 min' && !!request && !request.disabled; })()\",\"wrapped_js\":\"(els) => {\\n  const __m = {1: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = ((() => { const eta = Array.from(el(1).querySelectorAll('dt')).find(x => x.textContent.trim() === 'ETA'); const value = eta && eta.nextElementSibling ? eta.nextElementSibling.textContent.trim() : ''; const request = Array.from(el(1).querySelectorAll('button')).find(x => x.textContent.trim() === 'Request confirmation call'); return value === '30 min' && !!request && !request.disabled; })());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=dialog[name=\\\"Request this booking?\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}} selectable for booking is present (in the booking request dialog)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}} can be selected for booking\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking whether the 30 minute offer can be selected for booking\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the available-now offer selectable for booking is present (in the booking confirmation dialog)\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"(() => { const text = el(1).innerText; return /Demo Mobile Mechanics/.test(text) && /ETA\\\\s*30 min/.test(text) && Array.from(el(1).querySelectorAll('button')).some(b => b.textContent.trim() === 'Request confirmation call' && !b.disabled); })()\",\"wrapped_js\":\"(els) => {\\n  const __m = {1: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = ((() => { const text = el(1).innerText; return /Demo Mobile Mechanics/.test(text) && /ETA\\\\s*30 min/.test(text) && Array.from(el(1).querySelectorAll('button')).some(b => b.textContent.trim() === 'Request confirmation call' && !b.disabled); })());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=dialog[name=\\\"Request this booking?\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the available-now offer selectable for booking is present (in the booking confirmation dialog)\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}} can be selected for booking\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -1216,14 +1212,14 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/026f9208-dc6a-48d8-b6bc-9adc5cb44946.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/1c739cbb-3073-4cff-a9c4-8f8f6dd07149.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
               "url": "",
               "navigation_direction": "",
               "tagified_image_url": "",
-              "query_variable_name": "offer_selectable_for_booking",
+              "query_variable_name": "available_now_offer_selectable_for_booking",
               "query_variable_value": "true",
               "query_variable_type": "",
               "expected_value": "",
@@ -1309,14 +1305,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "offer_selectable_for_booking": "true"
+                "available_now_offer_selectable_for_booking": "true"
               },
               "visual_context": null,
-              "reasoning": "whether the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}} selectable for booking is present (in the booking request dialog)"
+              "reasoning": "whether the available-now offer selectable for booking is present (in the booking confirmation dialog)"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:51.708034+00:00",
+          "start_timestamp": "2026-10-24T22:18:39.530172+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -1343,7 +1339,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "42536c11c25e437da6fd19f60409b203",
+          "generative_id": "dd2b00c502904af4b963c151abde08c3",
           "plan_id": "",
           "generative_objective": "Select the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}}, then assert the offer can be selected for booking.",
           "error_message": "",
@@ -1351,10 +1347,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}} selectable for booking is present (in the booking request dialog)"
+          "reasoning": "whether the available-now offer selectable for booking is present (in the booking confirmation dialog)"
         },
         {
-          "instruction_id": "6d813687-83bb-45c4-a697-0715533ba224",
+          "instruction_id": "3a59ca60-28f3-4507-9d03-46ddc049ef84",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -1376,10 +1372,10 @@
                       "transforms": [],
                       "json_path": null,
                       "expected": "true",
-                      "extracted_value": "{{offer_selectable_for_booking}}",
-                      "store_key": "offer_selectable_for_booking",
+                      "extracted_value": "{{available_now_offer_selectable_for_booking}}",
+                      "store_key": "available_now_offer_selectable_for_booking",
                       "variable_refs": {
-                        "{{offer_selectable_for_booking}}": "true",
+                        "{{available_now_offer_selectable_for_booking}}": "true",
                         "{{global.max_arrival_time}}": "30 minutes"
                       }
                     }
@@ -1387,9 +1383,9 @@
                   "sub_checks": [
                     {
                       "description": "the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}} can be selected for booking",
-                      "store_key": "offer_selectable_for_booking",
+                      "store_key": "available_now_offer_selectable_for_booking",
                       "expected_value": "true",
-                      "extracted_value": "{{offer_selectable_for_booking}}",
+                      "extracted_value": "{{available_now_offer_selectable_for_booking}}",
                       "operator": "equals",
                       "transforms": []
                     }
@@ -1412,11 +1408,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "62c80085-3062-4ce5-83ac-49ae30ea2524",
-              "instruction_id": "6d813687-83bb-45c4-a697-0715533ba224",
+              "operation_id": "e328659a-f0bf-4f16-9176-7977e0d71b86",
+              "instruction_id": "3a59ca60-28f3-4507-9d03-46ddc049ef84",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-10-24T20:51:52.311948+00:00",
+              "operation_start": "2026-10-24T22:18:40.124740+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -1442,7 +1438,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/62c80085-3062-4ce5-83ac-49ae30ea2524.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/e328659a-f0bf-4f16-9176-7977e0d71b86.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -1514,10 +1510,10 @@
                     "transforms": [],
                     "json_path": null,
                     "expected": "true",
-                    "extracted_value": "{{offer_selectable_for_booking}}",
-                    "store_key": "offer_selectable_for_booking",
+                    "extracted_value": "{{available_now_offer_selectable_for_booking}}",
+                    "store_key": "available_now_offer_selectable_for_booking",
                     "variable_refs": {
-                      "{{offer_selectable_for_booking}}": "true",
+                      "{{available_now_offer_selectable_for_booking}}": "true",
                       "{{global.max_arrival_time}}": "30 minutes"
                     }
                   }
@@ -1525,9 +1521,9 @@
                 "sub_checks": [
                   {
                     "description": "the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}} can be selected for booking",
-                    "store_key": "offer_selectable_for_booking",
+                    "store_key": "available_now_offer_selectable_for_booking",
                     "expected_value": "true",
-                    "extracted_value": "{{offer_selectable_for_booking}}",
+                    "extracted_value": "{{available_now_offer_selectable_for_booking}}",
                     "operator": "equals",
                     "transforms": []
                   }
@@ -1548,10 +1544,10 @@
                     "transforms": [],
                     "json_path": null,
                     "expected": "true",
-                    "extracted_value": "{{offer_selectable_for_booking}}",
-                    "store_key": "offer_selectable_for_booking",
+                    "extracted_value": "{{available_now_offer_selectable_for_booking}}",
+                    "store_key": "available_now_offer_selectable_for_booking",
                     "variable_refs": {
-                      "{{offer_selectable_for_booking}}": "true",
+                      "{{available_now_offer_selectable_for_booking}}": "true",
                       "{{global.max_arrival_time}}": "30 minutes"
                     }
                   }
@@ -1602,7 +1598,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-10-24T20:51:52.311948+00:00",
+          "start_timestamp": "2026-10-24T22:18:40.124740+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -1629,7 +1625,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "42536c11c25e437da6fd19f60409b203",
+          "generative_id": "dd2b00c502904af4b963c151abde08c3",
           "plan_id": "",
           "generative_objective": "Select the available-now offer with a known arrival estimate exactly equal to {{global.max_arrival_time}}, then assert the offer can be selected for booking.",
           "error_message": "",
@@ -1645,9 +1641,9 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Requested selection of an available-now offer with an arrival estimate matching the 30-minute limit.",
-        "Selected the available-now offer with a 30-minute ETA and opened its booking request dialog.",
-        "The offer was available to proceed with booking, including an enabled “Request confirmation call” option."
+        "You asked to select an available-now offer with an arrival estimate of exactly 30 minutes.",
+        "The available-now offer from Demo Mobile Mechanics with an ETA of 30 minutes was selected for booking.",
+        "A booking confirmation dialog was shown, with an enabled “Request confirmation call” button available to continue."
       ],
       "one_liner": null
     }
@@ -1655,13 +1651,13 @@
   "modules": [],
   "uploaded_files": [],
   "test_params": [],
-  "test_level_variables": "[{\"name\":\"offer_selectable_for_booking\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
+  "test_level_variables": "[{\"name\":\"available_now_offer_selectable_for_booking\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
   "test_global_variables": [
     {
       "id": 465150,
       "name": "start_url",
-      "value": "http://127.0.0.1:5174",
-      "session_value": "http://127.0.0.1:5174",
+      "value": "http://127.0.0.1:5173/app",
+      "session_value": "http://127.0.0.1:5173/app",
       "is_persist": false,
       "environment_id": 0,
       "environment_name": "No Env"

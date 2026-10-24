@@ -86,7 +86,7 @@ function CallThread({ call, offer }: { call: Call; offer: Offer | undefined }) {
             </div>
             <dl>
               <div><dt>ETA</dt><dd>{offer.etaMinutes === null ? "Unknown" : `${offer.etaMinutes} min`}</dd></div>
-              <div><dt>Available now</dt><dd>{offer.availableNow ? "Yes" : "No"}</dd></div>
+              <div><dt>Available now</dt><dd>{offer.availableNow === null ? "Unknown" : offer.availableNow ? "Yes" : "No"}</dd></div>
               <div className="wide"><dt>Conditions</dt><dd>{offer.conditions ?? "None stated"}</dd></div>
             </dl>
           </div>

@@ -31,6 +31,7 @@ export function label(status: string): string {
 
 // Mirrors the orchestrator's /book eligibility check so ineligible offers are explained, not just disabled.
 export function ineligibleReason(offer: Offer, maxArrivalMinutes: number): string | null {
+  if (offer.availableNow === null) return "Availability unknown, so it can't be booked";
   if (!offer.availableNow) return "Not available now";
   if (offer.etaMinutes === null) return "ETA unknown, so the arrival goal is not met";
   if (offer.etaMinutes > maxArrivalMinutes) return `ETA ${offer.etaMinutes} min is over the ${maxArrivalMinutes}-min goal`;
