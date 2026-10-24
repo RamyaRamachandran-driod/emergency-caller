@@ -4,6 +4,27 @@ Four-person hackathon monorepo for consumer roadside assistance. This is **your 
 
 The scaffold provides a simulated end-to-end workflow with a React dashboard and separate orchestrator, discovery, and voice services.
 
+## Architecture
+
+```mermaid
+flowchart TD
+    U[Driver describes the breakdown] --> UI[Dashboard - Khushi]
+    UI -->|submit, poll every second, book| O[Orchestrator - Ramya]
+    O --> DB[(SQLite task snapshots)]
+    O -->|POST /discover| D[Discovery - Safi]
+    D <--> W[OpenAI Responses + web search]
+    O -->|POST /calls, up to 3 at once| V[Voice agent - Tanay]
+    V <--> R[OpenAI Realtime]
+    V <--> P[Vonage or Twilio]
+    P <--> B[Mobile mechanics]
+    V -->|transcripts, quotes, booking result| O
+    REQ[requirements/demo.md] --> K[Kane CLI - Khushi]
+    K -->|designs and replays tests in Chrome| UI
+    K -->|evidence pack, required check| GH[GitHub Actions CI]
+```
+
+More detail, per-owner responsibilities and the integration plan: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 ## Verified with Kane CLI
 
 [Kane CLI](https://github.com/LambdaTest/kane-cli) designs and runs our browser tests from the written requirements, in a real Chrome browser.
