@@ -1,0 +1,19 @@
+{
+  "commit_id": "0a706bd2-97ab-46be-b6fb-0ff57850333d",
+  "test_id": "c6e99436-d3a2-4920-a8a3-2e5eb1d699de",
+  "testcase_id": "01M5QTZVD2SF6G2TAX0085M7W8",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "repeated-authorized-confirmation-dispatches-at-most-once",
+  "executions": [
+    {
+      "execution_id": "5b5cbc85-5ccd-46c3-b767-3b8837fa47c0",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "uploaded": true,
+      "at": "2026-10-24T21:06:03.378Z"
+    }
+  ]
+}

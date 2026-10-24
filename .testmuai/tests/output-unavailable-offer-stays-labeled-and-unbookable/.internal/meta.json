@@ -1,0 +1,33 @@
+{
+  "test_id": "72b4e126-9085-4913-b32b-96291b6de8cc",
+  "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
+  "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
+  "org_id": "3394593",
+  "session_name": "unavailable-offer-stays-labeled-and-unbookable",
+  "commit_id": "6bbea75f-823d-48a1-badc-8d0765ad3749",
+  "testcase_id": "01M5QV3SWKWJJ6447ZB8J3J7DV",
+  "executions": [
+    {
+      "execution_id": "716e646d-9ee3-41a8-8a8d-b3fe55fdf044",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-24T20:57:04.690Z"
+    },
+    {
+      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
+      "run_kind": "author",
+      "status": "passed",
+      "at": "2026-10-24T20:59:06.305Z",
+      "uploaded": true
+    },
+    {
+      "execution_id": "5b5cbc85-5ccd-46c3-b767-3b8837fa47c0",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "uploaded": true,
+      "at": "2026-10-24T21:06:03.381Z"
+    }
+  ]
+}
