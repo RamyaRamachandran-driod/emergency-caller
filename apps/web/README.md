@@ -14,10 +14,13 @@ The default `VITE_APP_MODE=test` shows clearly labeled fixture data. To connect 
 
 ## Dashboard scope
 
-- Text-based request entry, location entry or browser location lookup, vehicle details, arrival target, and optional budget.
-- Three-business status cards with price, availability, ETA, terms, and ordered call transcripts.
-- One-offer selection and a separate booking confirmation action.
-- A confirmed state appears only when the backend reports explicit business acceptance. Fixture acceptance is labeled as simulated.
+The layout follows the Tavi command-web reference: a task header, a call board, a ranked offer bar, a per-business call drawer, and an activity feed.
+
+- Request entry in a dialog: problem, location or browser location lookup, vehicle details, arrival target, and optional budget.
+- Call board with Queued, On the call, Quoted, and No quote lanes for up to three businesses.
+- Call drawer with business sources, call state chain, ordered speaker-labeled transcript, and the captured offer with unknown values shown as unknown.
+- Offer bar ranked eligible-first by price. Offers with an unknown ETA, no availability, or an ETA over the arrival goal are labeled not eligible and cannot be booked.
+- Booking requires an explicit confirmation dialog. Confirmed appears only when the backend reports explicit business acceptance; fixture acceptance is labeled as simulated. Changed terms, declines, and unclear outcomes are shown and never treated as booked.
 - The dashboard polls active live tasks every second. Browser code never calls Twilio or OpenAI directly.
 
 Voice recording, backend implementation, sourced business discovery, and real phone calls remain with the relevant backend team owners.

@@ -117,6 +117,7 @@ export function createDemoTask(problem: string, location: string, vehicle: strin
   const fresh = structuredClone(demoSnapshot)
   const id = `demo-${crypto.randomUUID()}`
   fresh.taskId = id
+  fresh.createdAt = new Date().toISOString()
   fresh.problem = problem
   fresh.location = location
   fresh.vehicle = vehicle || 'Vehicle details not provided'
