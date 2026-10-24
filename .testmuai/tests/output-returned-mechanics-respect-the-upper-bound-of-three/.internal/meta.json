@@ -1,49 +1,19 @@
 {
+  "commit_id": "a7adb3ca-899d-4a37-95a0-267f19041712",
   "test_id": "66ac87c3-cd16-41ff-9c4b-adeee75cde54",
+  "testcase_id": "01M5QV1376AGAS94TT6B49509R",
   "project_id": "01M5QT1CJ86FD8J2RJ0H2X18J1",
   "folder_id": "01M5QT1CVPFMD5QDKKPQ79BFM7",
   "org_id": "3394593",
   "session_name": "returned-mechanics-respect-the-upper-bound-of-three",
-  "commit_id": "a7adb3ca-899d-4a37-95a0-267f19041712",
-  "testcase_id": "01M5QV1376AGAS94TT6B49509R",
   "executions": [
     {
-      "execution_id": "d3d8854b-75d5-4cdd-9f2a-14e21782c1a5",
+      "execution_id": "9affb47b-ab3a-4356-aa5b-fff426ab192e",
       "run_kind": "author",
       "status": "passed",
       "valid": true,
-      "at": "2026-10-24T20:54:47.265Z"
-    },
-    {
-      "execution_id": "f8310525-d263-4871-8a63-14d6c8b5d582",
-      "run_kind": "author",
-      "status": "passed",
-      "at": "2026-10-24T20:59:06.304Z",
-      "uploaded": true
-    },
-    {
-      "execution_id": "5b5cbc85-5ccd-46c3-b767-3b8837fa47c0",
-      "run_kind": "replay",
-      "status": "passed",
-      "valid": true,
       "uploaded": true,
-      "at": "2026-10-24T21:06:03.379Z"
-    },
-    {
-      "execution_id": "7cef0ee8-ebdb-49e3-a157-794dbde1992b",
-      "run_kind": "replay",
-      "status": "passed",
-      "valid": true,
-      "uploaded": true,
-      "at": "2026-10-24T21:40:15.484Z"
-    },
-    {
-      "execution_id": "599f23b7-3172-4826-98fd-cc9616bbcb55",
-      "run_kind": "replay",
-      "status": "passed",
-      "valid": true,
-      "uploaded": true,
-      "at": "2026-10-24T22:21:42.886Z"
+      "at": "2026-10-24T22:54:53.582Z"
     }
   ]
 }

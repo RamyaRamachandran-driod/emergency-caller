@@ -8,12 +8,12 @@
   "session_name": "selecting-without-authorization-does-not-dispatch",
   "executions": [
     {
-      "execution_id": "599f23b7-3172-4826-98fd-cc9616bbcb55",
+      "execution_id": "9affb47b-ab3a-4356-aa5b-fff426ab192e",
       "run_kind": "author",
-      "status": "passed",
+      "status": "failed",
       "valid": true,
       "uploaded": true,
-      "at": "2026-10-24T22:21:42.887Z"
+      "at": "2026-10-24T22:54:53.582Z"
     }
   ]
 }
