@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: savior-emergency-caller
+    runtime: docker
+    plan: 0.5c-512mb
+    region: oregon
+    healthCheckPath: /health
+    autoDeployTrigger: off
+    disk:
+      name: savior-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: APP_MODE
+        value: live
+      - key: VOICE_MODE
+        value: live
+      - key: VOICE_PROVIDER
+        value: vonage
+      - key: INTERNAL_SERVICE_TOKEN
+        generateValue: true
+      - key: DASHBOARD_USER
+        value: savior
+      - key: DASHBOARD_PASSWORD
+        generateValue: true
+      - key: VOICE_TEST_NUMBER
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_TEXT_MODEL
+        value: gpt-4.1
+      - key: VONAGE_APPLICATION_ID
+        sync: false
+      - key: VONAGE_API_KEY
+        sync: false
+      - key: VONAGE_SIGNATURE_SECRET
+        sync: false
+      - key: VONAGE_PRIVATE_KEY_B64
+        sync: false
+      - key: VONAGE_FROM_NUMBER
+        sync: false

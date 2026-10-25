@@ -18,7 +18,9 @@
     "test:voice": "tsx --test services/voice/test/*.test.ts",
     "voice:vonage:setup": "node scripts/vonage-setup.mjs",
     "test:workflow": "tsx --test services/orchestrator/test/*.test.ts",
-    "voice:smoke": "tsx scripts/voice-conversation-smoke.mts"
+    "voice:smoke": "tsx scripts/voice-conversation-smoke.mts",
+    "start": "node scripts/serve-production.mjs",
+    "test:production": "node --test scripts/test/production-gateway.test.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
