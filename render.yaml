@@ -2,15 +2,13 @@ services:
   - type: web
     name: savior-emergency-caller
     runtime: docker
-    plan: 0.5c-512mb
+    plan: free
     region: oregon
     healthCheckPath: /health
     autoDeployTrigger: off
-    disk:
-      name: savior-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
+      - key: DATA_DIR
+        value: /tmp/savior
       - key: APP_MODE
         value: live
       - key: VOICE_MODE
