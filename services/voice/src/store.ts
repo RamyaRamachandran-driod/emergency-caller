@@ -13,6 +13,7 @@ export interface Record {
   sid?: string; status: "dialing" | "connected" | "completed" | "failed";
   events: CallEvent[]; outbox: CallEvent[]; sequence: number; createdAt: string;
   reason?: string; providerEnded?: boolean;
+  toolErrors?: { tool: string; error: string; at: string }[];
 }
 export class Store {
   records = new Map<string, Record>();

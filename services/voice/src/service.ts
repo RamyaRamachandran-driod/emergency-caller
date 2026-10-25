@@ -1,3 +1,4 @@
+import { saveBooking } from "./booking.js";
 import express, { type Request as HttpRequest } from "express";
 import { createServer } from "node:http";
 import { mkdirSync, writeFileSync, readFileSync, unlinkSync } from "node:fs";
@@ -167,6 +168,22 @@ export function createVoiceService(config = configFromEnv(process.env), provider
     try { saveQuote(r, store, await extractTranscriptQuote(r, config)); await drain(); res.json(store.public(r)); }
     catch { res.status(422).json({ error: "The finalized transcript could not support a validated quote" }); }
     finally { recoveringQuotes.delete(r.request.callId); }
+  });
+  // Internal transcript review only: never starts or retries a telephone call.
+  app.post("/calls/:id/recover-booking", internal, async (req, res) => {
+    const r = store.records.get(String(req.params.id));
+    if (!r) { res.status(404).json({ error: "Unknown call" }); return; }
+    if (!store.terminal(r) || !r.live || r.request.purpose !== "booking" || !r.request.approval) { res.status(409).json({ error: "Only ended, approved live booking calls can be reviewed" }); return; }
+    if (!r.events.some(e => e.type === "booking_result")) {
+      try { saveBooking(r, store, req.body); }
+      catch { res.status(422).json({ error: "The finalized transcript could not support this booking outcome" }); return; }
+    }
+    if (r.status !== "completed") {
+      r.reason = "Booking outcome recovered from finalized transcript; no new call placed";
+      store.emit(r, { type: "status", status: "completed", reason: r.reason });
+    }
+    await drain();
+    res.json(store.public(r));
   });
   app.post("/calls/:id/stop", internal, async (req, res) => { const r = store.records.get(String(req.params.id)); if (!r) { res.status(404).json({ error: "Unknown call" }); return; } await finish(r, "Stopped by user", true); res.json(store.public(r)); });
   errors(app);

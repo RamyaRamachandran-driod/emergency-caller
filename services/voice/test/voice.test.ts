@@ -305,7 +305,7 @@ test("speech-end starts a reply without waiting for ASR; unasked pricing cannot 
   await pause(); assert.equal(messages.filter(m => m.type === "response.create").length, 3, "late transcription or a repeated stop must not create another reply");
 });
 
-test("booking audio session uses confirmation tools and persists merchant acceptance before ending", async t => {
+for (const invalid of [false, true]) test(`booking audio session ${invalid ? "closes politely after validation failures" : "saves acceptance and plays goodbye before ending"}`, async t => {
   const dir = mkdtempSync(join(tmpdir(), "savior-confirm-bridge-"));
   const req = request(); req.purpose = "booking";
   req.selectedOffer = { id: randomUUID(), callId: randomUUID(), businessId: req.business.id, availableNow: true, etaMinutes: 20, amountMinor: 10000, currency: "USD", quoteType: "fixed", conditions: null };
@@ -314,11 +314,12 @@ test("booking audio session uses confirmation tools and persists merchant accept
   const phone = new WebSocketServer({ port: 0, host: "127.0.0.1" });
   const ai = new WebSocketServer({ port: 0, host: "127.0.0.1" });
   await Promise.all([once(phone, "listening"), once(ai, "listening")]);
-  let peer: WebSocket | undefined; const messages: any[] = [];
+  let peer: WebSocket | undefined; const messages: any[] = [], phoneMessages: any[] = [], finished: { reason: string; failed: boolean }[] = [];
   ai.on("connection", ws => { peer = ws; ws.on("message", raw => messages.push(JSON.parse(raw.toString()))); });
   let connection: ReturnType<typeof bridge>;
-  phone.on("connection", ws => { connection = bridge(ws, r, store, c, async () => {}, () => new WebSocket(`ws://127.0.0.1:${(ai.address() as { port: number }).port}`)); });
+  phone.on("connection", ws => { connection = bridge(ws, r, store, c, async (reason, failed) => { finished.push({ reason, failed }); }, () => new WebSocket(`ws://127.0.0.1:${(ai.address() as { port: number }).port}`)); });
   const caller = new WebSocket(`ws://127.0.0.1:${(phone.address() as { port: number }).port}`);
+  caller.on("message", raw => phoneMessages.push(JSON.parse(raw.toString())));
   await once(caller, "open");
   t.after(() => { connection?.close(); caller.terminate(); peer?.terminate(); phone.close(); ai.close(); rmSync(dir, { recursive: true, force: true }); });
   caller.send(JSON.stringify({ event: "start", start: { streamSid: "booking-stream", callSid: r.sid, accountSid: c.accountSid, mediaFormat: { encoding: "audio/x-mulaw", sampleRate: 8000 } } }));
@@ -338,8 +339,54 @@ test("booking audio session uses confirmation tools and persists merchant accept
   assert.match(continuation, /Finalized conversation for continuity/);
   assert.ok(continuation.includes("The customer accepted your quote. Can you come to 123 Test Street, Test City in twenty minutes?"));
   assert.ok(continuation.includes('"speaker":"business","text":"Yes, I can."'));
-  send({ type: "response.function_call_arguments.done", call_id: "confirm", name: "report_booking", arguments: JSON.stringify({ outcome: "accepted", summary: "Business accepted $100 fixed price and attendance at the approved address within 20 minutes.", amountMinor: 10000, currency: "USD", etaMinutes: 20, addressConfirmed: true, conditionsUnchanged: true, evidence: "Yes, I can." }) });
+  const report = { outcome: "accepted", summary: "Business accepted $100 fixed price and attendance at the approved address within 20 minutes.", changedTerms: invalid ? { amountMinor: 20000, currency: "USD", etaMinutes: 20, conditions: null } : null, evidence: "Yes I can" };
+  send({ type: "response.function_call_arguments.done", call_id: "confirm", name: "report_booking", arguments: JSON.stringify(report) });
   await until(() => messages.some(m => m.type === "conversation.item.create" && m.item.call_id === "confirm"));
+  if (invalid) {
+    send({ type: "response.function_call_arguments.done", call_id: "retry-confirm", name: "report_booking", arguments: JSON.stringify(report) });
+    await until(() => messages.some(m => m.type === "conversation.item.create" && m.item.call_id === "retry-confirm"));
+    assert.equal(finished.length, 0, "two validation errors must not abruptly hang up");
+    assert.equal(r.events.some(e => e.type === "booking_result"), false);
+    assert.equal(r.toolErrors?.length, 2);
+    assert.match(JSON.parse(messages.find(m => m.type === "conversation.item.create" && m.item.call_id === "retry-confirm").item.output).instruction, /brief polite goodbye/);
+  } else {
+    assert.equal(r.events.find(e => e.type === "booking_result")?.accepted, true);
+    assert.equal(JSON.parse(messages.find(m => m.type === "conversation.item.create" && m.item.call_id === "confirm").item.output).saved, true);
+  }
+  send({ type: "response.function_call_arguments.done", call_id: "too-early", name: "end_call", arguments: JSON.stringify({ reason: "Done" }) });
+  await until(() => messages.some(m => m.type === "conversation.item.create" && m.item.call_id === "too-early"));
+  assert.equal(JSON.parse(messages.find(m => m.type === "conversation.item.create" && m.item.call_id === "too-early").item.output).ending, false);
+  send({ type: "response.output_audio.delta", response_id: "goodbye", item_id: "goodbye", delta: "////" });
+  send({ type: "response.output_audio_transcript.done", item_id: "goodbye", transcript: "Thanks, see you then." });
+  await until(() => phoneMessages.some(m => m.event === "mark"));
+  send({ type: "response.function_call_arguments.done", call_id: "after-goodbye", name: "end_call", arguments: JSON.stringify({ reason: "Done" }) });
+  send({ type: "response.done", response: { status: "completed" } });
+  await pause(650);
+  assert.equal(finished.length, 0, "never hang up before the goodbye audio has played");
+  const mark = phoneMessages.find(m => m.event === "mark");
+  caller.send(JSON.stringify({ event: "mark", mark: mark.mark }));
+  await until(() => finished.length === 1);
+  assert.equal(finished[0].failed, invalid);
+});
+
+test("ended confirmation transcript review records acceptance once without redialing", async t => {
+  const h = await harness(t);
+  const req = request(); req.purpose = "booking";
+  req.selectedOffer = { id: randomUUID(), callId: randomUUID(), businessId: req.business.id, availableNow: true, etaMinutes: 20, amountMinor: 25000, currency: "USD", quoteType: "fixed", conditions: null };
+  req.approval = { callId: req.callId, approvedAt: new Date().toISOString(), offer: req.selectedOffer, contact: { name: "Test customer", phone: "+14155550101" } };
+  const r = h.service.store.create(req, true, false);
+  const path = `/calls/${req.callId}/recover-booking`;
+  const result = { outcome: "accepted", changedTerms: null, evidence: "yes I can", summary: "Accepted the approved visit." };
+  assert.equal((await h.api(path, result, false)).status, 401);
+  assert.equal((await h.api(path, result)).status, 409);
+  h.service.store.emit(r, { type: "transcript", speaker: "agent", sequence: 0, text: "They accepted your earlier quote. Can you be at 123 Test Street, Test City in twenty minutes?" });
+  h.service.store.emit(r, { type: "transcript", speaker: "business", sequence: 1, text: "Yes, I can." });
+  h.service.store.emit(r, { type: "status", status: "failed", reason: "Call outcome could not be validated" });
+  assert.equal((await h.api(path, { ...result, evidence: "We agree to dispatch" })).status, 422);
+  assert.equal((await h.api(path, result)).status, 200);
+  assert.equal((await h.api(path, result)).status, 200);
+  assert.equal(r.events.filter(e => e.type === "booking_result").length, 1);
   assert.equal(r.events.find(e => e.type === "booking_result")?.accepted, true);
-  assert.equal(JSON.parse(messages.find(m => m.type === "conversation.item.create" && m.item.call_id === "confirm").item.output).saved, true);
+  assert.equal(h.dialed.length, 0);
+  assert.equal(r.status, "completed");
 });
